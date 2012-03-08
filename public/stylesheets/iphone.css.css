@@ -1,0 +1,119 @@
+/* line 8, ../../app/assets/stylesheets/iphone.css.scss */
+html, body {
+  width: 320px;
+}
+
+/* line 12, ../../app/assets/stylesheets/iphone.css.scss */
+body {
+  padding: 1em 10px;
+}
+
+/* line 16, ../../app/assets/stylesheets/iphone.css.scss */
+body, input, textarea {
+  font-size: 16px;
+  line-height: 1.6em;
+}
+
+/* line 21, ../../app/assets/stylesheets/iphone.css.scss */
+body > header, body > section, body > footer {
+  width: 300px;
+}
+
+/* line 25, ../../app/assets/stylesheets/iphone.css.scss */
+body > header {
+  margin: 1em auto 2em;
+}
+
+/* line 30, ../../app/assets/stylesheets/iphone.css.scss */
+h2 {
+  font-size: 20px;
+}
+
+/* line 35, ../../app/assets/stylesheets/iphone.css.scss */
+ul.tracks li span {
+  display: none;
+}
+
+/* line 40, ../../app/assets/stylesheets/iphone.css.scss */
+section > article {
+  overflow: hidden;
+  margin-bottom: 3em;
+}
+/* line 44, ../../app/assets/stylesheets/iphone.css.scss */
+section > article img {
+  width: 300px;
+}
+/* line 48, ../../app/assets/stylesheets/iphone.css.scss */
+section > article object, section > article embed {
+  display: none;
+}
+/* line 52, ../../app/assets/stylesheets/iphone.css.scss */
+section > article div.video {
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  -o-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+}
+/* line 56, ../../app/assets/stylesheets/iphone.css.scss */
+section > article div.video, section > article div.video.vimeo iframe {
+  width: 300px;
+  height: 195px;
+}
+/* line 61, ../../app/assets/stylesheets/iphone.css.scss */
+section > article div.video.wide.youtube, section > article div.video.wide.vimeo, section > article div.video.vimeo.wide iframe {
+  height: 146px;
+}
+
+/* line 66, ../../app/assets/stylesheets/iphone.css.scss */
+div.social {
+  padding-left: 60px;
+  width: 220px;
+}
+/* line 70, ../../app/assets/stylesheets/iphone.css.scss */
+div.social iframe#facebook-like-button {
+  width: 80px;
+}
+
+/* line 75, ../../app/assets/stylesheets/iphone.css.scss */
+div.pagination {
+  line-height: 2em;
+}
+
+/* line 79, ../../app/assets/stylesheets/iphone.css.scss */
+div.pagination a, div.pagination span.gap {
+  display: none;
+  margin: 0;
+}
+
+/* line 84, ../../app/assets/stylesheets/iphone.css.scss */
+div.pagination a.next_page, div.pagination a.previous_page {
+  display: inline;
+}
+
+/* line 89, ../../app/assets/stylesheets/iphone.css.scss */
+section.home article {
+  padding-left: 1em;
+}
+/* line 93, ../../app/assets/stylesheets/iphone.css.scss */
+section.home ul.movies {
+  text-align: center;
+  margin-bottom: 0;
+}
+/* line 97, ../../app/assets/stylesheets/iphone.css.scss */
+section.home ul.movies li {
+  margin: 0 10px 0.5em 0;
+}
+/* line 101, ../../app/assets/stylesheets/iphone.css.scss */
+section.home ul.movies li:nth-child(even) {
+  margin: 0 0 1em;
+}
+/* line 106, ../../app/assets/stylesheets/iphone.css.scss */
+section.home a.fc-art, section.home a.fc-art img {
+  width: 150px;
+  height: 150px;
+}
+/* line 111, ../../app/assets/stylesheets/iphone.css.scss */
+section.home a.grape-map {
+  background-image: url(http://maps.google.com/maps/api/staticmap?center=32.82385,-96.770239&zoom=14&size=290x123&maptype=roadmap&markers=color:green%7C32.82385,-96.770239&sensor=false);
+  width: 290px;
+}

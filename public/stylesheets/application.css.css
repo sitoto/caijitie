@@ -1,0 +1,892 @@
+/* line 6, ../../app/assets/stylesheets/application.css.scss */
+section, header, footer, nav, article, aside, figure {
+  display: block;
+  width: 100%;
+}
+
+/* line 11, ../../app/assets/stylesheets/application.css.scss */
+mark, time, meter, progress {
+  display: inline;
+}
+
+/* line 16, ../../app/assets/stylesheets/application.css.scss */
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 20, ../../app/assets/stylesheets/application.css.scss */
+body {
+  color: #222222;
+  font-family: 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.5em;
+}
+
+/* line 28, ../../app/assets/stylesheets/application.css.scss */
+input {
+  line-height: 1em;
+}
+
+/* line 32, ../../app/assets/stylesheets/application.css.scss */
+a {
+  color: #0881b3;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  -moz-transition-property: color;
+  -webkit-transition-property: color;
+  -o-transition-property: color;
+  transition-property: color;
+  -moz-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+/* line 39, ../../app/assets/stylesheets/application.css.scss */
+a:hover {
+  border-bottom: 1px solid;
+}
+
+/* line 44, ../../app/assets/stylesheets/application.css.scss */
+strong {
+  font-weight: bold;
+}
+
+/* line 48, ../../app/assets/stylesheets/application.css.scss */
+em {
+  background-color: #fffeca;
+  padding: 0 0.1em;
+}
+
+/* line 53, ../../app/assets/stylesheets/application.css.scss */
+i {
+  font-style: italic;
+}
+
+/* line 57, ../../app/assets/stylesheets/application.css.scss */
+abbr {
+  border-bottom: 1px dashed;
+  cursor: help;
+}
+
+/* line 62, ../../app/assets/stylesheets/application.css.scss */
+p {
+  margin: 0 0 1em;
+}
+
+/* line 66, ../../app/assets/stylesheets/application.css.scss */
+hr {
+  margin-bottom: 2em;
+  border: 0;
+}
+
+/* line 71, ../../app/assets/stylesheets/application.css.scss */
+blockquote {
+  border-left: 5px solid #ddd;
+  color: #888;
+  margin: 0 0 1em;
+  padding-left: 1em;
+}
+/* line 77, ../../app/assets/stylesheets/application.css.scss */
+blockquote a {
+  color: #444;
+}
+/* line 80, ../../app/assets/stylesheets/application.css.scss */
+blockquote a:hover {
+  color: #0881b3;
+}
+
+/* line 86, ../../app/assets/stylesheets/application.css.scss */
+small {
+  font-size: 0.8em;
+  color: #999;
+  margin-left: 0.2em;
+}
+/* line 91, ../../app/assets/stylesheets/application.css.scss */
+small a {
+  color: #444;
+}
+/* line 94, ../../app/assets/stylesheets/application.css.scss */
+small a:hover {
+  color: #2e80d3;
+}
+
+/* line 100, ../../app/assets/stylesheets/application.css.scss */
+pre {
+  background-color: #f8f8ff;
+  border: 1px solid #dedede;
+  color: #444;
+  font-family: Monaco, Courier, monospace;
+  font-size: 13px;
+  margin: 0 0 2em;
+  overflow: auto;
+  padding: 0.5em;
+}
+/* line 110, ../../app/assets/stylesheets/application.css.scss */
+pre code {
+  background-color: #f8f8ff;
+  border: medium none;
+  font-size: 1em;
+  padding: 0;
+}
+
+/* line 118, ../../app/assets/stylesheets/application.css.scss */
+code {
+  background-color: #f8f8ff;
+  border: 1px solid #dedede;
+  color: #444;
+  padding: 0 0.2em;
+  font-family: Monaco, Courier, monospace;
+  font-size: 0.8em;
+}
+
+/* line 127, ../../app/assets/stylesheets/application.css.scss */
+h1 {
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 0.25em;
+}
+/* line 133, ../../app/assets/stylesheets/application.css.scss */
+h1 a {
+  color: #f6291d;
+  border: 0;
+}
+
+/* line 139, ../../app/assets/stylesheets/application.css.scss */
+h2 {
+  font-size: 1.3em;
+  margin-bottom: 0.2em;
+  font-weight: 700;
+}
+/* line 144, ../../app/assets/stylesheets/application.css.scss */
+h2 a {
+  color: #222222;
+  border: 0;
+}
+
+/* line 150, ../../app/assets/stylesheets/application.css.scss */
+h3 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* line 155, ../../app/assets/stylesheets/application.css.scss */
+h4 {
+  color: #999;
+  font-weight: bold;
+  margin-bottom: 0.2em;
+}
+
+/* line 162, ../../app/assets/stylesheets/application.css.scss */
+body > header, body > section, body > footer {
+  width: 640px;
+  margin: 0 auto;
+}
+
+/* line 168, ../../app/assets/stylesheets/application.css.scss */
+body > header {
+  color: #a5a5a5;
+  margin: 5em auto 4em;
+}
+/* line 172, ../../app/assets/stylesheets/application.css.scss */
+body > header p {
+  margin: 0;
+}
+/* line 175, ../../app/assets/stylesheets/application.css.scss */
+body > header p a {
+  color: #73acd6;
+}
+/* line 178, ../../app/assets/stylesheets/application.css.scss */
+body > header p a:hover {
+  color: #0881b3;
+}
+
+/* line 186, ../../app/assets/stylesheets/application.css.scss */
+body > footer {
+  width: 640px;
+  color: #aaa;
+  text-shadow: white 0 1px 0;
+  font-size: 0.8em;
+  text-align: center;
+  margin: 3em auto;
+}
+/* line 194, ../../app/assets/stylesheets/application.css.scss */
+body > footer a {
+  color: #aaa;
+}
+/* line 197, ../../app/assets/stylesheets/application.css.scss */
+body > footer a:hover {
+  color: #0881b3;
+}
+
+/* line 1, ../../app/assets/stylesheets/partials/_pagination.scss */
+nav.pagination {
+  text-align: center;
+  margin: 0 0 2em;
+}
+/* line 5, ../../app/assets/stylesheets/partials/_pagination.scss */
+nav.pagination a {
+  padding: 2px 6px;
+  margin-right: 0.2em;
+  text-decoration: none;
+  border: 0;
+}
+/* line 12, ../../app/assets/stylesheets/partials/_pagination.scss */
+nav.pagination a:hover {
+  text-decoration: none;
+  background: #0881b3;
+  border-color: #0881b3;
+  color: white;
+  text-shadow: none;
+}
+/* line 20, ../../app/assets/stylesheets/partials/_pagination.scss */
+nav.pagination a[rel=next]:hover, nav.pagination a[rel=prev]:hover {
+  background: none;
+  text-decoration: underline;
+  color: #0881b3;
+}
+/* line 26, ../../app/assets/stylesheets/partials/_pagination.scss */
+nav.pagination span {
+  padding: 2px 6px;
+  margin-right: 0.2em;
+}
+/* line 31, ../../app/assets/stylesheets/partials/_pagination.scss */
+nav.pagination span.gap {
+  padding: 2px;
+  color: #676767;
+}
+/* line 36, ../../app/assets/stylesheets/partials/_pagination.scss */
+nav.pagination span.disabled {
+  color: #aaa;
+}
+/* line 40, ../../app/assets/stylesheets/partials/_pagination.scss */
+nav.pagination em {
+  padding: 4px 8px;
+}
+
+/* line 1, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight {
+  background: #fff;
+}
+/* line 5, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .c {
+  color: #998;
+  font-style: italic;
+}
+/* line 11, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+/* line 17, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .k, .highlight .o, .highlight .kc, .highlight .kd, .highlight .kp, .highlight .kr {
+  font-weight: bold;
+}
+/* line 22, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .cm, .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+/* line 28, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .cp {
+  color: #999;
+  font-weight: bold;
+}
+/* line 34, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .cs {
+  color: #999;
+  font-weight: bold;
+  font-style: italic;
+}
+/* line 41, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+/* line 46, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+/* line 53, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .ge {
+  font-style: italic;
+}
+/* line 58, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .gr, .highlight .gt {
+  color: #a00;
+}
+/* line 63, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .gh, .highlight .bp {
+  color: #999;
+}
+/* line 68, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+/* line 73, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+/* line 80, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .go {
+  color: #888;
+}
+/* line 85, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .gp, .highlight .nn {
+  color: #555;
+}
+/* line 90, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .gs {
+  font-weight: bold;
+}
+/* line 95, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .gu {
+  color: #aaa;
+}
+/* line 100, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .kt {
+  color: #458;
+  font-weight: bold;
+}
+/* line 106, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .m {
+  color: #099;
+}
+/* line 111, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .s {
+  color: #d14;
+}
+/* line 116, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .nb {
+  color: #0086b3;
+}
+/* line 121, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+/* line 127, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .ni {
+  color: #800080;
+}
+/* line 132, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .ne, .highlight .nf {
+  color: #900;
+  font-weight: bold;
+}
+/* line 138, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .nt {
+  color: #000080;
+}
+/* line 143, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .ow {
+  font-weight: bold;
+}
+/* line 148, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .w {
+  color: #bbb;
+}
+/* line 154, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo, .highlight .il {
+  color: #099;
+}
+/* line 160, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx {
+  color: #d14;
+}
+/* line 165, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .sr {
+  color: #009926;
+}
+/* line 170, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .s1 {
+  color: #d14;
+}
+/* line 175, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .ss {
+  color: #990073;
+}
+/* line 181, ../../app/assets/stylesheets/partials/_syntax.scss */
+.highlight .na, .highlight .no, .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi {
+  color: #008080;
+}
+
+/* line 2, ../../app/assets/stylesheets/pages/_home.scss */
+section.home h2 {
+  margin-top: 1.7em;
+}
+/* line 5, ../../app/assets/stylesheets/pages/_home.scss */
+section.home h2 a {
+  color: #000;
+}
+/* line 8, ../../app/assets/stylesheets/pages/_home.scss */
+section.home h2 a:hover {
+  color: #0881b3;
+}
+/* line 14, ../../app/assets/stylesheets/pages/_home.scss */
+section.home ul.movies {
+  display: inline-block;
+  margin: 0.5em 0;
+}
+/* line 18, ../../app/assets/stylesheets/partials/_shared.scss */
+section.home ul.movies:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+/* line 18, ../../app/assets/stylesheets/pages/_home.scss */
+section.home ul.movies li {
+  float: left;
+  margin-right: 20px;
+  width: 145px;
+  height: 145px;
+}
+/* line 24, ../../app/assets/stylesheets/pages/_home.scss */
+section.home ul.movies li:nth-child(2) a {
+  background-position: -135px 0;
+}
+/* line 28, ../../app/assets/stylesheets/pages/_home.scss */
+section.home ul.movies li:nth-child(3) a {
+  background-position: -270px 0;
+}
+/* line 32, ../../app/assets/stylesheets/pages/_home.scss */
+section.home ul.movies li:last-child {
+  margin-right: 0;
+}
+/* line 35, ../../app/assets/stylesheets/pages/_home.scss */
+section.home ul.movies li:last-child a {
+  background-position: -405px 0;
+}
+/* line 40, ../../app/assets/stylesheets/pages/_home.scss */
+section.home ul.movies li a {
+  display: block;
+  border: 5px solid #fff;
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background: #fff no-repeat;
+  text-indent: -9009em;
+  width: 135px;
+  height: 135px;
+
+}
+/* line 34, ../../app/assets/stylesheets/partials/_shared.scss */
+section.home ul.movies li a:hover {
+  -moz-box-shadow: 0 0 3px black;
+  -webkit-box-shadow: 0 0 3px black;
+  -o-box-shadow: 0 0 3px black;
+  box-shadow: 0 0 3px black;
+}
+/* line 50, ../../app/assets/stylesheets/pages/_home.scss */
+section.home p.more {
+  font-size: 0.8em;
+}
+/* line 53, ../../app/assets/stylesheets/pages/_home.scss */
+section.home p.more a {
+  color: #777;
+}
+/* line 56, ../../app/assets/stylesheets/pages/_home.scss */
+section.home p.more a:hover {
+  color: #0881b3;
+}
+/* line 61, ../../app/assets/stylesheets/pages/_home.scss */
+section.home p.more.right {
+  text-align: right;
+}
+/* line 66, ../../app/assets/stylesheets/pages/_home.scss */
+section.home a.fc-art {
+  display: block;
+  border: 5px solid #fff;
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background: #fff no-repeat;
+  width: 300px;
+  height: 300px;
+  margin-left: 20px;
+  float: right;
+}
+/* line 34, ../../app/assets/stylesheets/partials/_shared.scss */
+section.home a.fc-art:hover {
+  -moz-box-shadow: 0 0 3px black;
+  -webkit-box-shadow: 0 0 3px black;
+  -o-box-shadow: 0 0 3px black;
+  box-shadow: 0 0 3px black;
+}
+/* line 73, ../../app/assets/stylesheets/pages/_home.scss */
+section.home a.fc-art img {
+  width: 300px;
+  height: 300px;
+}
+/* line 79, ../../app/assets/stylesheets/pages/_home.scss */
+section.home div.music {
+  display: inline-block;
+}
+/* line 18, ../../app/assets/stylesheets/partials/_shared.scss */
+section.home div.music:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+/* line 83, ../../app/assets/stylesheets/pages/_home.scss */
+section.home a.grape-map {
+  display: block;
+  border: 5px solid #fff;
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background: #fff no-repeat;
+  background-image: url(http://maps.google.com/maps/api/staticmap?center=32.82385,-96.770239&zoom=14&size=630x123&maptype=roadmap&markers=color:green%7C32.82385,-96.770239&sensor=false);
+  width: 630px;
+  height: 123px;
+  text-indent: -9009em;
+}
+/* line 34, ../../app/assets/stylesheets/partials/_shared.scss */
+section.home a.grape-map:hover {
+  -moz-box-shadow: 0 0 3px black;
+  -webkit-box-shadow: 0 0 3px black;
+  -o-box-shadow: 0 0 3px black;
+  box-shadow: 0 0 3px black;
+}
+/* line 91, ../../app/assets/stylesheets/pages/_home.scss */
+section.home article {
+  padding: 0 0 0 2em;
+  margin: 0;
+  width: auto;
+  color: #777;
+}
+/* line 97, ../../app/assets/stylesheets/pages/_home.scss */
+section.home article em {
+  background: transparent;
+}
+/* line 102, ../../app/assets/stylesheets/pages/_home.scss */
+section.home article header h3 {
+  margin-bottom: 0.25em;
+}
+/* line 106, ../../app/assets/stylesheets/pages/_home.scss */
+section.home article header p {
+  font-size: 0.9em;
+  margin: 0 0 0.25em;
+}
+/* line 112, ../../app/assets/stylesheets/pages/_home.scss */
+section.home article a {
+  color: #777;
+}
+/* line 115, ../../app/assets/stylesheets/pages/_home.scss */
+section.home article a:hover {
+  color: #0881b3;
+}
+/* line 120, ../../app/assets/stylesheets/pages/_home.scss */
+section.home article p {
+  margin-bottom: 0.5em;
+}
+/* line 123, ../../app/assets/stylesheets/pages/_home.scss */
+section.home article p.more {
+  margin: 0;
+}
+
+/* line 1, ../../app/assets/stylesheets/pages/_music.scss */
+section.music {
+  margin-bottom: 1em;
+}
+/* line 4, ../../app/assets/stylesheets/pages/_music.scss */
+section.music ul.tracks {
+  margin-bottom: 1em;
+}
+/* line 7, ../../app/assets/stylesheets/pages/_music.scss */
+section.music ul.tracks li {
+  margin-left: 1em;
+  list-style: disc;
+}
+/* line 11, ../../app/assets/stylesheets/pages/_music.scss */
+section.music ul.tracks li a {
+  font-size: 0.8em;
+  margin-left: 6px;
+}
+
+/* line 19, ../../app/assets/stylesheets/pages/_music.scss */
+div.soundcloud-player {
+  -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  background: url(http://assets.samsoff.es/images/dots-white.gif) white no-repeat center;
+  width: 245px;
+  height: 101px;
+  margin: 0.1em 0 0.5em;
+}
+/* line 27, ../../app/assets/stylesheets/pages/_music.scss */
+div.soundcloud-player > div:first-child {
+  padding: 10px;
+}
+/* line 31, ../../app/assets/stylesheets/pages/_music.scss */
+div.soundcloud-player div.waveform {
+  display: none;
+}
+
+/* line 37, ../../app/assets/stylesheets/pages/_music.scss */
+div.soundcloud-player div.playing div.waveform {
+  display: block;
+  background: #e5e5e5;
+  width: 225px;
+  height: 81px;
+  border: 1px solid #ddd;
+  position: relative;
+}
+/* line 45, ../../app/assets/stylesheets/pages/_music.scss */
+div.soundcloud-player div.playing div.waveform img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+/* line 54, ../../app/assets/stylesheets/pages/_music.scss */
+div.soundcloud-player div.playing div.waveform div.position, div.soundcloud-player div.playing div.waveform div.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 81px;
+  background: #999;
+}
+/* line 62, ../../app/assets/stylesheets/pages/_music.scss */
+div.soundcloud-player div.playing div.waveform div.position {
+  background: #000;
+}
+
+/* line 2, ../../app/assets/stylesheets/pages/_blog.scss */
+section article {
+  margin-bottom: 6em;
+}
+/* line 6, ../../app/assets/stylesheets/pages/_blog.scss */
+section article header p {
+  color: #949494;
+  font-size: 0.9em;
+  margin-bottom: 0.25em;
+}
+/* line 11, ../../app/assets/stylesheets/pages/_blog.scss */
+section article header p a {
+  color: #949494;
+  border: 0;
+}
+/* line 18, ../../app/assets/stylesheets/pages/_blog.scss */
+section article ul, section article ol {
+  margin: 0 0 2em 0.5em;
+}
+/* line 21, ../../app/assets/stylesheets/pages/_blog.scss */
+section article ul li, section article ol li {
+  margin-left: 1em;
+}
+/* line 26, ../../app/assets/stylesheets/pages/_blog.scss */
+section article ul li {
+  list-style: disc;
+}
+/* line 30, ../../app/assets/stylesheets/pages/_blog.scss */
+section article ol li {
+  list-style: decimal;
+}
+/* line 34, ../../app/assets/stylesheets/pages/_blog.scss */
+section article ol li ol li {
+  list-style: lower-alpha;
+}
+/* line 38, ../../app/assets/stylesheets/pages/_blog.scss */
+section article div.video {
+  background: #fff;
+  text-align: center;
+  margin-bottom: 1em;
+  width: 640px;
+  height: 480px;
+  -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+  -o-box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+/* line 48, ../../app/assets/stylesheets/pages/_blog.scss */
+section article div.video.wide.youtube {
+  height: 372px;
+}
+/* line 52, ../../app/assets/stylesheets/pages/_blog.scss */
+section article div.video.wide.vimeo {
+  height: 360px;
+}
+/* line 56, ../../app/assets/stylesheets/pages/_blog.scss */
+section article img {
+  max-width: 100%;
+}
+/* line 60, ../../app/assets/stylesheets/pages/_blog.scss */
+section article a.bordered-image {
+  float: left;
+  margin: 0.25em 0.5em 0.5em 0;
+}
+
+/* line 66, ../../app/assets/stylesheets/pages/_blog.scss */
+div.social {
+  overflow: hidden;
+  margin: -4em 0 1em;
+}
+/* line 70, ../../app/assets/stylesheets/pages/_blog.scss */
+div.social iframe#facebook-like-button {
+  width: 294px;
+}
+
+/* line 75, ../../app/assets/stylesheets/pages/_blog.scss */
+nav.posts {
+  display: inline-block;
+  margin: 1em 0 0;
+}
+/* line 18, ../../app/assets/stylesheets/partials/_shared.scss */
+nav.posts:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+/* line 79, ../../app/assets/stylesheets/pages/_blog.scss */
+nav.posts li {
+  display: block;
+  width: 44%;
+}
+/* line 84, ../../app/assets/stylesheets/pages/_blog.scss */
+nav.posts li.previous {
+  float: left;
+}
+/* line 88, ../../app/assets/stylesheets/pages/_blog.scss */
+nav.posts li.next {
+  float: right;
+  text-align: right;
+}
+
+/* line 95, ../../app/assets/stylesheets/pages/_blog.scss */
+div.gist div.gist-file div.gist-meta {
+  padding: 0.5em;
+  font-size: 0.6em;
+  line-height: 1em;
+}
+
+/* line 102, ../../app/assets/stylesheets/pages/_blog.scss */
+a.tag {
+  word-wrap: nowrap;
+}
+
+/* line 106, ../../app/assets/stylesheets/pages/_blog.scss */
+a.tag:before {
+  content: "#";
+}
+
+/* line 110, ../../app/assets/stylesheets/pages/_blog.scss */
+div.tags {
+  text-align: center;
+  margin-bottom: 3em;
+}
+/* line 114, ../../app/assets/stylesheets/pages/_blog.scss */
+div.tags a {
+  text-shadow: none;
+  margin: 5px;
+  word-wrap: nowrap;
+  line-height: 1.5em;
+}
+/* line 121, ../../app/assets/stylesheets/pages/_blog.scss */
+div.tags .nube1 {
+  font-size: 1em;
+}
+/* line 125, ../../app/assets/stylesheets/pages/_blog.scss */
+div.tags .nube2 {
+  font-size: 1.2em;
+}
+/* line 129, ../../app/assets/stylesheets/pages/_blog.scss */
+div.tags .nube3 {
+  font-size: 1.4em;
+}
+/* line 133, ../../app/assets/stylesheets/pages/_blog.scss */
+div.tags .nube4 {
+  font-size: 1.6em;
+}
+/* line 137, ../../app/assets/stylesheets/pages/_blog.scss */
+div.tags .nube5 {
+  font-size: 1.8em;
+}
+/* line 141, ../../app/assets/stylesheets/pages/_blog.scss */
+div.tags .nube6 {
+  font-size: 2em;
+}
+
+/* line 1, ../../app/assets/stylesheets/pages/_about.scss */
+a#portrait {
+  display: block;
+  border: 5px solid #fff;
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background: #fff no-repeat;
+  float: left;
+  width: 300px;
+  height: 300px;
+  margin: 0.5em 1em 0.5em 0;
+}
+/* line 34, ../../app/assets/stylesheets/partials/_shared.scss */
+a#portrait:hover {
+  -moz-box-shadow: 0 0 3px black;
+  -webkit-box-shadow: 0 0 3px black;
+  -o-box-shadow: 0 0 3px black;
+  box-shadow: 0 0 3px black;
+}
+/* line 8, ../../app/assets/stylesheets/pages/_about.scss */
+a#portrait img {
+  width: 300px;
+  height: 300px;
+}
+
+/* line 14, ../../app/assets/stylesheets/pages/_about.scss */
+div#ZE-widget {
+  margin: 2em auto 0;
+  width: 302px;
+}
+
+/* line 214, ../../app/assets/stylesheets/application.css.scss */
+.bordered-image {
+  display: block;
+  border: 5px solid #fff;
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background: #fff no-repeat;
+}
+/* line 34, ../../app/assets/stylesheets/partials/_shared.scss */
+.bordered-image:hover {
+  -moz-box-shadow: 0 0 3px black;
+  -webkit-box-shadow: 0 0 3px black;
+  -o-box-shadow: 0 0 3px black;
+  box-shadow: 0 0 3px black;
+}
+
+/* line 218, ../../app/assets/stylesheets/application.css.scss */
+a.twitter-username:before {
+  content: "@";
+}
+
+/* line 222, ../../app/assets/stylesheets/application.css.scss */
+section.server-error {
+  margin-bottom: 3em;
+}
+
+/* line 226, ../../app/assets/stylesheets/application.css.scss */
+span.gray {
+  color: #777;
+}

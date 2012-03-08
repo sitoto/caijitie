@@ -1,0 +1,9 @@
+<% unless @search.blank? %>
+  <% @search.each do |g| %>
+    <%= render 'post', :post => g %>
+
+  <% end %>
+  <%= paginate @search, :outer_window => 2, :inner_window => 1 -%>
+<% else %>
+  <p>没有内容。.</p>
+<% end %>

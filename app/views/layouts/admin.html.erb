@@ -1,0 +1,21 @@
+<%- content_for :pre_content do -%>
+<header>
+  <h1>后台管理平台</h1>
+  <nav>
+    <%=	 link_to '首页', admin_root_path %>
+    <%=	 link_to '日志', admin_posts_path %>
+    <%=	 link_to '百度', admin_posts_path %>
+    <%=	 link_to '豆瓣', admin_posts_path %>
+    <%=	 link_to '天涯', admin_posts_path %>
+    <%=	 link_to '返回网站首页', root_path %>
+  </nav>
+</header>
+<section>
+<%- end -%>
+<%- content_for :post_content do -%>
+</section>
+<footer>
+  <p>Copyright &copy; 2011 <%= link_to '脱水吧', root_url, :rel => 'home' %></p>
+</footer>
+<%- end -%>
+<%= render :file => "layouts/abstract" -%>

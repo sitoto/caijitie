@@ -1,0 +1,32 @@
+<%- if @post -%>
+<%- title @post.title -%>
+<% breadcrumb :post, @post %>
+<% meta :description =>  post_description(@post), :keywords =>  post_tags_keyword(@post) , :title => @post.title %>
+<section class="blog">
+  <%= render @post %>
+  <div class="social">
+    <%= social_share_button_tag(@post.title) %>
+  </div>
+  <nav class="posts">
+    <ul>
+      <li class="previous">
+        <%- previous_post = @post.previous; if previous_post -%>
+        <%= link_to "&larr; #{previous_post.title}".html_safe, previous_post  %>
+        <%- else -%>
+        <span class="gray">这是第一篇</span>
+        <%- end -%>
+      </li>
+      <li class="next">
+         <%- next_post = @post.next; if next_post -%>
+         <%= link_to "#{next_post.title} &rarr;".html_safe, next_post  %>
+         <%- else -%>
+         <span class="gray">这是最新的</span>
+         <%- end -%>
+      </li>
+    </ul>
+  </nav>
+</section>
+<%- else -%>
+<%- title '文章不存在' -%>
+<p>内容被移走，这里什么都没有了。</p>
+<%- end -%>

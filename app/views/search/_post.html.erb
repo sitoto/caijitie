@@ -1,0 +1,7 @@
+<div class="post">
+  <div class="title"><%= link_to(post.title, post_path(post)) %></div>
+  <div class="url"><%= link_to(post_url(post), post_path(post)) %></div>
+  <div class="info">
+    <%= (truncate(post.content, :length => 300)) %>
+  </div>
+</div>

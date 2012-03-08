@@ -1,0 +1,12 @@
+<%- title "by lehazi." -%>
+<% meta :description => "技术娱乐，博客文章列表.", :keywords => "脱水, 分页", :title => "博客文章列表"%>
+<% breadcrumb :blog, @posts %>
+
+<section class="blog">
+  <%- if @posts && @posts.length > 0 -%>
+  <%= render @posts -%>
+  <%= paginate @posts, :outer_window => 2, :inner_window => 1 -%>
+  <%- else -%>
+  <p>没有内容。.</p>
+  <%- end -%>
+</section>
