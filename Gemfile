@@ -1,6 +1,6 @@
 #source 'http://rubygems.org'
 source 'http://ruby.taobao.org/'
-gem 'rails', '~>3.1.3'
+gem 'rails', '~>3.1.4'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -36,7 +36,7 @@ group :assets do
 
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails' ,'~> 1.0.19'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
