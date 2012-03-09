@@ -1,0 +1,27 @@
+<h1>Listing topics</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Classname</th>
+    <th>Author</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @topics.each do |topic| %>
+  <tr>
+    <td><%= topic.title %></td>
+    <td><%= topic.classname %></td>
+    <td><%= topic.author %></td>
+    <td><%= link_to 'Show', [:admin, topic] %></td>
+    <td><%= link_to 'Edit', edit_admin_topic_path(topic) %></td>
+    <td><%= link_to 'Destroy', [:admin,topic], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Topic', new_admin_topic_path %>

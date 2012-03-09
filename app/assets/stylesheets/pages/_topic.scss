@@ -1,0 +1,32 @@
+section.post-list {
+    background-color: ghostWhite;
+    border: 1px solid #DEDEDE;
+    color: #444;
+
+    table {
+      border-collapse:separate;
+      border-spacing:0;
+      margin-bottom:1.4em;
+      width:100%;
+      thead th {
+          background:#c3d9ff;
+          font-weight:bold;
+          }
+
+
+      caption, th, td {
+          text-align:left;
+          font-weight:normal;
+          float:none !important;
+          }
+
+      tbody tr:nth-child(even) td, tbody tr.even td {
+          background:#e5ecf9;
+          }
+      a {
+          color: blue;
+        }
+
+}
+}
+

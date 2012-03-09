@@ -1,27 +1,45 @@
+require 'not_preferred_host'
+
 Caijitie::Application.routes.draw do
+
+  # Rewrite non-preferred hosts in production
+  constraints(NotPreferredHost) do
+    match '/:path' => redirect { |params| "http://#{NotPreferredHost::PREFERRED_HOST}/#{params[:path]}" }
+  end
 
   # Root
   root :to => 'pages#home'
 
-
   # Blog
   match '/posts.:format' => 'posts#index'
   match '/blog' => 'posts#index', :as => 'blog'
+
+  #show one topic
+  match '/p' => 'p#index' , :as => 'all'
+  match '/p/:id' => 'p#show', :as => 'p'
+
+  #caiji list
+  match '/tb' => 'tb#index', :as => 'tb'
+
+
+
   resources :posts, :only => [:show]
   resources :tags, :only => [:index, :show]
 
-    # Static pages
-  match '/about' => 'pages#about', :as => 'about'
-  match '/contact' => 'pages#contact', :as => 'contact'
-   #search
-   match "/search" => "search#index", :as => :search
+  # Static pages
+  match '/about.:format' => 'pages#about', :as => 'about'
+  match '/contact.:format' => 'pages#contact', :as => 'contact'
+
+  #search
+  match "/search" => "search#index", :as => :search
 
 
-    # Admin
+  # Admin
   namespace :admin do
     root :to => 'admin#index'
     resources :posts, :only => [:show, :new, :create, :update, :edit, :destroy, :index]
     resources :tags, :only => [:new, :create, :update, :edit, :destroy, :index]
+    resources :topics
   end
 
   match 'sitemap.xml' => 'sitemaps#sitemap'

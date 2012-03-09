@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <title><%= "脱水吧"+(yield(:title) && !yield(:title).empty? ? " - "+yield(:title) : "") %></title>
   <%= metamagic :title => "帖子在线脱水小工具",
-                :description => "这是一个可以在线看百度贴吧、天涯社区、豆瓣话题、豆瓣直播的脱水版的帖子工具。",
-                :keywords => %w(脱水吧 脱水版 只看楼主 天涯易读 豆瓣脱水) %>
+                :description => "第一在线采集工具，这是一个可以在线看百度贴吧、天涯社区、豆瓣话题、豆瓣直播的脱水版的帖子工具。",
+                :keywords => %w(脱水吧 脱水版 百度贴吧 只看楼主 天涯易读 豆瓣脱水) %>
   <%= render "layouts/stylesheets" %>
   <%= yield(:head) -%>
   <%= baidu_analytics  %>

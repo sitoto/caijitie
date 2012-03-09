@@ -18,6 +18,9 @@ Gretel::Crumbs.layout do
   crumb :search do |f|
     link "搜索:" << f, search_path
   end
+  crumb :tb do
+    link "百度贴吧:" ,tb_path
+  end
 
 
   # crumb :project do |project|

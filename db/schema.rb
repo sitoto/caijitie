@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306094602) do
+ActiveRecord::Schema.define(:version => 20120309044330) do
+
+  create_table "page_urls", :force => true do |t|
+    t.string   "topic_id"
+    t.integer  "num"
+    t.string   "url"
+    t.integer  "status",     :default => 0, :null => false
+    t.integer  "count",      :default => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "page_urls", ["topic_id"], :name => "index_page_urls_on_topic_id"
+  add_index "page_urls", ["url"], :name => "index_page_urls_on_url", :unique => true
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -45,5 +58,48 @@ ActiveRecord::Schema.define(:version => 20120306094602) do
   end
 
   add_index "tags", ["name"], :name => "tags_name_index", :unique => true
+
+  create_table "tieba_posts", :force => true do |t|
+    t.integer  "page_url_id"
+    t.text     "content"
+    t.datetime "post_at"
+    t.integer  "level"
+    t.integer  "my_level"
+  end
+
+  add_index "tieba_posts", ["page_url_id"], :name => "index_tieba_posts_on_page_url_id"
+
+  create_table "topics", :force => true do |t|
+    t.string   "title"
+    t.string   "classname"
+    t.string   "author"
+    t.datetime "myfirsttime"
+    t.datetime "myupdatetime"
+    t.integer  "mypagenum",    :default => 1
+    t.integer  "mypostnum"
+    t.integer  "myshowtimes",  :default => 1
+    t.integer  "mydowntimes",  :default => 0
+    t.datetime "firsttime"
+    t.integer  "showtimes",    :default => 1
+    t.integer  "wordnum",      :default => 0
+    t.string   "fromurl"
+    t.string   "tags"
+    t.integer  "section_id",   :default => 0
+    t.integer  "status",       :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "topics", ["author"], :name => "index_topics_on_author"
+  add_index "topics", ["classname"], :name => "index_topics_on_classname"
+  add_index "topics", ["fromurl"], :name => "index_topics_on_fromurl", :unique => true
+  add_index "topics", ["mydowntimes"], :name => "index_topics_on_mydowntimes"
+  add_index "topics", ["mypostnum"], :name => "index_topics_on_mypostnum"
+  add_index "topics", ["myshowtimes"], :name => "index_topics_on_myshowtimes"
+  add_index "topics", ["myupdatetime"], :name => "index_topics_on_myupdatetime"
+  add_index "topics", ["section_id"], :name => "index_topics_on_section_id"
+  add_index "topics", ["showtimes"], :name => "index_topics_on_showtimes"
+  add_index "topics", ["tags"], :name => "index_topics_on_tags"
+  add_index "topics", ["title"], :name => "index_topics_on_title"
 
 end

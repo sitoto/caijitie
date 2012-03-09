@@ -1,0 +1,30 @@
+<table>
+  <thead>
+  <tr>
+    <th width="30" nowrap="">ID</th>
+    <th width="30" nowrap="">点击</th>
+    <th width="30" nowrap="">回复</th>
+    <th width="100">栏目</th>
+    <th>标题</th>
+    <th width="100">作者</th>
+  </tr>
+  </thead>
+    <tbody>
+    <% list.each_with_index do |topic, i| %>
+      <tr>
+        <td><%=	 (i+1).to_s %></td>
+        <td><%= topic.myshowtimes %></td>
+        <td><%= topic.mypostnum %> </td>
+        <td><%= link_to topic.classname, "/category/#{topic.classname}"  %></td>
+        <td><%= link_to topic.title, "/p/#{topic.id}" %></td>
+
+        <td><%= link_to topic.author,"/author/#{topic.author}"  %><br>
+        <span class="small">h m</span></td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+
+
+
+

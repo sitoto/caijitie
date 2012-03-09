@@ -165,7 +165,7 @@ body > header, body > section, body > footer {
 // Header
 body > header {
   color: #a5a5a5;
-  margin: 5em auto 4em;
+  margin: 2em auto 1em;
   
   p {
     margin: 0;
@@ -175,6 +175,15 @@ body > header {
 
       &:hover {
         color: $link-color;
+      }
+    }
+    a.nav{
+      color:blue;
+      text-decoration: underline;
+      margin-left: 12px;
+
+      &:hover {
+        color: $red-color;
       }
     }
   }
@@ -204,17 +213,18 @@ body > footer {
 
 // Pages
 @import "pages/home";
-
 @import "pages/blog";
 @import "pages/about";
+
+//模块
+@import "pages/topic";
+@import "pages/show";
+
+
 
 // Misc
 .bordered-image {
   @include bordered-image;
-}
-
-a.twitter-username:before {
-  content: "@";
 }
 
 section.server-error {

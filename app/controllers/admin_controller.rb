@@ -3,7 +3,7 @@ class AdminController < ApplicationController
   layout 'admin'
 
   def index
-    redirect_to admin_posts_url
+    redirect_to admin_posts_path
   end
 
   protected

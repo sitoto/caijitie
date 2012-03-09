@@ -3,7 +3,10 @@
 <header>
   <h1>帖子脱水工具</h1>
   <p>
-   <%= link_to '本站', root_url %>主要为方便阅读<b>天涯社区</b>、<b>百度贴吧</b>、<b>豆瓣话题</b>，本站内容归发帖人和原站所有。
+   <%= link_to '本站', root_url %>主要为方便阅读
+    <%= link_to '天涯社区', root_path, :class => 'nav' %>
+    <%= link_to '百度贴吧', tb_path, :class => 'nav' %>
+    <%= link_to '豆瓣话题', root_path, :class => 'nav' %>，本站内容归发帖人和原站所有。
   </p>
 </header>
 
@@ -22,7 +25,6 @@
     <li>输入<em>豆瓣话题</em>贴地址如：http://www.douban.com/group/topic/26090452/</li>
   </ul>
 
-
   <h2><%= link_to '站内博客', blog_url %></h2>
   <p><%- if @recent_post -%>最新文章:</p>
   <article>
@@ -38,5 +40,5 @@
 </section>
 
 <footer>
-  <p>Copyright &copy; 2011 <%= link_to '乐哈子', root_url, :rel => 'home' %></p>
+  <p>Copyright &copy; 2011 <%= link_to '脱水吧 - 中国第一在线采集工具', root_url, :rel => 'home' %></p>
 </footer>
