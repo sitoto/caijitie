@@ -18,10 +18,14 @@ Gretel::Crumbs.layout do
   crumb :search do |f|
     link "搜索:" << f, search_path
   end
-  crumb :tb do
-    link "百度贴吧:" ,tb_path
-  end
 
+  crumb :tb do
+    link "百度贴吧" ,tb_path
+  end
+  crumb :tb_list do
+    link "热贴列表" ,tb_path
+    parent :tb
+  end
 
   # crumb :project do |project|
   #   link lambda { |project| "#{project.name} (#{project.id.to_s})" }, project_path(project)

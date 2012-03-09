@@ -1,0 +1,8 @@
+<h1>Pu#index</h1>
+<p>Find me in app/views/pu/index.html.erb</p>
+
+<%	 @page_urls.each do |f| %>
+  <%=	 f.id %>
+    commm <br>
+<%	 end %>
+<%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>

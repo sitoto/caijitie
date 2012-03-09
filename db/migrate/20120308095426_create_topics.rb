@@ -8,7 +8,7 @@ class CreateTopics < ActiveRecord::Migration
       t.datetime :myfirsttime
       t.datetime :myupdatetime
       t.integer :mypagenum  , :default => 1
-      t.integer :mypostnum
+      t.integer :mypostnum   , :default => 1
       t.integer :myshowtimes    , :default => 1
       t.integer :mydowntimes    , :default => 0
 

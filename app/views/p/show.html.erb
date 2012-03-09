@@ -2,3 +2,9 @@
 <p>Find me in app/views/p/show.html.erb</p>
 
 <%=	 @topic.id %>
+
+------------
+<%	 @tieba_posts.each do |f| %>
+  <%=	 f.content %>
+    commm <br>
+<%	 end %>

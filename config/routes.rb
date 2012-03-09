@@ -14,15 +14,6 @@ Caijitie::Application.routes.draw do
   match '/posts.:format' => 'posts#index'
   match '/blog' => 'posts#index', :as => 'blog'
 
-  #show one topic
-  match '/p' => 'p#index' , :as => 'all'
-  match '/p/:id' => 'p#show', :as => 'p'
-
-  #caiji list
-  match '/tb' => 'tb#index', :as => 'tb'
-
-
-
   resources :posts, :only => [:show]
   resources :tags, :only => [:index, :show]
 
@@ -33,7 +24,24 @@ Caijitie::Application.routes.draw do
   #search
   match "/search" => "search#index", :as => :search
 
+  #page-list 's page'
+  resources :tb do
+    get 'page/:page', :action => :index, :on => :collection
+  end
 
+
+  #topic =》 post-page(page_url)
+  resources :p do
+     resources :pu do
+      get ':page', :action => :index, :on => :collection
+     end
+  end
+  #show one topic
+  match '/p' => 'p#index' , :as => 'all'
+  match '/p/:id' => 'p#show', :as => 'p'
+
+  #caiji list
+  match '/tb' => 'tb#index', :as => 'tb'
   # Admin
   namespace :admin do
     root :to => 'admin#index'

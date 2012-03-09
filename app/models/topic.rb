@@ -1,3 +1,5 @@
 class Topic < ActiveRecord::Base
-  paginates_per 5
+  has_many :page_urls
+
+  paginates_per 2
 end
