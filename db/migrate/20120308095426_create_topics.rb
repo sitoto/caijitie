@@ -6,7 +6,7 @@ class CreateTopics < ActiveRecord::Migration
       t.string :author
 
       t.datetime :myfirsttime
-      t.datetime :myupdatetime
+      t.datetime :myupdatetime , :null => false, :default => Time.now
       t.integer :mypagenum  , :default => 1
       t.integer :mypostnum   , :default => 1
       t.integer :myshowtimes    , :default => 1

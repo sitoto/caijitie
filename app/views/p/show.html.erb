@@ -1,6 +1,8 @@
 <h1>P#show</h1>
 <p>Find me in app/views/p/show.html.erb</p>
-
+ 主题是否 存在？
+存在给出详情
+不存在 给出说明。。。
 <%=	 @topic.id %>
 
 ------------
@@ -8,3 +10,5 @@
   <%=	 f.content %>
     commm <br>
 <%	 end %>
+
+<%=	 link_to '阅读文章', p_pu_path(@topic.id, 1)%>

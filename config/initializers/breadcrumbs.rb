@@ -26,6 +26,10 @@ Gretel::Crumbs.layout do
     link "热贴列表" ,tb_path
     parent :tb
   end
+  crumb :tb_list_detail do |f|
+    link  f.title , p_path(f)
+    parent :tb_list
+  end
 
   # crumb :project do |project|
   #   link lambda { |project| "#{project.name} (#{project.id.to_s})" }, project_path(project)

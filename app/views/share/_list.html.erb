@@ -6,7 +6,7 @@
     <th width="30" nowrap="">回复</th>
     <th width="100">栏目</th>
     <th>标题</th>
-    <th width="100">作者</th>
+    <th width="150">作者</th>
   </tr>
   </thead>
     <tbody>
@@ -19,7 +19,7 @@
         <td><%= link_to topic.title, "/p/#{topic.id}" %></td>
 
         <td><%= link_to topic.author,"/author/#{topic.author}"  %><br>
-        <span class="small">h m</span></td>
+        <small><%= topic.myupdatetime.to_s(:db) %></small></td>
       </tr>
     <% end %>
     </tbody>

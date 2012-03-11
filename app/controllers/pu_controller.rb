@@ -1,10 +1,15 @@
+#encoding: utf-8
 class PuController < ApplicationController
   def index
     if params[:p_id]
+      @topic = Topic.find(params[:p_id])
       @page_urls = PageUrl.where("topic_id = ?", params[:p_id]).page(params[:page])
     end
-      #for seo
-    #breadcrumb :tb, @topics
-    #meta :title => "热贴列表", :description => "百度贴吧热贴列表" , :keywords => "贴吧,脱水"
+
+    #for seo
+    breadcrumb :tb_list_detail, @topic
+    meta :title => @topic.title ,
+         :description => "#{ @topic.title}_脱水版本,作者:#{ @topic.author},第#{params[:page]}页" ,
+         :keywords => @topic.author
   end
 end
