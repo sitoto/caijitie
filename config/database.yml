@@ -37,6 +37,6 @@ production:
   reconnect: false
   database: lehazi_production
   pool: 5
-  username: lehazi
-  password: lehazi@2012
+  username: root
+  password:
   host: localhost
