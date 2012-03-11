@@ -15,7 +15,48 @@ class TiebaTuoshuiJob
     get_tieba_topic(doc, i)
   end
 
+  def self.update_topic topic
+    cai_tieba(topic.fromurl)
+  end
+  def self.get_tieba_post(topic, page_url)
+     begin
+      html_stream  = open(page_url.url)
+    rescue #OpenURI::HTTPError => ex
+      puts " can't get url: #{page_url.url}"
+      return ''
+    end
+    doc = Nokogiri::HTML(html_stream)
+    t =  filter_tieba_post(doc, topic.author,page_url.id, topic.status)
+  end
+  def self.filter_tieba_post(doc, lz, url_id, s = 0)
+    i = 0
+    j = 0
+    doc.css(".p_postlist .l_post").each do |item|
+      post_json_str = item.css(".p_post").attr("data-field")
+      json_post = JSON.parse(post_json_str)
+      created_at = json_post["content"]["date"]
+      author = json_post["author"]["name"]
+      level = json_post["content"]["floor"]
+      content =  item.css(".d_post_content").inner_html
 
+      if  s == 0
+         if author == lz
+           i += 1
+           TiebaPost.create!(:page_url_id => url_id, :content => content, :post_at => created_at,
+                        :level  => level, :my_level => i ,:author => lz)
+         end
+
+      elsif s == 1
+        j += 1
+        TiebaPost.create!(:page_url_id => url_id, :content => content, :post_at => created_at,
+                        :level  => level, :my_level => j ,:author => lz)
+
+      end
+    end
+      return  1
+    rescue
+      return 0
+  end
   def self.is_pagnation(doc)
     if doc.at_css(".p_thread .l_thread_info .l_posts_num .l_pager").blank?
       return false
@@ -28,7 +69,7 @@ class TiebaTuoshuiJob
     if doc.at_css(".p_thread .l_thread_info .l_posts_num li span").blank?   #不是贴子页面
       return
     end
-    all_post_num = doc.at_css(".p_thread .l_thread_info .l_posts_num li span").text
+    all_post_num = doc.at_css(".p_thread .l_thread_info .l_posts_num li span.d_red_num").text
     title = doc.at_css("h1").text
     if doc.at_css("a#pb_nav_main").blank?
       category = doc.at_css("cb").text
@@ -58,102 +99,5 @@ class TiebaTuoshuiJob
 
 
 
-  #从首页获取 主题
-  def self.create_tieba_topic(doc,fromurl)
-    all_page_num = 1
 
-    puts all_page_num
-
-    all_post_num = doc.at_css(".p_thread .l_thread_info .l_posts_num li.l_reply_num span").text
-    title = doc.at_css("h1").text
-    category = doc.at_css("a#pb_nav_main").text
-    post_json_str= doc.at_css(".l_post .p_post").attr("data-field")
-		json_post = JSON.parse(post_json_str)
-    created_at = json_post["content"]["date"]
-    lz = json_post["author"]["name"]
-
-    topic = Topic.new(:title => title, :classname => category, :author => lz,
-                      :firsttime => created_at, :sitefirsttime => Time.now, :siteupdatetime => Time.now,
-                      :sitepagenum => all_page_num, :sitepostnum => all_post_num, :showtimes => 1,:downtimes => 1,
-                      :fromurl => fromurl, :tags => title , :section_id => 1)
-
-    if topic.save
-        all_page_num.to_i.times do |a|
-          Articleurl.create!(:topic_id => topic.id, :pagenum => a+1, :pageurl => get_tieba_page_url(topic.fromurl,a+1),
-                             :pagestatus => 0, :postcount => 1)
-        end
-    end
-  end
-
-  def self.cai_tieba_page doc
-    doc.css(".p_thread .l_thread_info .l_posts_num .l_pager a").each do |link|
-        if link.text == "尾页"
-          href = "http://tieba.baidu.com" << link.attr("href")
-          puts "next page is #{href}"
-          @temp[:last_from_url] =  href
-          doc = Nokogiri::HTML(open(href))
-          filter_tieba_post doc
-          break
-        end
-		  end
-  end
-
-  def self.renew_tieba topic
-    max_page_articleurl = Articleurl.find_by_topic_id(topic.id, :limit => 1,:order => "pagenum DESC")
-    max_page = max_page_articleurl.pagenum
-    puts "current max page num is " << max_page.to_s
-    puts "current max page url is " << max_page_articleurl.pageurl
-
-    articleurl = Articleurl.find_by_topic_id_and_pagenum(topic.id,1, :limit => 1)
-    begin
-      html_stream  = open(articleurl.pageurl)
-    rescue #OpenURI::HTTPError => ex
-      #@articleurl.update_attributes(:pagestatus => 9);
-      #@articleurl.save!
-      puts " can't get url: #{articleurl.pageurl}"
-      return
-    end
-    doc = Nokogiri::HTML(html_stream)
-
-    all_page_num = 1
-    doc.css(".p_thread .l_thread_info .l_posts_num .l_pager a").each do |link|
-        if link.text == "尾页"
-          str = link.attr("href")
-          column = str.split(/=/)
-          all_page_num = column[1]
-          break
-        end
-    end
-    all_post_num = doc.at_css(".p_thread .l_thread_info .l_posts_num li.l_reply_num span").text
-
-    puts all_page_num
-    if all_page_num.to_i > max_page.to_i
-       (all_page_num.to_i - max_page.to_i).times do |a|
-          Articleurl.create!(:topic_id => topic.id, :pagenum => (max_page.to_i + a + 1),
-                             :pageurl => get_tieba_page_url(topic.fromurl, (max_page.to_i + a + 1) ),
-                             :pagestatus => 0, :postcount => 1)
-       end
-
-    else
-      TuoShuiJob.delay.tuo_tieba(topic,max_page_articleurl)
-    end
-    t = {:siteupdatetime => Time.now, :sitepagenum => all_page_num, :sitepostnum => all_post_num}
-    @temptopic = Topic.find_by_id(topic.id)
-    @temptopic.update_attributes(t)
-    @temptopic.save!
-
-
-  end
-
-  def self.get_tieba_page_url(url,p)
-    regEx_tieba_1 = /baidu\.com\/p\/[0-9]*/
-    if regEx_tieba_1  =~ url
-        if p.eql?(1)
-          myurl = ("http://tieba." << regEx_tieba_1.match(url).to_s)
-        else
-           myurl = ("http://tieba." << regEx_tieba_1.match(url).to_s) << "?pn=#{p}"
-        end
-    end
-    myurl
-  end
 end

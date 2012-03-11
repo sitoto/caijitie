@@ -26,9 +26,10 @@ Gretel::Crumbs.layout do
     link "热贴列表" ,tb_path
     parent :tb
   end
-  crumb :tb_list_detail do |f|
+
+  crumb :tb_detail do |f|
     link  f.title , p_path(f)
-    parent :tb_list
+    parent :tb
   end
 
   # crumb :project do |project|

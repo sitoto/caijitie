@@ -1,5 +1,8 @@
 ﻿#encoding: utf-8
+require 'get_tieba_page_url'
 class SearchController < ApplicationController
+  include GetTiebaPageUrl
+
   def index
     per_page = 20
     search_text = params[:q]
@@ -41,8 +44,9 @@ class SearchController < ApplicationController
         @topic.update_attributes(t)
         if @topic.save
            max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
+           max = 1 if max == 0
            max.upto(@topic.mypagenum)  do |a|
-            PageUrl.create!(:topic_id => @topic.id, :num => a+1, :url => get_tieba_page_url(@topic.fromurl,a+1),
+            PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tieba_page_url(@topic.fromurl,a),
                                :status => 0, :count => 1)
           end
         end
@@ -75,16 +79,5 @@ class SearchController < ApplicationController
     sid
   end
 
-  def get_tieba_page_url(url,p)
-    regEx_tieba_1 = /baidu\.com\/p\/[0-9]*/
-    if regEx_tieba_1  =~ url
-        if p.eql?(1)
-          myurl = ("http://tieba." << regEx_tieba_1.match(url).to_s)
-        else
-           myurl = ("http://tieba." << regEx_tieba_1.match(url).to_s) << "?pn=#{p}"
-        end
-    end
-    myurl
-  end
 
 end

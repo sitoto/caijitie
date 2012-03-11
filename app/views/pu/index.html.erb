@@ -1,8 +1,36 @@
-<h1>Pu#index</h1>
-<p>Find me in app/views/pu/index.html.erb</p>
+<% title "#{@topic.title} by #{@topic.author}.第#{params[:page]}页" %>
 
-<%	 @page_urls.each do |f| %>
-  <%=	 f.id %>
-    commm <br>
-<%	 end %>
+<h4 class="round2 back"><%=	 @topic.title%></h4>
+<p>作者：<%= @topic.author %> <br>
+  内容不完整？：<%= link_to '现在更新', renew_p_path(@topic.id), method: :put, :target => '_blank' %><br>
+  查看原贴：<%= link_to '查看原贴', @topic.fromurl,  :target => '_blank' %>
+</p>
+
+<section class="cai-post-list">
+
+<table>
+  <tbody>
+   <% if !@posts.blank? %>
+      <% @posts.each do |p| %>
+      <tr>
+        <td class="right small">
+          <span class="border"><%= p.post_at.strftime "%Y-%m-%d %H:%M:%S" %></span>
+          <span class="border">(原<%= p.level %>楼)</span>
+          <span class="border"><%= p.my_level %>楼</span>
+          <span class="border">查看原贴</span>
+      </tr>
+      <tr>
+        <td class="content"><p><%= raw p.content  %></p></td>
+      </tr>
+      <% end %>
+  <% else %>
+      <tr>
+        <td style="color: red;">
+          <div style="margin-top:25px;" ><%= raw message %></div>
+          </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
+</section>

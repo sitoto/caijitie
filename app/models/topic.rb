@@ -1,8 +1,13 @@
 #encoding: utf-8
 class Topic < ActiveRecord::Base
-  has_many :page_urls
+  has_many :page_urls, :dependent => :delete_all
+  has_many :tieba_posts, :through => :page_urls
 
-  paginates_per 2
+  has_one  :most_recent_page_url,
+      :class_name => 'PageUrl',
+      :order => 'num DESC'
+
+  paginates_per 25
 
   def get_tieba_topic(url)
     t = TiebaTuoshuiJob.cai_tieba(url)

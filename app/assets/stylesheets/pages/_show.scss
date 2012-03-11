@@ -1,0 +1,65 @@
+section.cai-post-list {
+    background-color: ghostWhite;
+    border: 1px solid #DEDEDE;
+    color: #222;
+
+    table {
+      border-collapse:separate;
+      border-spacing:0;
+      margin-bottom:1.4em;
+      width:100%;
+      thead th {
+          background:#c3d9ff;
+          font-weight:bold;
+          }
+
+
+      caption, th, td {
+          font-weight:normal;
+          float:none !important;
+          }
+
+      tbody tr:nth-child(even) td, tbody tr.even td {
+          background:#e5ecf9;
+          }
+      a {
+          color: blue;
+        }
+
+}
+}
+.small {
+font-size: .8em;
+margin-bottom: 1.875em;
+line-height: 1.875em;
+}
+
+.back {
+font-weight: bold;
+background: #CFF;
+color: #00B;
+text-align: center;
+}
+.round2 {
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+.round {
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+}
+.content {
+    display:block;
+
+}
+.border {
+padding-right: 4px;
+margin-right: 5px;
+border-right: 1px solid #DDD;
+}
+
+td.right{
+    text-align: right;
+}

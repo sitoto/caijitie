@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120309044330) do
+ActiveRecord::Schema.define(:version => 20120311062521) do
 
   create_table "page_urls", :force => true do |t|
     t.string   "topic_id"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20120309044330) do
     t.datetime "post_at"
     t.integer  "level"
     t.integer  "my_level"
+    t.string   "author"
   end
 
   add_index "tieba_posts", ["page_url_id"], :name => "index_tieba_posts_on_page_url_id"
