@@ -61,7 +61,7 @@ class SearchController < ApplicationController
      regEx_tieba_2_1 = /[0-9]*/
      regEx_tianya_1 = /tianya\.cn\/\w*\/\w*\/\w*\/[0-9]+\/[0-9]+\.shtml/
      regEx_douban_1 = /douban\.com\/group\/topic\/[0-9]*/
-
+       sid = 0
       if regEx_tieba_1  =~ url
         sid = 1
         @url = ("http://tieba." << regEx_tieba_1.match(url).to_s)

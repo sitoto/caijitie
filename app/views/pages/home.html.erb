@@ -11,10 +11,10 @@
 </header>
 
 <section class="home">
-<h2>输入网址查找；或在本站内查找相关内容。</h2>
+<h2>天涯社区/百度贴吧/豆瓣话题/站内搜索</h2>
 <div id="fm">
   <form action="<%= search_path %>"  method = "get">
-  <%= text_field_tag(:q) %>
+  <%= text_field_tag(:q , 'http://tieba.baidu.com/p/510079795')  %>
   <%= submit_tag("脱水一下", :class => "su") %>
   </form>
 </div>
