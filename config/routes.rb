@@ -1,6 +1,7 @@
 require 'not_preferred_host'
-
 Caijitie::Application.routes.draw do
+
+
 
   # Rewrite non-preferred hosts in production
   constraints(NotPreferredHost) do
@@ -23,6 +24,9 @@ Caijitie::Application.routes.draw do
 
   #search
   match "/search" => "search#index", :as => :search
+  match "/category/:name" => "category#show", :constraints => {:name => /.*/}, :as => :category
+  match "/author/:name" => "author#show" , :constraints => {:name => /.*/}, :as => :author
+  match "/download/:id" => "download#show" , :constraints => {:name => /\d+/}, :as => :download
 
   #page-list 's page'
   resources :tb do

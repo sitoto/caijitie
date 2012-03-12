@@ -3,11 +3,9 @@
 <h2><%=	 @topic.title %></h2>
 <p>作者：<%=	 @topic.author %></p>
 
-------------
 <%	regEx_tieba_1 = /[\u4E00-\u9FFF]+/  %>
 <%	 @tieba_posts.each do |f| %>
-
-  <%=	f.content.scan(regEx_tieba_1).join(',')  %> <br>
+--------<%=	f.content.scan(regEx_tieba_1).join(',')  %> <br>
 <%	 end %>
-
+<br />
 <%=	 link_to '阅读文章', p_pu_path(@topic.id, 1)%>

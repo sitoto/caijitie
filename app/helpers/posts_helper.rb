@@ -1,6 +1,7 @@
 module PostsHelper
   def post_excerpt(post)
     post.html_content.html_safe.split('</p>').first+'</p>'.html_safe
+    #RedCloth.new(post.html_content.html_safe).to_html
   end
 
   def post_tags_html post

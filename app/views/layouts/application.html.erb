@@ -1,5 +1,12 @@
 <%- content_for :pre_content do -%>
 <header>
+
+    <div class="menu">
+   <%= link_to '首页', root_url, :class => 'nav' %>
+    <%= link_to '天涯社区', root_path, :class => 'nav' %>
+    <%= link_to '百度贴吧', tb_path, :class => 'nav' %>
+    <%= link_to '豆瓣话题', root_path, :class => 'nav' %>
+  </div>
   <h1>脱水吧</h1>
   <%= breadcrumb :pretext => "当前位置:",
                :separator => ">",

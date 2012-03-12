@@ -1,0 +1,10 @@
+<% title "#{@topic.title} by #{@topic.author}." %>
+
+<h2><%=	 @topic.title %></h2>
+<p>作者：<%= @topic.author %>
+ <br /> 分类：<%= @topic.classname %>
+ <br />共计：<%= @topic.mypagenum %>页</p>
+
+
+<%=	 link_to '下载全文', '' %>
+<br />

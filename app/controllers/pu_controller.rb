@@ -15,7 +15,7 @@ class PuController < ApplicationController
       end
 
       @posts = @page_url.tieba_posts if @topic.section_id.eql?(1)
-
+      @topic.increment!(:myshowtimes, by = 1)
     end
 
     #for seo
