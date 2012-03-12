@@ -6,6 +6,10 @@ gem 'rails', '~>3.1.4'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+
+#内容处理
+gem 'RedCloth'
+
 #分页
 gem 'kaminari'
 gem 'i18n_routing'
