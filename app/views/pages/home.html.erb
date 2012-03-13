@@ -4,9 +4,14 @@
   <h1>帖子脱水工具</h1>
   <p>
    <%= link_to '本站', root_url %>主要为方便阅读
-    <%= link_to '天涯社区', root_path, :class => 'nav' %>
-    <%= link_to '百度贴吧', tb_path, :class => 'nav' %>
-    <%= link_to '豆瓣话题', root_path, :class => 'nav' %>，本站内容归发帖人和原站所有。
+    <%= link_to '天涯社区', root_path, :class => 'nav', :title => '天涯社区脱水版' %>
+    <%= link_to '百度贴吧', tb_path, :class => 'nav', :title => '百度贴吧脱水版' %>
+    <%= link_to '豆瓣话题', root_path, :class => 'nav', :title => '豆瓣话题脱水版' %>，本站内容归发帖人和原站所有。
+  </p>
+  <p>
+    <%= link_to (image_tag 'baidutieba.gif',:alt=>"百度贴吧", :class => "round"), tb_path, :class => 'nav', :title => '进入百度贴吧脱水版' %>
+    <%= link_to (image_tag 'tianyabbs.gif',:alt=>"天涯社区", :class => "round"), root_path, :class => 'nav', :title => '进入天涯社区脱水版' %>
+    <%= link_to (image_tag 'douban.png',:alt=>"豆瓣话题", :class => "round"), tb_path, :class => 'nav', :title => '进入豆瓣话题脱水版' %>
   </p>
 </header>
 
