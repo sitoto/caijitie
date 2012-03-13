@@ -17,7 +17,7 @@ class SearchController < ApplicationController
       breadcrumb :search, search_text
       meta :title => "搜索：#{search_text}", :description => "搜索：#{search_text}的结果" , :keywords => search_text
       return
-    elsif t = PageUrl.find_by_sql(["select * from page_urls where url = ? ", search_text]).first
+    elsif t = PageUrl.find_by_sql(["select * from page_urls where url = ? ", @url]).first
       redirect_to p_path(t.topic_id)
       return
       #存在url

@@ -4,14 +4,14 @@
   <h1>帖子脱水工具</h1>
   <p>
    <%= link_to '本站', root_url %>主要为方便阅读
-    <%= link_to '天涯社区', root_path, :class => 'nav', :title => '天涯社区脱水版' %>
-    <%= link_to '百度贴吧', tb_path, :class => 'nav', :title => '百度贴吧脱水版' %>
-    <%= link_to '豆瓣话题', root_path, :class => 'nav', :title => '豆瓣话题脱水版' %>，本站内容归发帖人和原站所有。
+    <%= link_to '天涯社区', root_path, :class => 'nav', :title => '天涯社区脱水版', :target => '_blank' %>
+    <%= link_to '百度贴吧', tb_path, :class => 'nav', :title => '百度贴吧脱水版', :target => '_blank' %>
+    <%= link_to '豆瓣话题', root_path, :class => 'nav', :title => '豆瓣话题脱水版', :target => '_blank' %>，本站内容归发帖人和原站所有。
   </p>
   <p>
-    <%= link_to (image_tag 'baidutieba.gif',:alt=>"百度贴吧", :class => "round"), tb_path, :class => 'nav', :title => '进入百度贴吧脱水版' %>
-    <%= link_to (image_tag 'tianyabbs.gif',:alt=>"天涯社区", :class => "round"), root_path, :class => 'nav', :title => '进入天涯社区脱水版' %>
-    <%= link_to (image_tag 'douban.png',:alt=>"豆瓣话题", :class => "round"), tb_path, :class => 'nav', :title => '进入豆瓣话题脱水版' %>
+    <%= link_to (image_tag 'baidutieba.gif',:alt=>"百度贴吧", :class => "round"), tb_path, :class => 'nav', :title => '进入百度贴吧脱水版', :target => '_blank' %>
+    <%= link_to (image_tag 'tianyabbs.gif',:alt=>"天涯社区", :class => "round"), root_path, :class => 'nav', :title => '进入天涯社区脱水版', :target => '_blank' %>
+    <%= link_to (image_tag 'douban.png',:alt=>"豆瓣话题", :class => "round"), tb_path, :class => 'nav', :title => '进入豆瓣话题脱水版', :target => '_blank' %>
   </p>
 </header>
 
@@ -20,7 +20,7 @@
 <div id="fm">
   <form action="<%= search_path %>"  method = "get">
   <%= text_field_tag(:q , 'http://tieba.baidu.com/p/510079795')  %>
-  <%= submit_tag("脱水一下", :class => "su") %>
+  <%= submit_tag("脱水一下", :class => "su", :target => '_blank') %>
   </form>
 </div>
 
@@ -34,11 +34,11 @@
   <p><%- if @recent_post -%>最新文章:</p>
   <article>
     <header>
-      <h3><%= link_to @recent_post.title, @recent_post %></h3>
+      <h3><%= link_to @recent_post.title, @recent_post, :target => '_blank' %></h3>
       <p> <time datetime="<%= @recent_post.published_at.as_json %>"><%= post_published_time_in_words @recent_post %></time><%= post_tags_html(@recent_post) %></p>
     </header>
     <%= raw RedCloth.new(post_excerpt(@recent_post)).to_html %>
-    <p class="more"><%= link_to '更多文章 &raquo;'.html_safe, blog_url %></p>
+    <p class="more"><%= link_to '更多文章 &raquo;'.html_safe, blog_url, :target => '_blank' %></p>
   </article>
   <%- else -%><p></p><%- end -%>
 

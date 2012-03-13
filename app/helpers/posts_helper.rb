@@ -10,7 +10,7 @@ module PostsHelper
 
     links = []
     tags.each do |tag|
-      links << link_to(tag.name, tag, :class => 'tag')
+      links << link_to(tag.name, tag, :class => 'tag', :target => '_blank')
     end
     (' in '+links.to_sentence).html_safe
   end
