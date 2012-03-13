@@ -13,9 +13,6 @@ class TbController < ApplicationController
   def active
   end
 
-  def renew
-  end
-
   def show
   end
 
