@@ -18,8 +18,10 @@ module LayoutHelper
   end
 
   def baidu_analytics always = false
-    "<script>var _bdhmProtocol = (('https:' == document.location.protocol) ? ' https://' : ' http://');
-document.write(unescape('%3Cscript src='' + _bdhmProtocol + 'hm.baidu.com/h.js%3F0f284046f8572093596ffc02be08fc65' type='text/javascript'%3E%3C/script%3E'));</script>".html_safe if (always || Rails.env.to_sym == :production)
+    "<script type='text/javascript'>
+var _bdhmProtocol = (('https:' == document.location.protocol) ? ' https://' : ' http://');
+document.write(unescape('%3Cscript src='' + _bdhmProtocol + 'hm.baidu.com/h.js%3F0f284046f8572093596ffc02be08fc65' type='text/javascript'%3E%3C/script%3E'));
+</script>".html_safe if (always || Rails.env.to_sym == :production)
   end
 
   def like_button(url = WEIBO_QQ_URL)
