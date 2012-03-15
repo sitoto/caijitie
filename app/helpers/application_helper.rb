@@ -13,7 +13,7 @@ module ApplicationHelper
                     _oArguments.callee(_nCount, _oEle);
                 }, 1000);
             }
-            else { location.href ="";
+            else { location.href ="'  <<  (params[:page].to_i + 1).to_s  << '";
             }
         }
         (function () {
@@ -42,12 +42,11 @@ module ApplicationHelper
 
     </script>'
 
-  #  if @pagenum.to_i.eql?(@topic.sitepagenum.to_i)
-  #    @temp.blank? ? "本页没有楼主贴，这是最后一页。" : refreshpage
-  #  else
-   #   @temp.blank? ? gotonextpage : refreshpage
-   # end
-    " meiyou tie"
+    if params[:page].to_i.>= (@topic.mypagenum.to_i)
+      "本页没有楼主贴，这是最后一页。"
+    else
+       gotonextpage
+    end
   end
 
 end
