@@ -17,8 +17,8 @@ Caijitie::Application.routes.draw do
   resources :tags, :only => [:index, :show]
 
   # Static pages
-  match '/about.:format' => 'pages#about', :as => 'about'
-  match '/contact.:format' => 'pages#contact', :as => 'contact'
+  match '/about' => 'pages#about', :as => 'about'
+  match '/contact' => 'pages#contact', :as => 'contact'
 
   #search
   match "/search" => "search#index", :as => :search
@@ -30,7 +30,16 @@ Caijitie::Application.routes.draw do
   resources :tb do
     get 'page/:page', :action => :index, :on => :collection
   end
+  resources :tysq do
+    get 'page/:page', :action => :index, :on => :collection
+  end
+  resources :dbht do
+    get 'page/:page', :action => :index, :on => :collection
+  end
   resources :recent do
+    get 'page/:page', :action => :index, :on => :collection
+  end
+  resources :active do
     get 'page/:page', :action => :index, :on => :collection
   end
 
@@ -48,7 +57,10 @@ Caijitie::Application.routes.draw do
 
   #caiji list
   match '/tb' => 'tb#index', :as => 'tb'
+  match '/tysq' => 'tysq#index', :as => 'tysq'
+  match '/dbht' => 'dbht#index', :as => 'dbht'
   match '/recent' => 'recent#index', :as => 'recent'
+  match '/active' => 'active#index', :as => 'active'
   # Admin
   namespace :admin do
     root :to => 'admin#index'

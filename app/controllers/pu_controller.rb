@@ -9,17 +9,22 @@ class PuController < ApplicationController
       @page_url = @page_urls.first
 
       unless @page_url.status.eql?(1)
-        t = TiebaTuoshuiJob.get_tieba_post(@topic, @page_url)
+
+        t = TiebaTuoshuiJob.get_tieba_post(@topic, @page_url) if @topic.section_id == 1
+        t = TianyabbsTuoshuiJob.get_tianyabbs_post(@topic, @page_url) if @topic.section_id == 2
+
         @page_url.update_attributes!(:status => 1) if t == 1 #读取正确 状态为 1
         @page_url.update_attributes!(:status => 9) if t == 0 #读取出错 状态 改为 9
       end
 
       @posts = @page_url.tieba_posts if @topic.section_id.eql?(1)
+      @posts = @page_url.tianya_posts if @topic.section_id.eql?(2)
       @topic.increment!(:myshowtimes, by = 1)
     end
 
     #for seo
-    breadcrumb :tb_detail, @topic
+    breadcrumb :tb_detail, @topic if @topic.section_id == 1
+    breadcrumb :tysq_detail, @topic if @topic.section_id == 2
     meta :title => @topic.title ,
          :description => "#{ @topic.title}_脱水版本,作者:#{ @topic.author},第#{params[:page]}页" ,
          :keywords => @topic.author

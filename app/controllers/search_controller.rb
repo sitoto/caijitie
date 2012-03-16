@@ -7,7 +7,7 @@ class SearchController < ApplicationController
     per_page = 20
     search_text = params[:q]
     search_text ||= ""
-    puts search_text
+    puts "search_text:===========" <<  search_text
     s_id = is_url?(search_text)
     puts s_id
 
@@ -26,14 +26,14 @@ class SearchController < ApplicationController
       case s_id
         when 1
           t = @topic.get_tieba_topic(@url)
+          update_topic(t)
         when 2
-          t = @topic.get_tieba_topic(@url)
+         t, page_urls = @topic.get_tianya_topic(@url)
+          update_tianyabbs_topic(t, page_urls)
         when 3
-          @topic.get_tianya_topic(@url)
-        when 4
           @topic.get_douban_topic(@url)
         end
-      update_topic(t)
+
     end
   end
 
@@ -48,6 +48,29 @@ class SearchController < ApplicationController
            max.upto(@topic.mypagenum)  do |a|
             PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tieba_page_url(@topic.fromurl,a),
                                :status => 0, :count => 1)
+          end
+        end
+        redirect_to p_path(@topic)
+        return
+     end
+  end
+  def update_tianyabbs_topic(t, page_urls)
+     unless t.blank?
+        @topic.update_attributes(t)
+        if @topic.save
+           max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
+           if page_urls.length == 1
+             if max == 0
+               PageUrl.create!(:topic_id => @topic.id, :num => 1, :url => page_urls[0],
+                               :status => 0, :count => 1)
+             end
+           elsif page_urls.length > 1
+             page_urls.to_a.each_with_index  do |p, i|
+              if i >= max
+                 PageUrl.create!(:topic_id => @topic.id, :num => i+1, :url => get_tianya_page_url(@topic.fromurl, p),
+                                 :status => 0, :count => 1)
+              end
+             end
           end
         end
         redirect_to p_path(@topic)
@@ -78,6 +101,7 @@ class SearchController < ApplicationController
 
     sid
   end
+
 
 
 end

@@ -1,0 +1,2 @@
+module TysqHelper
+end

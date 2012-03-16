@@ -4,7 +4,7 @@
 <p>作者：<%=	 @topic.author %></p>
 
 <%	regEx_tieba_1 = /[\u4E00-\u9FFF]+/  %>
-<%	 @tieba_posts.each do |f| %>
+<%	 @posts.each do |f| %>
 --------<%=	f.content.scan(regEx_tieba_1).join(',')  %> <br>
 <%	 end %>
 <br />

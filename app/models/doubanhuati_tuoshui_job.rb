@@ -1,3 +1,5 @@
 class DoubanhuatiTuoshuiJob
-  # To change this template use File | Settings | File Templates.
+  def self.cai_doubanhuati_topic(url)
+
+  end
 end

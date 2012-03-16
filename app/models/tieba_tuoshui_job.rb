@@ -45,15 +45,14 @@ class TiebaTuoshuiJob
            TiebaPost.create!(:page_url_id => url_id, :content => content, :post_at => created_at,
                         :level  => level, :my_level => i ,:author => lz)
          end
-
       elsif s == 1
         j += 1
         TiebaPost.create!(:page_url_id => url_id, :content => content, :post_at => created_at,
                         :level  => level, :my_level => j ,:author => lz)
-
       end
-    end
-      return  1
+    end # end -do each
+    return  1
+
     rescue
       return 0
   end

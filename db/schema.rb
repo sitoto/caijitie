@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120311062521) do
+ActiveRecord::Schema.define(:version => 20120316124434) do
 
   create_table "page_urls", :force => true do |t|
     t.string   "topic_id"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(:version => 20120311062521) do
 
   add_index "tags", ["name"], :name => "tags_name_index", :unique => true
 
+  create_table "tianya_posts", :force => true do |t|
+    t.integer  "page_url_id"
+    t.text     "content"
+    t.datetime "post_at"
+    t.integer  "level"
+    t.integer  "my_level"
+  end
+
+  add_index "tianya_posts", ["page_url_id"], :name => "index_tianya_posts_on_page_url_id"
+
   create_table "tieba_posts", :force => true do |t|
     t.integer  "page_url_id"
     t.text     "content"
@@ -91,8 +101,8 @@ ActiveRecord::Schema.define(:version => 20120311062521) do
     t.datetime "updated_at"
   end
 
-  add_index "topics", ["author"], :name => "index_topics_on_author"
-  add_index "topics", ["classname"], :name => "index_topics_on_classname"
+  add_index "topics", ["author"], :name => "index_topics_on_author", :length => {"author"=>191}
+  add_index "topics", ["classname"], :name => "index_topics_on_classname", :length => {"classname"=>191}
   add_index "topics", ["fromurl"], :name => "index_topics_on_fromurl", :unique => true
   add_index "topics", ["mydowntimes"], :name => "index_topics_on_mydowntimes"
   add_index "topics", ["mypostnum"], :name => "index_topics_on_mypostnum"
@@ -100,7 +110,7 @@ ActiveRecord::Schema.define(:version => 20120311062521) do
   add_index "topics", ["myupdatetime"], :name => "index_topics_on_myupdatetime"
   add_index "topics", ["section_id"], :name => "index_topics_on_section_id"
   add_index "topics", ["showtimes"], :name => "index_topics_on_showtimes"
-  add_index "topics", ["tags"], :name => "index_topics_on_tags"
-  add_index "topics", ["title"], :name => "index_topics_on_title"
+  add_index "topics", ["tags"], :name => "index_topics_on_tags", :length => {"tags"=>191}
+  add_index "topics", ["title"], :name => "index_topics_on_title", :length => {"title"=>191}
 
 end
