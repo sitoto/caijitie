@@ -11,11 +11,14 @@
 <%= link_to '博客', blog_path, :class => 'nav' %>
 </div>
   <h1>脱水吧</h1>
-  <%= breadcrumb :pretext => "当前位置:",
+  <hgroup>
+   <%= breadcrumb :pretext => "当前位置:",
                :separator => ">",
                :autoroot => true,
                :show_root_alone => true,
                :link_last => false %>
+  </hgroup>
+
 </header>
 <section>
 <%- end -%>

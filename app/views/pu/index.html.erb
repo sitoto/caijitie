@@ -10,7 +10,7 @@
 <span class="border"><%= link_to  "下载文件", download_path(@topic.id) ,  :target => '_blank'%></span>
 </p>
 
-<section class="cai-post-list">
+<section class="cai-post-list round">
 <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
 <table>
   <tbody>

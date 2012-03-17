@@ -45,10 +45,10 @@ class PController < ApplicationController
     end
     puts "====================="
 
-    redirect_to p_path(@topic), :notice => "已提交更新。"
+    redirect_to p_pu_path(@topic, 1), :notice => "已提交更新。"
 
-  #rescue
-  #  redirect_to root_path :notice => "error。"
+  rescue
+    redirect_to root_path :notice => "error"
   end
 
 
@@ -72,6 +72,7 @@ class PController < ApplicationController
         @topic.update_attributes(t)
         if @topic.save
           max_page_url = @topic.most_recent_page_url
+          max = max_page_url.num || 1
           max = 1 if max_page_url.num == 0
           max_page_url.destroy
 
@@ -83,28 +84,29 @@ class PController < ApplicationController
      end
   end
   def update_tianyabbs_topic(t, page_urls)
+    #puts page_urls.to_a.length
+    #puts "end"
+
      unless t.blank?
         @topic.update_attributes(t)
         if @topic.save
            max_page_url = @topic.most_recent_page_url
            max = max_page_url.num || 0
            max_page_url.destroy
-           if page_urls.length == 1
+           if page_urls.to_a.length == 1
              if max == 0
-               PageUrl.create!(:topic_id => @topic.id, :num => 1, :url => page_urls[0],
+               PageUrl.create!(:topic_id => @topic.id, :num => 1, :url => page_urls.to_a[0],
                                :status => 0, :count => 1)
              end
-           elsif page_urls.length > 1
+           elsif page_urls.to_a.length > 1
              page_urls.to_a.each_with_index  do |p, i|
-              if i >= max
-                 PageUrl.create!(:topic_id => @topic.id, :num => i+1, :url => get_tianya_page_url(@topic.fromurl, p),
+              if (i + 1) >= max
+                 PageUrl.create!(:topic_id => @topic.id, :num => (i + 1), :url => get_tianya_page_url(@topic.fromurl, p),
                                  :status => 0, :count => 1)
               end
              end
           end
         end
-        redirect_to p_path(@topic)
-        return
      end
   end
 
