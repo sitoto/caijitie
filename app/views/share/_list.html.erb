@@ -15,10 +15,10 @@
         <td><%=	 (i+1).to_s %></td>
         <td><%= topic.myshowtimes %></td>
         <td><%= topic.mypostnum %> </td>
-        <td><%= link_to topic.classname, "/category/#{topic.classname}"  %></td>
-        <td><%= link_to topic.title, "/p/#{topic.id}" %></td>
+        <td><%= link_to topic.classname, "/category/#{topic.classname}", :target => '_blank'  %></td>
+        <td><%= link_to topic.title, "/p/#{topic.id}", :target => '_blank' %></td>
 
-        <td><%= link_to topic.author,"/author/#{topic.author}"  %><br>
+        <td><%= link_to topic.author,"/author/#{topic.author}", :target => '_blank'  %><br>
         <small><%= topic.myupdatetime.to_s(:db) %></small></td>
       </tr>
     <% end %>
