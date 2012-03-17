@@ -11,6 +11,13 @@ module GetTiebaPageUrl
     end
     myurl
   end
+  def get_doubanhuati_page_url(url,p)
+    if p == 0
+     url
+    else
+     "#{url}?start=#{p.to_s}"
+    end
+  end
 
   def get_tianya_page_url(url, p)
     regEx_tianya_1 = /tianya\.cn\/\w*\/\w*\/\w*\/[0-9]+\//

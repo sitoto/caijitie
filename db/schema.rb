@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120317043220) do
+ActiveRecord::Schema.define(:version => 20120317071206) do
+
+  create_table "douban_posts", :force => true do |t|
+    t.integer  "page_url_id"
+    t.text     "content"
+    t.datetime "post_at"
+    t.integer  "level"
+    t.integer  "my_level"
+    t.string   "author"
+  end
+
+  add_index "douban_posts", ["page_url_id"], :name => "index_douban_posts_on_page_url_id"
 
   create_table "funs", :force => true do |t|
     t.string   "title",       :default => "笑话", :null => false

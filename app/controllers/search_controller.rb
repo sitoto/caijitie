@@ -31,7 +31,8 @@ class SearchController < ApplicationController
          t, page_urls = @topic.get_tianya_topic(@url)
           update_tianyabbs_topic(t, page_urls)
         when 3
-          @topic.get_douban_topic(@url)
+         t =  @topic.get_douban_topic(@url)
+          update_doubanhuati_topic(t)
         end
 
     end
@@ -47,6 +48,22 @@ class SearchController < ApplicationController
            max = 1 if max == 0
            max.upto(@topic.mypagenum)  do |a|
             PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tieba_page_url(@topic.fromurl,a),
+                               :status => 0, :count => 1)
+          end
+        end
+        redirect_to p_path(@topic)
+        return
+     end
+  end
+  def update_doubanhuati_topic(t)
+     unless t.blank?
+        t[:fromurl] = @url
+        @topic.update_attributes(t)
+        if @topic.save
+           max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
+           max = 1 if max == 0
+           max.upto(@topic.mypagenum)  do |a|
+            PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_doubanhuati_page_url(@topic.fromurl,(a-1) * 100),
                                :status => 0, :count => 1)
           end
         end

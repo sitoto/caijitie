@@ -3,6 +3,7 @@ class Topic < ActiveRecord::Base
   has_many :page_urls, :dependent => :delete_all
   has_many :tieba_posts, :through => :page_urls
   has_many :tianya_posts, :through => :page_urls
+  has_many :douban_posts, :through => :page_urls
 
   has_one  :most_recent_page_url,
       :class_name => 'PageUrl',

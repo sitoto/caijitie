@@ -49,6 +49,18 @@ Gretel::Crumbs.layout do
     parent :tysq
   end
 
+  crumb :dbht do
+    link "豆瓣话题" ,dbht_path
+  end
+  crumb :dbht_list do
+    link "热贴列表" ,dbht_path
+    parent :dbht
+  end
+  crumb :dbht_detail do |f|
+    link  f.title , p_path(f)
+    parent :dbht
+  end
+
 
   # crumb :project do |project|
   #   link lambda { |project| "#{project.name} (#{project.id.to_s})" }, project_path(project)
