@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120316124434) do
+ActiveRecord::Schema.define(:version => 20120317043220) do
+
+  create_table "funs", :force => true do |t|
+    t.string   "title",       :default => "笑话", :null => false
+    t.text     "body",                          :null => false
+    t.integer  "click_time",  :default => 1008, :null => false
+    t.string   "from_url"
+    t.integer  "category_id", :default => 0,    :null => false
+    t.integer  "user_id",     :default => 0,    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "page_urls", :force => true do |t|
     t.string   "topic_id"
@@ -65,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20120316124434) do
     t.datetime "post_at"
     t.integer  "level"
     t.integer  "my_level"
+    t.string   "author"
   end
 
   add_index "tianya_posts", ["page_url_id"], :name => "index_tianya_posts_on_page_url_id"

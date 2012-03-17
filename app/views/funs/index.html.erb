@@ -1,0 +1,16 @@
+<h2>列表</h2>
+
+<table>
+
+
+<% @funs.each do |fun| %>
+  <tr>
+    <td><%= link_to fun.title, fun %></td>
+    <td>查看：<%= fun.click_time %>次</td>
+  </tr>
+   <tr>
+    <td colspan="2"><%= raw fun.body.truncate(100) %><%= link_to '阅读全文', fun %> <hr></td>
+  </tr>
+<% end %>
+</table>
+<%= paginate @funs, :outer_window => 4, :inner_window => 4 -%>
