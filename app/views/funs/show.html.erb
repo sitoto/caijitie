@@ -5,7 +5,7 @@
 </h2>
 
 <p>
-  <%= @fun.body %>
+  <%= raw  RedCloth.new(@fun.body).to_html %>
 </p>
 
 

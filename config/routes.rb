@@ -22,6 +22,7 @@ Caijitie::Application.routes.draw do
   # Static pages
   match '/about' => 'pages#about', :as => 'about'
   match '/contact' => 'pages#contact', :as => 'contact'
+  match '/funs' => 'funs#index', :as => 'funs'
 
   #search
   match "/search" => "search#index", :as => :search
@@ -61,12 +62,14 @@ Caijitie::Application.routes.draw do
   match '/p' => 'p#index' , :as => 'all'
   match '/p/:id' => 'p#show', :as => 'p'
 
+
   #caiji list
   match '/tb' => 'tb#index', :as => 'tb'
   match '/tysq' => 'tysq#index', :as => 'tysq'
   match '/dbht' => 'dbht#index', :as => 'dbht'
   match '/recent' => 'recent#index', :as => 'recent'
   match '/active' => 'active#index', :as => 'active'
+
   # Admin
   namespace :admin do
     root :to => 'admin#index'
