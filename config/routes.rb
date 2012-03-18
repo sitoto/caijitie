@@ -22,7 +22,7 @@ Caijitie::Application.routes.draw do
   # Static pages
   match '/about' => 'pages#about', :as => 'about'
   match '/contact' => 'pages#contact', :as => 'contact'
-  match '/funs' => 'funs#index', :as => 'funs'
+
 
   #search
   match "/search" => "search#index", :as => :search
@@ -49,7 +49,7 @@ Caijitie::Application.routes.draw do
   resources :funs do
     get 'page/:page', :action => :index, :on => :collection
   end
-  resources :funs,  :only => [:show, :index]
+
 
   #topic =》 post-page(page_url)
   resources :p do
@@ -61,7 +61,8 @@ Caijitie::Application.routes.draw do
   #show one topic
   match '/p' => 'p#index' , :as => 'all'
   match '/p/:id' => 'p#show', :as => 'p'
-
+  match '/funs' => 'funs#index', :as => 'funs'
+  match '/funs/:id' => 'funs#show'
 
   #caiji list
   match '/tb' => 'tb#index', :as => 'tb'
