@@ -1,6 +1,6 @@
 #encoding: utf-8
 class FunsController < ApplicationController
-  caches_page :show
+  #caches_page :show
   def index
     @funs = Fun.order('id DESC').page(params[:page])
 
