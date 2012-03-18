@@ -21,6 +21,13 @@ Gretel::Crumbs.layout do
   crumb :list do |f|
     link  f, ''
   end
+  crumb :fun_list do
+    link  '笑话', funs_path
+  end
+  crumb :fun_detail do |f|
+    link f.title, fun_path(f)
+    parent :fun_list
+  end
   crumb :download do |f|
     link  f, ''
   end
