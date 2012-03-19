@@ -123,7 +123,7 @@ code {
 }
 
 h1 {
-  color: #000;
+  color: #069;
   font-size: 2.5em;
   font-weight: 700;
   margin-bottom: 0.25em;
@@ -155,7 +155,9 @@ h4 {
   font-weight: bold;
   margin-bottom: 0.2em;
 }
-
+label {
+  font-weight: bold;
+}
 // Content
 body > header, body > section, body > footer {
   font-size: 85%;
@@ -165,7 +167,7 @@ body > header, body > section, body > footer {
 
 // Header
 body > header {
-  color: #a5a5a5;
+  color: #222;
   margin: 2em auto 1em;
 
   div.menu{

@@ -11,16 +11,16 @@
 <%= link_to '博客', blog_path, :class => 'nav' %>
 </div>
   <h1>脱水吧</h1>
-  <hgroup>
-   <%= breadcrumb :pretext => "当前位置:",
-               :separator => ">",
+  <hgroup class="round" style="background: #ffffff">
+   <%= breadcrumb :pretext => "<label>当前位置：</label>",
+               :separator => "»",
                :autoroot => true,
                :show_root_alone => true,
                :link_last => false %>
   </hgroup>
 
 </header>
-<section>
+<section  style="background: #ffffff">
 <%- end -%>
 <%- content_for :post_content do -%>
 </section>
