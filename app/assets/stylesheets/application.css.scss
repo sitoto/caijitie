@@ -213,6 +213,8 @@ body > header {
 
 // Footer
 body > footer {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   width: $width;
   color: #aaa;
 
@@ -226,6 +228,9 @@ body > footer {
     &:hover {
       color: $link-color;
     }
+  }
+  p.link {
+    text-align: left;
   }
 }
 
