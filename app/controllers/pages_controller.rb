@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @recent_post = Post.published.where(:homepageable => true).last
+    @links = Link.where(:status => 1).order("paixu")
     render 'home', :layout => 'abstract'
   end
 

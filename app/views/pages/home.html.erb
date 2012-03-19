@@ -1,4 +1,4 @@
-<%- title "www.lehazi.com" -%>
+<%- title "乐哈网www.lehazi.com" -%>
 
 <header>
   <h1>帖子脱水工具</h1>
@@ -46,6 +46,9 @@
 </section>
 
 <footer>
-  <p class="link">友情链接：<a href="http://www.ailutai.com/" target="_blank">上官梦瑶博客</a> </p>
+  <p class="link">友情链接：
+    <%	 @links.each do |f| %>
+      <%= link_to f.name, f.url, :target => '_blank', :class => 'border' %>
+    <%	 end %>
   <p>Copyright &copy; 2011 <%= link_to '脱水吧 - 中国第一在线采集工具', root_url, :rel => 'home' %></p>
 </footer>

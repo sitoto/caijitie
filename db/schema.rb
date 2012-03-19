@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120317071206) do
+ActiveRecord::Schema.define(:version => 20120319072251) do
 
   create_table "douban_posts", :force => true do |t|
     t.integer  "page_url_id"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20120317071206) do
     t.string   "from_url"
     t.integer  "category_id", :default => 0,    :null => false
     t.integer  "user_id",     :default => 0,    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "links", :force => true do |t|
+    t.string   "name",       :default => "lehazi"
+    t.string   "url",        :default => "http://www.lehazi.com/"
+    t.string   "picurl"
+    t.integer  "order",      :default => 99
+    t.integer  "status",     :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
