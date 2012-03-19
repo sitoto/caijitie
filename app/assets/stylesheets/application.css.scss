@@ -283,3 +283,24 @@ display:inline-block;
 .blue{
     color: blue;
 }
+ul.cai{
+    list-style: none; margin:0; padding: 0;
+
+    li.caied{
+      margin-top: 1em;margin-left: 1em;
+      border-bottom: 1px solid #DDD;
+      overflow: hidden; zoom: 1;
+      float: left;
+      background: #C3D9FF;
+      text-align: center;
+    }
+    li.nocai {
+      margin-top: 1em;
+      margin-left: 1em;
+      border-bottom: 1px solid #DDD;
+      overflow: hidden; zoom: 1;
+      float: left;
+      background: #ddd;
+      text-align: center;
+    }
+}

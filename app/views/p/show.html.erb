@@ -3,7 +3,7 @@
 <section class="page-list">
 <h2 class="round2 back"><%=	 link_to  @topic.title, p_pu_path(@topic.id, 1)%></h2>
 <p>
-  <span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
+<span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
 <span class="border">内容不完整？：<%= link_to '现在更新', renew_p_path(@topic.id), method: :put, :target => '_blank', :class => 'red' %></span>
 <span class="border">查看原贴：<%= link_to '打开原贴', @topic.fromurl,  :target => '_blank' %></span>
 <span class="border">文章类别：<%= link_to @topic.classname, category_path(@topic.classname),  :target => '_blank' %></span>
@@ -12,23 +12,19 @@
   <%=	 link_to '阅读文章', p_pu_path(@topic.id, 1) , :class => 'border' %></p>
 
 <div class="clearfix" style="background: white; clear: both;">
-  <ul style="list-style: none; margin:0; padding: 0;">
+  <ul class="cai">
   <%	 @page_urls.each do |p| %>
-
        <%  if p.status == 1  %>
-        <li style=" margin-top: 1em;margin-left: 1em; border-bottom: 1px solid #DDD; overflow: hidden; zoom: 1;float: left; background: #a5a5a5;
-     text-align: center;">
+        <li class="caied">
          <%= link_to "第#{p.num}页"  , p_pu_path(p.topic_id, p.num), :target => '_blank' %> <br/>
-         <%= link_to "#{p.count}贴"  , p_pu_path(p.topic_id, p.num), :target => '_blank', :class => 'red' %>
+         <%= link_to "#{p.count} 贴"  , p_pu_path(p.topic_id, p.num), :target => '_blank', :class => 'red' %>
      </li>
        <% elsif p.status == 0 %>
-      <li style="  margin-top: 1em;margin-left: 1em; border-bottom: 1px solid #DDD; overflow: hidden; zoom: 1;float: left; background: #ddd;
-     text-align: center;">
+      <li class="nocai">
          <%= link_to "第#{p.num}页", p_pu_path(p.topic_id, p.num), :target => '_blank' %>  <br/>
          <%= link_to "脱", p_pu_path(p.topic_id, p.num), :target => '_blank', :class => 'blue' %>
         </li>
        <%  end %>
-
   <%  end %>
   </ul>
 </div>
