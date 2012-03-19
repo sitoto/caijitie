@@ -51,10 +51,10 @@ class TiebaTuoshuiJob
                         :level  => level, :my_level => j ,:author => lz)
       end
     end # end -do each
-    return  1
+    return  i
 
     rescue
-      return 0
+      return -1
   end
   def self.is_pagnation(doc)
     if doc.at_css(".p_thread .l_thread_info .l_posts_num .l_pager").blank?

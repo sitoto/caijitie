@@ -69,9 +69,9 @@ class TianyabbsTuoshuiJob
       end
 
     end
-    return 1
+    return j
   rescue
-    return 0
+    return -1
   end
   def self.is_pagnation(doc)
     if doc.at_css("#pageDivTop em").blank?

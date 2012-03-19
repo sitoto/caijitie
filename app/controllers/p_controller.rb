@@ -9,6 +9,8 @@ class PController < ApplicationController
     if @topic.blank?
       flash[:notice] = "对不起，打开出错，可能文章不存在或已经被删除！"
     else
+      @page_urls = @topic.page_urls
+
 #      @posts = TiebaPost.find_by_sql(["select  a.* from  tieba_posts a
 #                        LEFT JOIN page_urls b on a.page_url_id = b.id
 #                        WHERE b.num = 1 and b.topic_id = ? LIMIT 2;", current_topic]) if @topic.section_id == 1

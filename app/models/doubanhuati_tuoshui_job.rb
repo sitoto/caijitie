@@ -54,9 +54,9 @@ class DoubanhuatiTuoshuiJob
                     :level  => i, :my_level => j ,:author => author)
       end
     end
-    return  1
+    return  j
     rescue
-      return 0
+      return -1
  end
 
 

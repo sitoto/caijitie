@@ -13,7 +13,7 @@
       <tr>
         <td><%=	 (i+1).to_s %></td>
         <td><%= link_to (topic.classname).to_s.truncate(8), "/category/#{topic.classname}",:title => topic.classname, :target => '_blank'  %></td>
-        <td><%= link_to topic.title, "/p/#{topic.id}/pu/1", :target => '_blank' %></td>
+        <td><%= link_to topic.title, "/p/#{topic.id}", :target => '_blank' %></td>
         <td><%= topic.myshowtimes %>/<%= topic.mypostnum %> </td>
         <td><%= link_to topic.author,"/author/#{topic.author}", :target => '_blank'  %><br>
         <small><%= topic.myupdatetime.to_s(:db) %></small></td>
