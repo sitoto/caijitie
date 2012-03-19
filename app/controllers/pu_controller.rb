@@ -9,13 +9,13 @@ class PuController < ApplicationController
       @page_url = @page_urls.first
 
       unless @page_url.status.eql?(1)
+        @page_url.update_attributes!(:status => 1)
 
         t = TiebaTuoshuiJob.get_tieba_post(@topic, @page_url) if @topic.section_id == 1
         t = TianyabbsTuoshuiJob.get_tianyabbs_post(@topic, @page_url) if @topic.section_id == 2
         t = DoubanhuatiTuoshuiJob.get_doubanhuati_post(@topic, @page_url) if @topic.section_id == 3
 
-        @page_url.update_attributes!(:status => 1) if t == 1 #读取正确 状态为 1
-        @page_url.update_attributes!(:status => 9) if t == 0 #读取出错 状态 改为 9
+        @page_url.update_attributes!(:status => 0) if t == 0 #读取出错 状态 改为 9
       end
 
       @posts = @page_url.tieba_posts if @topic.section_id.eql?(1)
