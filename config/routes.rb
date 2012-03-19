@@ -54,6 +54,7 @@ Caijitie::Application.routes.draw do
   #topic =》 post-page(page_url)
   resources :p do
     put :renew, :on => :member
+    get ':page', :action => :show, :on => :member
      resources :pu do
       get ':page', :action => :index, :on => :collection
      end

@@ -11,7 +11,7 @@
 <span class="border"><%= link_to  "下载文件", download_path(@topic.id) ,  :target => '_blank'%></span>
   <%=	 link_to '阅读文章', p_pu_path(@topic.id, 1) , :class => 'border' %></p>
 
-<div style="background: white; clear: both;">
+<div class="clearfix" style="background: white; clear: both;">
   <ul style="list-style: none; margin:0; padding: 0;">
   <%	 @page_urls.each do |p| %>
 
@@ -32,9 +32,7 @@
   <%  end %>
   </ul>
 </div>
+<hr/>
+<%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
 <div class="clearfix"></div>
-
-
-<br />
-<%=	 link_to '阅读文章', p_pu_path(@topic.id, 1)%>
 </section>
