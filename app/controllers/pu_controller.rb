@@ -8,7 +8,7 @@ class PuController < ApplicationController
       return if @page_urls.blank?
       @page_url = @page_urls.first
 
-      if @page_url.status != 1 || @page_url.status != 2
+      if (@page_url.status != 1 && @page_url.status != 2)
         @page_url.update_attributes!(:status => 2)
 
         t = TiebaTuoshuiJob.get_tieba_post(@topic, @page_url) if @topic.section_id == 1
