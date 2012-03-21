@@ -1,4 +1,4 @@
-<%- title "乐哈网www.lehazi.com" -%>
+<%- title "天涯易读 只看楼主 豆瓣直播 贴吧脱水" -%>
 
 <header>
   <h1>帖子脱水工具</h1>
@@ -30,8 +30,14 @@
     <li>输入<em>百度贴吧</em>帖地址如：http://tieba.baidu.com/p/510079795</li>
     <li>输入<em>豆瓣话题</em>贴地址如：http://www.douban.com/group/topic/26090452/</li>
   </ul>
+  <h2><%= link_to '最近加入', recent_path %></h2>
+  <p><%- if @topics -%>脱水文章:</p>
+    <%	 @topics.each do |t| %>
+      <%=	 link_to t.title, p_path(t), :class => 'border' %>
+    <%	 end %>
+    <%- end -%>
 
-  <h2><%= link_to '站内博客', blog_url %></h2>
+  <h2><%= link_to '站内博客', blog_path %></h2>
   <p><%- if @recent_post -%>最新文章:</p>
   <article>
     <header>

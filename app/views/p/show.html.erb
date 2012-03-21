@@ -1,4 +1,4 @@
-<% title "#{@topic.title} by #{@topic.author}." %>
+<% title "#{@topic.title} 目录, by #{@topic.author}." %>
 
 <section class="page-list">
 <h2 class="round2 back"><%=	 link_to  @topic.title, p_pu_path(@topic.id, 1)%></h2>
@@ -9,8 +9,11 @@
 <span class="border">文章类别：<%= link_to @topic.classname, category_path(@topic.classname),  :target => '_blank' %></span>
 <span class="border">共计<%=  @topic.mypostnum  %>回复/<%=  @topic.mypagenum  %>页</span>
 <span class="border"><%= link_to  "下载文件", download_path(@topic.id) ,  :target => '_blank'%></span>
-  <%=	 link_to '阅读文章', p_pu_path(@topic.id, 1) , :class => 'border' %></p>
+  <%= link_to '阅读文章', p_pu_path(@topic.id, 1) , :class => 'border' %></p>
 
+<hgroup>
+<%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
+</hgroup>
 <div class="clearfix" style="background: white; clear: both;">
   <ul class="cai">
   <%	 @page_urls.each do |p| %>
