@@ -23,7 +23,7 @@
       <tr>
         <td class="right small">
           <span class="border"><%= p.post_at.strftime "%Y-%m-%d %H:%M:%S" %></span>
-          <span class="border"><%= p.my_level %>楼</span>
+          <span class="border"><%= p.my_level %>楼(<%= p.level %>)</span>
       </tr>
       <tr>
         <td class="content round"><p><%= raw p.content  %></p></td>
