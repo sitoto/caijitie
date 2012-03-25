@@ -47,6 +47,8 @@ class TianyabbsTuoshuiJob
         content =  item.inner_html
         content = content.gsub(/\<span.+/, '')
         content = content.gsub(/\<div.+/, '')
+        content = content.gsub(/\<center.+/, '')
+        content = content.gsub(/\<h.+/, '')
         content_list[i] = content
       else
          content_list[i] = ''
