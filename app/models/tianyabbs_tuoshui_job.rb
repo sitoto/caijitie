@@ -34,7 +34,7 @@ class TianyabbsTuoshuiJob
     created_at = chk_datetime created_at
     auth_time[0] = [author, created_at]
     tip = 1
-    doc.css(".allpost table").each do |item|
+    doc.css(".allpost > table").each do |item|
 			author = item.at_css("center a").text
 			time = chk_datetime item.at_css("center").text
 			auth_time[tip] = [author, time]
