@@ -19,9 +19,9 @@
 <section class="home">
 <h2>天涯社区/百度贴吧/豆瓣话题/站内搜索</h2>
 <div id="fm">
-  <form action="<%= search_path %>"  method = "get">
+  <form action="<%= search_path %>"  method = "get"   target = "_blank">
   <%= text_field_tag(:q , 'http://tieba.baidu.com/p/510079795')  %>
-  <%= submit_tag("脱水一下", :class => "su", :target => '_blank') %>
+  <%= submit_tag("脱水一下", :class => "su") %>
   </form>
 </div>
 
