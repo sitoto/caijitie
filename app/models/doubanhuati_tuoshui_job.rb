@@ -70,6 +70,11 @@ class DoubanhuatiTuoshuiJob
 
   def self.get_doubanhuati_topic(doc, i = 0) # 0表示多页
     title = doc.at_css("title").text
+
+    if doc.at_css("div.topic-doc > table.infobox .tablecc")
+      title =  doc.at_css("div.topic-doc > table.infobox .tablecc").text.from(3)
+    end
+
     category = doc.at_css("div.aside > p > a").text.from(1)
     lz = doc.at_css("div.topic-doc > h3 > span.pl20 > a").text
     created_at = doc.at_css("div.topic-doc > h3 > span.color-green").text
