@@ -8,7 +8,6 @@
                 :keywords => %w(乐哈网 乐哈子 小说 脱水吧 脱水版 百度贴吧 只看楼主 天涯易读 豆瓣小组 豆瓣脱水 无水 no-water 豆瓣直播 豆贴 ) %>
   <%= render "layouts/stylesheets" %>
   <%= yield(:head) -%>
-  <%= google_analytics  %>
 </head>
 <body>
 
@@ -16,6 +15,12 @@
   <%= yield :layout%>
   <%= yield :post_content %>
   <%= debug(params) if Rails.env.development? %>
-
+  <%= google_analytics  %>
+ <% if Rails.env.production? %>
+  <script type="text/javascript">
+  var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+  document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0f284046f8572093596ffc02be08fc65' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+<%	end %>
 </body>
 </html>
