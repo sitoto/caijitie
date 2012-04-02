@@ -6,9 +6,9 @@ class FunsController < ApplicationController
 
     #for seo
     breadcrumb :fun_list, '笑话'
-    meta :title => '笑话幽默' ,
-         :description => "站内笑话，乐哈子" ,
-         :keywords => '笑话'
+    meta :title => '短文笑话' ,
+         :description => "站内笑话，短文，名言，古文，乐哈子" ,
+         :keywords => '笑话，短文，名言，古文，乐哈子'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,6 +20,7 @@ class FunsController < ApplicationController
   # GET /funs/1.json
   def show
     @fun = Fun.find(params[:id])
+
     breadcrumb :fun_detail, @fun
     meta :title =>  @fun.title ,
          :description => @fun.body.truncate(100),
