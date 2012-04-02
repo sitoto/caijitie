@@ -1,12 +1,37 @@
 <%- title @fun.title -%>
-
 <h2>
   <%= @fun.title %>
 </h2>
-
 <p>
   <%= raw  RedCloth.new(@fun.body).to_html %>
 </p>
+<hgroup>
+  <span class="border">
+    上一篇：<%	 if @fun_p %>
+        <%= link_to @fun_p.title , fun_path(@fun_p.id) %>
+        <%	 else %>
+        没有了
+        <%	 end %>
+  </span>
+  </hgroup>
+<hgroup>
+  <span>
+        下一篇：<%	 if @fun_n %>
+        <%= link_to @fun_n.title , fun_path(@fun_n.id) %>
+        <%	 else %>
+        没有了
+        <%	 end %>
+  </span>
+</hgroup>
+<fieldset class="random round">
+<legend>推荐短文</legend>
+<ul>
+<% @relation_funs.each do |fun| %>
+<li>
+    <%= link_to fun.title, fun ,:target => '_blank', :title => fun.title %>
+</li>
+<%	 end %>
+</ul>
+</fieldset>
 
-
-<%= link_to '返回', funs_path %>
+<%= link_to '返回列表', funs_path %>

@@ -22,7 +22,7 @@ Gretel::Crumbs.layout do
     link  f, ''
   end
   crumb :fun_list do
-    link  '笑话', funs_path
+    link  '短文', funs_path
   end
   crumb :fun_detail do |f|
     link f.title, fun_path(f)
