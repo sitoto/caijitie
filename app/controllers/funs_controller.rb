@@ -38,6 +38,7 @@ class FunsController < ApplicationController
       format.json { render json: @fun }
     end
   end
+
   def get_random_numbers  count,max
    (1..count).to_a.sample(max)
   end
