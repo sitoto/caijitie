@@ -31,7 +31,7 @@ input {
 a {
   color: $link-color;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
+  border-bottom: 0px solid transparent;
 
   
   &:hover {
@@ -158,6 +158,18 @@ h4 {
 }
 label {
   font-weight: bold;
+}
+
+ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+
+    li{
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
 }
 // Content
 body > header, body > section, body > footer {
@@ -306,5 +318,79 @@ ul.cai{
       float: left;
       background: #ddd;
       text-align: center;
+    }
+}
+
+#nav{
+    width: 950px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background: #007AC4 url(/assets/bg-navi.png) 0 0 no-repeat;
+    clear: both;
+
+    ul{
+        display: block;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li{
+            margin: 0;
+            float: left;
+            background: url(/assets/nav_li.gif) right no-repeat;
+            padding: 0 5px;
+            position: relative;
+
+            a{
+                margin: 0;
+                padding: 0;
+                display: block;
+                height: 30px;
+                line-height: 30px;
+                width: 77px;
+                text-align: center;
+                color: white;
+                text-decoration: none;
+
+                &:hover {
+                    border-bottom: 0px solid;
+                }
+            }
+        }
+    }
+
+    .current-menu-item a, .current-menu-parent a {
+        font-weight: 700;
+        color: #017DC8;
+        background: white url(/assets/nav_hover.png) no-repeat;
+
+        &:hover {
+            border-bottom: 0px solid;
+        }
+     }
+
+}
+
+#search{
+    margin-top: 0px;
+    float: right;
+    padding-right:10px;
+
+    .su{
+        float: left;
+        width: 78px;
+        height: 34px;
+        border: none;
+        background: white url(/assets/bg-search-submit.png) 0 0 no-repeat;
+        cursor: pointer;
+    }
+    .q{
+        float: left;
+        width: 260px;
+        height: 26px;
+        padding: 8px 10px 0 7px;
+        border: none;
+        background: white url(/assets/bg-search-text.png) 0 0 no-repeat;
+
     }
 }

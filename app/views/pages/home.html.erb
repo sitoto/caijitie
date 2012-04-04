@@ -1,57 +1,82 @@
 <%- title "只看楼主" -%>
 
 <header>
-  <h1>帖子脱水工具</h1>
-  <p>
-   <%= link_to '本站', root_url %>主要为方便阅读
-    <%= link_to '天涯社区', tysq_path, :class => 'nav', :title => '天涯社区脱水版', :target => '_blank' %>
-    <%= link_to '百度贴吧', tb_path, :class => 'nav', :title => '百度贴吧脱水版', :target => '_blank' %>
-    <%= link_to '豆瓣话题', dbht_path, :class => 'nav', :title => '豆瓣话题脱水版', :target => '_blank' %>，本站内容归发帖人和原站所有，你也可以查看站内
-    <%= link_to '笑话', funs_path, :class => 'nav',:target => '_blank' -%> 和 <%= link_to '博客', blog_path, :class => 'nav',:target => '_blank' -%>。
-  </p>
-  <p>
-    <%= link_to (image_tag 'baidutieba.gif',:alt=>"百度贴吧", :class => "round", :width => 89, :height => 30), tb_path, :class => 'nav', :title => '进入百度贴吧脱水版', :target => '_blank' %>
-    <%= link_to (image_tag 'tianyabbs.gif',:alt=>"天涯社区", :class => "round", :width => 72, :height => 30), tysq_path, :class => 'nav', :title => '进入天涯社区脱水版', :target => '_blank' %>
-    <%= link_to (image_tag 'douban.png',:alt=>"豆瓣话题", :class => "round", :width => 121, :height => 30), dbht_path, :class => 'nav', :title => '进入豆瓣话题脱水版', :target => '_blank' %>
-  </p>
+
+  <div id="search">
+      <form action="<%= search_path %>"  method = "get"   target = "_blank">
+      <%= text_field_tag(:q , '', :class => "q")  %>
+      <%= submit_tag("", :class => "su") %>
+      </form>
+  </div>
+<h1><%=	 link_to 'Lehazi.com', root_path %></h1>
 </header>
 
-<section class="home">
-<h2>天涯社区/百度贴吧/豆瓣话题/站内搜索</h2>
-<div id="fm">
-  <form action="<%= search_path %>"  method = "get"   target = "_blank">
-  <%= text_field_tag(:q , 'http://tieba.baidu.com/p/510079795')  %>
-  <%= submit_tag("脱水一下", :class => "su") %>
-  </form>
-</div>
-
-  <ul class="sm">
-    <li>输入<em>天涯社区</em>贴地址如：http://www.tianya.cn/publicforum/content/free/1/2089720.shtml</li>
-    <li>输入<em>百度贴吧</em>帖地址如：http://tieba.baidu.com/p/510079795</li>
-    <li>输入<em>豆瓣话题</em>贴地址如：http://www.douban.com/group/topic/26090452/</li>
-  </ul>
-  <h2><%= link_to '最近加入', recent_path %></h2>
-  <p><%- if @topics -%>脱水文章:</p>
-    <%	 @topics.each do |t| %>
-      <%=	 link_to t.title, p_path(t), :class => 'border' %>
-    <%	 end %>
+<section class="home clearfix">
+  <div id="nav">
+      <div>
+        <ul>
+          <li id="menu-item-11" class="menu-item current-menu-item">
+            <a title="乐哈网" href="http://www.lehazi.com">首页</a></li>
+          <li id="menu-item-12" class="menu-item "><a title="乐哈网" href="http://www.lehazi.com/recent">最新</a></li>
+          <li id="menu-item-13" class="menu-item "><a title="热门列表" href="http://www.lehazi.com/hot">热门</a></li>
+          <li id="menu-item-14" class="menu-item "><a title="分类列表" href="http://www.lehazi.com/class">分类</a></li>
+        </ul>
+      </div>
+    </div>
+  <div id="left">
+    <h4><%= link_to '最近加入', recent_path %></h4>
+    <%- if @topics -%>
+        <ul>
+          <% @topics.each do |t| %>
+            <li><%=	 link_to t.title, p_pu_path(t, 1), :class => 'border blue' %>
+              [<%= link_to  t.classname, category_path(t.classname)  %>]</li>
+          <%  end %>
+        </ul>
     <%- end -%>
+  </div>
 
-  <h2><%= link_to '站内博客', blog_path %></h2>
-  <p><%- if @recent_post -%>最新文章:</p>
-  <article>
-    <header>
-      <h3><%= link_to @recent_post.title, @recent_post, :target => '_blank' %></h3>
-      <p> <time datetime="<%= @recent_post.published_at.as_json %>"><%= post_published_time_in_words @recent_post %></time><%= post_tags_html(@recent_post) %></p>
-    </header>
-    <%= raw RedCloth.new(post_excerpt(@recent_post)).to_html %>
-    <p class="more"><%= link_to '更多文章 &raquo;'.html_safe, blog_url, :target => '_blank' %></p>
-  </article>
-  <%- else -%><p></p><%- end -%>
+<div id="right">
+  <div class="area">
+     <h4><%= link_to '站内博客', blog_path %></h4>
+      <%- if @recent_posts -%>
+      <ul>
+        <% @recent_posts.each do |t| %>
+        <li>
+          <%= link_to t.title, t, :target => '_blank', :class => "blue" %>
+        </li>
+        <%  end %>
+        <p class="more"><%= link_to '更多文章 &raquo;'.html_safe, blog_url, :target => '_blank' %></p>
+      </ul>
+      <%- else -%><p></p><%- end -%>
+  </div>
+  <div class="area">
+     <h4><%= link_to '轻松一刻', blog_path %></h4>
+      <%- if @funs -%>
+      <ul>
+        <% @funs.each do |t| %>
+        <li>
+          <%= link_to t.title, t, :target => '_blank', :class => "blue" %>
+        </li>
+        <%  end %>
+        <p class="more"><%= link_to '更多文章 &raquo;'.html_safe, funs_url, :target => '_blank' %></p>
+      </ul>
+      <%- else -%><p></p><%- end -%>
+
+  </div>
+  <div class="area">
+
+  </div>
+  </div>
+
 
 </section>
 
 <footer>
+    <p class="link">
+    <%= link_to (image_tag 'baidutieba.gif',:alt=>"百度贴吧", :class => "round", :width => 89, :height => 30), tb_path, :class => 'nav', :title => '进入百度贴吧脱水版', :target => '_blank' %>
+    <%= link_to (image_tag 'tianyabbs.gif',:alt=>"天涯社区", :class => "round", :width => 72, :height => 30), tysq_path, :class => 'nav', :title => '进入天涯社区脱水版', :target => '_blank' %>
+    <%= link_to (image_tag 'douban.png',:alt=>"豆瓣话题", :class => "round", :width => 121, :height => 30), dbht_path, :class => 'nav', :title => '进入豆瓣话题脱水版', :target => '_blank' %>
+  </p>
   <p class="link">友情链接：
     <%	 @links.each do |f| %>
       <%= link_to f.name, f.url, :target => '_blank', :class => 'border' %>
