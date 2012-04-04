@@ -1,7 +1,6 @@
 require 'not_preferred_host'
 Caijitie::Application.routes.draw do
 
-
   # Rewrite non-preferred hosts in production
   constraints(NotPreferredHost) do
     match '/:path' => redirect { |params| "http://#{NotPreferredHost::PREFERRED_HOST}/#{params[:path]}" }
@@ -19,6 +18,7 @@ Caijitie::Application.routes.draw do
   resources :tags, :only => [:index, :show]
 
   match '/hot' => 'hot#index', :as => 'hot'
+  match '/class' => 'class#index', :as => 'class'
 
   # Static pages
   match '/about' => 'pages#about', :as => 'about'
