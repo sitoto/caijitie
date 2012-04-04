@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ClassController < ApplicationController
   def index
     breadcrumb :list, '分类'
