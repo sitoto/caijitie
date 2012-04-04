@@ -24,7 +24,7 @@
       </div>
     </div>
   <div id="left">
-    <h4><%= link_to '最近加入', recent_path %></h4>
+    <h4><%= link_to '最近脱水', recent_path %></h4>
     <%- if @topics -%>
         <ul>
           <% @topics.each do |t| %>
@@ -37,7 +37,7 @@
 
 <div id="right">
   <div class="area">
-     <h4><%= link_to '站内博客', blog_path %></h4>
+     <h4><%= link_to '站内文章', blog_path %></h4>
       <%- if @recent_posts -%>
       <ul>
         <% @recent_posts.each do |t| %>
