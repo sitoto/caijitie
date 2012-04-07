@@ -1,0 +1,61 @@
+// Post
+section .class-list {
+  margin-bottom: 6em;
+  
+  header {
+    p {
+      color: #949494;
+      font-size: 0.9em;
+      margin-bottom: 0.25em;
+      
+      a {
+        color: #006699;
+        border: 0;
+      }
+    }
+  }
+  div.neirong{
+    font-size:100%;
+    line-heigt: 26px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    background-image: url(/assets/leftbg2.gif);
+    background-repeat: repeat-x;
+    height: 26px;
+    text-indent: 10px;
+    border: 1px solid #659C31;
+
+    margin-right: 10px;
+  }
+
+  ul, ol {
+      display:block;
+
+    margin: 0 0 2em 0.5em;
+    list-style: none;
+    li {
+      margin-left: 1em;
+      margin-bottom: 0.6em;
+
+      a{
+        color: #222;
+        font-weight: bold;
+
+        &:hover{
+            color: red;
+        }
+      }
+    }
+  }
+  
+  ul li {
+    list-style: disc;
+    float: left;
+    list-style: none;
+    width: 220px;
+  }
+
+
+}
+

@@ -1,1 +1,27 @@
-正在整理中......
+<%- title "分类" -%>
+
+<section class="class-list">
+  <div class="clearfix">
+<div class="neirong round2">分类 (<%= @classes.length %>)</div>
+<ul>
+<% @classes.each do |c| %>
+   <li>
+    <%=  link_to  truncate(c.classname, :length => 12) , category_path(c.classname), :target => '_blank' %>
+     <span class="gray"><%= c.count %></span>
+  </li>
+<% end %>
+</ul>
+  </div>
+
+ <div class="clearfix">
+<div class="neirong round2">作者(<%= @authores.length %>)</div>
+<ul>
+<% @authores.each do |c| %>
+   <li>
+    <%=  link_to c.author.truncate(10) , author_path(c.author), :target => '_blank' %>
+  </li>
+<% end %>
+</ul>
+ </div>
+
+</section>
