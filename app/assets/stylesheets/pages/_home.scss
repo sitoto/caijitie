@@ -19,7 +19,7 @@ section.home {
   #left{
     float: left;
     width: 620px;
-    padding-right: 40px;
+    padding-right: 30px;
 
     li{
         padding: 0.8em;
@@ -30,7 +30,7 @@ section.home {
   }
   #right{
     float:right;
-    width: 280px;
+    width: 300px;
     ul{
        padding: 5px 10px 10px 10px;
         li{
@@ -39,8 +39,6 @@ section.home {
             border-bottom: 1px dashed #BBDAF7;
         }
     }
-
-
   }
 
   div#fm {
