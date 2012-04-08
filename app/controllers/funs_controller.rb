@@ -31,7 +31,7 @@ class FunsController < ApplicationController
     @relation_funs = Fun.find(arr, :select => "id, title")
     breadcrumb :fun_detail, @fun
     meta :title =>  @fun.title ,
-         :description => @fun.body.truncate(100),
+         :description => ActionController::Base.helpers.strip_tags(@fun.body).truncate(80),
          :keywords => @fun.title
     respond_to do |format|
       format.html # show.html.erb

@@ -26,4 +26,15 @@ module GetTiebaPageUrl
     end
     myurl
   end
+
+  def get_tianya_techfroum_page_url(url, p)
+  regEx_tianya_1 = /tianya\.cn\/\w*\/\w*\/\w*\//
+  regEx_filename = /\/[0-9]+\.shtml/
+  filename = regEx_filename.match(url).to_s
+
+    if regEx_tianya_1  =~ url
+      myurl = ("http://www." << regEx_tianya_1.match(url).to_s) << "#{p}" << filename
+    end
+    myurl
+  end
 end

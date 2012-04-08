@@ -34,13 +34,16 @@ class PController < ApplicationController
   def renew
     current_topic = params[:id]
     @topic = Topic.find_by_id(current_topic)
-    if (@topic.section_id.eql?(1))
+    if (@topic.rule.eql?(1))
       t = TiebaTuoshuiJob.update_topic(@topic)
       update_topic(t)
-    elsif (@topic.section_id.eql?(2))
+    elsif (@topic.rule.eql?(2))
       t, page_urls = TianyabbsTuoshuiJob.update_topic(@topic)
       update_tianyabbs_topic(t, page_urls)
-    elsif (@topic.section_id.eql?(3))
+    elsif (@topic.rule.eql?(4))
+      t, page_urls = TianyabbsTechforumJob.update_topic(@topic)
+      update_tianyabbs_techfroum_topic(t)
+    elsif (@topic.rule.eql?(3))
       #douban
       t = DoubanhuatiTuoshuiJob.update_topic(@topic)
       update_douban_topic(t)
@@ -49,8 +52,8 @@ class PController < ApplicationController
 
     redirect_to p_pu_path(@topic, 1), :notice => "已提交更新。"
 
-  rescue
-    redirect_to root_path :notice => "error"
+ # rescue
+  #  redirect_to root_path :notice => "error"
   end
 
 
@@ -111,5 +114,20 @@ class PController < ApplicationController
         end
      end
   end
-
+  def update_tianyabbs_techfroum_topic(t)
+    unless t.blank?
+       t[:fromurl] = @url
+        @topic.update_attributes(t)
+        if @topic.save
+           max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
+           max = 1 if max == 0
+           max.upto(@topic.mypagenum)  do |a|
+            PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_techfroum_page_url(@topic.fromurl, a),
+                               :status => 0, :count => 1)
+          end
+        end
+        redirect_to p_path(@topic)
+        return
+     end
+  end
 end

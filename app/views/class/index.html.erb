@@ -6,7 +6,7 @@
 <ul>
 <% @classes.each do |c| %>
    <li>
-    <%=  link_to  truncate(c.classname, :length => 12) , category_path(c.classname), :target => '_blank' %>
+    <%=  link_to  truncate(c.classname, :length => 12, :omission => '..') , category_path(c.classname), :target => '_blank' %>
      <span class="gray"><%= c.count %></span>
   </li>
 <% end %>
@@ -18,7 +18,7 @@
 <ul>
 <% @authores.each do |c| %>
    <li>
-    <%=  link_to c.author.truncate(10) , author_path(c.author), :target => '_blank' %>
+    <%=  link_to truncate(c.author, :length => 12, :omission => '..') , author_path(c.author), :target => '_blank' %>
   </li>
 <% end %>
 </ul>

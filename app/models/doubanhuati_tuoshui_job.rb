@@ -92,7 +92,7 @@ class DoubanhuatiTuoshuiJob
     t = {:title => title, :classname => category, :author => lz,
                   :firsttime => created_at,  :myupdatetime => Time.now,
                   :mypagenum => all_page_num, :mypostnum => all_post_num,
-                  :tags => title ,  :section_id => 3}
+                  :tags => title ,  :section_id => 3,  :rule => 3}
 
   end
 end

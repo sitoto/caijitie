@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120319072251) do
+ActiveRecord::Schema.define(:version => 20120408095129) do
 
   create_table "douban_posts", :force => true do |t|
     t.integer  "page_url_id"
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(:version => 20120319072251) do
   add_index "douban_posts", ["page_url_id"], :name => "index_douban_posts_on_page_url_id"
 
   create_table "funs", :force => true do |t|
-    t.string   "title",       :default => "笑话", :null => false
-    t.text     "body",                          :null => false
-    t.integer  "click_time",  :default => 1008, :null => false
+    t.string   "title",      :default => "笑话", :null => false
+    t.text     "body",                         :null => false
+    t.integer  "click_time", :default => 1008, :null => false
     t.string   "from_url"
-    t.integer  "category_id", :default => 0,    :null => false
-    t.integer  "user_id",     :default => 0,    :null => false
+    t.integer  "type_id",    :default => 0,    :null => false
+    t.integer  "user_id",    :default => 0,    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20120319072251) do
     t.string   "name",       :default => "lehazi"
     t.string   "url",        :default => "http://www.lehazi.com/"
     t.string   "picurl"
-    t.integer  "order",      :default => 99
+    t.integer  "paixu",      :default => 99
     t.integer  "status",     :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -91,6 +91,10 @@ ActiveRecord::Schema.define(:version => 20120319072251) do
 
   add_index "tags", ["name"], :name => "tags_name_index", :unique => true
 
+  create_table "temp", :primary_key => "mid", :force => true do |t|
+    t.integer "maxid"
+  end
+
   create_table "tianya_posts", :force => true do |t|
     t.integer  "page_url_id"
     t.text     "content"
@@ -132,6 +136,7 @@ ActiveRecord::Schema.define(:version => 20120319072251) do
     t.integer  "status",       :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rule"
   end
 
   add_index "topics", ["author"], :name => "index_topics_on_author", :length => {"author"=>191}

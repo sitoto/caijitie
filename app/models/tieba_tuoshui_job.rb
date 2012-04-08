@@ -93,7 +93,7 @@ class TiebaTuoshuiJob
     t = {:title => title, :classname => category, :author => lz,
                   :firsttime => created_at,  :myupdatetime => Time.now,
                   :mypagenum => all_page_num, :mypostnum => all_post_num,
-                  :tags => title , :section_id => 1}
+                  :tags => title , :section_id => 1 , :rule => 1}
   end
 
 

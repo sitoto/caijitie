@@ -1,7 +1,7 @@
 #encoding: UTF-8
 require 'nokogiri'
 require 'open-uri'
-class TianyabbsTuoshuiJob
+class TianyabbsTechforumJob
   def self.cai_tianyabbs_topic(url)
     #判断是否可以访问该网址
     begin
@@ -27,59 +27,50 @@ class TianyabbsTuoshuiJob
     doc = Nokogiri::HTML(html_stream)
     t =  filter_tianyabbs_post(doc, topic.author,page_url.id, topic.status)
   end
-  def self.filter_tianyabbs_post(doc, lz, url_id, s = 0)  #作者信息和内容信息 分开读取
-    auth_time = {} # all auth info  作者信息
-    author = doc.at_css(".pagewrap table td a").text
-      created_at = doc.at_css(".pagewrap table td").text.last(19)
-    created_at = chk_datetime created_at
-    auth_time[0] = [author, created_at]
-    tip = 1
-    doc.css(".allpost > table").each do |item|
-			author = item.at_css("center a").text
-			time = chk_datetime item.at_css("center").text
-			auth_time[tip] = [author, time]
-      tip += 1
-    end
+  def self.filter_tianyabbs_post(doc, lz, url_id, s = 0)
+
     i = 0
-    content_list = {} # 全部内容页   内容信息
-    doc.css(".allpost .post").each do |item|
-      if !item.blank?
-        content =  item.inner_html
+    j = 0
+    doc.css("div#pContentDiv > div.item").each do |item|
+
+			author = item.at_css("div.vcard a").text
+      level = item.at_css("div.vcard span.floor").text
+			created_at = chk_datetime item.at_css("div.vcard").text.last(19)
+      if item.at_css("div.post")
+        content =  item.at_css("div.post").inner_html
         content = content.gsub(/\<span.+/, '')
         content = content.gsub(/\<div.+/, '')
         content = content.gsub(/\<center.+/, '')
         content = content.gsub(/\<h.+/, '')
-        content_list[i] = content
+        content = content.gsub(/\<p.+/, '')
       else
-         content_list[i] = ''
+         content = ''
       end
-      i += 1
-    end
-    #整理数据
-    j = 0
-    content_list.each_with_index do |i, value|
+
       if  s == 0
-        if auth_time[value][0].eql?(lz)
-          TianyaPost.create!(:content => i[1], :post_at => auth_time[value][1], :level => value + 1,
-                           :page_url_id => url_id, :my_level => j+1 ,:author => lz)
-
-          j += 1
-        end
-      else
-        TianyaPost.create!(:content => i[1], :post_at => auth_time[value][1], :level => value + 1,
-                           :page_url_id => url_id, :my_level => value + 1 ,:author => lz)
+         if author == lz
+           i += 1
+           TianyaPost.create!(:page_url_id => url_id, :content => content, :post_at => created_at,
+                        :level  => level, :my_level => i ,:author => lz)
+         end
+      elsif s == 1
+        j += 1
+        TianyaPost.create!(:page_url_id => url_id, :content => content, :post_at => created_at,
+                        :level  => level, :my_level => j ,:author => lz)
       end
+    end # end -do each
+    return  i
 
-    end
-    return j
-  rescue
-    return -1
+   # rescue
+   #   return -1
+
   end
+
   def self.is_pagnation(doc)
-    if doc.at_css("#pageDivTop em").blank?
-      return false
-    else
+    if !doc.at_css("#pageDivTop em").blank? || !doc.at_css("#cttPageDiv em").blank?
       return true
+    else
+      return false
     end
   end
 
@@ -92,25 +83,38 @@ class TianyabbsTuoshuiJob
     else
       #多页
       t = ty_topic_muli_page(url, doc)
-      page_urls = doc.css("#pageDivTop input")[2].attr("value")
-      page_urls = page_urls.split(',')
+      page_urls = [url]
     end
     [t, page_urls]
   end
 
   def self.get_topic_from_first_page(url, doc, page_num = 1 )
-    title = doc.at_css("h1 span a").parent.text.from(7)
+    title = doc.at_css("h1 span a").parent.text.from(6)
     category = doc.at_css("h1 span a").text
-    lz = doc.at_css(".pagewrap table td a").text
-    str_created_at = doc.at_css(".pagewrap table td").text.last(19)
-		created_at = chk_datetime str_created_at
+
+    if doc.at_css(".pagewrap table td a")
+      lz = doc.at_css(".pagewrap table td a").text
+      str_created_at = doc.at_css(".pagewrap table td").text.last(19)
       str_post_info = doc.at_css(".pagewrap .function .info").text
+    elsif doc.at_css("div#pContentDiv > div.item > div.vcard > a")
+      lz = doc.at_css("div#pContentDiv > div.item > div.vcard > a").text
+      str_created_at = doc.at_css("div#pContentDiv > div.item > div.vcard").text.last(19)
+      str_post_info = doc.at_css("div#content-container .post-bar .info").text
+    end
+
+
+		created_at = chk_datetime str_created_at
     all_post_num = str_post_info.split('：')[2]
     fromurl = url
     all_page_num =  1
     #获取总页数
     if(page_num != 1)
-      str_page_info = doc.at_css("#pageDivTop span").text
+      if doc.at_css("#pageDivTop span")
+        str_page_info = doc.at_css("#pageDivTop span").text
+      elsif doc.at_css("div#cttPageDiv")
+        str_page_info = doc.at_css("div#cttPageDiv span").text
+      end
+
       regEx_num = /\d+/
       if regEx_num  =~ str_page_info
         all_page_num = regEx_num.match(str_page_info).to_s
@@ -121,14 +125,14 @@ class TianyabbsTuoshuiJob
     t = {:title => title, :classname => category, :author => lz,
                   :firsttime => created_at,  :myupdatetime => Time.now,
                   :mypagenum => all_page_num, :mypostnum => all_post_num,
-                  :tags => title , :fromurl => fromurl, :section_id => 2, :rule => 2}
+                  :tags => title , :fromurl => fromurl, :section_id => 2, :rule => 4}
   end
 
   def self.ty_topic_muli_page(url, doc)
-    cpn = doc.at_css("#pageDivTop em").content
+    cpn = doc.at_css("#cttPageDiv em").content
     #非第一页-> 获取第一页 url 和 doc
     unless cpn.eql?('1')
-      url = doc.at_css("#pageDivTop a").attr("href")
+      url = doc.at_css("#cttPageDiv a").attr("href")
       html_stream = get_html_stream(url)
       if html_stream.blank?
         return
