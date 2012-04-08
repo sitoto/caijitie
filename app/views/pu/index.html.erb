@@ -67,6 +67,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </hgroup>
 <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
 </section>
+<% if @topic.section_id == 1 %>
 <script type="text/javascript">
   //破防盗链js
 function ImgRebuild() {
@@ -84,3 +85,20 @@ function ImgRebuild() {
 }
 ImgRebuild();
 </script>
+<% elsif  @topic.section_id == 2 %>
+<script type="text/javascript">
+  //天涯 -
+function ImgRebuild() {
+	$(".content p img").each(function(i){
+        if ($(this).attr("original") != "")
+        {
+            this.src = $(this).attr("original");
+            $(this).removeAttr("height");
+        }
+
+	});
+	return '';
+}
+ImgRebuild();
+</script>
+<%	 end %>
