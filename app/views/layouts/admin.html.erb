@@ -3,6 +3,8 @@
   <h1>后台管理平台</h1>
   <nav>
     <%=	 link_to '日志', admin_posts_path , :class => 'border'%>
+    <%=	 link_to '主题', admin_topics_path , :class => 'border'%>
+    <%=	 link_to '天涯分类首页', '/admin/topic_list/tianya' , :class => 'border'%>
 
     <%=	 link_to '返回网站首页', root_path , :target => '_blank' %>
   </nav>

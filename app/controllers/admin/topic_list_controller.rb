@@ -2,6 +2,7 @@
 require 'nokogiri'
 require 'open-uri'
 class Admin::TopicListController < ApplicationController
+  layout "admin"
   def index
   end
 

@@ -1,5 +1,6 @@
 class Admin::TopicsController < ApplicationController
 
+  layout "admin"
   def index
     @topics = Topic.find(:all, :limit => 50)
   end

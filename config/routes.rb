@@ -77,14 +77,14 @@ Caijitie::Application.routes.draw do
 
   # Admin
   namespace :admin do
-    root :to => 'admin#index'
+    root :to => 'posts#index'
     resources :posts, :only => [:show, :new, :create, :update, :edit, :destroy, :index]
     resources :tags, :only => [:new, :create, :update, :edit, :destroy, :index]
     resources :topics
-      get "topic_list/index"
-  get "topic_list/tieba"
-  get "topic_list/tianya"
-  get "topic_list/douban"
+    get "topic_list/index"
+    get "topic_list/tieba"
+    get "topic_list/tianya"
+    get "topic_list/douban"
   end
 
   match 'sitemap.xml' => 'sitemaps#sitemap'

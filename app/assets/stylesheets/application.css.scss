@@ -398,8 +398,14 @@ ul.cai{
 
 table.tianyapage{
     width: 100%;
-    background: #EEEEEE;
+    background: #EEEFFF;
     color: #222;
+    border: 1px #ddd solid;
+td {
+background: #F5FAFA;
+color: #444;
+}
+
 
     a:visited {
     font-family: "宋体";

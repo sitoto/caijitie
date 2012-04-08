@@ -20,11 +20,11 @@
 
 <%	 @tianya.each_with_index do |t, i|  %>
     <tr>
-      <td><%= i %></td>
-      <td><%= t[0] %></td>
+      <td rowspan="2"><%= i %></td>
+      <th><%= t[0] %></th>
       <td><%= t[1] %></td>
       <td><%= t[2] %></td>
-      <td><%= t[3] %></td>
+      <th><%= t[3] %></th>
       <td><%= t[4] %></td>
     </tr>
     <tr>
