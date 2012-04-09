@@ -1,7 +1,7 @@
 <h1><%=	 @tianya_title %>  第一页帖子列表</h1>
 
 <hgroup>
-  <% 50.times do |i|	  %>
+  <% 100.times do |i|	  %>
   <a href="/admin/topic_list/tianya?id=<%= i %>"><%= i %></a>-
   <%	 end %>
 </hgroup>
@@ -17,7 +17,7 @@
       <th>时间</th>
     </tr>
 
-  <%- if @tianya && @tianya.length > 0 -%>
+<%- if @tianya && @tianya.length > 0 -%>
 <%	 @tianya.each_with_index do |t, i|  %>
     <tr>
       <td rowspan="2"><%= i %></td>
@@ -38,7 +38,7 @@
       </td>
     </tr>
 <%	 end %>
-      <% end %>
+<% end %>
   </tbody>
 
 </table>
