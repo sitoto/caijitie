@@ -14,7 +14,19 @@
 <section class="cai-post-list round">
 
 <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
-<hgroup>
+  <table>
+  <tbody>
+   <% if !@posts.blank? %>
+      <% @posts.each do |p| %>
+      <tr>
+        <td class="right small">
+          <span class="border"><%= p.post_at.strftime("%Y-%m-%d %H:%M:%S") if p.post_at %></span>
+          <span class="border"><%= p.my_level %>楼(<%= p.level %>)</span>
+      </tr>
+      <tr>
+        <td class="content round">
+          <p><%= raw p.content  %></p>
+          <% if p.my_level == 1 %>
 <script type="text/javascript"><!--
 google_ad_client = "ca-pub-0525832019389819";
 /* 长文字链接 */
@@ -26,20 +38,9 @@ google_ad_height = 15;
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
+          <% end %>
 
-</hgroup>
-
-  <table>
-  <tbody>
-   <% if !@posts.blank? %>
-      <% @posts.each do |p| %>
-      <tr>
-        <td class="right small">
-          <span class="border"><%= p.post_at.strftime("%Y-%m-%d %H:%M:%S") if p.post_at %></span>
-          <span class="border"><%= p.my_level %>楼(<%= p.level %>)</span>
-      </tr>
-      <tr>
-        <td class="content round"><p><%= raw p.content  %></p></td>
+        </td>
       </tr>
       <% end %>
   <% else %>
@@ -51,20 +52,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
   <% end %>
   </tbody>
 </table>
-<hgroup>
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0525832019389819";
-/* 长文字链接 */
-google_ad_slot = "8375564846";
-google_ad_width = 728;
-google_ad_height = 15;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
 
-</hgroup>
 <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
 </section>
 <% if @topic.section_id == 1 %>
