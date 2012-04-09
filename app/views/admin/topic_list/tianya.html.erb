@@ -17,7 +17,7 @@
       <th>时间</th>
     </tr>
 
-
+  <%- if @tianya && @tianya.length > 0 -%>
 <%	 @tianya.each_with_index do |t, i|  %>
     <tr>
       <td rowspan="2"><%= i %></td>
@@ -38,6 +38,7 @@
       </td>
     </tr>
 <%	 end %>
+      <% end %>
   </tbody>
 
 </table>

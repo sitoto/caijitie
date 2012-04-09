@@ -91,7 +91,8 @@ class Admin::TopicListController < ApplicationController
       end
 
    end
-
+  rescue
+    return ''
   end
 
 end

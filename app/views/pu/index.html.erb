@@ -35,7 +35,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
       <% @posts.each do |p| %>
       <tr>
         <td class="right small">
-          <span class="border"><%= p.post_at.strftime "%Y-%m-%d %H:%M:%S" %></span>
+          <span class="border"><%= p.post_at.strftime("%Y-%m-%d %H:%M:%S") if p.post_at %></span>
           <span class="border"><%= p.my_level %>楼(<%= p.level %>)</span>
       </tr>
       <tr>
