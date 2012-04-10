@@ -1,10 +1,4 @@
-<h1><%=	 @tianya_title %>  第一页</h1>
-
-<hgroup>
-  <% 100.times do |i|	  %>
-  <a href="/easy_cai/tianya?id=<%= i %>"><%= i %></a>-
-  <%	 end %>
-</hgroup>
+<h1><%=	 @bankuai_title %>  第一页</h1>
 
 <table class="tianyapage">
   <tbody >
@@ -17,8 +11,8 @@
       <th>时间</th>
     </tr>
 
-<%- if @tianya && @tianya.length > 0 -%>
-<%	 @tianya.each_with_index do |t, i|  %>
+<%- if @bankuai && @bankuai.length > 0 -%>
+<%	 @bankuai.each_with_index do |t, i|  %>
     <tr>
       <td rowspan="2"><%= i %></td>
       <th><%= t[0] %></th>

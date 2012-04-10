@@ -74,12 +74,12 @@ Caijitie::Application.routes.draw do
   match '/dbht' => 'dbht#index', :as => 'dbht'
   match '/recent' => 'recent#index', :as => 'recent'
   match '/active' => 'active#index', :as => 'active'
+  match '/easy' => 'easy_cai#index', :as => 'easy'
 
   #easy_cai
     get "easy_cai/index"
-    get "easy_cai/tieba"
-    get "easy_cai/tianya"
-    get "easy_cai/douban"
+    get "easy_cai/show"
+
   # Admin
   namespace :admin do
     root :to => 'posts#index'
