@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120408095129) do
+ActiveRecord::Schema.define(:version => 20120410022504) do
 
   create_table "douban_posts", :force => true do |t|
     t.integer  "page_url_id"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(:version => 20120408095129) do
   end
 
   add_index "douban_posts", ["page_url_id"], :name => "index_douban_posts_on_page_url_id"
+
+  create_table "easy_cais", :force => true do |t|
+    t.integer  "section_id"
+    t.integer  "rule_id"
+    t.string   "name"
+    t.string   "url_address"
+    t.integer  "paixu",       :default => 99
+    t.integer  "status",      :default => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "funs", :force => true do |t|
     t.string   "title",      :default => "笑话", :null => false

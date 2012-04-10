@@ -1,0 +1,44 @@
+<h1><%=	 @tianya_title %>  第一页</h1>
+
+<hgroup>
+  <% 100.times do |i|	  %>
+  <a href="/easy_cai/tianya?id=<%= i %>"><%= i %></a>-
+  <%	 end %>
+</hgroup>
+
+<table class="tianyapage">
+  <tbody >
+    <tr>
+      <th>序号</th>
+      <th>标题</th>
+      <th>作者</th>
+      <th>点击</th>
+      <th>回复</th>
+      <th>时间</th>
+    </tr>
+
+<%- if @tianya && @tianya.length > 0 -%>
+<%	 @tianya.each_with_index do |t, i|  %>
+    <tr>
+      <td rowspan="2"><%= i %></td>
+      <th><%= t[0] %></th>
+      <td><%= t[1] %></td>
+      <td><%= t[2] %></td>
+      <th><%= t[3] %></th>
+      <td><%= t[4] %></td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <%= t[5] %>
+      </td>
+      <td>
+        <% if t[3].size >= 3 && t[3].size <= 5 %>
+            <%=	 link_to '脱水',  {:controller => "/search", :action => "index", :q => t[5]},  :method => 'get', :target => "_blank" %>
+        <%	 end %>
+      </td>
+    </tr>
+<%	 end %>
+<% end %>
+  </tbody>
+
+</table>

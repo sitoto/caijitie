@@ -2,7 +2,7 @@ class Admin::TopicsController < ApplicationController
 
   layout "admin"
   def index
-    @topics = Topic.find(:all, :limit => 50)
+    @topics = Topic.order("id DESC").page(params[:page]).per(50)
   end
 
   def show

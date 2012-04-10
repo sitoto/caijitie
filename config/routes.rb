@@ -75,6 +75,11 @@ Caijitie::Application.routes.draw do
   match '/recent' => 'recent#index', :as => 'recent'
   match '/active' => 'active#index', :as => 'active'
 
+  #easy_cai
+    get "easy_cai/index"
+    get "easy_cai/tieba"
+    get "easy_cai/tianya"
+    get "easy_cai/douban"
   # Admin
   namespace :admin do
     root :to => 'posts#index'
