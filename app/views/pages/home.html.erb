@@ -52,20 +52,7 @@
       </ul>
       <%- else -%><p></p><%- end -%>
   </div>
-  <div class="area">
-     <h4><%= link_to '轻松一刻', blog_path %></h4>
-      <%- if @funs -%>
-      <ul>
-        <% @funs.each do |t| %>
-        <li>
-          <%= link_to t.title, t, :target => '_blank', :class => "blue" %>
-        </li>
-        <%  end %>
-        <p class="more"><%= link_to '更多文章 &raquo;'.html_safe, funs_url, :target => '_blank' %></p>
-      </ul>
-      <%- else -%><p></p><%- end -%>
 
-  </div>
   <div class="area">
    <script type="text/javascript"><!--
 google_ad_client = "ca-pub-0525832019389819";

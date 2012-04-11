@@ -24,6 +24,8 @@ class PuController < ApplicationController
       @posts = @page_url.tianya_posts if @topic.section_id.eql?(2)
       @posts = @page_url.douban_posts if @topic.section_id.eql?(3)
       @topic.increment!(:myshowtimes, by = 1)
+
+      @temp_topics = Topic.where("section_id = ?", @topic.section_id).order("id DESC").limit(10)
     end
 
     #for seo
@@ -33,5 +35,8 @@ class PuController < ApplicationController
     meta :title => @topic.title ,
          :description => "#{ @topic.title}_脱水版本,作者:#{ @topic.author},第#{params[:page]}页" ,
          :keywords => @topic.author
+
+    #@fun = Fun.
+
   end
 end

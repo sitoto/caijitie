@@ -55,6 +55,17 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
 </section>
+<div>
+  <h4>相关阅读</h4>
+  <% if @temp_topics && @temp_topics.length > 0 %>
+    <ul>
+    <% @temp_topics.each do |t| %>
+        <li><%= link_to t.title, "/p/#{t.id}", :target => '_blank', :class => "blue" %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+</div>
 <% if @topic.section_id == 1 %>
 <script type="text/javascript">
   //破防盗链js
