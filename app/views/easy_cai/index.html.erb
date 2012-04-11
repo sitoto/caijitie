@@ -1,7 +1,7 @@
 <h2>入口板块</h2>
 <%	 if @easy_cais && @easy_cais.length > 0 %>
     <%	 @easy_cais.each do |easy| %>
-        <%=	 link_to easy.name, "/easy_cai/show?id=#{easy.id}", :target => '_blank' %>
+        <%=	 link_to easy.name, "/easy_cai/show?id=#{easy.id}", :target => '_blank', method: :put  %>
     <%	 end %>
 <%	 end %>
 

@@ -13,7 +13,9 @@
       <div>
         <ul>
           <%= raw topmenu.join %>
-          <li id="menu-cai" style="float: right; margin-right: 1em;"><a target="_blank" title="采集入口" href="/easy_cai/index">采集入口>></a></li>
+          <li id="menu-cai" style="float: right; margin-right: 1em;">
+          <%=	 link_to '采集入口>>', "/easy_cai/index", target: '_blank', :title => '采集入口', method: :put %>
+          </li>
         </ul>
       </div>
     </div>

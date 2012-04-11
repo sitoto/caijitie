@@ -77,8 +77,8 @@ Caijitie::Application.routes.draw do
   match '/easy' => 'easy_cai#index', :as => 'easy'
 
   #easy_cai
-    get "easy_cai/index"
-    get "easy_cai/show"
+    put "easy_cai/index"
+    put "easy_cai/show"
 
   # Admin
   namespace :admin do
