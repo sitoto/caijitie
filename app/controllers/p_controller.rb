@@ -9,7 +9,7 @@ class PController < ApplicationController
     if @topic.blank?
       flash[:notice] = "对不起，打开出错，可能文章不存在或已经被删除！"
     else
-      @page_urls =PageUrl.where("topic_id = ?", @topic.id).page(params[:page]).per(500) #@topic.page_urls
+      @page_urls =PageUrl.where("topic_id = ? and (status = 0 or count > 0)", @topic.id).page(params[:page]).per(500) #@topic.page_urls
 
 #      @posts = TiebaPost.find_by_sql(["select  a.* from  tieba_posts a
 #                        LEFT JOIN page_urls b on a.page_url_id = b.id
