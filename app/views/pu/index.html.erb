@@ -26,20 +26,8 @@
       <tr>
         <td class="content round">
           <p><%= raw p.content  %></p>
-          <% if p.my_level == 1 %>
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0525832019389819";
-/* 长文字链接 */
-google_ad_slot = "8375564846";
-google_ad_width = 728;
-google_ad_height = 15;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-          <% end %>
-
+          <%# if p.my_level == 1 %>
+          <%# end %>
         </td>
       </tr>
       <% end %>
@@ -47,7 +35,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
       <tr>
         <td style="color: red;">
           <div style="margin-top:25px;" ><%= raw message %></div>
-          </td>
+        </td>
       </tr>
   <% end %>
   </tbody>

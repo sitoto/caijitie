@@ -2,7 +2,7 @@
 <header>
   <div id="search">
       <form action="<%= search_path %>"  method = "get"   target = "_blank">
-      <%= text_field_tag(:q , '', :class => "q")  %>
+      <%= text_field_tag(:q , '', :class => "q", value: "输入天涯社区、贴吧文章、豆瓣网址")  %>
       <%= submit_tag("", :class => "su") %>
       </form>
   </div>
@@ -14,7 +14,7 @@
         <ul>
           <%= raw topmenu.join %>
           <li id="menu-cai" style="float: right; margin-right: 1em;">
-          <%=	 link_to '采集入口>>', "/easy_cai/index", target: '_blank', :title => '采集入口', method: :put %>
+          <%=	 link_to '采集入口>>', "/easy_cai/index", target: '_blank', rel: "nofollow", :title => '采集入口', method: :put %>
           </li>
         </ul>
       </div>

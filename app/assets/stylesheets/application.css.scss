@@ -401,18 +401,27 @@ table.tianyapage{
     background: #EEEFFF;
     color: #222;
     border: 1px #ddd solid;
-td {
-background: #F5FAFA;
-color: #444;
-}
-
+    td {
+        background: #F5FAFA;
+        color: #444;
+    }
+    td.alt {
+        text-align: center;
+        background: #069;
+        font-weight: bold;
+        color: white;
+    }
 
     a:visited {
-    font-family: "宋体";
-    font-size: 14px;
-    color: gray;
-}
+        font-family: "宋体";
+        font-size: 14px;
+        color: gray;
+    }
     a{
         color: blue;
     }
+}
+
+section.easycai{
+
 }

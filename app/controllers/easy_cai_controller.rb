@@ -10,7 +10,12 @@ class EasyCaiController < ApplicationController
   def show
     type_id = params[:id]
     @easy_cai = EasyCai.find_by_id(type_id)
-    tianya_url(@easy_cai.url_address) if @easy_cai
+    if (@easy_cai && @easy_cai.section_id == 2)
+      tianya_url(@easy_cai.url_address)
+    elsif (@easy_cai && @easy_cai.section_id == 1)
+      tieba_url('http://tieba.baidu.com/f?kw=%C0%EE%D2%E3')
+    end
+
   end
 
   private
@@ -38,6 +43,35 @@ class EasyCaiController < ApplicationController
 
    end
   rescue
+    return ''
+  end
+
+  def tieba_url(url)
+    html_stream  = open(url)
+    doc = Nokogiri::HTML(html_stream)
+    @bankuai_title = doc.css("title").text
+    @bankuai = []
+
+    if(doc.at_css("ul#thread_list"))
+      doc.css("ul#thread_list > li").each do |item|
+        @bankuai << [item.at_css("div.th_w2 > div.th_lz").text.strip,
+                      item.at_css("div.th_w2 > span.th_author").text,
+                      0,
+                      item.at_css("div.th_w1 > div").text.strip,
+                      item.at_css("div.th_w2 > span.th_reply_data").text,
+                      "http://tieba.baidu.com" << item.at_css("div.th_w2 > div.th_lz > a").attr("href")
+                      ]
+      end
+
+    elsif (doc.at_css("div#thread_list > table"))
+      doc.css("table#thread_list_table > tbody > tr").each do |item|
+        @bankuai << [item.css("td")[2].text.strip, item.css("td")[3].text, item.css("td")[0].text,
+                    item.css("td")[1].text.strip, item.css("td")[4].text,
+                    "http://tieba.baidu.com" << item.at_css("a").attr("href")]
+      end
+
+    end
+      rescue
     return ''
   end
 
