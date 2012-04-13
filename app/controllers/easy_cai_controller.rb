@@ -13,7 +13,7 @@ class EasyCaiController < ApplicationController
     if (@easy_cai && @easy_cai.section_id == 2)
       tianya_url(@easy_cai.url_address)
     elsif (@easy_cai && @easy_cai.section_id == 1)
-      tieba_url('http://tieba.baidu.com/f?kw=%C0%EE%D2%E3')
+      tieba_url(@easy_cai.url_address)
     end
 
   end

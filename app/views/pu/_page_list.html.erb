@@ -7,7 +7,7 @@
           <% elsif p.status == 1 %>
               <%= link_to "#{p.num}(#{p.count})", "#{p.num}", :title => "#{p.count}帖" %>
           <% elsif p.status == 0 %>
-              <%= link_to "#{p.num}_?", "#{p.num}", :title => "立即脱水" %>
+              <%= link_to "#{p.num}(?)", "#{p.num}", :title => "立即脱水" %>
           <% end %>
     <% end %>
 <% end %>
