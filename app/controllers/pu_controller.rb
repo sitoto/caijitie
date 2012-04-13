@@ -2,8 +2,13 @@
 class PuController < ApplicationController
   def index
     if params[:p_id]
-      @topic = Topic.find(params[:p_id])
-      @page_urls = PageUrl.where("topic_id = ?", params[:p_id]).page(params[:page])
+      p_id = params[:p_id]
+      page_id = params[:page]
+       @topic = Topic.find(p_id)
+
+
+      @page_urls = PageUrl.where("topic_id = ?", @topic.id).page(page_id)
+      #获取当前页前后有文章的页
       #如果@page_urls为空 则返回
       return if @page_urls.blank?
       @page_url = @page_urls.first
@@ -26,6 +31,10 @@ class PuController < ApplicationController
       @topic.increment!(:myshowtimes, by = 1)
 
       @temp_topics = Topic.where("section_id = ?", @topic.section_id).order("id DESC").limit(10)
+#获取当前页前后有文章的页
+#@temp_pages = PageUrl.where("topic_id = ? and (status = 0 or count > 0)", @topic.id).limit(11)
+@temp_pages = PageUrl.where("topic_id = ? and (status = 0 or count > 0) and num > ?",  @topic.id, (page_id.to_i - 5)).limit(11)
+
     end
 
     #for seo

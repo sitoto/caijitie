@@ -8,4 +8,8 @@ module PuHelper
 
     end
   end
+
+  def show_page_list
+
+  end
 end

@@ -1,7 +1,7 @@
 #encoding: utf-8
 module ApplicationHelper
   def message
-    gotonextpage = '无楼主贴！ &nbsp;<span id="spnCount"></span>&nbsp;秒后 自动翻到下一页。
+    gotonextpage = '无楼主贴！ &nbsp;<span id="spnCount"></span>&nbsp;秒后 自动翻到下一页。 返回<a href="/p/#{params[:p_id]}">目录页</a>。
         <script type="text/javascript">
         function countdown(_nCount, _oEle) {
             var _oArguments = arguments;
@@ -43,7 +43,7 @@ module ApplicationHelper
     </script>'
 
     if params[:page].to_i.>= (@topic.mypagenum.to_i)
-      "本页没有楼主贴，这是最后一页。"
+      "本页没有楼主贴，这是最后一页，返回 <a href='/p/#{params[:p_id]}'>目录页</a>。"
     else
        gotonextpage
     end

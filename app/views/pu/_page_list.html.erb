@@ -1,0 +1,14 @@
+<nav class="pagination round">
+<% if @temp_pages and @temp_pages.length > 0 %>
+
+    <% @temp_pages.each do |p| %>
+          <% if p.num.to_s == params[:page] %>
+          <span class="current"><%= "#{p.num}(#{p.count})" %></span>
+          <% elsif p.status == 1 %>
+              <%= link_to "#{p.num}(#{p.count})", "#{p.num}", :title => "#{p.count}帖" %>
+          <% elsif p.status == 0 %>
+              <%= link_to "#{p.num}_?", "#{p.num}", :title => "立即脱水" %>
+          <% end %>
+    <% end %>
+<% end %>
+</nav>
