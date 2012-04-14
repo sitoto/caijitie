@@ -14,7 +14,27 @@ mark, time, meter, progress {
 html {
   -webkit-font-smoothing: antialiased;
 }
-
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td {
+margin: 0;
+padding: 0;
+}
+#w620_top, #w620_bottom, #w285_top, #w285_bottom, #index_top, #index_bottom, #menu li a.m1, #menu li a.m2, #menu li a.m3, #menu li a.m4, #menu li.on1 a, #menu li.on2 a, #menu li.on3 a, #menu li.on4 a, a.toolbox, .toolbox_hover, a.login_button, a.login_button:hover, #indexinfo, .bg_top, .bg_bottom, .right_info li b, .cent, .tool_list dl a:hover, .tool_list1 dl a:hover, .title2, a.whole1 b, a.whole2 b, .low1 span, .low2 span, .low3 span, .middle1 span, .middle2 span, .middle3 span, .high1 span, .high2 span, .high3 span, .safety_sum span, a.dispose, a.dispose:hover, a.button, a.button:hover, a.button span, a.button:hover span, a.button1, a.button1:hover, a.button1 span, a.button1:hover span, a.share_button, a.share_button:hover, a.point_button, a.point_button:hover, a.button2, a.button2:hover, .top, .bottom, .menu_left li a:hover, .menu_left li.on, .title_right, .toolbox_banner dt li a:hover, a.close, a.close:hover, a.t_close, a.t_close:hover, .pm_info, .tips_orange, .tips_blue, .p_mobile li a, .p_mobile li .select, .pm_index li a:hover, .appeal_tip, .appeal_button1, .appeal_button2, .appeal_button3, .aa_li, a.aa_more, .step1, .step2, .step3, .pointer, a.k_button1, a.k_button2, .sstr_tab a, .sstr_tab .select, .sstr_tab .select_two, .m_h_t b, .u_y, .feed, .small_survey, .nubbt em, .nubbt em.on, .scroll_icon li, .scroll_icon li.current, .minipay dt, .service_hotline, .safe_school_express dl, .sse_bg, .more_guidance {
+background-image: url(/assets/bg.png);
+background-repeat: no-repeat;
+_background-image: url(/assets/ie6_bg.png);
+background-repeat: no-repeat;
+}
+cite {
+display: none;
+text-indent: -999px;
+}
+address, caption, cite, code, dfn, em, th, var {
+font-style: normal;
+font-weight: normal;
+}
+a {
+color: #266392;
+}
 body {
   color: $text-color;
   font-family: 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -42,10 +62,8 @@ a {
 strong {
   font-weight: bold;
 }
-
 em {
-  background-color: $highligh-color;
-  padding: 0 0.1em;
+font-family: "宋体";
 }
 
 i {
@@ -171,6 +189,40 @@ ul{
         padding: 0px;
     }
 }
+
+.title, .title3, .title_r {
+clear: both;
+_display: inline-block;
+padding: 0 0 6px 0;
+border-bottom: 1px dotted #CDCDCD;
+color: #313131;
+position: relative;
+overflow: hidden;
+}
+.blank5, .blank10, .blank20, .blank30, .blank40, .blank50, .blank60, .blank70, .blank80, .blank90, .blank100 {
+clear: both;
+height: 3px;
+line-height: 0;
+font-size: 0;
+overflow: hidden;
+}
+.ml10 {
+margin-left: 10px;
+}
+.right {
+float: right;
+}
+.blank20 {
+height: 20px;
+}
+.mb7 {
+margin-bottom: 7px;
+}
+.title h3 {
+height: 17px;
+font-size: 14px;
+color: #313131;
+}
 // Content
 body > header, body > section, body > footer {
   font-size: 85%;
@@ -225,6 +277,23 @@ body > header {
     }
   }
 }
+#headerAll {
+    background: url(/assets/header_bg.jpg) left top repeat-x;
+}
+
+//wrapper
+#wrapper {
+    background: white url(/assets/wrapper_bg.jpg) left top repeat-x;
+}
+.index_bg {
+background: url(/assets/index_center.jpg) left top repeat-y;
+}
+.title_r {
+margin: 10px 3px 10px 8px;
+border-bottom: 1px dashed #DDD;
+font-size: 14px;
+text-indent: 2px;
+}
 
 // Footer
 body > footer {
@@ -252,6 +321,7 @@ body > footer {
 // Partials
 @import "partials/pagination";
 @import "partials/syntax";
+@import "partials/global";
 
 // Pages
 @import "pages/home";

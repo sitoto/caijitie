@@ -13,7 +13,7 @@
 
   <%= yield :pre_content %>
   <%= yield :layout%>
-  <%= yield :post_content %>
+  <%= yield :after_content %>
   <%= debug(params) if Rails.env.development? %>
   <%= google_analytics  %>
  <% if Rails.env.production? %>

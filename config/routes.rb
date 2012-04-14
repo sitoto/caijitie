@@ -3,6 +3,8 @@ Caijitie::Application.routes.draw do
 
 
 
+  get "pv/index"
+
   # Rewrite non-preferred hosts in production
   constraints(NotPreferredHost) do
     match '/:path' => redirect { |params| "http://#{NotPreferredHost::PREFERRED_HOST}/#{params[:path]}" }
