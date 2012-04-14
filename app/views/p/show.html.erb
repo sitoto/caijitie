@@ -16,16 +16,16 @@
 </hgroup>
 <div class="clearfix" style="background: white; clear: both;">
   <ul class="cai">
-  <%	 @page_urls.each do |p| %>
+  <%	 @page_urls.each_with_index do |p, i| %>
        <%  if p.status == 1  %>
         <li class="caied">
-         <%= link_to "第#{p.num}页"  , p_pu_path(p.topic_id, p.num), :target => '_blank' %> <br/>
-         <%= link_to "#{p.count} 贴"  , p_pu_path(p.topic_id, p.num), :target => '_blank', :class => 'red' %>
+         <%= link_to "第#{p.num}页"  , p_pu_path(p.topic_id, i+1), :target => '_blank' %> <br/>
+         <%= link_to "#{p.count} 贴"  , p_pu_path(p.topic_id, i+1), :target => '_blank', :class => 'red' %>
      </li>
        <% elsif p.status == 0 %>
       <li class="nocai">
-         <%= link_to "第#{p.num}页", p_pu_path(p.topic_id, p.num), :target => '_blank' %>  <br/>
-         <%= link_to "脱", p_pu_path(p.topic_id, p.num), :target => '_blank', :class => 'blue' %>
+         <%= link_to "第#{p.num}页", p_pu_path(p.topic_id, i+1), :target => '_blank' %>  <br/>
+         <%= link_to "脱", p_pu_path(p.topic_id, i+1), :target => '_blank', :class => 'blue' %>
         </li>
        <%  end %>
   <%  end %>
