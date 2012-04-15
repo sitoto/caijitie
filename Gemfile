@@ -44,8 +44,11 @@ group :assets do
 end
 #后台任务
 gem 'delayed_job_active_record'
+gem 'daemons'
 
+#Jquery
 gem 'jquery-rails' ,'~> 1.0.19'
+
 #for ubuntu javascript runtime
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
