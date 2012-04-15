@@ -11,7 +11,7 @@ class TianyabbsTuoshuiJob
       return  ""
     end
     doc = Nokogiri::HTML(html_stream)
-    is_pagnation(doc)? i = 0 : i = 1 #有多页
+    is_pagnation(doc)? i = 0 : i = 1 #0 true 多页，false 1 有单页
     get_tianya_topic(url,doc, i)
   end
   def self.update_topic(topic)
@@ -77,7 +77,7 @@ class TianyabbsTuoshuiJob
   end
   def self.is_pagnation(doc)
     if doc.at_css("#pageDivTop em").blank?
-      return false
+      return false #没有分页
     else
       return true
     end

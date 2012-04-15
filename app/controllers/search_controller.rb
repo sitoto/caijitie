@@ -70,8 +70,9 @@ class SearchController < ApplicationController
            max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
            max = 1 if max == 0
            max.upto(@topic.mypagenum)  do |a|
-            PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_doubanhuati_page_url(@topic.fromurl,(a-1) * 100),
+            @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_doubanhuati_page_url(@topic.fromurl,(a-1) * 100),
                                :status => 0, :count => 1)
+            Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
           end
         end
         redirect_to p_path(@topic)
@@ -85,14 +86,16 @@ class SearchController < ApplicationController
            max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
            if page_urls.length == 1
              if max == 0
-               PageUrl.create!(:topic_id => @topic.id, :num => 1, :url => page_urls[0],
+               @page_url = PageUrl.create!(:topic_id => @topic.id, :num => 1, :url => page_urls[0],
                                :status => 0, :count => 1)
+               Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
              end
            elsif page_urls.length > 1
              page_urls.to_a.each_with_index  do |p, i|
               if i >= max
-                 PageUrl.create!(:topic_id => @topic.id, :num => i+1, :url => get_tianya_page_url(@topic.fromurl, p),
+                @page_url =  PageUrl.create!(:topic_id => @topic.id, :num => i+1, :url => get_tianya_page_url(@topic.fromurl, p),
                                  :status => 0, :count => 1)
+                Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
               end
              end
           end
@@ -109,8 +112,9 @@ class SearchController < ApplicationController
            max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
            max = 1 if max == 0
            max.upto(@topic.mypagenum)  do |a|
-            PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_techfroum_page_url(@topic.fromurl, a),
+            @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_techfroum_page_url(@topic.fromurl, a),
                                :status => 0, :count => 1)
+            Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
           end
         end
         redirect_to p_path(@topic)
