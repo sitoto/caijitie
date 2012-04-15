@@ -42,6 +42,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
 end
+#后台任务
+gem 'delayed_job_active_record'
 
 gem 'jquery-rails' ,'~> 1.0.19'
 #for ubuntu javascript runtime
