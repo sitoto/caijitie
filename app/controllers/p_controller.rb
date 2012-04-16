@@ -122,15 +122,17 @@ class PController < ApplicationController
     unless t.blank?
         @topic.update_attributes(t)
         if @topic.save
-           max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
-           max = 1 if max == 0
-           max.upto(@topic.mypagenum)  do |a|
+          #max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
+          max_page_url = @topic.most_recent_page_url
+          max = max_page_url.num || 0
+          max_page_url.destroy
+          max = 1 if max == 0
+          max.upto(@topic.mypagenum)  do |a|
              @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_techfroum_page_url(@topic.fromurl, a),
                                :status => 0, :count => 1)
              Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
           end
         end
-
      end
   end
 end

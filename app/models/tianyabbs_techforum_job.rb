@@ -133,6 +133,7 @@ class TianyabbsTechforumJob
     #非第一页-> 获取第一页 url 和 doc
     unless cpn.eql?('1')
       url = doc.at_css("#cttPageDiv a").attr("href")
+      puts "current page is not 1"
       html_stream = get_html_stream(url)
       if html_stream.blank?
         return

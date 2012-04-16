@@ -1,5 +1,8 @@
 #encoding: utf-8
 module ApplicationHelper
+  def logo
+	image_tag 'l1.png',:alt=>"乐哈网,看楼主,脱水吧,脱水工具"
+  end
   def message
     gotonextpage = '无楼主贴！ &nbsp;<span id="spnCount"></span>&nbsp;秒后 自动翻到下一页。 返回<a href="/p/' << params[:p_id] << '">目录页</a>。
         <script type="text/javascript">

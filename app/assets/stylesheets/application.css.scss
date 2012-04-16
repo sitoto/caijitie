@@ -233,7 +233,7 @@ body > header, body > section, body > footer {
 // Header
 body > header {
   color: #222;
-  margin: 2em auto 1em;
+  margin: 1em auto 1em;
   img {
     border: 0px;
   }
@@ -441,7 +441,19 @@ ul.cai{
      }
 
 }
-
+#top{
+    height: 61px;
+    overflow: hidden;
+    position: relative;
+    background: url(/assets/l1.png) left top no-repeat;
+    a.logo {
+        width: 200px;
+        height: 61px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
+}
 #search{
     margin-top: 0px;
     float: right;

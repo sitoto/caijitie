@@ -6,12 +6,14 @@ module MenuHelper
       "首页" => root_path,
       "最新" => recent_path,
       "热门" => hot_path,
+      "新更" => active_path,
       "分类" => class_path
     }
      pages = {
         "pages" => { :name => '首页', :link => root_path},
         "recent" => { :name => '最新', :link => recent_path },
         "hot" => { :name => '热门', :link => hot_path },
+        "active" => { :name => '新更', :link => active_path },
         "class" => { :name => '分类', :link => class_path }}
       @current_menu_item = :pages
     pages.map do |key, value|
