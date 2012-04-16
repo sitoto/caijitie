@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120414092020) do
+ActiveRecord::Schema.define(:version => 20120416074646) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -99,6 +99,19 @@ ActiveRecord::Schema.define(:version => 20120414092020) do
   end
 
   add_index "posts", ["permalink"], :name => "posts_permalink_index", :unique => true
+
+  create_table "reports", :force => true do |t|
+    t.string   "name"
+    t.integer  "topic_num"
+    t.integer  "page_num"
+    t.integer  "pagenot_num"
+    t.integer  "tieba_num"
+    t.integer  "douban_num"
+    t.integer  "tianyabbs_num"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "post_id"

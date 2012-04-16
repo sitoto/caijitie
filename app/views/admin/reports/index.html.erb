@@ -1,0 +1,67 @@
+<h2>
+    数据库情况
+</h2>
+<p>
+  共计帖子数量：<%= @topic_num %><br/>
+  共计页数量：<%= @page_num %><br/>
+  未采集页数量：<%= @pagenot_num %><br/>
+  未采集比重：<%= 100 * @pagenot_num/@page_num %>%<br/>
+</p>
+<h2>
+  采集任务  <%= link_to '采集下列的页面', new_admin_report_path %>
+</h2>
+<p>
+  <table>
+    <tbody>
+          <tr>
+      <th>序号</th>
+      <th>编号</th>
+      <th>未采集页</th>
+    </tr>
+  <%	 @nottopic.each_with_index do |n, i| %>
+    <tr>
+      <td><%=	 i %></td>
+      <td><%=	 n.topic_id %></td>
+      <td><%=	 n.pagenum %> </td>
+    </tr>
+  <% end %>
+      </tbody>
+</table>
+</p>
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Topic num</th>
+    <th>Page num</th>
+    <th>Pagenot num</th>
+    <th>Tieba num</th>
+    <th>Douban num</th>
+    <th>Tianyabbs num</th>
+    <th>note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reports.each do |report| %>
+  <tr>
+    <td><%= report.name %></td>
+    <td><%= report.topic_num %></td>
+    <td><%= report.page_num %></td>
+    <td><%= report.pagenot_num %></td>
+    <td><%= report.tieba_num %></td>
+    <td><%= report.douban_num %></td>
+    <td><%= report.tianyabbs_num %></td>
+    <td><%= report.note %></td>
+    <td><%= link_to 'Show', [:admin, report] %></td>
+    <td><%= link_to 'Edit', edit_admin_report_path(report) %></td>
+    <td><%= link_to 'Destroy', [:admin,  report], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Report', new_admin_report_path %>

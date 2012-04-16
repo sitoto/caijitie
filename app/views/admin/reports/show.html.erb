@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @report.name %>
+</p>
+
+<p>
+  <b>Topic num:</b>
+  <%= @report.topic_num %>
+</p>
+
+<p>
+  <b>本次采集数量:</b>
+  <%= @report.page_num %>
+</p>
+
+<p>
+  <b>Pagenot num:</b>
+  <%= @report.pagenot_num %>
+</p>
+
+<p>
+  <b>Tieba num:</b>
+  <%= @report.tieba_num %>
+</p>
+
+<p>
+  <b>Douban num:</b>
+  <%= @report.douban_num %>
+</p>
+
+<p>
+  <b>Tianyabbs num:</b>
+  <%= @report.tianyabbs_num %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_report_path(@report) %> |
+<%= link_to 'Back', admin_reports_path %>

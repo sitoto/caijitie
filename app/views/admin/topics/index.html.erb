@@ -13,6 +13,7 @@
 <% @topics.each do |topic| %>
   <tr>
     <td><%= topic.title %></td>
+    <td><%= topic.my_title %></td>
     <td><%= topic.classname %></td>
     <td><%= topic.author %></td>
     <td><%= link_to 'Show', [:admin, topic] %></td>

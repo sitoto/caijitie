@@ -1,8 +1,8 @@
 #encoding: UTF-8
 require 'nokogiri'
 require 'open-uri'
-class Admin::TopicListController < ApplicationController
-  layout "admin"
+class Admin::TopicListController < AdminController
+
   def index
   end
 

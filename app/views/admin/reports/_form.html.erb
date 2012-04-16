@@ -1,0 +1,49 @@
+<%= form_for([:admin,@report]) do |f| %>
+  <% if @report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+      <% @report.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :topic_num %><br />
+    <%= f.number_field :topic_num %>
+  </div>
+  <div class="field">
+    <%= f.label :page_num ,'本次采集数量' %><br />
+    <%= f.number_field :page_num %>
+  </div>
+  <div class="field">
+    <%= f.label :pagenot_num %><br />
+    <%= f.number_field :pagenot_num %>
+  </div>
+  <div class="field">
+    <%= f.label :tieba_num %><br />
+    <%= f.number_field :tieba_num %>
+  </div>
+  <div class="field">
+    <%= f.label :douban_num %><br />
+    <%= f.number_field :douban_num %>
+  </div>
+  <div class="field">
+    <%= f.label :tianyabbs_num %><br />
+    <%= f.number_field :tianyabbs_num %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_field :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
