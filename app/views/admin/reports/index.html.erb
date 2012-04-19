@@ -1,35 +1,28 @@
 <h2>
-    数据库情况
+    采集页情况
 </h2>
 <p>
-  共计帖子数量：<%= @topic_num %><br/>
-  共计页数量：<%= @page_num %><br/>
-  未采集页数量：<%= @pagenot_num %><br/>
-  未采集比重：<%= 100 * @pagenot_num/@page_num %>%<br/>
-</p>
-<h2>
-  采集任务  <%= link_to '采集下列的页面', new_admin_report_path %>
-</h2>
-<p>
-  <table>
-    <tbody>
-          <tr>
-      <th>序号</th>
-      <th>编号</th>
-      <th>未采集页</th>
-    </tr>
-  <%	 @nottopic.each_with_index do |n, i| %>
+<table>
+  <tbody>
     <tr>
-      <td><%=	 i %></td>
-      <td><%=	 n.topic_id %></td>
-      <td><%=	 n.pagenum %> </td>
+      <th>状态</th>
+      <th>数量</th>
     </tr>
+  <% if @page_status && @page_status.length > 0 %>
+    <%	 @page_status.each do |p| %>
+      <tr>
+        <td><%= p.status %></td>
+        <td><%= p.count %></td>
+      </tr>
+    <% end %>
   <% end %>
-      </tbody>
+  </tbody>
 </table>
 </p>
-
-
+<h2>
+  采集任务
+</h2>
+<%= link_to '新建采集任务', new_admin_report_path %>
 <table>
   <tr>
     <th>Name</th>
@@ -61,7 +54,24 @@
   </tr>
 <% end %>
 </table>
+<%= link_to 'New Report', new_admin_report_path %>
 
 <br />
-
-<%= link_to 'New Report', new_admin_report_path %>
+<p>
+  <table>
+    <tbody>
+          <tr>
+      <th>序号</th>
+      <th>编号</th>
+      <th>未采集页</th>
+    </tr>
+  <%	 @nottopic.each_with_index do |n, i| %>
+    <tr>
+      <td><%=	 i %></td>
+      <td><%=	 n.topic_id %></td>
+      <td><%=	 n.pagenum %> </td>
+    </tr>
+  <% end %>
+      </tbody>
+</table>
+</p>

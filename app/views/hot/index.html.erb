@@ -1,9 +1,9 @@
 <%- title "回复最多帖子列表." -%>
 
-<section class="post-list">
+<div  class="list_bg">
   <%- if @topics && @topics.length > 0 -%>
     <%= render(:partial => "share/list", :object => @topics) %>
   <%- else -%>
   <p>没有内容。.</p>
   <%- end -%>
-</section>
+</div>

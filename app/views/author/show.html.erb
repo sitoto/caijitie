@@ -1,10 +1,10 @@
 <%- title "作者：#{params[:name]}文章列表." -%>
 
-<section class="post-list">
+<div  class="list_bg">
   <%- if @topics && @topics.length > 0 -%>
     <%= render(:partial => "share/list", :object => @topics) %>
     <%= paginate @topics, :outer_window => 4, :inner_window => 4 -%>
   <%- else -%>
   <p>没有内容。.</p>
   <%- end -%>
-</section>
+</div>

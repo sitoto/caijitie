@@ -1,22 +1,21 @@
-<table>
+<table width="100%">
   <thead>
   <tr>
     <th width="30" nowrap="">序号</th>
     <th>分类</th>
     <th>标题</th>
     <th nowrap="">点击/帖数</th>
-    <th width="150">作者</th>
+    <th width="120">作者</th>
   </tr>
   </thead>
     <tbody>
     <% list.each_with_index do |topic, i| %>
-      <tr>
+      <tr class="<%= cycle('odd','even') %>">
         <td><%=	 (i+1).to_s %></td>
         <td><%= link_to (topic.classname).to_s.truncate(8), "/category/#{topic.classname}",:title => topic.classname, :target => '_blank'  %></td>
-        <td><%= link_to (topic.title).to_s.truncate(35), "/p/#{topic.id}/pu/1", :target => '_blank' %></td>
+        <td><%= link_to (topic.title).to_s.truncate(32), "/p/#{topic.id}/pv/1", :target => '_blank' %></td>
         <td><%= topic.myshowtimes %>/<%= topic.mypostnum %> </td>
-        <td><%= link_to topic.author,"/author/#{topic.author}", :target => '_blank'  %><br>
-        <small><%= topic.myupdatetime.to_s(:db) %></small></td>
+        <td><%= topic.author.to_s.truncate(8) %></td>
       </tr>
     <% end %>
     </tbody>

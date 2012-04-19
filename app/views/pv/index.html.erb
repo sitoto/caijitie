@@ -1,175 +1,55 @@
+<% title "#{@topic.title} by #{@topic.author}.第#{params[:page]}页,脱水整理." %>
+
 <div id="container" class="index_bg">
 <div id="content">
   <div class="title_r">
-    <%= breadcrumb :pretext => "<label>当前位置：</label>",
-       :separator => "»",
+    <%= breadcrumb :pretext => '',
+       :separator => ">",
        :autoroot => true,
        :show_root_alone => true,
        :link_last => false %>
   </div>
   <div class="page_view">
-    <div class="ta_c mt10 mb10 f16"><b>[美食点滴]吃在瑞典</b></div>
-
-   <p>在学校里，我也有一个让我心仪已久的女生，她很漂亮，是那种和大家玩得好好的女生，在我们学校，也算得上校花之一吧</p>
-<p>
- 她和我是一个班的，她的成绩一般 有时她不会做的题目都会来问我，我也很教她 我们修的是经济学，她和我说过她的理想，她的抱负 说真的她很可爱。渐渐的我喜欢上了她…
-</p>
-
-<p>
-由于平时的生活费跟不上，我只能半工半读。我做过服务员，也刷过碗，最近我在学校附近工地打工。一天大概七八十吧 在这座一线城市里，也只能勉强维持我的温饱。
-</p>
-<p>
-那天下午发生的事，我永远不会忘记…
-
-</p>
-
-<p>
-那天下午，隔壁班的男生拿着一束花，进了我们班，点名要找她，当时我正给她讲解一些题目。那男生进班后看到她，就强行拉着她的手出了班门口，然后我也跟了上去 我看见了他拿着花跟她表白，她当时脸好红，然后他就强吻了她…随后她跑开了，我发誓 当时真的有一种想打人的冲动，我已经握紧拳头了…
-</p>
-
-<p>
-随后，我们班的女生开始谈论他 我也听见了一些事！他家是做生意的，好像生意做得蛮大。在我们学校也算是有名的高富帅吧
-</p>
-
-<p>
-回23楼 我暗恋她很久了，她的确是一个很好的女生，我正打算过几天表白 只是没想到…苦b的我 只能求吧友安慰
-</p>
-
-<p>
-随后的几天里，她都经常跟我提起他，她说他喜欢霸道的男生，喜欢被征服。我真的想不到她会喜欢这种男生。</p>
+    <div class="ta_c mt10 mb10 f16"><b><%= @topic.title  %></b></div>
+        <%= paginate @posts, :outer_window => 1, :inner_window => 1 -%>
+        <%	 if @posts && @posts.length > 0 %>
+            <%	 @posts.each do |p| %>
+                <p><%=	 raw p.content %></p>
+            <%	 end %>
+        <%	 end %>
     <p>
-      <span class="left">分享到：weibo</span>
-      <a class="right ml10" title="复制链接" href="javascript:void(0);" onclick="CopyLink(event)">复制链接</a>
+      <span class="left">分享到：微博</span>
+      <a class="right ml10" title="复制链接" href="javascript:void(0);">复制链接</a>
     </p>
+    <%= paginate @posts, :outer_window => 1, :inner_window => 1 -%>
+
     <div class="blank20"></div>
   </div>
 </div>
 <div id="sidebar">
-  <div class="title mb7"><h3>快速通道</h3></div>
+  <div class="title mb7"><h3>文章说明</h3></div>
   <div class="tool_list">
     <ul>
-    <li><i class="i13"></i><a href="/cn2/safe_service/my_qbqd_prot" onclick="javascript:sendHotClick('safe_school.shortcut.safeqb');">开通Q币Q点保护</a></li>
-    <li><i class="i7"></i><a href="/cn2/appeal/appeal_index" onclick="javascript:sendHotClick('safe_school.shortcut.appealportal');">帐号申诉</a></li>
-    <li><i class="i8"></i><a href="/cn2/appeal/appeal_fdappro" onclick="javascript:sendHotClick('safe_school.shortcut.appealfdappro');">辅助好友申诉</a></li>
-    <li><i class="i11"></i><a href="http://pcmgr.qq.com/" target="_blank" onclick="javascript:sendHotClick('safe_school.shortcut.doctor');">QQ电脑管家</a></li>
-    <li><i class="i10"></i><a href="/v2/notice/content_6.shtml" onclick="javascript:sendHotClick('safe_school.shortcut.leakreport');">漏洞报告</a></li>
-    <li><i class="i12"></i><a href="http://huifu.qq.com/cgi-bin/showchoice" target="_blank" onclick="javascript:sendHotClick('safe_school.shortcut.huifu');">恢复QQ好友和群</a></li>
+    <li>作者：<i><%= @topic.author %></i></li>
+    <li>分类：<i><%= @topic.classname %></i></li>
+    <li>回复：约<i><%= @topic.mypostnum %></i>条</li>
+    <li>更新：<i><%= @topic.updated_at %></i></li>
+    <li>服务：<i><%= link_to '自助更新', renew_p_path(@topic.id), method: :put, title: '系统将定时更新', :target => '_blank' %></i>
+            <i><%= link_to '打开原贴', @topic.fromurl, title: '去源地址查看', :target => '_blank' %></i>
+    </li>
     </ul>
   </div>
   <div class="blank20"></div>
   <div class="title"><h3>相关内容推荐</h3></div>
   <div class="friend_group" id="related_div">
-	<ul id="related1" style="">
-        <li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_55.shtml">QQ被盗，怎么办(2012-01-01)
-		</a></li>
-		<li class="col" style="display: block; "><em>·</em><a href="/v2/safe_school/teach_2.shtml">密保忘了、丢了怎么办？(2011-11-03)
-		</a></li>
-		<li class="col" style="display: block; "><em>·</em><a href="/v2/safe_school/teach_43.shtml">如何解锁和锁定QQ帐号(2011-10-26)
-		</a></li>
-		<li class="col" style="display: block; "><em>·</em><a href="/v2/safe_school/t_qq_bind.shtml">QQ令牌使用教程(2011-09-15)
-		</a></li>
-		<li class="col" style="display: block; "><em>·</em><a href="/cn2/manage/qqtoken/qqtoken_pub">QQ令牌，安全随身带(2011-09-08)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_31.shtml">安全成长体系介绍(2011-06-23)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_28.shtml">“举报功能”指引(2011-04-27)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_27.shtml">Flash版密保卡使用教程(2011-04-27)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_26.shtml">QQ安全中心向用户拜年(2011-01-27)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_17.shtml">实体版密保卡使用教程(2010-12-22)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_12.shtml">Q币Q点保护设置技巧(2010-09-08)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/video.shtml">[视频]密保手机教程(2010-09-01)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/strong_pwd.shtml">设置强密码提高帐号安全(2010-08-26)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/my_token_paper.shtml">手机令牌博客征文活动(2010-08-19)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_10.shtml">帐号申诉技巧(2010-08-04)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_9.shtml">如何避免帐号发生异常(2010-07-28)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_8.shtml">手机密保卡使用教程(2010-07-14)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_6.shtml">巧用“密保手段”保护游戏帐号(2010-04-19)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/teach_3.shtml">QQ登录保护设置技巧(2010-03-29)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/token_1.shtml">手机令牌使用教程(2010-03-29)
-		</a></li>
-		<li class="col" style="display: none; "><em>·</em><a href="/v2/safe_school/t_use.shtml">密保卡安全使用常识(2010-03-29)
-		</a></li>
-	</ul>
-
-	<ul id="related2" style="display:none">
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_54.shtml">网络购票陷阱多 节日出行需警惕(2012-01-10)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_53.shtml">我们一起走过的日子(2012-01-09)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_52.shtml">网络诈骗大盘点(2011-12-29)
-		</a></li>
-	    <li class="col"><em>·</em><a href="/v2/safe_school/teach_xifei.shtml">“吸费”诈骗来袭，hold住！(2011-12-09)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_46.shtml">官方短信查询系统，谨防短信诈骗(2011-11-30)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_44.shtml">都是“跳转”惹的祸(2011-11-11)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_42.shtml">留学生视频诈骗专题(2011-10-20)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_40.shtml">中奖诈骗识别方法(2011-09-21)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_13.shtml">系列专题一：视频诈骗(2011-09-07)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_39.shtml">访问“危险网站”需谨慎(2011-07-20)
-		</a></li>
-		<li class="col"><em>·</em><a href="/cn2/safe_school/sec_test_index">[测试]您是否容易上当？(2011-06-23)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_25.shtml">切勿在“非腾讯官方网站”输入QQ帐号及密码(2011-01-27)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_24.shtml">谨防“假机票网站”(2011-01-07)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_16.shtml">系列专题四：钓鱼网址(2010-09-08)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_15.shtml">系列专题三：中奖欺诈(2010-09-08)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_14.shtml">系列专题二：冒充好友骗钱(2010-09-08)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_11.shtml">漫画：免费的午餐(2010-08-18)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_7.shtml">一招制敌，识破诈骗邮件(2010-07-07)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_4.shtml">如何识别假冒客服电话(2010-03-29)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_5.shtml">如何识别诈骗邮件(2010-03-29)
-		</a></li>
-	</ul>
-
-	<ul id="related3" style="display:none">
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_34.shtml">养成安全的上网习惯(2011-06-23)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_35.shtml">网吧安全使用QQ的建议(2011-06-23)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_36.shtml">四个步骤保护电脑安全(2011-06-23)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_38.shtml">修复QQ软件漏洞和操作系统漏洞(2011-06-23)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_51.shtml">聊天消息中的网址安全吗？(2011-12-05)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_37.shtml">QQ安全组件 保护帐号安全(2011-12-05)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_50.shtml">什么是“不在常用地区登陆”？(2011-12-05)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_49.shtml">当QQ提示发现盗号木马后，应该如何处理？(2011-12-05)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_48.shtml">成功接收文件后，如何处理“.重命名”文件？(2011-12-05)
-		</a></li>
-		<li class="col"><em>·</em><a href="/v2/safe_school/teach_47.shtml">为什么在我聊QQ时，系统消息提示“被迫下线”？(2011-12-05)
-		</a></li>
-	</ul>
-
+     <% if @temp_topics && @temp_topics.length > 0 %>
+        <ul id="related1">
+        <% @temp_topics.each do |t| %>
+            <li><em>·</em><%= link_to t.title,  "/p/#{t.id}/pu/1", title: "#{t.title}", :target => '_blank', :class => "blue" %></li>
+        <% end %>
+        </ul>
+      <% end %>
 </div>
 </div>
 </div>
+

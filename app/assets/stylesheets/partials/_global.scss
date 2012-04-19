@@ -9,6 +9,7 @@
             width:330px;height:85px;position:absolute;left:0;top:0;
             }
         .right_info{
+            font-size: 75%;
             float:right;padding:10px 0 0 0;color:#333;text-align:right;
             li{
                 float:left;line-height:19px;*line-height:22px;_line-height:19px;display:block;padding:0 0 0 9px;position:relative;
@@ -119,7 +120,9 @@ position: relative;
 #wrapper{min-width:910px;padding-top:10px;overflow:hidden;}
 #container{margin:0 auto;width:910px;overflow:hidden;position:relative;}
 #content,#content1{float:left;width:620px;overflow:hidden;}#content1{padding-left:5px;}
-#sidebar,#sidebar1{float:right;width:250px;padding:15px 20px 0 15px;overflow:hidden;}
+#sidebar,#sidebar1{float:right;width:250px;padding:15px 20px 0 15px;overflow:hidden;font-size:75%;
+    a { color: #266392; }
+}
 #sidebar1{width:285px;padding:0;}
 #sidebar h1{float:left;width:209px;height:25px;padding:8px 0 0 11px;margin:30px 0 20px 0;overflow:hidden;background-position:0 -440px;}#sidebar h1 b{float:left;width:70px;height:18px;overflow:hidden;}
 #sidebar h1 b.microblog{background-position:0 -482px;}
