@@ -18,8 +18,9 @@
             <%	 end %>
         <%	 end %>
     <p>
-      <span class="left">分享到：微博</span>
-      <a class="right ml10" title="复制链接" href="javascript:void(0);">复制链接</a>
+      <span class="left">
+        <%= social_share_button_tag(@topic.title) %>
+      </span>
     </p>
     <%= paginate @posts, :outer_window => 1, :inner_window => 1 -%>
 
@@ -45,11 +46,12 @@
      <% if @temp_topics && @temp_topics.length > 0 %>
         <ul id="related1">
         <% @temp_topics.each do |t| %>
-            <li><em>·</em><%= link_to t.title,  "/p/#{t.id}/pu/1", title: "#{t.title}", :target => '_blank', :class => "blue" %></li>
+            <li><em>·</em><%= link_to t.title,  "/p/#{t.id}/pv/1", title: "#{t.title}", :target => '_blank', :class => "blue" %></li>
         <% end %>
         </ul>
       <% end %>
 </div>
 </div>
+<div id="control_pannel"><a onclick="window.scrollTo(0,0);" href="javascript:void(0);">回到顶部</a></div>
 </div>
 

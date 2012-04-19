@@ -1,6 +1,8 @@
 <% title "#{@topic.title} by #{@topic.author}.第#{params[:page]}页" %>
+<div  class="list_bg2">
 
-<h4 class="round2 back"><%=	 @topic.title%></h4>
+
+<div class="ta_c"><b><%=	@topic.title %></b></div>
 <p>
 <span class="border">[<%= link_to '回目录', p_path(@topic), :target => '_blank', :class => 'red' %>]  </span>
 <span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
@@ -53,6 +55,7 @@
     </ul>
   <% end %>
 
+</div>
 </div>
 <% if @topic.section_id == 1 %>
 <script type="text/javascript">

@@ -1,6 +1,7 @@
 #encoding: utf-8
 class PvController < ApplicationController
   layout 'april'
+
   def index
       p_id = params[:p_id]
       page_id = params[:page]

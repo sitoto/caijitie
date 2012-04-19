@@ -1,27 +1,25 @@
 <%- title "分类" -%>
+<div class="class_bg">
+    <div class="class-c clearfix">
+    <div class="neirong round2">分类 (<%= @classes.length %>)</div>
+    <ul>
+        <% @classes.each do |c| %>
+        <li>
+        <%=  link_to  truncate(c.classname, :length => 12, :omission => '..') , category_path(c.classname), :target => '_blank' %>
+         <span class="gray"><%= c.count %></span>
+        </li>
+        <% end %>
+    </ul>
+    </div>
 
-<section class="class-list">
-  <div class="class-c clearfix">
-<div class="neirong round2">分类 (<%= @classes.length %>)</div>
-<ul>
-<% @classes.each do |c| %>
-   <li>
-    <%=  link_to  truncate(c.classname, :length => 12, :omission => '..') , category_path(c.classname), :target => '_blank' %>
-     <span class="gray"><%= c.count %></span>
-  </li>
-<% end %>
-</ul>
-  </div>
-
- <div class="clearfix">
-<div class="neirong round2">作者(<%= @authores.length %>)</div>
-<ul>
-<% @authores.each do |c| %>
-   <li>
-    <%=  link_to truncate(c.author, :length => 12, :omission => '..') , author_path(c.author), :target => '_blank' %>
-  </li>
-<% end %>
-</ul>
- </div>
-
-</section>
+    <div class="clearfix">
+    <div class="neirong round2">作者(<%= @authores.length %>)</div>
+        <ul>
+        <% @authores.each do |c| %>
+        <li>
+        <%=  link_to truncate(c.author, :length => 12, :omission => '..') , author_path(c.author), :target => '_blank' %>
+        </li>
+        <% end %>
+        </ul>
+    </div>
+</div>

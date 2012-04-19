@@ -9,17 +9,16 @@
             <li class="pr">站点地图</li>
           </ul>
           <form action="<%= search_path %>"  method = "get"   target = "_blank">
-            <%= text_field_tag(:q , '', :class => "q", value: "输入天涯社区、贴吧文章、豆瓣网址")  %>
-            <%= submit_tag("搜索", :class => "su") %>
+            <%= text_field_tag(:q , '', :class => "q", :style => 'width:350px;')  %>
+            <%= submit_tag("只看楼主", :class => "su") %>
           </form>
+          <em style="padding-right:3em;">
+            <span class="gray">请输入贴吧、天涯、豆瓣帖子地址，点击只看楼主，查看脱水帖。</span></em>
         </div>
     </div>
     <div id="menu">
       <ul>
-        <li id="menu_index"  class="on1"><a class="m1" href="/"><cite>首页</cite></a></li>
-        <li><a class="m2" href="/active"><cite>最近更新</cite></a></li>
-        <li><a class="m3" href="/hot"><cite>热门文章</cite></a></li>
-        <li class="on4"><a class="m4" href="/rencent" ><cite>文章列表</cite></a></li>
+        <%= raw topmenu.join %>
       </ul>
     </div>
     <a class="toolbox" href="/easy_cai/index" rel="nofollow" data-method="put" target="_blank"><cite>采集入口</cite></a>
