@@ -285,39 +285,10 @@ body > header {
 #wrapper {
     background: white url(/assets/wrapper_bg.jpg) left top repeat-x;
 }
-#control_pannel{
-background: #F7F7F7 none repeat scroll 0 0;
-border: 2px solid #EFEFEF;
-bottom: 2px;
-padding: 1px;
-position: fixed;
-_position: absolute;
-right: 272px;
-width: 80px;
-font-size: 12px;
-    a{
-        display: block;
-        color: red;
-        padding: 2px 4px 2px 4px;
-        text-align: center;
-        opacity: .30;
-        filter: alpha(Opacity=30);
-        text-decoration: none;
-         &:hover {
-            background: #999999;
-            color: white;
-            text-decoration: none;
-            opacity: 1;
-            filter: alpha(Opacity=80);
-        }
-    }
-}
 .index_bg {
 background: url(/assets/index_center.jpg) left top repeat-y;
 }
 .list_bg {
-font-size: 85%;
-line-height: 36px;
 margin: 0 auto;
 width: 894px;
 padding: 0 8px 50px 0;
@@ -329,28 +300,6 @@ _height: auto;
 overflow: hidden;
 position: relative;
 //background: url(/assets/list_center.jpg) left top repeat-y;
-}
-.class_bg , .list_bg2 {
-font-size: 85%;
-line-height: 2em;
-margin: 0 auto;
-width: 894px;
-padding: 0 8px 50px 0;
-border-left: 4px solid #ECEFF1;
-border-right: 4px solid #ECEFF1;
-background: white;
-min-height: 450px;
-_height: auto;
-overflow: hidden;
-position: relative;
-//background: url(/assets/list_center.jpg) left top repeat-y;
-}
-.class_bg ul li{
-float: left;
-width: 200px;
-}
-#index_view{
-
 }
 .title_r {
 margin: 10px 3px 10px 8px;
@@ -367,7 +316,7 @@ table tbody tr.even td {
 background: #E5ECF9;
 }
 table tbody tr.odd td {
-background: #FEFFFF;
+background: #FFFFFF;
 }
 
 // Footer

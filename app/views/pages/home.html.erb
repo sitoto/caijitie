@@ -1,28 +1,50 @@
 <%- title "只看楼主" -%>
-<div id="container" class="index_bg">
-<div id="content">
 
-  <div class="title_r">
-    <%= breadcrumb :pretext => '当前位置: ',
-       :separator => ">",
-       :autoroot => true,
-       :show_root_alone => true,
-       :link_last => false %>
+<header>
+  <div id="search">
+      <form action="<%= search_path %>"  method = "get"   target = "_blank">
+      <%= text_field_tag(:q , '', :class => "q")  %>
+      <%= submit_tag("", :class => "su") %>
+      </form>
   </div>
-  <div class="index_view">
+<div id="top">
+  <a class="logo" href="/"><cite>乐哈网,看楼主<br>脱水吧,脱水工具</cite></a>
+</div>
+</header>
+
+<section class="home clearfix">
+  <div id="nav">
+      <div>
+        <ul>
+
+          <li id="menu-item-11" class="menu-item current-menu-item">
+            <a title="乐哈网" href="http://www.lehazi.com">首页</a></li>
+          <li id="menu-item-12" class="menu-item "><a title="乐哈网" href="http://www.lehazi.com/recent">最新</a></li>
+          <li id="menu-item-13" class="menu-item "><a title="热门列表" href="http://www.lehazi.com/hot">热门</a></li>
+          <li id="menu-item-14" class="menu-item "><a title="最新更新" href="http://www.lehazi.com/active">新更</a></li>
+          <li id="menu-item-15" class="menu-item "><a title="分类列表" href="http://www.lehazi.com/class">分类</a></li>
+
+          <li id="menu-cai" style="float: right; margin-right: 1em;">
+            <%=	 link_to '采集入口>>', "/easy_cai/index", target: '_blank',rel: "nofollow", :title => '采集入口', method: :put %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <div id="left">
+    <h4><%= link_to '最近加入', recent_path %></h4>
     <%- if @topics -%>
         <ul>
           <% @topics.each do |t| %>
-            <li><%=	 link_to t.title, p_pu_path(t, 1) , :class => 'blue' %>
-              <span style="margin-left: 1em;">[<%= link_to  t.classname.truncate(8), category_path(t.classname)  %>]</span></li>
+            <li><%=	 link_to t.title, p_pu_path(t, 1), :class => 'border blue' %>
+              [<%= link_to  t.classname, category_path(t.classname)  %>]</li>
           <%  end %>
         </ul>
     <%- end -%>
   </div>
-</div>
-<div id="sidebar">
-  <div class="title"><h3>站内日志</h3></div>
-  <div class="friend_group" id="related_div">
+
+<div id="right">
+  <div class="area">
+     <h4><%= link_to '站内文章', blog_path %></h4>
       <%- if @recent_posts -%>
       <ul>
         <% @recent_posts.each do |t| %>
@@ -34,5 +56,34 @@
       </ul>
       <%- else -%><p></p><%- end -%>
   </div>
-</div>
-</div>
+
+  <div class="area">
+   <script type="text/javascript"><!--
+google_ad_client = "ca-pub-0525832019389819";
+/* 块状广告 */
+google_ad_slot = "1109200724";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  </div>
+
+
+</section>
+
+<footer>
+    <p class="link">
+    <%= link_to (image_tag 'baidutieba.gif',:alt=>"百度贴吧", :class => "round", :width => 89, :height => 30), tb_path, :class => 'nav', :title => '进入百度贴吧脱水版', :target => '_blank' %>
+    <%= link_to (image_tag 'tianyabbs.gif',:alt=>"天涯社区", :class => "round", :width => 72, :height => 30), tysq_path, :class => 'nav', :title => '进入天涯社区脱水版', :target => '_blank' %>
+    <%= link_to (image_tag 'douban.png',:alt=>"豆瓣话题", :class => "round", :width => 121, :height => 30), dbht_path, :class => 'nav', :title => '进入豆瓣话题脱水版', :target => '_blank' %>
+  </p>
+  <p class="link">友情链接：
+    <%	 @links.each do |f| %>
+      <%= link_to f.name, f.url, :target => '_blank', :class => 'border' %>
+    <%	 end %>
+  <p>Copyright &copy; 2011 <%= link_to '脱水吧 - 中国第一在线采集工具', root_url, :rel => 'home' %></p>
+</footer>

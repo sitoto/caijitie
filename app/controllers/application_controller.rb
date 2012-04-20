@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
     helper_method :is_iphone?
  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
-  $id = 0
+
   private
 
   def record_not_found

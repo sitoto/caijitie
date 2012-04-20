@@ -15,5 +15,3 @@ CLOUDAPP_PASSWORD = ENV['CLOUDAPP_PASSWORD']
 
 WEIBO_QQ_URL0 = 'http://t.qq.com/online_web'
 WEIBO_QQ_URL = 'http://t.qq.com/sitoto'
-
-@@id = 0

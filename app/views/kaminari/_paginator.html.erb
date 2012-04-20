@@ -17,15 +17,15 @@
   <% end -%>
   <% end -%>
   <%= next_page_tag -%>
-  <% $id += 1
-  $id = 1 if $id > 100%>
+  <% @@id += 1
+  @@id = 1 if @@id > 100%>
 
-  直接到<input type="text" maxlength="5" size="3" id="<%= "page#{$id}" %>" />页
-  <input type="submit" onclick="<%= "page#{$id}()" %>" value="Goto"/>
+  直接到<input type="text" maxlength="5" size="3" id="<%= "page#{@@id}" %>" />页
+  <input type="submit" onclick="<%= "page#{@@id}()" %>" value="Goto"/>
   <script type="text/javascript">
-    function <%= "page#{$id}()" %>
+    function <%= "page#{@@id}()" %>
     {
-      page = document.all('<%= "page#{$id}" %>').value ;
+      page = document.all('<%= "page#{@@id}" %>').value ;
       total = <%= num_pages %>  ;
         if(isNaN(page))
         {
