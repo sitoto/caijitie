@@ -17,37 +17,5 @@
   <% end -%>
   <% end -%>
   <%= next_page_tag -%>
-  <% @@id += 1
-  @@id = 1 if @@id > 100%>
-
-  直接到<input type="text" maxlength="5" size="3" id="<%= "page#{@@id}" %>" />页
-  <input type="submit" onclick="<%= "page#{@@id}()" %>" value="Goto"/>
-  <script type="text/javascript">
-    function <%= "page#{@@id}()" %>
-    {
-      page = document.all('<%= "page#{@@id}" %>').value ;
-      total = <%= num_pages %>  ;
-        if(isNaN(page))
-        {
-            alert('请输入一个数值!');
-            return;
-        }
-
-        else
-        {
-            page =parseInt(page);
-            if(page < 1 || page > total)
-            {
-              alert('请输入一个在 1 和 ' + total + '之间的值!');
-              return;
-            }
-        }
-      //document.location.href(page)
-      //var link = '#{@template.url_for(url_options("_page"))}'
-      var new_link = page; //link.replace("_page", page)
-      window.location.assign(new_link)
-    }
-  </script>
-
 </nav>
 <%- end -%>

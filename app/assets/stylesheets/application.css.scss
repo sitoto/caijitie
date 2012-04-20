@@ -288,35 +288,11 @@ body > header {
 .index_bg {
 background: url(/assets/index_center.jpg) left top repeat-y;
 }
-.list_bg {
-margin: 0 auto;
-width: 894px;
-padding: 0 8px 50px 0;
-border-left: 4px solid #ECEFF1;
-border-right: 4px solid #ECEFF1;
-background: white;
-min-height: 450px;
-_height: auto;
-overflow: hidden;
-position: relative;
-//background: url(/assets/list_center.jpg) left top repeat-y;
-}
 .title_r {
 margin: 10px 3px 10px 8px;
 border-bottom: 1px dashed #DDD;
 font-size: 14px;
 text-indent: 2px;
-}
-table thead th {
-    font-size: 75%;
-background: #C3D9FF;
-font-weight: bold;
-}
-table tbody tr.even td {
-background: #E5ECF9;
-}
-table tbody tr.odd td {
-background: #FFFFFF;
 }
 
 // Footer
@@ -466,8 +442,17 @@ ul.cai{
 
 }
 #top{
+    height: 61px;
+    overflow: hidden;
     position: relative;
-    background: url(/assets/lehazi.png) left top no-repeat;
+    background: url(/assets/l1.png) left top no-repeat;
+    a.logo {
+        width: 200px;
+        height: 61px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        }
 }
 #search{
     margin-top: 0px;

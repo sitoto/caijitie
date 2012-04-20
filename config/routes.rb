@@ -1,6 +1,7 @@
 require 'not_preferred_host'
 Caijitie::Application.routes.draw do
 
+  get "pv/index"
 
   # Rewrite non-preferred hosts in production
   constraints(NotPreferredHost) do
@@ -58,9 +59,6 @@ Caijitie::Application.routes.draw do
     put :renew, :on => :member
     get ':page', :action => :show, :on => :member
      resources :pu do
-      get ':page', :action => :index, :on => :collection
-     end
-     resources :pv do
       get ':page', :action => :index, :on => :collection
      end
   end

@@ -1,6 +1,5 @@
 #encoding: utf-8
 class PuController < ApplicationController
-
   def index
     if params[:p_id]
       p_id = params[:p_id]

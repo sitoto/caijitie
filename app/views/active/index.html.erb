@@ -1,11 +1,10 @@
 <%- title "最近更新的帖子列表." -%>
-<div  class="list_bg">
 
+<section class="post-list">
   <%- if @topics && @topics.length > 0 -%>
     <%= render(:partial => "share/list", :object => @topics) %>
     <%= paginate @topics, :outer_window => 4, :inner_window => 4 -%>
   <%- else -%>
   <p>没有内容。.</p>
   <%- end -%>
-
-</div>
+</section>
