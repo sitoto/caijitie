@@ -19,6 +19,7 @@
 <% @authores.each do |c| %>
    <li>
     <%=  link_to truncate(c.author, :length => 12, :omission => '..') , author_path(c.author), :target => '_blank' %>
+     <span class="gray"><%= c.count %></span>
   </li>
 <% end %>
 </ul>

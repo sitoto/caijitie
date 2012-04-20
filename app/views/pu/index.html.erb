@@ -48,7 +48,7 @@
   <% if @temp_topics && @temp_topics.length > 0 %>
     <ul>
     <% @temp_topics.each do |t| %>
-        <li><%= link_to t.title, "/p/#{t.id}", :target => '_blank', :class => "blue" %></li>
+        <li><%= link_to t.title, "/p/#{t.id}/pu/1", :target => '_blank', :class => "blue" %></li>
     <% end %>
     </ul>
   <% end %>

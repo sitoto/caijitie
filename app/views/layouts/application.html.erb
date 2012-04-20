@@ -16,14 +16,14 @@
         <ul>
           <%= raw topmenu.join %>
           <li id="menu-cai" style="float: right; margin-right: 1em;">
-          <%=	 link_to '采集入口>>', "/easy_cai/index", target: '_blank', rel: "nofollow", :title => '采集入口', method: :put %>
+          <%=	 link_to '采集>>', "/easy_cai/index", target: '_blank', rel: "nofollow", :title => '采集入口', method: :put %>
           </li>
         </ul>
       </div>
     </div>
 <hgroup class="round" style="background: #ffffff">
-<%= breadcrumb :pretext => "<label>当前位置：</label>",
-           :separator => "»",
+<%= breadcrumb :pretext => "当前位置：",
+           :separator => ">",
            :autoroot => true,
            :show_root_alone => true,
            :link_last => false %>

@@ -17,6 +17,9 @@
 <div class="clearfix" style="background: white; clear: both;">
   <ul class="cai">
   <%	 @page_urls.each_with_index do |p, i| %>
+     <%	 if params[:page] %>
+       <%	  i = i + 500 * (params[:page].to_i-1)  %>
+     <% end %>
        <%  if p.status == 1  %>
         <li class="caied">
          <%= link_to "第#{p.num}页"  , p_pu_path(p.topic_id, i+1), :target => '_blank' %> <br/>
