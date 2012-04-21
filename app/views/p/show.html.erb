@@ -17,7 +17,7 @@
 <div class="clearfix" style="background: white; clear: both;">
   <ul class="cai">
   <%	 @page_urls.each_with_index do |p, i| %>
-     <%	 if params[:page] %>
+     <%	 if params[:page] &&  params[:page].to_i > 0 %>
        <%	  i = i + 500 * (params[:page].to_i-1)  %>
      <% end %>
        <%  if p.status == 1  %>

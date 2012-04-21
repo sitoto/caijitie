@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
     helper_method :is_iphone?
  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
+  $id = 0
+
   private
 
   def record_not_found
