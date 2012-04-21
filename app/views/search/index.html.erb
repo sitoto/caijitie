@@ -1,9 +1,10 @@
-<% unless @search.blank? %>
-  <% @search.each do |g| %>
-    <%= render 'post', :post => g %>
+<%- title "查找#{@search}帖子列表." -%>
 
-  <% end %>
-  <%= paginate @search, :outer_window => 2, :inner_window => 1 -%>
-<% else %>
+<section class="post-list">
+  <%- if @search && @search.length > 0 -%>
+    <%= render(:partial => "share/list", :object => @search) %>
+    <%= paginate @search, :outer_window => 4, :inner_window => 4 -%>
+  <%- else -%>
   <p>没有内容。.</p>
-<% end %>
+  <%- end -%>
+</section>

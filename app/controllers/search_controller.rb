@@ -5,17 +5,17 @@ class SearchController < ApplicationController
 
   def index
     per_page = 20
-    search_text = params[:q]
-    search_text ||= ""
-    puts "search_text:===========" <<  search_text
-    s_id = is_url?(search_text)
+    @search_text = params[:q]
+    @search_text ||= ""
+    puts "@search_text:===========" <<  @search_text
+    s_id = is_url?(@search_text)
     puts s_id
 
     if s_id == 0
-      @search = Post.where("title like ?", "%" << search_text << "%").order('published_at DESC').page(params[:page]).per(per_page)
+      @search = Topic.where("title like ?", "%" << @search_text << "%").order('updated_at DESC').page(params[:page]).per(per_page)
       #for seo
-      breadcrumb :search, search_text
-      meta :title => "搜索：#{search_text}", :description => "搜索：#{search_text}的结果" , :keywords => search_text
+      breadcrumb :search, @search_text
+      meta :title => "搜索：#{@search_text}", :description => "搜索：#{@search_text}的结果" , :keywords => @search_text
       return
     elsif t = PageUrl.find_by_sql(["select * from page_urls where url = ? ", @url]).first
         redirect_to p_path(t.topic_id)

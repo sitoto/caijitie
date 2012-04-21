@@ -60,10 +60,11 @@ Caijitie::Application.routes.draw do
   resources :p do
     put :renew, :on => :member
     get ':page', :action => :show, :on => :member
-     resources :pu do
+    resources :pu do
       get ':page', :action => :index, :on => :collection
-     end
+    end
   end
+
   #show one topic
   match '/p' => 'p#index' , :as => 'all'
   match '/p/:id' => 'p#show', :as => 'p'
