@@ -27,7 +27,7 @@ class PuController < ApplicationController
       @posts = @page_url.tieba_posts if @topic.section_id.eql?(1)
       @posts = @page_url.tianya_posts if @topic.section_id.eql?(2)
       @posts = @page_url.douban_posts if @topic.section_id.eql?(3)
-      @topic.increment!(:myshowtimes, by = 1)
+      #@topic.increment!(:myshowtimes, by = 1)
 
       @temp_topics = Topic.where("section_id = ?", @topic.section_id).order("id DESC").limit(10)
 #获取当前页前后有文章的页
