@@ -1,6 +1,8 @@
 require 'not_preferred_host'
 Caijitie::Application.routes.draw do
 
+
+
   get "pv/index"
 
   # Rewrite non-preferred hosts in production
@@ -86,6 +88,7 @@ Caijitie::Application.routes.draw do
     resources :posts, :only => [:show, :new, :create, :update, :edit, :destroy, :index]
     resources :tags, :only => [:new, :create, :update, :edit, :destroy, :index]
     resources :reports
+    resources :easy_cais
     resources :topics
     get "topic_list/index"
     get "topic_list/tieba"

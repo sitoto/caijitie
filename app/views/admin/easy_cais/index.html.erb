@@ -1,0 +1,35 @@
+<h1>Listing cais</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Section</th>
+    <th>Rule</th>
+    <th>Name</th>
+    <th>Url address</th>
+    <th>Paixu</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @easy_cais.each do |cai| %>
+  <tr>
+    <td><%=	 cai.id %></td>
+    <td><%= cai.section_id %></td>
+    <td><%= cai.rule_id %></td>
+    <td><%= cai.name %></td>
+    <td><%= cai.url_address %></td>
+    <td><%= cai.paixu %></td>
+    <td><%= cai.status %></td>
+    <td><%= link_to 'Show', [:admin, cai] %></td>
+    <td><%= link_to 'Edit', edit_admin_easy_cai_path(cai) %></td>
+    <td><%= link_to 'Destroy', [:admin, cai], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+ <%= paginate @easy_cais, :outer_window => 4, :inner_window => 4 -%>
+<br />
+
+<%= link_to 'New ', new_admin_easy_cai_path %>

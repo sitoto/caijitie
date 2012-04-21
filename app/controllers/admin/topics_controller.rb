@@ -1,6 +1,5 @@
 class Admin::TopicsController < AdminController
 
-  layout "admin"
   def index
     @topics = Topic.order("id DESC").page(params[:page]).per(50)
   end

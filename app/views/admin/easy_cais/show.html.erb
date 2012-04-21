@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Section:</b>
+  <%= @easy_cai.section_id %>
+</p>
+
+<p>
+  <b>Rule:</b>
+  <%= @easy_cai.rule_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @easy_cai.name %>
+</p>
+
+<p>
+  <b>Url address:</b>
+  <%= @easy_cai.url_address %>
+</p>
+
+<p>
+  <b>Paixu:</b>
+  <%= @easy_cai.paixu %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @easy_cai.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_easy_cai_path(@easy_cai) %> |
+<%= link_to 'Back', admin_easy_cais_path %>

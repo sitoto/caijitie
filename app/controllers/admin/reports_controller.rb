@@ -3,11 +3,9 @@ class Admin::ReportsController < AdminController
   # GET /reports.json
   def index
     @reports = Report.all
-    @topic_num = Topic.count
-    @page_num = PageUrl.count
-    @pagenot_num = PageUrl.where("status != 1").count
+    @page_status = PageUrl.find_by_sql("SELECT `status`, count(`status`) as count FROM `page_urls` GROUP BY `status` ")
 
-    @nottopic = PageUrl.find_by_sql("SELECT  count(id) as pagenum, topic_id FROM `page_urls`  WHERE `status` != 1  GROUP BY topic_id limit 50")
+    #@nottopic = PageUrl.find_by_sql("SELECT  count(id) as pagenum, topic_id FROM `page_urls`  WHERE `status` != 1  GROUP BY topic_id limit 50")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @reports }
