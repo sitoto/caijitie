@@ -38,7 +38,7 @@ class PController < ApplicationController
     if @topic.blank?
       return
     end
-    last_page_num = PageUrl.count(:conditions => ["topic_id = ? and status = 1", @topic.id])
+    last_page_num = PageUrl.count(:conditions => ["topic_id = ? and status = 1 and count > 0 ", @topic.id])
     expire_page( :controller => "pu", :action => 'index' , :p_id => @topic.id, :page => last_page_num )
 
 
