@@ -294,6 +294,33 @@ border-bottom: 1px dashed #DDD;
 font-size: 14px;
 text-indent: 2px;
 }
+#control_pannel{
+background: #F7F7F7 none repeat scroll 0 0;
+border: 2px solid #EFEFEF;
+bottom: 2px;
+padding: 1px;
+position: fixed;
+_position: absolute;
+right: 272px;
+width: 80px;
+font-size: 12px;
+    a{
+        display: block;
+        color: red;
+        padding: 2px 4px 2px 4px;
+        text-align: center;
+        opacity: .30;
+        filter: alpha(Opacity=30);
+        text-decoration: none;
+         &:hover {
+            background: #999999;
+            color: white;
+            text-decoration: none;
+            opacity: 1;
+            filter: alpha(Opacity=80);
+        }
+    }
+}
 
 // Footer
 body > footer {

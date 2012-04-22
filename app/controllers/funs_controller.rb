@@ -1,6 +1,7 @@
 #encoding: utf-8
 class FunsController < ApplicationController
   caches_page :show
+
   def index
     @funs = Fun.order('id DESC').page(params[:page])
 
@@ -19,7 +20,8 @@ class FunsController < ApplicationController
   # GET /funs/1
   # GET /funs/1.json
   def show
-    unless read_fragment(:action => 'show')
+
+   # unless read_fragment(:action => 'show')
       a = Integer(params[:id]) -1
       b = Integer(params[:id]) +1
       @fun =Fun.find(params[:id])
@@ -34,7 +36,7 @@ class FunsController < ApplicationController
       meta :title =>  @fun.title ,
          :description => ActionController::Base.helpers.strip_tags(@fun.body).truncate(80),
          :keywords => @fun.title
-    end
+    #end
 
   end
 

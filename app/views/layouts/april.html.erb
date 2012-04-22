@@ -1,13 +1,13 @@
+
 <%- content_for :pre_content do -%>
 <div id="headerAll">
   <div id="header">
     <div id="top">
         <a class="logo" href="/"><cite>乐哈子 脱水吧<br>采集工具 只看楼主</cite></a>
         <div class="right_info">
-          <ul>
-            <li id="header_login"><a href="javascript:alert_login();">登录</a></li>
-            <li><a href="http://support.qq.com/discuss/387_1.shtml" target="_blank" onclick="sendHotClick('HEADER.TO.FEEDBACK');">反馈意见</a></li>
-            <li class="pr"><a href="javascript:;" onmouseover="ShowSubMenu('site_map_menu');" onmouseout="HideSubMenu('site_map_menu');">站点地图<b></b></a></li>
+          <ul style="float: right; display: block;">
+            <li id="header_login">登录</li>
+            <li class="pr">站点地图</li>
           </ul>
           <form action="<%= search_path %>"  method = "get"   target = "_blank">
             <%= text_field_tag(:q , '', :class => "q", value: "输入天涯社区、贴吧文章、豆瓣网址")  %>
@@ -17,21 +17,19 @@
     </div>
     <div id="menu">
       <ul>
-        <li id="menu_index"><a class="m1" href="/cn2/index"><cite>首页</cite></a></li>
-        <li id="menu_account_prot" class=""><a class="m2" href="/cn2/safe_service/my_prot" onmouseover="ShowSubMenu('submenu_account_prot');" onmouseout="HideSubMenu('submenu_account_prot');"><cite>帐号保护</cite></a></li>
-        <li id="menu_pwd_manage"><a class="m3" href="/cn2/psw_mgr/psw_mgr_index" onmouseover="ShowSubMenu('submenu_pwd_manage');" onmouseout="HideSubMenu('submenu_pwd_manage');"><cite>密码管理</cite></a></li>
-        <li id="menu_safe_mutual" class="on4"><a class="m4" href="/cn2/safe_school/safe_school_index" onmouseover=""><cite>安全学堂</cite></a></li>
+        <li id="menu_index"><a class="m1" href="/"><cite>首页</cite></a></li>
+        <li><a class="m2" href="/active"><cite>最近更新</cite></a></li>
+        <li><a class="m3" href="/hot"><cite>热门文章</cite></a></li>
+        <li class="on4"><a class="m4" href="/rencent" ><cite>文章列表</cite></a></li>
       </ul>
     </div>
-    <a class="toolbox"></a>
+    <a class="toolbox" href="/easy_cai/index" rel="nofollow" data-method="put"  target="_blank"><cite>采集入口</cite></a>
   </div>
 </div>
 
 <div id="wrapper">
   <div id="index_top"></div>
 <%- end -%>
-
-
 
 <%- content_for :after_content do -%>
   <div id="index_bottom"></div>
@@ -42,4 +40,5 @@
   <p>乐哈子 版权所有</p>
 </div>
 <%- end -%>
+
 <%= render :file => "layouts/abstract" -%>
