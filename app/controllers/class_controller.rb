@@ -1,5 +1,7 @@
 #encoding: utf-8
 class ClassController < ApplicationController
+  caches_page :index
+
   def index
     @classes = Topic.find_by_sql("SELECT count(*) as count , classname  FROM `topics` GROUP BY classname  ORDER BY count DESC limit 40")
     @authores = Topic.find_by_sql("SELECT count(*) as count, author  FROM `topics` GROUP BY author  ORDER BY count DESC limit 40")

@@ -2,6 +2,7 @@
 require 'get_tieba_page_url'
 class PController < ApplicationController
   include GetTiebaPageUrl
+  #caches_page :show
 
   def show
     current_topic = params[:id].to_i
@@ -34,6 +35,13 @@ class PController < ApplicationController
   def renew
     current_topic = params[:id]
     @topic = Topic.find_by_id(current_topic)
+    if @topic.blank?
+      return
+    end
+    last_page_num = PageUrl.count(:conditions => ["topic_id = ? and status = 1", @topic.id])
+    expire_page( :controller => "pu", :action => 'index' , :p_id => @topic.id, :page => last_page_num )
+
+
     if (@topic.rule.eql?(1))
       t = TiebaTuoshuiJob.update_topic(@topic)
       update_topic(t)

@@ -1,6 +1,8 @@
 #encoding: utf-8
 class PuController < ApplicationController
+  caches_page :index
   def index
+
     if params[:p_id]
       p_id = params[:p_id]
       page_id = params[:page]

@@ -39,7 +39,8 @@ class SearchController < ApplicationController
           when 4 #techforum from tianyabbs 鬼话
            t, page_urls = @topic.get_tianya_techforum_topic(@url)
             update_tianyabbs_techfroum_topic(t)
-          end
+        end
+        expire_page( :controller => "class", :action => 'index' )
       end
   end
 
