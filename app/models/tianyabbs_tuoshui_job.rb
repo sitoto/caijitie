@@ -27,6 +27,7 @@ class TianyabbsTuoshuiJob
     doc = Nokogiri::HTML(html_stream)
     t =  filter_tianyabbs_post(doc, topic.author,page_url.id, topic.status)
   end
+
   def self.filter_tianyabbs_post(doc, lz, url_id, s = 0)  #作者信息和内容信息 分开读取
     auth_time = {} # all auth info  作者信息
     author = doc.at_css(".pagewrap table td a").text
@@ -34,7 +35,7 @@ class TianyabbsTuoshuiJob
     created_at = chk_datetime created_at
     auth_time[0] = [author, created_at]
     tip = 1
-    doc.css(".allpost > table").each do |item|
+    doc.css(".allpost  table").each do |item|
 			author = item.at_css("center a").text
 			time = chk_datetime item.at_css("center").text
 			auth_time[tip] = [author, time]
@@ -49,6 +50,7 @@ class TianyabbsTuoshuiJob
         content = content.gsub(/\<div.+/, '')
         content = content.gsub(/\<center.+/, '')
         content = content.gsub(/\<h.+/, '')
+        content = content.gsub(/\<table.+/, '')
         content_list[i] = content
       else
          content_list[i] = ''

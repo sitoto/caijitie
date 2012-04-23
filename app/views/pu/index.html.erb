@@ -13,7 +13,7 @@
 
 <section class="cai-post-list round">
  <%#=	 render 'page_list' %>
-<%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
+<%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
   <table>
   <tbody>
    <% if !@posts.blank? %>
@@ -41,7 +41,7 @@
   </tbody>
 </table>
  <%#=	 render 'page_list' %>
-<%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
+<%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
 </section>
 <div>
   <h4>相关阅读</h4>

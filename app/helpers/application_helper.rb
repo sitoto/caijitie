@@ -4,7 +4,8 @@ module ApplicationHelper
 	image_tag 'l1.png',:alt=>"乐哈网,看楼主,脱水吧,脱水工具"
   end
   def message
-    gotonextpage = '无楼主贴！ &nbsp;<span id="spnCount"></span>&nbsp;秒后 自动翻到下一页。 返回<a href="/p/' << params[:p_id] << '">目录页</a>。
+    gotonextpage ='无楼主贴 或 未及时采集下来！ 。 请返回<a href="/p/' << params[:p_id] << '">目录页</a> 或按“F5”刷新本页。'
+    gotonextpage1 = '无楼主贴！ &nbsp;<span id="spnCount"></span>&nbsp;秒后 自动翻到下一页。 返回<a href="/p/' << params[:p_id] << '">目录页</a>。
         <script type="text/javascript">
         function countdown(_nCount, _oEle) {
             var _oArguments = arguments;

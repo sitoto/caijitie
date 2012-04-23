@@ -30,6 +30,17 @@ class PuController < ApplicationController
       @posts = @page_url.tianya_posts if @topic.section_id.eql?(2)
       @posts = @page_url.douban_posts if @topic.section_id.eql?(3)
       #@topic.increment!(:myshowtimes, by = 1)
+      not_cai = PageUrl.count(:conditions => ["topic_id = ? and status = 0 ", @topic.id])
+      if not_cai > 0  #存在为采集的页，本缓存失效
+        all_page_num = PageUrl.count(:conditions => ["topic_id = ? ", @topic.id])
+        1.upto(all_page_num) do |p|
+         expire_page( :controller => "pu", :action => 'index' , :p_id => @topic.id, :page => p )
+        end
+      end
+      #if @posts.blank?
+        #expire_page( :controller => "pu", :action => 'index' , :p_id => @topic.id, :page => page_id )
+        #redirect_to p_pu_path(@topic.id, 1) and return
+      #end
 
       @temp_topics = Topic.where("section_id = ?", @topic.section_id).order("id DESC").limit(10)
 #获取当前页前后有文章的页
