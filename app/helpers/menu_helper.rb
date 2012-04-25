@@ -12,7 +12,7 @@ module MenuHelper
      pages = {
         "pages" => { :name => '首页', :link => root_path},
         "recent" => { :name => '最新', :link => recent_path },
-        "hot" => { :name => '热门', :link => hot_path },
+        "hot" => { :name => '推荐', :link => hot_path },
         "active" => { :name => '新更', :link => active_path },
         "tysq" => { :name => '天涯', :link => tysq_path },
         "tb" => { :name => '贴吧', :link => tb_path },
