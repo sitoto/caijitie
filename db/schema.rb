@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120416074646) do
+ActiveRecord::Schema.define(:version => 20120425073756) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -178,6 +178,7 @@ ActiveRecord::Schema.define(:version => 20120416074646) do
     t.datetime "updated_at"
     t.integer  "rule"
     t.string   "my_title"
+    t.integer  "top",          :default => 0
   end
 
   add_index "topics", ["author"], :name => "index_topics_on_author", :length => {"author"=>191}
