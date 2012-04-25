@@ -1,11 +1,5 @@
 <%- content_for :pre_content do -%>
 <header>
-  <div id="search" class="clearfix">
-      <form action="<%= search_path %>"  method = "get"   target = "_blank">
-      <%= text_field_tag(:q , '', :class => "q", value: "输入天涯社区、贴吧文章、豆瓣网址")  %>
-      <%= submit_tag("", :class => "su") %>
-      </form>
-  </div>
 </header>
 <section class="easycai clearfix">
 <%- end -%>

@@ -18,16 +18,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 margin: 0;
 padding: 0;
 }
-#w620_top, #w620_bottom, #w285_top, #w285_bottom, #index_top, #index_bottom, #menu li a.m1, #menu li a.m2, #menu li a.m3, #menu li a.m4, #menu li.on1 a, #menu li.on2 a, #menu li.on3 a, #menu li.on4 a, a.toolbox, .toolbox_hover, a.login_button, a.login_button:hover, #indexinfo, .bg_top, .bg_bottom, .right_info li b, .cent, .tool_list dl a:hover, .tool_list1 dl a:hover, .title2, a.whole1 b, a.whole2 b, .low1 span, .low2 span, .low3 span, .middle1 span, .middle2 span, .middle3 span, .high1 span, .high2 span, .high3 span, .safety_sum span, a.dispose, a.dispose:hover, a.button, a.button:hover, a.button span, a.button:hover span, a.button1, a.button1:hover, a.button1 span, a.button1:hover span, a.share_button, a.share_button:hover, a.point_button, a.point_button:hover, a.button2, a.button2:hover, .top, .bottom, .menu_left li a:hover, .menu_left li.on, .title_right, .toolbox_banner dt li a:hover, a.close, a.close:hover, a.t_close, a.t_close:hover, .pm_info, .tips_orange, .tips_blue, .p_mobile li a, .p_mobile li .select, .pm_index li a:hover, .appeal_tip, .appeal_button1, .appeal_button2, .appeal_button3, .aa_li, a.aa_more, .step1, .step2, .step3, .pointer, a.k_button1, a.k_button2, .sstr_tab a, .sstr_tab .select, .sstr_tab .select_two, .m_h_t b, .u_y, .feed, .small_survey, .nubbt em, .nubbt em.on, .scroll_icon li, .scroll_icon li.current, .minipay dt, .service_hotline, .safe_school_express dl, .sse_bg, .more_guidance {
-background-image: url(/assets/bg.png);
-background-repeat: no-repeat;
-_background-image: url(/assets/ie6_bg.png);
-background-repeat: no-repeat;
-}
-cite {
-display: none;
-text-indent: -999px;
-}
+
 address, caption, cite, code, dfn, em, th, var {
 font-style: normal;
 font-weight: normal;
@@ -199,6 +190,15 @@ color: #313131;
 position: relative;
 overflow: hidden;
 }
+.title span {
+line-height: 16px;
+font-size: 75%;
+position: absolute;
+right: 0;
+top: 5px;
+font-family: "宋体";
+}
+
 .blank5, .blank10, .blank20, .blank30, .blank40, .blank50, .blank60, .blank70, .blank80, .blank90, .blank100 {
 clear: both;
 height: 3px;
@@ -233,7 +233,7 @@ body > header, body > section, body > footer {
 // Header
 body > header {
   color: #222;
-  margin: 1em auto 1em;
+  margin: 0em auto;
   img {
     border: 0px;
   }
@@ -419,14 +419,29 @@ ul.cai{
     }
 }
 
-#nav{
-    width: 950px;
-    height: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background: #007AC4 url(/assets/bg-navi.png) 0 0 no-repeat;
-    clear: both;
+#a1{
+    background: white;
+    height: 75px;
+}
+#topall{
+    background: #EEE;
+    display:block;
+    height: 20px;
+    line-height: 20px;
+    font-size: 75%;
 
+    .top_left{ display: block; float:left;}
+    .top_right{display: block; float:right;}
+
+}
+
+#nav{
+    height: 30px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background: #007AC4 ;
+    clear: both;
+    border-radius: 3px;
     ul{
         display: block;
         list-style: none;
@@ -469,39 +484,67 @@ ul.cai{
 
 }
 #top{
-    height: 61px;
+    float:left;
+    height: 55px;
     overflow: hidden;
     position: relative;
-    background: url(/assets/l1.png) left top no-repeat;
+    width: 200px;
+    font-weight: bolder;
+    clear:right;
     a.logo {
-        width: 200px;
-        height: 61px;
+        font-size: 2em;
+        color: #266392;
+        line-height: 1.1em;
+
         position: absolute;
         left: 0;
         top: 0;
+
         }
+    span{
+        font-size: 80%;
+        color: red;
+        margin:0 ;
+        padding: 0;
+
+    }
+}
+#top-center{
+    float:left;
+    height: 55px;
 }
 #search{
-    margin-top: 0px;
+    display:block;
     float: right;
-    padding-right:10px;
 
+    form{
+        display: block;
+        margin-top: 5px;
+        height: 26px;
+
+    }
     .su{
-        float: left;
-        width: 78px;
-        height: 34px;
-        border: none;
-        background: white url(/assets/bg-search-submit.png) 0 0 no-repeat;
+        float: right;
+        width: 60px;
+        height: 23px;
+
         cursor: pointer;
     }
     .q{
-        float: left;
-        width: 260px;
-        height: 26px;
-        padding: 8px 10px 0 7px;
-        border: none;
-        background: white url(/assets/bg-search-text.png) 0 0 no-repeat;
+        float: right;
+        width: 300px;
+        height: 23px;
+        padding: 0px 10px 0 7px;
+        border: 1px solid #DDD;
+        background: white ;
 
+    }
+    span{
+        display:block;
+        height: 22px;
+        float:right;
+        font-size:75%;
+        color: gray;
     }
 }
 

@@ -5,6 +5,7 @@ background: white;
 }
 
 section.home {
+    background: #F5F9FA;
   h2 {
     margin-top: 1.7em;
     
@@ -18,22 +19,84 @@ section.home {
   }
   #left{
     float: left;
-    width: 620px;
-    padding-right: 30px;
+    width: 660px;
+    overflow: hidden;
+    padding-right: 5px;
 
-    li{
-        padding: 0.8em;
-        margin: 0.5em 0;
-        border-bottom: 1px solid #999;
+    #solehazi {
+        text-align: center;
+        border: 1px solid #DDD;
+        background: #EEF;
+        border-radius: 5px;
+        margin: 0 0 20px 0;
 
+        padding: 2px;
+        height: 30px;
+        line-height: 25px;
+        span{
+            display: block;
+            display: inline;
+            margin: 0 auto;
+            font-size: 14px;
+            color: #03F;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
     }
+    #forum_nav{
+        display: block;
+        border-radius: 3px;
+
+        float: left;
+        width: 120px;
+        color: white;
+        border: 1px solid blue;
+        h3{
+            background: #007AC4;
+            height: 24px;
+            line-height: 24px;
+            text-align: left;
+
+            a{
+                color: white;
+            }
+        }
+        ul li{
+          padding: 2px 3px;
+        }
+    }
+    #show_list{
+        background: #EEF;
+        margin: 0 0px 5px 130px;
+        padding: 8px;
+        border-radius: 5px;
+
+        a {
+            color: #d55;
+        }
+        li{
+             padding: 2px 3px;
+            margin:  0;
+
+        }
+    }
+
   }
   #right{
     float:right;
-    width: 300px;
+    background: #EEF;
+    width: 260px;
+    border-radius: 5px;
+    padding: 15px 15px 0 10px;
+    overflow: hidden;
     ul{
        padding: 5px 10px 10px 10px;
         li{
+            overflow: hidden;
+            display:block;
+            width: 240px;
+            float:left;
             margin-bottom: 2px;
             padding-bottom: 2px;
             border-bottom: 1px dashed #BBDAF7;

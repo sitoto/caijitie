@@ -82,6 +82,7 @@ Caijitie::Application.routes.draw do
   #easy_cai
     put "easy_cai/index"
     put "easy_cai/show"
+    put "easy_cai/member"
 
   # Admin
   namespace :admin do

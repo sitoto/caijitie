@@ -3,8 +3,13 @@ require 'nokogiri'
 require 'open-uri'
 class EasyCaiController < ApplicationController
   layout "easycai"
+
+  def member
+
+  end
+
   def index
-    @easy_cais = EasyCai.order('paixu').page(params[:page])
+    @easy_cais = EasyCai.order('paixu')
   end
 
   def show

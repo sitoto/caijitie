@@ -21,15 +21,11 @@ section .class-list {
     font-size:100%;
     line-heigt: 26px;
     font-weight: bold;
-    color: white;
+    color: #444;
     text-decoration: none;
-    background-image: url(/assets/leftbg2.gif);
-    background-repeat: repeat-x;
+    background: #C3D9FF;
     height: 26px;
-    text-indent: 10px;
-    border: 1px solid #659C31;
-
-    margin-right: 10px;
+    text-indent: 20px;
   }
 
   ul, ol {
