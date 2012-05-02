@@ -2,9 +2,10 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Classname</th>
-    <th>Author</th>
+    <th>标题</th>
+    <th>原标题</th>
+    <th>分类</th>
+    <th>作者</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,8 +13,8 @@
 
 <% @topics.each do |topic| %>
   <tr>
+    <td class="blue"><%= topic.my_title %></td>
     <td><%= topic.title %></td>
-    <td><%= topic.my_title %></td>
     <td><%= topic.classname %></td>
     <td><%= topic.author %></td>
     <td><%= link_to 'Show', [:admin, topic] %></td>

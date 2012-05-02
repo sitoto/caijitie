@@ -1,6 +1,6 @@
-<% title "#{@topic.title} by #{@topic.author}.第#{params[:page]}页" %>
+<% title "#{@topic.my_title} by #{@topic.author}.第#{params[:page]}页" %>
 
-<h4 class="round2 back"><%=	 @topic.title%></h4>
+<h4 class="round2 back"><%=	 @topic.my_title%></h4>
 <p>
 <span class="border">[<%= link_to '回目录', p_path(@topic), :target => '_blank', :class => 'red' %>]  </span>
 <span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
@@ -44,12 +44,17 @@
 <%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
 </section>
 <div>
+
+
   <h4>相关阅读</h4>
   <% if @temp_topics && @temp_topics.length > 0 %>
     <ul>
+      <li>
+<a href="http://s.click.taobao.com/t_8?e=7HZ6jHSTbIWdEDkvhH%2FeP6%2BUX1nFftMbXSUbMBYUKGZjnw%3D%3D&p=mm_29973065_0_0" target="_blank" >包邮 迈兹正品 燃脂瘦小腿袜 打底瘦腿袜 连裤丝袜 瘦腿裤 压力袜</a></li>
     <% @temp_topics.each do |t| %>
-        <li><%= link_to t.title, "/p/#{t.id}/pu/1", :target => '_blank', :class => "blue" %></li>
+        <li><%= link_to t.my_title, "/p/#{t.id}/pu/1", :target => '_blank', :class => "blue" %></li>
     <% end %>
+      <a href="http://s.click.taobao.com/t_8?e=7HZ6jHSTbIKgdBrBwVNjVA6MuD84XFTAY9n8ITzCiDo%2F2g%3D%3D&p=mm_29973065_0_0"  target="_blank">丝袜连裤超薄 打底袜薄 性感丝袜女 黑丝袜 超薄连裤袜隐形连袜裤</a>
     </ul>
   <% end %>
 

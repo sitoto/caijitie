@@ -13,16 +13,36 @@
 
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title ,size: 100 %>
   </div>
   <div class="field">
+    <%= f.label :my_title %><br />
+    <%= f.text_field :my_title ,size: 100  %>
+  </div>
+
+  <div class="field">
     <%= f.label :classname %><br />
-    <%= f.text_field :classname %>
+    <%= f.text_field :classname ,size: 100  %>
   </div>
   <div class="field">
     <%= f.label :author %><br />
-    <%= f.text_field :author %>
+    <%= f.text_field :author ,size: 100  %>
   </div>
+
+
+  <div class="field">
+    <%= f.label :top %><br />
+    <%= f.text_field :top %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags ,size: 100  %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

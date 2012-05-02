@@ -48,6 +48,7 @@ class SearchController < ApplicationController
   def update_topic(t)
      unless t.blank?
         t[:fromurl] = @url
+        t[:my_title] = t[:title]
         @topic.update_attributes(t)
         if @topic.save
            max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
@@ -66,6 +67,7 @@ class SearchController < ApplicationController
   def update_doubanhuati_topic(t)
      unless t.blank?
         t[:fromurl] = @url
+        t[:my_title] = t[:title]
         @topic.update_attributes(t)
         if @topic.save
            max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
@@ -82,6 +84,7 @@ class SearchController < ApplicationController
   end
   def update_tianyabbs_topic(t, page_urls)
      unless t.blank?
+        t[:my_title] = t[:title]
         @topic.update_attributes(t)
         if @topic.save
            max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
@@ -107,7 +110,8 @@ class SearchController < ApplicationController
   end
   def update_tianyabbs_techfroum_topic(t)
     unless t.blank?
-       t[:fromurl] = @url
+      t[:my_title] = t[:title]
+      t[:fromurl] = @url
         @topic.update_attributes(t)
         if @topic.save
            max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0

@@ -24,7 +24,7 @@ class PController < ApplicationController
     breadcrumb :tysq_detail, @topic  if @topic.section_id == 2
     breadcrumb :dbht_detail, @topic  if @topic.section_id == 3
 
-    meta :title => @topic.title, :description => "热贴列表" , :keywords => "贴子,脱水"
+    meta :title => @topic.my_title, :description => "热贴列表" , :keywords => "贴子,脱水"
 
   end
 
