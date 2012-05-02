@@ -61,7 +61,7 @@
           <ul>
             <% @re_topics.each do |t| %>
             <li>
-              <%=	 link_to t.title, p_pu_path(t, 1), :class => 'border' %>
+              <%=	 link_to t.my_title, p_pu_path(t, 1), :class => 'border' %>
               <%= t.author %>
 
             </li>
@@ -79,7 +79,7 @@
           <ul>
             <% @topics.each do |t| %>
             <li>
-              <%=	 link_to t.title.truncate(16, :omission => '.') , p_pu_path(t, 1), title: t.title %>
+              <%=	 link_to t.my_title.truncate(16, :omission => '.') , p_pu_path(t, 1), title: t.title %>
             </li>
             <%  end %>
           </ul>

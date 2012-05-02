@@ -4,8 +4,8 @@ DynamicSitemaps::Sitemap.draw do
   # per_page 10
 
   url root_url, :last_mod => DateTime.now, :change_freq => 'daily', :priority => 1
-  autogenerate :posts, :last_mod => :published_at, :change_freq => 'weekly', :priority => 0.8
-  autogenerate :funs, :last_mod => :updated_at, :change_freq => 'weekly', :priority => 0.8
+  #autogenerate :posts, :last_mod => :published_at, :change_freq => 'weekly', :priority => 0.8
+  #autogenerate :funs, :last_mod => :updated_at, :change_freq => 'weekly', :priority => 0.8
   #new_page!
   
   #Post.all.each do |post|
