@@ -19,7 +19,10 @@ module Caijitie
   class Application < Rails::Application
     config.filter_parameters << :password
 
-    config.time_zone = 'Beijing'
+    config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_attributes = false
+    config.time_zone = "Beijing"
+
 
     config.encoding = "utf-8"
 

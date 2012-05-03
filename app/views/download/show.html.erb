@@ -1,10 +1,14 @@
-<% title "#{@topic.title} by #{@topic.author}." %>
+<% title "#{@topic.my_title} by #{@topic.author}.下载" %>
 
-<h2><%=	 @topic.title %></h2>
+<h2><%=	 @topic.my_title %></h2>
 <p>作者：<%= @topic.author %>
- <br /> 分类：<%= @topic.classname %>
+ <br />分类：<%= @topic.classname %>
+ <br />站内更新时间：<%= @topic.updated_at %>
  <br />共计：<%= @topic.mypagenum %>页</p>
 
+<p>
+ <br />因服务器带宽有限，暂未提供下载，后续将改善！谢谢您的支持。</p>
 
-<%=	 link_to '下载全文', '' %>
+
+<%=	 link_to '下载全文', '#' %>
 <br />
