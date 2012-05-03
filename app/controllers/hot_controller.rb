@@ -1,7 +1,7 @@
 #encoding: utf-8
 class HotController < ApplicationController
   def index
-    @topics = Topic.find(:all, :conditions => "top = 1"  , :order => "id DESC", :limit => 50)
+    @topics = Topic.find(:all, :conditions => "top >= 1"  , :order => "id DESC", :limit => 50)
 
     #for seo
     breadcrumb :list, '推荐列表'

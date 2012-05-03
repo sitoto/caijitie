@@ -29,7 +29,17 @@ class PController < ApplicationController
   end
 
   def index
-    @topic = Topic.page(params[:page])
+    #@topic = Topic.page(params[:page])
+  end
+
+  def top
+    p_id = params[:id].to_i
+    @topic = Topic.find(p_id)
+    @topic.increment!(:top, by = 1)
+    #return @topic.top
+    respond_to do |format|
+      format.json { render :json => @topic.to_json}
+    end
   end
 
   def renew
