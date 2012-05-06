@@ -1,5 +1,8 @@
 #encoding: utf-8
 class DbhtController < ApplicationController
+  caches_page :index
+
+
   def index
     @topics = Topic.where("section_id = 3").order("id DESC").page(params[:page])
     #for seo

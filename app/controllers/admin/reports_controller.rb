@@ -1,3 +1,6 @@
+#encoding: UTF-8
+require 'nokogiri'
+require 'open-uri'
 class Admin::ReportsController < AdminController
   # GET /reports
   # GET /reports.json
@@ -43,8 +46,17 @@ class Admin::ReportsController < AdminController
   # POST /reports.json
   def create
     @report = Report.new(params[:report])
-
     @page_urls = PageUrl.where("status = 0").limit(@report.page_num)
+
+    if(@page_urls.length.eql?(0))
+
+      tianya_url('http://www.tianya.cn/publicforum/articleslist/0/funinfo.shtml')
+      @bankuai.each do |t|
+        if t[3].size >= 3 && t[3].size <= 4
+          Delayed::Job.enqueue(PaJob.new(t[5]), -5)
+        end
+      end
+    end
 
     @page_urls.each do |p|
       @topic = Topic.find(p.topic_id)
@@ -87,4 +99,33 @@ class Admin::ReportsController < AdminController
       format.json { head :ok }
     end
   end
+
+  def tianya_url(url)
+   html_stream  = open(url)
+    regEx_tianya_1 = /tianya\.cn\/\w*\/\w*\/\w*\/[0-9]+\/[0-9]+\.shtml/
+    doc = Nokogiri::HTML(html_stream)
+   @bankuai_title = doc.css("title").text
+    @bankuai = []
+   if(doc.at_css("div#mainDiv > div#forumContentDiv > table"))
+    doc.css("div#mainDiv > div#forumContentDiv > table").each do |item|
+      if item.attr("name") == "adsp_list_post_info_a" || item.attr("name") == "adsp_list_post_info_b"
+        @bankuai << [item.css("td")[1].text, item.css("td")[2].text, item.css("td")[3].text,
+                    item.css("td")[4].text, item.css("td")[5].text, item.at_css("a").attr("href")]
+      end
+    end
+   elsif (doc.css("div#postlistwrapper > table.listtable"))
+      doc.css("div#postlistwrapper > table.listtable").each do |item|
+         if item.attr("name") == "adsp_list_post_info_a" || item.attr("name") == "adsp_list_post_info_b"
+            @bankuai <<  [item.css("td")[0].text, item.css("td")[1].text, item.css("td")[2].text, item.css("td")[3].text,
+                        item.css("td")[4].text,  item.at_css("a").attr("href")]
+         end
+
+      end
+
+   end
+  rescue
+    return ''
+  end
+
+
 end

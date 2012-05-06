@@ -1,5 +1,8 @@
 #encoding: UTF-8
 class TbController < ApplicationController
+  caches_page :index
+
+
   def index
     @topics = Topic.where("section_id = 1").order("id DESC").page(params[:page])
     #for seo

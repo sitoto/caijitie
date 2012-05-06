@@ -40,7 +40,7 @@ class SearchController < ApplicationController
            t, page_urls = @topic.get_tianya_techforum_topic(@url)
             update_tianyabbs_techfroum_topic(t)
         end
-        expire_page( :controller => "class", :action => 'index' )
+        expire_cache_for(t)
       end
   end
 
@@ -155,6 +155,21 @@ class SearchController < ApplicationController
     sid
   end
 
+private
+  def expire_cache_for(topic)
+    # Expire the index page now that we added a new topic
+    expire_page(:controller => 'pages', :action => 'home')
+    expire_page(:controller => 'hot', :action => 'index')
+    expire_page(:controller => 'class', :action => 'index')
+    expire_page(:controller => 'tb', :action => 'index')
+    expire_page(:controller => 'tysq', :action => 'index')
+    expire_page(:controller => 'dbht', :action => 'index')
+    expire_page(:controller => 'recent', :action => 'index')
+    expire_page(:controller => 'active', :action => 'index')
+
+    # Expire a fragment
+    expire_fragment('all_available_topics')
+  end
 
 
 end

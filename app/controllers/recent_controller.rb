@@ -1,5 +1,8 @@
 #encoding: utf-8
 class RecentController < ApplicationController
+  caches_page :index
+
+
   def index
     @topics = Topic.order("created_at DESC").page(params[:page])
     #for seo

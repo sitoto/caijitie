@@ -1,5 +1,7 @@
 #encoding: UTF-8
 class TysqController < ApplicationController
+  caches_page :index
+
   def index
     @topics = Topic.where("section_id = 2").order("id DESC").page(params[:page])
     #for seo

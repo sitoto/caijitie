@@ -1,5 +1,7 @@
 #encoding: utf-8
 class ActiveController < ApplicationController
+  caches_page :index
+
   def index
     @topics = Topic.order("myupdatetime DESC").page(params[:page])
     #for seo

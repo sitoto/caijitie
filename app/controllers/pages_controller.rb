@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   caches_page :contact
+  caches_page :home
 
   def home
     #@recent_posts = Post.published.recent.where(:homepageable => true).limit(10)

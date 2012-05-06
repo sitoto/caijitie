@@ -23,10 +23,10 @@ module Caijitie
     config.active_record.time_zone_aware_attributes = false
     config.time_zone = "Beijing"
 
-
+    #config.autoload_paths += %W(#{Rails.root}/app/sweeper)
     config.encoding = "utf-8"
 
-    config.filter_parameters += [:password]
+    #config.filter_parameters += [:password]
 
     config.assets.enabled = true
 

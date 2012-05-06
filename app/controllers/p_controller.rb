@@ -36,6 +36,7 @@ class PController < ApplicationController
     p_id = params[:id].to_i
     @topic = Topic.find(p_id)
     @topic.increment!(:top, by = 1)
+    expire2_cache
     #return @topic.top
     respond_to do |format|
       format.json { render :json => @topic.to_json}
@@ -53,7 +54,7 @@ class PController < ApplicationController
     1.upto(all_page_num) do |page|
       expire_page( :controller => "pu", :action => 'index' , :p_id => @topic.id, :page => page )
     end
-
+    expire2_cache_for
 
 
     if (@topic.rule.eql?(1))
@@ -157,4 +158,16 @@ class PController < ApplicationController
         end
      end
   end
+
+  private
+    def expire2_cache
+    # Expire the index page now that we added a new topic
+    expire_page(:controller => 'pages', :action => 'home')
+    expire_page(:controller => 'hot', :action => 'index')
+    expire_page(:controller => 'active', :action => 'index')
+
+    # Expire a fragment
+    expire_fragment('all_available_topics')
+  end
+
 end
