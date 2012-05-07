@@ -46,7 +46,7 @@ a {
 
   
   &:hover {
-    border-bottom: 1px solid;
+    border-bottom: 0px solid;
   }
 }
 
@@ -165,8 +165,8 @@ h4 {
   font-weight: bold;
   margin-bottom: 0.2em;
 }
-label {
-  font-weight: bold;
+label, strong, b {
+font-weight: bold;
 }
 
 ul{
@@ -419,135 +419,8 @@ ul.cai{
     }
 }
 
-#a1{
-    background: white;
-    height: 80px;
-}
-#topall{
-    background: #EEE;
-    margin-bottom: 8px;
-    display:block;
-    height: 20px;
-    line-height: 20px;
-    font-size: 75%;
 
-    .top_left{ display: block; float:left;}
-    .top_right{display: block; float:right;}
 
-}
-
-#nav{
-    height: 30px;
-    margin-top: 0px;
-    margin-bottom: 10px;
-    background: #007AC4 ;
-    clear: both;
-    border-radius: 3px;
-    ul{
-        display: block;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        li{
-            margin: 0;
-            float: left;
-            background: url(/assets/nav_li.gif) right no-repeat;
-            padding: 0 5px;
-            position: relative;
-
-            a{
-                margin: 0;
-                padding: 0;
-                display: block;
-                height: 30px;
-                line-height: 30px;
-                width: 77px;
-                text-align: center;
-                color: white;
-                text-decoration: none;
-
-                &:hover {
-                    border-bottom: 0px solid;
-                }
-            }
-        }
-    }
-
-    .current-menu-item a, .current-menu-parent a {
-        font-weight: 700;
-        color: #017DC8;
-        background: white url(/assets/nav_hover.png) no-repeat;
-
-        &:hover {
-            border-bottom: 0px solid;
-        }
-     }
-
-}
-#top{
-    float:left;
-    height: 50px;
-    overflow: hidden;
-    position: relative;
-    width: 200px;
-    font-weight: bolder;
-    clear:right;
-    a.logo {
-        font-size: 2em;
-        color: #266392;
-        line-height: 1.1em;
-
-        position: absolute;
-        left: 0;
-        top: 0;
-
-        }
-    span{
-        font-size: 80%;
-        color: red;
-        margin:0 ;
-        padding: 0;
-
-    }
-}
-#top-center{
-    float:left;
-    height: 50px;
-}
-#search{
-    display:block;
-    float: right;
-
-    form{
-        display: block;
-
-        height: 26px;
-
-    }
-    .su{
-        float: right;
-        width: 60px;
-        height: 23px;
-
-        cursor: pointer;
-    }
-    .q{
-        float: right;
-        width: 300px;
-        height: 23px;
-        padding: 0px 10px 0 7px;
-        border: 1px solid #DDD;
-        background: white ;
-
-    }
-    span{
-        display:block;
-        height: 22px;
-        float:right;
-        font-size:75%;
-        color: gray;
-    }
-}
 
 table.tianyapage{
     width: 100%;

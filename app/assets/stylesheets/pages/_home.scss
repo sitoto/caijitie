@@ -1,11 +1,167 @@
+.head{
+    width: 100%;
+    height: 80px;
+    background: white;
+    text-align: center;
+    margin: 0px;
+
+    .logo{
+        width: 960px;
+        height: 80px;
+        margin: auto;
+        text-align: left;
+    }
+}
+
+#a1{
+
+    height: 80px;
+}
+#topall{
+    background: #EEE;
+    margin-bottom: 8px;
+    display:block;
+    height: 20px;
+    line-height: 20px;
+    font-size: 75%;
+
+    .top_left{ display: block; float:left;}
+    .top_right{display: block; float:right;}
+
+}
+
+
+#top{
+    float:left;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    width: 200px;
+    font-weight: bolder;
+    clear:right;
+    a.logo {
+        font-size: 2em;
+        color: #266392;
+        line-height: 1.1em;
+
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        }
+    span{
+        font-size: 80%;
+        color: red;
+        margin:0 ;
+        padding: 0;
+
+    }
+}
+#top-center{
+    float:left;
+    height: 50px;
+}
+#search{
+    display:block;
+    float: right;
+
+    form{
+        display: block;
+
+        height: 26px;
+
+    }
+    .su{
+        float: right;
+        width: 60px;
+        height: 23px;
+
+        cursor: pointer;
+    }
+    .q{
+        float: right;
+        width: 300px;
+        height: 23px;
+        padding: 0px 10px 0 7px;
+        border: 1px solid #DDD;
+        background: white ;
+
+    }
+    span{
+        display:block;
+        height: 22px;
+        float:right;
+        font-size:75%;
+        color: gray;
+    }
+}
+
 header img {
 padding: 0.5em;
 background: white;
 
 }
 
-section.home {
-    background: #F5F9FA;
+#nav{
+    height: 30px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background: #007AC4 ;
+    clear: both;
+    .lable{
+        width: 960px;
+        height: 100%;
+        margin: auto;
+        font: 14px bold;
+        color: black;
+    }
+    ul{
+        display: block;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li{
+            margin: 0;
+            float: left;
+            background: url(/assets/nav_li.gif) right no-repeat;
+            padding: 0 5px;
+            position: relative;
+
+            a{
+                margin: 0;
+                padding: 0;
+                display: block;
+                height: 30px;
+                line-height: 30px;
+                width: 77px;
+                text-align: center;
+                color: white;
+                text-decoration: none;
+
+                &:hover {
+                    border-bottom: 0px solid;
+                }
+            }
+        }
+    }
+
+    .current-menu-item a, .current-menu-parent a {
+        font-weight: 700;
+        color: #017DC8;
+        background: white url(/assets/nav_hover.png) no-repeat;
+
+        &:hover {
+            border-bottom: 0px solid;
+        }
+     }
+
+}
+
+div.home {
+  width: 960px;
+  padding: 10px 0;
+  margin: 0 auto;
+  background: #F5F9FA;
   h2 {
     margin-top: 1.7em;
     
@@ -83,121 +239,164 @@ section.home {
     }
 
   }
+
+
   #right{
-    float:right;
-    background: #EEF;
     width: 260px;
-    border-radius: 5px;
-    padding: 15px 15px 0 10px;
+    height: auto;
+    float: left;
+    margin-left: 12px;
     overflow: hidden;
+
+    .blog_link{
+      display:block;
+      margin-top:10px; width:258px;
+      height:74px; border:1px solid #8fb9d0;
+      background:url(/assets/myblog.png) 1px 1px no-repeat;
+    }
+    .whatis {
+        width: 257px;
+        height: 99px;
+        border: 1px solid #C4DF8F;
+        background-color: #EDFCD8;
+         .tit {
+            margin: 10px 10px 0 10px;
+            text-align: left;
+            font-size: 14px;
+            color: #A7C658;
+            line-height: 20px;
+            }
+         .txtcontent {
+            margin: 10px 10px 0 10px;
+            text-align: left;
+            font-size: 12px;
+            color: #666;
+            line-height: 20px;
+            }
+         .button {
+            display: block;
+            width: 73px;
+            height: 21px;
+            background: url(/assets/qq.jpg) 0 0px no-repeat;
+            float: right;
+            margin-right: 15px;
+            margin-right: 15px;
+            _margin-right: 8px;
+            cursor: pointer;
+            text-indent: 23px;
+            text-decoration: none;
+            }
+            .button2 {
+            display: block;
+            width: 73px;
+            height: 21px;
+            background: url(/assets/sina.png) 0 0px no-repeat;
+            float: right;
+            margin-right: 15px;
+            margin-right: 15px;
+            _margin-right: 8px;
+            cursor: pointer;
+            text-indent: 23px;
+            text-decoration: none;
+            }
+    }
+    .recommend{
+        width: 258px;
+        border: 1px solid #C4DF8F;
+        margin: 0;
+        padding: 0;
+        background-color: #EDFCD8;
+        text-align: left;
+
+        .tit {
+        float: left;
+        font-size: 14px;
+        line-height: 22px;
+        color: #A7C658;
+        }
+        .more {
+        float: right;
+        font-size: 12px;
+        line-height: 22px;
+        font-family: 宋体;
+         a {
+            text-decoration: none;
+            color: #1C5504;
+            }
+        }
+        td {
+        padding: 5px 10px;
+        }
+
+        .list {
+        list-style: none;
+        clear: both;
+        font-size: 12px;
+        line-height: 26px;
+        text-align: left;
+        margin: 0px;
+        padding: 0px;
+            li {
+            clear: both;
+            height: 26px;
+                a {
+                display: block;
+                float: left;
+                clear: right;
+                width: 210px;
+                margin-left: 3px;
+                _margin-left: 0;
+                padding: 0px;
+                text-decoration: none;
+                font-size: 12px;
+                line-height: 26px;
+                color: #1C5504;
+
+                &:hover {text-decoration:underline; border:0;}
+                }
+            }
+             span {
+            display: block;
+            float: left;
+            clear: left;
+            width: 10px;
+            margin: 0px;
+            padding: 0px;
+            }
+        }
+        .button {
+        width: 88px;
+        height: 21px;
+        float: right;
+        background: url(/assets/mix_main.png) 0 0 no-repeat;
+        font-size: 12px;
+        line-height: 21px;
+        vertical-align: middle;
+        text-align: center;
+        padding-left: 8px;
+        margin-bottom: 10px;
+         a {
+            text-decoration: none;
+            color: #5C5C5C;
+            }
+        }
+    }
+
     ul{
-       padding: 5px 10px 10px 10px;
+       //padding: 5px 10px 10px 10px;
         li{
-            overflow: hidden;
-            display:block;
-            width: 240px;
-            float:left;
-            margin-bottom: 2px;
-            padding-bottom: 2px;
+            font-family: 宋体;
+            list-style: none;
+
             border-bottom: 1px dashed #BBDAF7;
         }
     }
   }
 
-  div#fm {
-    text-align: left;
-    position: relative;
 
-    input#q {
-        width: 60%;
-        font: 16px arial;
-        padding: 3px 1px;
-        margin: 0 6px 0 0;
-        font: 16px arial;
-    }
-    input.su {
-        width: 78px;
-        height: 28px;
-        line-height: 24px;
-    }
-  }
-  ul.sm {
-    margin: 0;
-    list-style-type:none;
-    padding: 0;
-    color:gray;
-
-    li {
-        font-size: 1em;
-    }
-
-  }
 
   
-  p.more {
-    font-size: 0.8em;
-    
-    a {
-      color: #069;
-       
-      &:hover {
-        color: $link-color;
-      }
-    }
-    
-    &.right {
-      text-align: right;
-    }
-  }
-  
-  a.fc-art {
 
-    width: 300px;
-    height: 300px;
-    margin-left: 20px;
-    float: right;
-    
-    img {
-      width: 300px;
-      height: 300px;
-    }
-  }
   
-  article {
-    padding: 0 0 0 2em;
-    margin: 0;
-    width: auto;
-    color: #777;
-    
-    em {
-      background: transparent;
-    }
-    
-    header {
-      h3 {
-        margin-bottom: 0.25em;
-      }
 
-      p {
-        font-size: 0.9em;
-        margin: 0 0 0.25em;
-      }
-    }
-    
-    a {
-      color: #006699;
-      
-      &:hover {
-       color: $link-color;
-      }
-    }
-    
-    p {
-      margin-bottom: 0.5em;
-      
-      &.more {
-        margin: 0;
-      }
-    }
-  }
 }

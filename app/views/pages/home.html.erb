@@ -1,7 +1,6 @@
 <%- title "只看楼主" -%>
-
-<header>
-  <div id="a1">
+<div id="head" class="head">
+  <div id="a1" class="logo">
     <div id="topall">
     <span class="top_left">当前位置：乐哈网脱水吧</span>
     <span class="top_right">收藏</span>
@@ -21,24 +20,25 @@
     <span>输入天涯社区、豆瓣小组、百度贴吧网址，点击搜索，阅读脱水文章。</span>
     </div>
   </div>
-</header>
+</div>
 <div class="blank10"></div>
-<section class="home clearfix">
-    <div id="nav">
-      <div>
-        <ul>
-          <li class="current-menu-item"><a title="乐哈网" href="">首页</a></li>
-          <li><a title="乐哈网" href="/recent">最新</a></li>
-          <li><a title="热门列表" href="/hot">热门</a></li>
-          <li><a title="最新更新" href="/active">新更</a></li>
-          <li><a title="天涯" href="/tysq">天涯</a></li>
-          <li><a title="贴吧" href="/tb">贴吧</a></li>
-          <li><a title="豆瓣" href="/dbht">豆瓣</a></li>
+<div id="nav" class="nav">
+  <div class="lable">
+    <ul>
+      <li class="current-menu-item"><a title="乐哈网" href="">首页</a></li>
+      <li><a title="乐哈网" href="/recent">最新</a></li>
+      <li><a title="热门列表" href="/hot">热门</a></li>
+      <li><a title="最新更新" href="/active">新更</a></li>
+      <li><a title="天涯" href="/tysq">天涯</a></li>
+      <li><a title="贴吧" href="/tb">贴吧</a></li>
+      <li><a title="豆瓣" href="/dbht">豆瓣</a></li>
 
 
-        </ul>
-      </div>
-    </div>
+    </ul>
+  </div>
+</div>
+<div class="home clearfix">
+
     <div id="left">
       <div id="solehazi">
         <span>关注本站微博：<a href="http://t.qq.com/lehazi" target="_blank">http://t.qq.com/lehazi</a></span>
@@ -71,22 +71,46 @@
       </div>
 
     </div>
-    <div id="right">
-      <div class="title mb7">
-	      <h3>最新脱水</h3>
-	      <span><a href="/recent">查看全部&gt;&gt;</a></span></div>
-          <%- if @topics -%>
-          <ul>
+    <div id="right" class="g_right">
+      <div class="whatis">
+        <div class="tit"><strong>乐哈网微博</strong></div>
+        <div class="txtcontent">已开通了腾讯微博和新浪微博，求关注。</div>
+        <a href="http://t.qq.com/lehazi" target="_blank" class="button">lehazi</a>
+        <a href="http://weibo.com/u/2183382954" target="_blank" class="button2">lehazi</a>
+      </div>
+      <a href="/blog" target="_blank" class="blog_link"></a>
+
+      <div style="margin-top:10px;">
+
+       <table cellspacing="0" cellpadding="0" class="recommend">
+	    <tbody>
+        <tr><td>
+        <div class="tit"><strong>文章推荐</strong></div>
+        <div class="more" style="line-height:20px;"><a href="/hot" target="_blank">更多</a>&gt;&gt;</div>
+        </td></tr>
+    <tr><td>
+      <%- if @topics -%>
+          <ul class="list">
             <% @topics.each do |t| %>
             <li>
-              <%=	 link_to t.my_title.truncate(16, :omission => '.') , p_pu_path(t, 1), title: t.title %>
+              <span>·</span><%=	 link_to t.my_title.strip.truncate(18, :omission => '.') , p_pu_path(t, 1), title: t.title.strip %>
             </li>
             <%  end %>
           </ul>
           <%- end -%>
 
+	</td></tr>
+	<tr><td><div class="button"><a href="/hot" target="_blank">查看所有文章</a></div></td></tr>
+</tbody></table>
+
+      </div>
+      <div class="title mb7">
+	      <h3>最新脱水</h3>
+	      <span><a href="/recent">查看全部&gt;&gt;</a></span></div>
+
+
     </div>
-</section>
+</div>
 <div class="blank10"></div>
 <footer>
   <p class="link">友情链接：
