@@ -1,13 +1,15 @@
 <%- title "只看楼主" -%>
 <div id="head" class="head">
-  <div id="a1" class="logo">
-    <div id="topall">
-    <span class="top_left">当前位置：乐哈网脱水吧</span>
-    <span class="top_right">收藏</span>
+    <div id="t">
+      <div id="topall">
+      <span class="top_left">当前位置：乐哈网脱水吧</span>
+      <span class="top_right">收藏</span>
+      </div>
     </div>
+  <div id="a1" class="logo">
     <div id="top">
-    <a class="logo" href="/">乐哈子</a><br>
-    <span>阅读热贴的好工具</span>
+    <a class="logo" href="/"><cite>乐哈子 脱水吧<br>采集工具 只看楼主</cite></a><br>
+    <span>乐哈子-阅读热贴的好工具</span>
     </div>
     <div id="top-center">
 
@@ -21,7 +23,7 @@
     </div>
   </div>
 </div>
-<div class="blank10"></div>
+
 <div id="nav" class="nav">
   <div class="lable">
     <ul>
@@ -38,37 +40,72 @@
   </div>
 </div>
 <div class="home clearfix">
-
+    <!-- left start -->
     <div id="left">
       <div id="solehazi">
-        <span>关注本站微博：<a href="http://t.qq.com/lehazi" target="_blank">http://t.qq.com/lehazi</a></span>
+        <span>已陆续帮网友采集<%= @count %>篇帖子，欢迎反馈意见，谢谢！</span>
       </div>
-      <div id="forum_nav">
-        <h3>板块推荐</h3>
-        <ul>
-        <% @classes.each do |c| %>
-           <li>
-            <%=  link_to  truncate(c.classname, :length => 12, :omission => '..') , category_path(c.classname), :target => '_blank' %>
-             <span class="gray"><%= c.count %></span>
-          </li>
-        <% end %>
-        </ul>
-        <h3><a href="/class" target="_blank">板块导航>></a></h3>
-      </div>
-      <div id="show_list">
-        <h3>网友推荐贴</h3>
-        <%- if @re_topics -%>
-          <ul>
-            <% @re_topics.each do |t| %>
-            <li>
-              <%=	 link_to t.my_title, p_pu_path(t, 1), :class => 'border' %>
-              <%= t.author %>
 
+      <div id="ty_list" class="show_list">
+        <h3>天涯易读<a href="/tysq">进入....</a></h3>
+        <%- if @ty_topics -%>
+          <ul>
+            <% @ty_topics.each do |t| %>
+            <li><span>·<%=	 link_to t.my_title, p_pu_path(t, 1), title: t.my_title, target: '_blank' %></span>
             </li>
             <%  end %>
           </ul>
         <%- end -%>
       </div>
+
+      <table cellpadding="0" cellspacing="0" class="modul" style="margin-top:10px;">
+        <thead>
+            <tr>
+              <td class="left_M"><strong>贴吧</strong><a href="/tb">more....</a></td>
+              <td class="right_M"><strong>豆瓣</strong><a href="/dbht">more....</a></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%- if @tb_topics -%>
+                    <ul>
+                    <% @tb_topics.each do |t| %>
+                    <li><span>·<%=	 link_to t.my_title.strip.truncate(24, :omission => '.'), p_pu_path(t, 1), title: t.my_title,  target: '_blank' -%></span>
+                    </li>
+                    <%  end %>
+                    </ul>
+                    <%- end -%>
+
+                </td>
+                <td>
+                   <%- if @db_topics -%>
+                    <ul>
+                    <% @db_topics.each do |t| %>
+                    <li><span>·<%=	 link_to t.my_title.strip.truncate(26, :omission => '.'), p_pu_path(t, 1), title: t.my_title,  target: '_blank' -%></span>
+                    </li>
+                    <%  end %>
+                    </ul>
+                    <%- end -%>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+
+      <div id="forum_nav" class="forum_list">
+        <h3>分类目录</h3>
+        <ul>
+        <% @classes.each do |c| %>
+           <li>
+            <%=  link_to  truncate(c.classname, :length => 12, :omission => '..') , category_path(c.classname), title: c.count ,:target => '_blank' %>
+             <span class="gray"><%= c.count %></span>
+          </li>
+        <% end %>
+          <li><a href="/class" target="_blank"><strong> 更多分类</strong></a>&gt;&gt;</li>
+        </ul>
+
+      </div>
+
 
     </div>
     <div id="right" class="g_right">
@@ -93,7 +130,7 @@
           <ul class="list">
             <% @topics.each do |t| %>
             <li>
-              <span>·</span><%=	 link_to t.my_title.strip.truncate(18, :omission => '.') , p_pu_path(t, 1), title: t.title.strip %>
+              <span>·</span><%=	 link_to t.my_title.strip.truncate(18, :omission => '.') , p_pu_path(t, 1), title: t.title.strip, target: '_blank' %>
             </li>
             <%  end %>
           </ul>
@@ -101,24 +138,26 @@
 
 	</td></tr>
 	<tr><td><div class="button"><a href="/hot" target="_blank">查看所有文章</a></div></td></tr>
-</tbody></table>
+    </tbody></table>
 
-      </div>
-      <div class="title mb7">
-	      <h3>最新脱水</h3>
-	      <span><a href="/recent">查看全部&gt;&gt;</a></span></div>
-
+    </div>
 
     </div>
 </div>
 <div class="blank10"></div>
-<footer>
-  <p class="link">友情链接：
+<div class="flink">
+  <h3>友情链接</h3>
+  <div class="fldiv">
+   <ul>
     <%	 @links.each do |f| %>
-      <%= link_to f.name, f.url, :target => '_blank', :class => 'border' %>
+      <li><%= link_to f.name, f.url, :target => '_blank' %></li>
     <%	 end %>
-  </p>
+  </ul>
+  </div>
+  <div class="blank10"></div>
+</div>
+<div id ="footer" class="footer">
   <p>Copyright &copy; 2011-2012 <%= link_to '乐哈网 脱水吧', root_url, :rel => 'home' %>
   | <%= link_to '联系我们', contact_url, target: '_blank' %>
   </p>
-</footer>
+</div>

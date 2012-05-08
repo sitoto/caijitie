@@ -1,12 +1,37 @@
-<%- title "by lehazi." -%>
-<% meta :description => "技术娱乐，博客文章列表.", :keywords => "脱水, 分页", :title => "博客文章列表"%>
-<% breadcrumb :blog, @posts %>
+<%- title "日志列表" -%>
+<% meta :description => "技术娱乐，博客文章列表.", :keywords => "日志, sitoto", :title => "博客文章列表"%>
 
-<section class="blog">
-  <%- if @posts && @posts.length > 0 -%>
-  <%= render @posts -%>
-  <%= paginate @posts, :outer_window => 2, :inner_window => 1 -%>
-  <%- else -%>
-  <p>没有内容。.</p>
-  <%- end -%>
-</section>
+<div id="container" class="index_bg">
+<div id="content">
+  <div class="title_r">
+    <%= breadcrumb :pretext => "<label>当前位置：</label>",
+       :separator => ">",
+       :autoroot => true,
+       :show_root_alone => true,
+       :link_last => false %>
+  </div>
+  <div class="page_view">
+    <%- if @posts && @posts.length > 0 -%>
+    <%= render @posts -%>
+    <%= paginate @posts, :outer_window => 2, :inner_window => 1 -%>
+    <%- else -%>
+    <p>没有内容。.</p>
+    <%- end -%>
+  </div>
+</div>
+<div id="sidebar">
+  <div class="title mb7"><h3>分类标签</h3></div>
+        <div class="tags clearfix">
+        <% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do |tag, css_class| %>
+        <%= link_to tag.name, tag, :class => css_class %>
+        <% end %>
+        </div>
+  <div class="blank10"></div>
+  <div class="title"><h3>相关内容推荐</h3></div>
+  <div class="friend_group" id="related_div">
+	<ul id="related1" style="">
+		<li class="col" ><em>·</em><a href="/blog">暂无</a></li>
+	</ul>
+</div>
+</div>
+</div>

@@ -27,38 +27,32 @@
 
 </p>
 
-<section class="cai-post-list round">
+<div class="cai-post-list round">
  <%#=	 render 'page_list' %>
 <%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
-  <table>
-  <tbody>
    <% if !@posts.blank? %>
       <% @posts.each do |p| %>
+<table>
+  <tbody>
       <tr>
         <td class="right small">
           <span class="border"><%= p.post_at.strftime("%Y-%m-%d %H:%M:%S") if p.post_at %></span>
           <span class="border"><%= p.my_level %>楼(<%= p.level %>)</span>
       </tr>
-      <tr>
-        <td class="content round">
-          <p><%= raw p.content  %></p>
-          <%# if p.my_level == 1 %>
-          <%# end %>
-        </td>
-      </tr>
-      <% end %>
+      </tbody>
+  </table>
+
+  <div class="content round" style="word-break:break-all;overflow:hidden;"><%= raw p.content  %></div>
+  <%# if p.my_level == 1 %>
+  <%# end %>
+    <% end %>
   <% else %>
-      <tr>
-        <td style="color: red;">
-          <div style="margin-top:25px;" ><%= raw message %></div>
-        </td>
-      </tr>
+    <div style="color: red; margin-top:25px;" ><%= raw message %></div>
   <% end %>
-  </tbody>
-</table>
+
  <%#=	 render 'page_list' %>
 <%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
-</section>
+</div>
 <div>
 
 
@@ -66,11 +60,10 @@
   <% if @temp_topics && @temp_topics.length > 0 %>
     <ul>
       <li>
-<a href="http://s.click.taobao.com/t_8?e=7HZ6jHSTbIWdEDkvhH%2FeP6%2BUX1nFftMbXSUbMBYUKGZjnw%3D%3D&p=mm_29973065_0_0" target="_blank" >包邮 迈兹正品 燃脂瘦小腿袜 打底瘦腿袜 连裤丝袜 瘦腿裤 压力袜</a></li>
     <% @temp_topics.each do |t| %>
         <li><%= link_to t.my_title, "/p/#{t.id}/pu/1", :target => '_blank', :class => "blue" %></li>
     <% end %>
-      <a href="http://s.click.taobao.com/t_8?e=7HZ6jHSTbIKgdBrBwVNjVA6MuD84XFTAY9n8ITzCiDo%2F2g%3D%3D&p=mm_29973065_0_0"  target="_blank">丝袜连裤超薄 打底袜薄 性感丝袜女 黑丝袜 超薄连裤袜隐形连袜裤</a>
+      <a href="http://s.click.taobao.com/t_8?e=7HZ6jHSTbIKgdBrBwVNjVA6MuD84XFTAY9n8ITzCiDo%2F2g%3D%3D&p=mm_29973065_0_0"  rel="nofollow" target="_blank">丝袜连裤超薄 打底袜薄 性感丝袜女 黑丝袜 超薄连裤袜隐形连袜裤</a>
     </ul>
   <% end %>
 

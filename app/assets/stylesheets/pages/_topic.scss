@@ -28,6 +28,35 @@ section.post-list {
           color: blue;
         }
 
+    }
 }
+
+section.page-list{
+    .pages{
+    background: white;
+    clear: both;
+    padding-bottom: 20px;
+
+        ul{
+            padding: 5px;
+        li.caied{
+          border: 5px solid #FFFFFF;
+          height: 50px;
+          overflow: auto;
+          float: left;
+          background: #C3D9FF;
+          text-align: center;
+        }
+        li.nocai {
+          border: 5px solid #FFFFFF;
+          height: 50px;
+          overflow: auto;
+          float: left;
+          background: #DDDDDD;
+          text-align: center;
+        }
+    }
+    }
+
 }
 

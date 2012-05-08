@@ -1,18 +1,21 @@
 <%- content_for :pre_content do -%>
-<header>
-  <div id="a1">
-    <div id="topall">
-    <span class="top_left">
-      <%= breadcrumb :pretext => "当前位置：",
+<div id="head" class="head">
+    <div id="t">
+      <div id="topall">
+      <span class="top_left">
+        <%= breadcrumb :pretext => "当前位置：",
            :separator => ">",
            :autoroot => true,
            :show_root_alone => true,
-           :link_last => false %></span>
-    <span class="top_right">收藏</span>
+           :link_last => false %>
+      </span>
+      <span class="top_right">收藏</span>
+      </div>
     </div>
+  <div id="a1" class="logo">
     <div id="top">
-    <a class="logo" href="/">乐哈子</a><br>
-    <span>阅读热贴的好工具</span>
+    <a class="logo" href="/"><cite>乐哈子 脱水吧<br>采集工具 只看楼主</cite></a><br>
+    <span>乐哈子-阅读热贴的好工具</span>
     </div>
     <div id="top-center">
 
@@ -25,27 +28,24 @@
     <span>输入天涯社区、豆瓣小组、百度贴吧网址，点击搜索，阅读脱水文章。</span>
     </div>
   </div>
-</header>
-<div class="blank10"></div>
-<section  style="background: #ffffff">
+</div>
   <div id="nav">
-      <div>
+    <div class="lable">
         <ul>
           <%= raw topmenu.join %>
-          <li id="menu-cai" style="float: right; margin-right: 1em;">
-          <%=	 link_to '采集>>', "/easy_cai/member", target: '_blank', rel: "nofollow", :title => '采集入口', method: :put %>
-          </li>
         </ul>
-      </div>
+    </div>
   </div>
+<div id="main" class="main">
+
 
 <%- end -%>
 <%- content_for :after_content do -%>
-</section>
-<footer>
+</div>
+<div id ="footer" class="footer">
   <p>Copyright &copy; 2011-2012 <%= link_to '乐哈网 脱水吧', root_url, :rel => 'home' %>
   | <%= link_to '联系我们', contact_url, target: '_blank' %>
   </p>
-</footer>
+</div>
 <%- end -%>
 <%= render :file => "layouts/abstract" -%>

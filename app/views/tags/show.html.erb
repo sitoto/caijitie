@@ -1,12 +1,28 @@
 <%- title "Tag: #{@tag.name}" -%>
+<% meta :description => "技术娱乐，博客文章列表.", :keywords => "#{@tag.name} ", :title => "标签：#{@tag.name} "%>
 
-<h2><%= link_to "##{@tag.name} Posts", @tag %></h2>
+<div id="container" class="index_bg">
+<div id="content">
+  <div class="title_r">
+<label>当前位置：</label><a href="/blog">日志列表</a> > 标签：<%= link_to "##{@tag.name}", @tag %>
+  </div>
+  <div class="page_view">
+    <%- if @posts && @posts.length > 0 -%>
+    <%= render @posts -%>
+    <%= paginate @posts, :outer_window => 2, :inner_window => 1 -%>
+    <%- else -%>
+    <p>没有内容。.</p>
+    <%- end -%>
+  </div>
+</div>
+<div id="sidebar">
+  <div class="title mb7"><h3>分类标签</h3></div>
+        <div class="tags clearfix">
+        <% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do |tag, css_class| %>
+        <%= link_to tag.name, tag, :class => css_class %>
+        <% end %>
+        </div>
+  <div class="blank10"></div>
 
-<section class="tag">
-  <%- if @posts && @posts.length > 0 -%>
-  <%= render @posts -%>
-  <%= paginate @posts, :outer_window => 2, :inner_window => 1 -%>
-  <%- else -%>
-  <p>Nothing to see here. Move along.</p>
-  <%- end -%>
-</section>
+</div>
+</div>

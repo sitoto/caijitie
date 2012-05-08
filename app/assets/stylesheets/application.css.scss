@@ -50,9 +50,6 @@ a {
   }
 }
 
-strong {
-  font-weight: bold;
-}
 em {
 font-family: "宋体";
 }
@@ -175,10 +172,15 @@ ul{
     padding: 0px;
 
     li{
+        font-family: 宋体;
+
+        line-height: 24px;
         list-style: none;
-        margin: 0px;
-        padding: 0px;
     }
+}
+cite {
+display: none;
+text-indent: -999px;
 }
 
 .title, .title3, .title_r {
@@ -277,6 +279,13 @@ body > header {
     }
   }
 }
+
+div.main{
+    font-size: 85%;
+    width: 960px;
+    margin: 0 auto;
+}
+
 #headerAll {
     background: url(/assets/header_bg.jpg) left top repeat-x;
 }
@@ -397,30 +406,6 @@ display:inline-block;
 .blue{
     color: blue;
 }
-ul.cai{
-    list-style: none; margin:0; padding: 0;
-
-    li.caied{
-      margin-top: 1em;margin-left: 1em;
-      border-bottom: 1px solid #DDD;
-      overflow: hidden; zoom: 1;
-      float: left;
-      background: #C3D9FF;
-      text-align: center;
-    }
-    li.nocai {
-      margin-top: 1em;
-      margin-left: 1em;
-      border-bottom: 1px solid #DDD;
-      overflow: hidden; zoom: 1;
-      float: left;
-      background: #ddd;
-      text-align: center;
-    }
-}
-
-
-
 
 table.tianyapage{
     width: 100%;

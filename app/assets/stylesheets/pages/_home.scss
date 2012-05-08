@@ -7,38 +7,47 @@
 
     .logo{
         width: 960px;
-        height: 80px;
+        height: 55px;
         margin: auto;
+        margin-top: 5px;
         text-align: left;
     }
 }
 
 #a1{
-
-    height: 80px;
+    height: 55px;
 }
-#topall{
-    background: #EEE;
-    margin-bottom: 8px;
-    display:block;
-    height: 20px;
-    line-height: 20px;
+
+#t {
+    width: 100%;
+    height: 21px;
+    background: #F7F7F7;
+    border-bottom: 1px solid #CCC;
+    clear: both;
+    #topall{
+    height: 22px;
+    overflow: hidden;
+    width: 960px;
+    display: inline-block;
     font-size: 75%;
 
     .top_left{ display: block; float:left;}
     .top_right{display: block; float:right;}
 
 }
+}
 
 
 #top{
     float:left;
     height: 50px;
+    padding-top: 5px;
     overflow: hidden;
     position: relative;
     width: 200px;
     font-weight: bolder;
     clear:right;
+    background: url(/assets/lehazi.png) 0 0px no-repeat;
     a.logo {
         font-size: 2em;
         color: #266392;
@@ -50,9 +59,11 @@
 
         }
     span{
-        font-size: 80%;
-        color: red;
-        margin:0 ;
+        margin-left: 30px;
+        font-size: 12px;
+        font-family: 宋体;
+        color: blue;
+        margin:0 0 0 30px ;
         padding: 0;
 
     }
@@ -94,12 +105,6 @@
         font-size:75%;
         color: gray;
     }
-}
-
-header img {
-padding: 0.5em;
-background: white;
-
 }
 
 #nav{
@@ -159,9 +164,11 @@ background: white;
 
 div.home {
   width: 960px;
-  padding: 10px 0;
+  padding: 0;
   margin: 0 auto;
   background: #F5F9FA;
+  margin-bottom: 50px;
+
   h2 {
     margin-top: 1.7em;
     
@@ -174,69 +181,143 @@ div.home {
     }  
   }
   #left{
+
+    width: 688px;
+    height: auto;
     float: left;
-    width: 660px;
     overflow: hidden;
-    padding-right: 5px;
 
     #solehazi {
-        text-align: center;
-        border: 1px solid #DDD;
-        background: #EEF;
-        border-radius: 5px;
-        margin: 0 0 20px 0;
-
-        padding: 2px;
-        height: 30px;
-        line-height: 25px;
+        text-align: left;
+        border: 1px solid #EEF;
+        background: white;
+        padding-left:10px;
+        line-height: 20px;
         span{
             display: block;
             display: inline;
             margin: 0 auto;
-            font-size: 14px;
-            color: #03F;
+            font-size: 12px;
+            font-family: 宋体;
+            color: #666;
             text-align: center;
             cursor: pointer;
             text-decoration: none;
         }
     }
-    #forum_nav{
-        display: block;
-        border-radius: 3px;
-
+    .forum_list{
         float: left;
-        width: 120px;
-        color: white;
-        border: 1px solid blue;
+        width: 686px;
+        margin-top: 10px;
+        border: 1px solid #99E;
         h3{
-            background: #007AC4;
-            height: 24px;
-            line-height: 24px;
-            text-align: left;
-
-            a{
-                color: white;
+            font-size: 14px;
+            color: #417201;
+            line-height: 22px;
+            padding-left: 20px;
+            background: url(/assets/le.gif) 2px 2px no-repeat;
+            background-color: #FFF;
+        }
+        a {
+          color: #66F;
+          &:hover {text-decoration:underline; border:0;}
+        }
+        ul{
+            padding: 10px;
+            li{
+              width: 150px;
+              overflow:hidden;
+              height: 24px;
+              font-size: 12px;
+              float:left;
+              margin: 0 5px;
+              padding: 0px 3px;
             }
         }
-        ul li{
-          padding: 2px 3px;
-        }
+
     }
-    #show_list{
-        background: #EEF;
-        margin: 0 0px 5px 130px;
-        padding: 8px;
-        border-radius: 5px;
+    .show_list{
+        width: 686px;
+        border: 1px solid #D09519;
+        text-align: left;
+        padding: 0px;
+        margin-top: 10px;
+
+        h3{
+            font-size: 14px;
+            color: #417201;
+            line-height: 22px;
+            padding-left: 20px;
+            background: url(/assets/le.gif) 2px 2px no-repeat;
+            background-color: #FFF;
+            a{
+             font-size: 12px;
+             text-decoration: underline;
+            }
+        }
 
         a {
-            color: #d55;
+          color: #d55;
+          &:hover {text-decoration:underline; border:0;}
         }
-        li{
-             padding: 2px 3px;
-            margin:  0;
-
+        ul {
+        clear: both;
+        padding: 10px;
+            li{
+            font-size: 12px;
+            }
         }
     }
+    .modul {
+    width: 688px;
+    border: 1px solid #CBE39B;
+    text-align: left;
+        thead tr {
+        height: 22px;
+        font-size: 14px;
+        color: #417201;
+        line-height: 22px;
+        background: url(/assets/le.gif) 2px 2px no-repeat;
+        background-color: #FFF;
+        }
+        thead td {
+        padding-left: 20px;
+        height: 0;
+        }
+        tbody td {
+        padding: 10px;
+        vertical-align: top;
+        }
+        .left_M {
+        width: 300px;
+        height: 22px;
+             a{
+             font-size: 12px;
+             text-decoration: underline;
+            }
+        }
+        .right_M {
+        width: 355px;
+        height: 22px;
+             a{
+             font-size: 12px;
+             text-decoration: underline;
+            }
+        }
+        ul {
+        clear: both;
+        margin-top: 0px;
+        padding-top: 0px;
+            li{
+            font-size: 12px;
+            }
+        }
+         a {
+          color: #0881B3;
+          &:hover {text-decoration:underline; border:0;}
+        }
+    }
+
 
   }
 
@@ -267,36 +348,38 @@ div.home {
             line-height: 20px;
             }
          .txtcontent {
-            margin: 10px 10px 0 10px;
+            margin: 10px;
             text-align: left;
             font-size: 12px;
             color: #666;
-            line-height: 20px;
+            line-height: 22px;
             }
          .button {
             display: block;
-            width: 73px;
-            height: 21px;
-            background: url(/assets/qq.jpg) 0 0px no-repeat;
+            width: 60px;
+            height: 16px;
+            background: url(/assets/my_ico.png) -32px -16px no-repeat;
             float: right;
             margin-right: 15px;
             margin-right: 15px;
             _margin-right: 8px;
             cursor: pointer;
-            text-indent: 23px;
+            text-indent: 18px;
+            line-height: 16px;
             text-decoration: none;
             }
             .button2 {
             display: block;
             width: 73px;
-            height: 21px;
-            background: url(/assets/sina.png) 0 0px no-repeat;
+            height: 16px;
+            background: url(/assets/my_ico.png) -32px 0px no-repeat;
             float: right;
             margin-right: 15px;
             margin-right: 15px;
             _margin-right: 8px;
             cursor: pointer;
-            text-indent: 23px;
+            text-indent: 18px;
+            line-height: 16px;
             text-decoration: none;
             }
     }
@@ -387,16 +470,64 @@ div.home {
         li{
             font-family: 宋体;
             list-style: none;
-
             border-bottom: 1px dashed #BBDAF7;
         }
     }
   }
+}
+div.flink {
+    border: 1px solid #DDD;
+    width: 958px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+        h3 {
+        font-size: 14px;
+        color: #333;
+        line-height: 22px;
+        padding-left: 10px;
 
+        }
+        .fldiv {
+        padding: 5px;
+        padding-right: 0;
+        }
+        ul{
+            clear:both;
+            display: block;
 
+            li{
+            float: left;
+            text-align: left;
+            height: 22px;
+            line-height: 22px;
+            overflow: hidden;
+            margin: 0;
+            width: 85px;
+            a {
+                font-size: 12px;
+                color: #333;
+                }
+            }
+        }
+}
 
-  
+div.footer{
+  border-top: 1px solid #ddd;
+  width: $width;
+  color: #666;
 
-  
+  font-size: 12px;
+  text-align: center;
+  margin: 1.5em auto;
 
+  a {
+    color: #666;
+
+    &:hover {
+      color: $link-color;
+    }
+  }
+  p.link {
+    text-align: left;
+  }
 }

@@ -2,12 +2,19 @@
 <%- title @post.title -%>
 <% breadcrumb :post, @post %>
 <% meta :description =>  post_description(@post), :keywords =>  post_tags_keyword(@post) , :title => @post.title %>
-<section class="blog">
-  <%= render @post %>
-  <div class="social">
-    <%= social_share_button_tag(@post.title) %>
+
+<div id="container" class="index_bg">
+<div id="content">
+  <div class="title_r">
+    <%= breadcrumb :pretext => "<label>当前位置：</label>",
+       :separator => ">",
+       :autoroot => true,
+       :show_root_alone => true,
+       :link_last => false %>
   </div>
-<hgroup>
+  <div class="page_view">
+    <%= render @post -%>
+    <hgroup>
 <script type="text/javascript"><!--
 google_ad_client = "ca-pub-0525832019389819";
 /* 长文字链接 */
@@ -20,7 +27,7 @@ google_ad_height = 15;
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 </hgroup>
-  <nav class="posts">
+    <nav class="posts">
     <ul>
       <li class="previous">
         <%- previous_post = @post.previous; if previous_post -%>
@@ -38,7 +45,26 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
       </li>
     </ul>
   </nav>
-</section>
+  </div>
+</div>
+<div id="sidebar">
+  <div class="title mb7"><h3>分类标签</h3></div>
+        <div class="tags clearfix">
+        <% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do |tag, css_class| %>
+        <%= link_to tag.name, tag, :class => css_class %>
+        <% end %>
+        </div>
+  <div class="blank10"></div>
+  <div class="title"><h3>相关内容推荐</h3></div>
+  <div class="friend_group" id="related_div">
+	<ul id="related1" style="">
+		<li class="col" ><em>·</em><a href="/blog">暂无</a></li>
+	</ul>
+</div>
+</div>
+</div>
+
+
 <%- else -%>
 <%- title '文章不存在' -%>
 <p>内容被移走，这里什么都没有了。</p>

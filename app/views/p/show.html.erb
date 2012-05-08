@@ -14,8 +14,8 @@
 <hgroup>
 <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
 </hgroup>
-<div class="clearfix" style="background: white; clear: both;">
-  <ul class="cai">
+<div class="clearfix pages">
+  <ul>
   <%	 @page_urls.each_with_index do |p, i| %>
      <%	 if params[:page] &&  params[:page].to_i > 0 %>
        <%	  i = i + 500 * (params[:page].to_i-1)  %>
@@ -23,12 +23,12 @@
        <%  if p.status == 1  %>
         <li class="caied">
          <%= link_to "第#{p.num}页"  , p_pu_path(p.topic_id, i+1), :target => '_blank' %> <br/>
-         <%= link_to "#{p.count} 贴"  , p_pu_path(p.topic_id, i+1), :target => '_blank', :class => 'red' %>
+         <%= link_to "#{p.count}"  , p_pu_path(p.topic_id, i+1), :target => '_blank', :class => 'red' %>
      </li>
        <% elsif p.status == 0 %>
       <li class="nocai">
          <%= link_to "第#{p.num}页", p_pu_path(p.topic_id, i+1), :target => '_blank' %>  <br/>
-         <%= link_to "脱", p_pu_path(p.topic_id, i+1), :target => '_blank', :class => 'blue' %>
+         <%= link_to "新", p_pu_path(p.topic_id, i+1), :target => '_blank', title: '新加入页面，正在脱水，请刷新或点击。', :class => 'blue' %>
         </li>
        <%  end %>
   <%  end %>
@@ -37,4 +37,5 @@
 <hr/>
 <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
 <div class="clearfix"></div>
+
 </section>

@@ -12,6 +12,7 @@ class Admin::PostsController < AdminController
   def create
     @post = Post.new(params[:post])
     if @post.save
+      expire_cache_for(posts)
       flash[:notice] = 'Successfully created post.'
       redirect_to [:admin, @post]
     else
@@ -21,6 +22,7 @@ class Admin::PostsController < AdminController
 
   def update
     if @post.update_attributes(params[:post])
+      expire_cache_for(posts)
       flash[:notice] = 'Successfully updated post.'
       redirect_to [:admin, @post]
     else
@@ -30,6 +32,7 @@ class Admin::PostsController < AdminController
 
   def destroy
     @post.destroy
+    expire_cache_for(posts)
     flash[:notice] = 'Successfully destroyed post.'
     redirect_to admin_posts_url
   end
@@ -38,5 +41,17 @@ class Admin::PostsController < AdminController
 
   def find_post
     @post = Post.find_by_permalink(params[:id])
+  end
+
+  private
+  def expire_cache_for(posts)
+    # Expire the index page now that we added a new topic
+    expire_page(:controller => 'posts', :action => 'index')
+    expire_page(:controller => 'posts', :action => 'show')
+    expire_page(:controller => 'tags', :action => 'index')
+    expire_page(:controller => 'tags', :action => 'show')
+
+    # Expire a fragment
+    expire_fragment('all_available_topics')
   end
 end

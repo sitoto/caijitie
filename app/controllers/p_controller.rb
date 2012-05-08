@@ -54,7 +54,7 @@ class PController < ApplicationController
     1.upto(all_page_num) do |page|
       expire_page( :controller => "pu", :action => 'index' , :p_id => @topic.id, :page => page )
     end
-    expire2_cache_for
+    expire2_cache
 
 
     if (@topic.rule.eql?(1))
@@ -73,7 +73,7 @@ class PController < ApplicationController
     end
     puts "====================="
 
-    redirect_to p_pu_path(@topic, 1), :notice => "已提交更新。"
+    redirect_to p_path(@topic), :notice => "已提交更新。"
 
   #rescue
   #  redirect_to root_path :notice => "error"

@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
   respond_to :html, :xml, :json
+  layout 'blog'
+  caches_page :index , :show
 
   def index
     respond_with @tags = Tag.includes(:taggings).all
@@ -13,6 +15,7 @@ class TagsController < ApplicationController
     redirect_to tags_url and return unless @tag
 
     # Get posts for tag
-    respond_with @posts = @tag.posts.published.page(params[:page]).per(Post.per_page)
+    @tags = Tag.includes(:taggings).all
+    @posts = @tag.posts.published.page(params[:page]).per(Post.per_page)
   end
 end

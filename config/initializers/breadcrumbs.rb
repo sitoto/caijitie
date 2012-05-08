@@ -7,7 +7,7 @@ Gretel::Crumbs.layout do
   end
   
   crumb :blog do
-    link "文章", blog_path
+    link "日志列表", blog_path
   end
 
   crumb :post do |article|

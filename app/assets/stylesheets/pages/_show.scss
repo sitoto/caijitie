@@ -1,4 +1,4 @@
-section.cai-post-list {
+div.cai-post-list {
     background-color: ghostWhite;
     border: 1px solid #DEDEDE;
     color: #222;
@@ -7,7 +7,6 @@ section.cai-post-list {
     table {
       border-collapse:separate;
       border-spacing:0;
-      margin-bottom:1.4em;
       width:100%;
       thead th {
           background:#c3d9ff;
@@ -56,6 +55,7 @@ border-radius: 10px;
     padding: 0.5em 1em;
     line-height: 1.8em;
     background: #E5ECF9;
+word-wrap:break-word;overflow:hidden;
 }
 .border {
 padding-right: 4px;

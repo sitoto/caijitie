@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title><%= (yield(:title) && !yield(:title).empty? ? yield(:title) : "") %></title>
+  <%= metamagic :title => "Sitoto的日志",
+                :description => "主要内容是IT相关，包括网站建设，软件开发，系统安全，网络硬件，搜索引擎，推广？和其他工作上的内容。",
+                :keywords => %w(程序员 开发人员 网站建设 网站优化 持续开发 持续集成 乐哈子) %>
+  <%= render "layouts/stylesheets" %>
+  <%= yield(:head) -%>
+</head>
+<body>
+
+<%= yield :pre_content %>
+<div id="headerAll">
+  <div id="header">
+    <div id="top">
+        <a class="logo" href="/"><cite>Sitoto的日志</cite></a>
+    </div>
+    <div id="menu">
+      <ul>
+        <li><a class="m1" href="/">首页</a></li>
+        <li><a class="m2" href="/blog">日志列表</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+ <div id="wrapper">
+  <div id="index_top"></div>
+  <%= yield :layout%>
+  <div id="index_bottom"></div>
+</div>
+  <%= yield :after_content %>
+  <%= debug(params) if Rails.env.development? %>
+  <%= google_analytics  %>
+ <% if Rails.env.production? %>
+  <script type="text/javascript">
+  var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+  document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0f284046f8572093596ffc02be08fc65' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+<%	end %>
+</body>
+</html>

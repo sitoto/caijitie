@@ -1,7 +1,7 @@
-<article>
-  <header>
-    <h2><%= link_to post.title, post %></h2>
-    <p>Posted <time datetime="<%= post.published_at.as_json %>"><%= post_published_time_in_words post %></time><%= post_tags_html(post) %></p>
-  </header>
-  <%= raw RedCloth.new(post.html_content.html_safe).to_html %>
-</article>
+<div class="ta_c mt10 mb10 f16"><b><%= link_to post.title, post %></b></div>
+<p style="border-bottom: 1px solid #DDD;">Posted <time datetime="<%= post.published_at.as_json %>"><%= post_published_time_in_words post %></time><%= post_tags_html(post) %></p>
+<%= raw RedCloth.new(post.html_content.html_safe).to_html %>
+<div class="social">
+<%= social_share_button_tag(post.title) %>
+</div>
+<div class="blank20"></div>
