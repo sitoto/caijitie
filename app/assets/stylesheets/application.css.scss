@@ -138,6 +138,9 @@ h1 {
   a {
     color: $red-color;
     border: 0;
+      &:hover {
+        text-decoration:underline;
+      }
   }
 }
 
@@ -284,6 +287,13 @@ div.main{
     font-size: 85%;
     width: 960px;
     margin: 0 auto;
+    h1{
+      font-size: 1.2em;
+      line-height: 1.4em;
+      color: #333;
+      font-weight: bold;
+      margin: 0.2em 0;
+    }
 }
 
 #headerAll {

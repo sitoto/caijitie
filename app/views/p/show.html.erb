@@ -1,7 +1,7 @@
 <% title "#{@topic.my_title} 目录, by #{@topic.author}." %>
 
 <section class="page-list">
-<h2 class="round2 back"><%=	 link_to  @topic.my_title, p_pu_path(@topic.id, 1)%></h2>
+<h1 class="round2 back"><%=	 link_to  @topic.my_title, p_pu_path(@topic.id, 1)%></h1>
 <p>
 <span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
 <span class="border">内容不完整？：<%= link_to '现在更新', renew_p_path(@topic.id),rel: "nofollow", method: :put, :target => '_blank', :class => 'red' %></span>

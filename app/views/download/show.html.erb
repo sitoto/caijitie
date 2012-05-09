@@ -1,13 +1,15 @@
 <% title "#{@topic.my_title} by #{@topic.author}.下载" %>
 
-<h2><%=	 @topic.my_title %></h2>
+<h1><%=	 @topic.my_title %>_下载</h1>
 <p>作者：<%= @topic.author %>
  <br />分类：<%= @topic.classname %>
  <br />站内更新时间：<%= @topic.updated_at %>
  <br />共计：<%= @topic.mypagenum %>页</p>
 
 <p>
- <br />因服务器带宽有限，暂未提供下载，后续将改善！谢谢您的支持。</p>
+  下载说明
+<br />因服务器带宽有限，暂未提供下载，后续将改善！谢谢您的支持。
+<br />如果您对程序编写或本贴内容有任何疑问或建议，请邮件到lehazi@163.com 。</p>
 
 
 <%=	 link_to '下载全文', '#' %>
