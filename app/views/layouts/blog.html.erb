@@ -33,6 +33,11 @@
   <div id="index_bottom"></div>
 </div>
   <%= yield :after_content %>
+<div id ="footer" class="footer">
+  <p>Copyright &copy; 2011-2012 <%= link_to '乐哈网 脱水吧', root_url, :rel => 'home' %>
+  | <%= link_to '联系我们', contact_url, target: '_blank' %>
+  </p>
+</div>
   <%= debug(params) if Rails.env.development? %>
   <%= google_analytics  %>
  <% if Rails.env.production? %>

@@ -1,5 +1,5 @@
 <div class="ta_c mt10 mb10 f16"><b><%= link_to fun.title, fun %></b></div>
-<p style="border-bottom: 1px solid #DDD;">发布 <time datetime="<%= fun.updated_at.as_json %>"><%= fun_published_time_in_words fun %></time></p>
+<p style="border-bottom: 1px solid #DDD;"> 发布 <time datetime="<%= fun.created_at.strftime("%Y-%m-%d %H:%M:%S") %>"><%= fun.created_at.strftime("%Y-%m-%d  ") %></time> 来自 <%= fun.from_url %></p>
   <%= raw  RedCloth.new(fun.body).to_html %>
 <div class="social">
 <%= social_share_button_tag(fun.title) %>
