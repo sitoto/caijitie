@@ -1,38 +1,68 @@
+<%- if @fun -%>
 <%- title @fun.title -%>
-<h2>
-  <%= @fun.title %>
-</h2>
-<p>
-  <%= raw  RedCloth.new(@fun.body).to_html %>
-</p>
+<% breadcrumb :fun_list, @fun %>
+<% meta :description =>  fun_description(@fun), :keywords =>  fun_tags_keyword(@fun) , :title => @fun.title %>
 
-<hgroup>
-  <span class="border">
-    上一篇：<%	 if @fun_p %>
-        <%= link_to @fun_p.title , fun_path(@fun_p.id) %>
-        <%	 else %>
-        没有了
-        <%	 end %>
-  </span>
-  </hgroup>
-<hgroup>
-  <span>
-        下一篇：<%	 if @fun_n %>
-        <%= link_to @fun_n.title , fun_path(@fun_n.id) %>
-        <%	 else %>
-        没有了
-        <%	 end %>
-  </span>
+<div id="container" class="index_bg">
+<div id="content">
+  <div class="title_r">
+    <%= breadcrumb :pretext => "<label>当前位置：</label>",
+       :separator => ">",
+       :autoroot => true,
+       :show_root_alone => true,
+       :link_last => false %>
+  </div>
+  <div class="page_view">
+    <%= render @fun -%>
+    <hgroup>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-0525832019389819";
+/* 长文字链接 */
+google_ad_slot = "8375564846";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
 </hgroup>
-<fieldset class="random round">
-<legend>推荐短文</legend>
-<ul>
-<% @relation_funs.each do |fun| %>
-<li>
-    <%= link_to fun.title, fun ,:target => '_blank', :title => fun.title %>
-</li>
-<%	 end %>
-</ul>
-</fieldset>
+    <nav class="posts">
+    <ul>
+      <li class="previous">
+        <%- previous_fun = @fun.previous; if previous_fun -%>
+        <%= link_to "&larr; #{previous_fun.title}".html_safe, previous_fun  %>
+        <%- else -%>
+        <span class="gray">这是第一篇</span>
+        <%- end -%>
+      </li>
+      <li class="next">
+         <%- next_fun = @fun.next; if next_fun -%>
+         <%= link_to "#{next_fun.title} &rarr;".html_safe, next_fun  %>
+         <%- else -%>
+         <span class="gray">这是最新的</span>
+         <%- end -%>
+      </li>
+    </ul>
+  </nav>
+  </div>
+</div>
+<div id="sidebar">
 
-<%= link_to '返回列表', funs_path %>
+  <div class="title"><h3>相关内容推荐</h3></div>
+  <div class="friend_group" id="related_div">
+	<ul id="related1" style="">
+    <% @relation_funs.each do |fun| %>
+    <li class="col" ><em>·</em> <%= link_to fun.title, fun ,:target => '_blank', :title => fun.title %>
+    </li>
+    <%	 end %>
+    </ul>
+</div>
+</div>
+</div>
+
+
+<%- else -%>
+<%- title '文章不存在' -%>
+<p>内容被移走，这里什么都没有了。</p>
+<%- end -%>

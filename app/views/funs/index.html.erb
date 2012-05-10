@@ -1,16 +1,30 @@
 <%- title "笑话列表" -%>
 
-<h2>列表</h2>
+<div id="container" class="index_bg">
+<div id="content">
+  <div class="title_r">
+    <%= breadcrumb :pretext => "<label>当前位置：</label>",
+       :separator => ">",
+       :autoroot => true,
+       :show_root_alone => true,
+       :link_last => false %>
+  </div>
+  <div class="page_view">
+    <%- if @funs && @funs.length > 0 -%>
+    <%= render @funs -%>
+    <%= paginate @funs, :outer_window => 2, :inner_window => 1 -%>
+    <%- else -%>
+    <p>没有内容。.</p>
+    <%- end -%>
+  </div>
+</div>
+<div id="sidebar">
 
-<table>
-<% @funs.each do |fun| %>
-  <tr>
-    <td><%= link_to fun.title, fun %></td>
-    <td>查看：<%= fun.click_time %>次</td>
-  </tr>
-   <tr>
-    <td colspan="2"><%= raw fun.body.truncate(100) %><%= link_to '阅读全文', fun %> <hr></td>
-  </tr>
-<% end %>
-</table>
-<%= paginate @funs, :outer_window => 4, :inner_window => 4 -%>
+  <div class="title"><h3>分类</h3></div>
+  <div class="friend_group" id="related_div">
+	<ul id="related1" style="">
+		<li class="col" ><em>·</em><a href="/blog">整理中</a></li>
+	</ul>
+</div>
+</div>
+</div>
