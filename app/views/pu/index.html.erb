@@ -1,13 +1,16 @@
 <% title "#{@topic.my_title} by #{@topic.author}.第#{params[:page]}页" %>
 
 <h1 class="round2 back"><%=	 @topic.my_title%></h1>
+<div class="ggw960">
+    <%= raw ad_baidu_all_head %>
+</div>
 <p>
 <span class="border">[<%= link_to '回目录', p_path(@topic), :target => '_blank', :class => 'red' %>]  </span>
 <span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
-<span class="border">内容不完整？：<%= link_to '现在更新', renew_p_path(@topic.id), method: :put, :target => '_blank', rel: "nofollow", :class => 'red' %></span>
-<span class="border">查看原贴：<%= link_to '打开原贴', @topic.fromurl,  :target => '_blank' %></span>
 <span class="border">文章类别：<%= link_to @topic.classname, category_path(@topic.classname),  :target => '_blank' %></span>
 <span class="border">共计<%=  @topic.mypostnum  %>回复/<%=  @topic.mypagenum  %>页</span>
+<span class="border">内容不完整？：<%= link_to '现在更新', renew_p_path(@topic.id), method: :put, :target => '_blank', rel: "nofollow", :class => 'red' %></span>
+<span class="border">查看原贴：<%= link_to '打开原贴', @topic.fromurl,  :target => '_blank' %></span>
 <span class="border"><%= link_to "赞", top_p_path(@topic.id), remote: true, "data-type" => :json, rel: "nofollow",  :id => "ajax_top"  %></span>
 <span class="border" id="num" style="display: none"></span>
 <script type="text/javascript" charset="utf-8">
@@ -31,42 +34,46 @@
 <%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
    <% if !@posts.blank? %>
       <% @posts.each do |p| %>
-<table>
-  <tbody>
-      <tr>
+        <table>
+        <tbody>
+        <tr>
         <td class="right small">
-          <span class="border"><%= p.post_at.strftime("%Y-%m-%d %H:%M:%S") if p.post_at %></span>
-          <span class="border"><%= p.my_level %>楼(<%= p.level %>)</span>
-      </tr>
-      </tbody>
-  </table>
+        <span class="border"><%= p.post_at.strftime("%Y-%m-%d %H:%M:%S") if p.post_at %></span>
+        <span class="border"><%= p.my_level %>楼(<%= p.level %>)</span>
+        </tr>
+        </tbody>
+        </table>
+        <div class="content round" style="word-break:break-all;overflow:hidden;">
+          <%= raw p.content  %>
+           <% if p.my_level == 1 %>
+            <div class="ggw728">
+            <%= raw ad_baidu_center_for_content %>
+            </div>
+          <% end %>
+        </div>
 
-  <div class="content round" style="word-break:break-all;overflow:hidden;"><%= raw p.content  %></div>
-  <%# if p.my_level == 1 %>
-  <%# end %>
     <% end %>
   <% else %>
     <div style="color: red; margin-top:25px;" ><%= raw message %></div>
   <% end %>
-
  <%#=	 render 'page_list' %>
 <%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
 </div>
+
 <div>
-
-
   <h4>相关阅读</h4>
   <% if @temp_topics && @temp_topics.length > 0 %>
     <ul>
-      <li>
+      <li><%=	 raw ad_baidu_relation_link  %></li>
     <% @temp_topics.each do |t| %>
         <li><%= link_to t.my_title, "/p/#{t.id}/pu/1", :target => '_blank', :class => "blue" %></li>
     <% end %>
       <a href="http://s.click.taobao.com/t_8?e=7HZ6jHSTbIKgdBrBwVNjVA6MuD84XFTAY9n8ITzCiDo%2F2g%3D%3D&p=mm_29973065_0_0"  rel="nofollow" target="_blank">丝袜连裤超薄 打底袜薄 性感丝袜女 黑丝袜 超薄连裤袜隐形连袜裤</a>
     </ul>
   <% end %>
-
 </div>
+<%= raw	 ad_baidu_sides %>
+
 <% if @topic.section_id == 1 %>
 <script type="text/javascript">
   //破防盗链js
@@ -101,5 +108,6 @@ function ImgRebuild() {
 }
 ImgRebuild();
 </script>
-<%	 end %>
+<%	end %>
+
 

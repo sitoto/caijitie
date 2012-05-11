@@ -1,9 +1,9 @@
-<% title "#{@topic.my_title} by #{@topic.author}.下载" %>
+<% title "#{@topic.my_title} by #{@topic.author}. 下载" %>
 
 <h1><%=	 @topic.my_title %>_下载</h1>
 <p>作者：<%= @topic.author %>
  <br />分类：<%= @topic.classname %>
- <br />站内更新时间：<%= @topic.updated_at %>
+ <br />站内更新时间：<%= @topic.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>
  <br />共计：<%= @topic.mypagenum %>页</p>
 
 <p>
@@ -14,3 +14,5 @@
 
 <%=	 link_to '下载全文', '#' %>
 <br />
+
+<%=	 raw ad_baidu_right_down %>
