@@ -47,7 +47,7 @@
       </div>
 
       <div id="ty_list" class="show_list">
-        <h3>天涯易读<a href="/tysq">进入....</a></h3>
+        <h3>天涯易读  <a href="/tysq">进入....</a></h3>
         <%- if @ty_topics -%>
           <ul>
             <% @ty_topics.each do |t| %>
@@ -61,8 +61,8 @@
       <table cellpadding="0" cellspacing="0" class="modul" style="margin-top:10px;">
         <thead>
             <tr>
-              <td class="left_M"><strong>贴吧</strong><a href="/tb">more....</a></td>
-              <td class="right_M"><strong>豆瓣</strong><a href="/dbht">more....</a></td>
+              <td class="left_M"><strong>贴吧  </strong><a href="/tb">更多....</a></td>
+              <td class="right_M"><strong>豆瓣  </strong><a href="/dbht">更多....</a></td>
             </tr>
         </thead>
         <tbody>
@@ -88,6 +88,14 @@
                     </ul>
                     <%- end -%>
                 </td>
+            </tr>
+            <tr>
+              <td>
+                <%=	 raw ad_baidu_home_double_left %>
+              </td>
+              <td>
+                <%=	 raw ad_baidu_home_double_left %>
+              </td>
             </tr>
         </tbody>
       </table>
@@ -116,7 +124,9 @@
         <a href="http://weibo.com/u/2183382954" target="_blank" class="button2">lehazi</a>
       </div>
       <a href="/blog" target="_blank" class="blog_link"></a>
-
+      <div style="margin:10px auto 0; text-align: center; border: 1px solid #3999cc;" >
+        <%=	 raw ad_baidu_7day_right  %>
+      </div>
       <div style="margin-top:10px;">
 
        <table cellspacing="0" cellpadding="0" class="recommend">

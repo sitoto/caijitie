@@ -212,11 +212,11 @@ div.home {
         border: 1px solid #EEF;
         h3{
             font-size: 14px;
-            color: #417201;
-            line-height: 22px;
+            color: #333;
+            line-height: 24px;
             padding-left: 20px;
-            background: url(/assets/le.gif) 2px 2px no-repeat;
-            background-color: #FFF;
+            //background: url(/assets/le.gif) 2px 2px no-repeat;
+            //background-color: #FFF;
         }
         a {
           color: #0881B3;
@@ -238,18 +238,18 @@ div.home {
     }
     .show_list{
         width: 686px;
-        border: 1px solid #EEF;
+        border: 1px solid #C7DEEC;
         text-align: left;
         padding: 0px;
         margin-top: 10px;
-
+        background-color: white;
         h3{
             font-size: 14px;
-            color: #417201;
-            line-height: 22px;
+            color: #333;
+            line-height: 28px;
             padding-left: 20px;
-            background: url(/assets/le.gif) 2px 2px no-repeat;
-            background-color: #FFF;
+            //background: url(/assets/le.gif) 2px 2px no-repeat;
+            background-color: #CFE5F7;
             a{
              font-size: 12px;
              text-decoration: underline;
@@ -270,15 +270,15 @@ div.home {
     }
     .modul {
     width: 688px;
-    border: 1px solid #EEF;
+    border: 1px solid #CFE5F7;
     text-align: left;
         thead tr {
-        height: 22px;
+        height: 28px;
         font-size: 14px;
-        color: #417201;
-        line-height: 22px;
-        background: url(/assets/le.gif) 2px 2px no-repeat;
-        background-color: #FFF;
+        color: #333;
+        line-height: 28px;
+        //background: url(/assets/le.gif) 2px 2px no-repeat;
+        background-color: #CFE5F7;
         }
         thead td {
         padding-left: 20px;
@@ -289,8 +289,8 @@ div.home {
         vertical-align: top;
         }
         .left_M {
-        width: 300px;
-        height: 22px;
+        width: 320px;
+        height: 28px;
              a{
              font-size: 12px;
              text-decoration: underline;
@@ -298,7 +298,7 @@ div.home {
         }
         .right_M {
         width: 355px;
-        height: 22px;
+        height: 28px;
              a{
              font-size: 12px;
              text-decoration: underline;

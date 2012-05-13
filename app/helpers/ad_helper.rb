@@ -33,4 +33,15 @@ module AdHelper
     '<script type="text/javascript">/*1_Home_960_90*/ var cpro_id = "u891796";
 </script><script src="http://cpro.baidu.com/cpro/ui/c.js" type="text/javascript"></script>'
   end
+  def ad_baidu_home_double_left
+    '<script type="text/javascript">/*1_HomeDouble_left_336_280*/ var cpro_id = "u894064";
+</script><script src="http://cpro.baidu.com/cpro/ui/c.js" type="text/javascript"></script>'
+  end
+
+  def ad_baidu_7day
+
+  end
+  def ad_baidu_7day_right
+    '<iframe id="baiduSpFrame" border="0" vspace="0" hspace="0" marginWidth="0" marginHeight="0" frameSpacing="0" frameBorder="0" scrolling="no" width="250" height="250" src="http://spcode.baidu.com/spcode/spstyle/style2319.jsp?tn=64064098_sp&ctn=0&styleid=2319"></iframe>'
+  end
 end

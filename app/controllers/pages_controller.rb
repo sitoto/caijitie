@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @topics = Topic.find(:all, :conditions => "top >= 1"  , :order => "id DESC", :limit => 20)
     @tb_topics = Topic.find(:all, :conditions => "section_id = 1"  , :order => "id DESC", :limit => 10)
     @db_topics = Topic.find(:all, :conditions => "section_id = 3"  , :order => "id DESC", :limit => 10)
-    @ty_topics = Topic.find(:all, :conditions => "section_id = 2"  , :order => "id DESC", :limit => 12)
+    @ty_topics = Topic.find(:all, :conditions => "section_id = 2"  , :order => "id DESC", :limit => 11)
     @classes = Topic.find_by_sql("SELECT count(*) as count , classname  FROM `topics` GROUP BY classname  ORDER BY count DESC limit 18")
     #@funs = Fun.find(:all, :order => "id DESC", :limit => 10)
     @links = Link.where(:status => 1).order("paixu")
