@@ -33,7 +33,10 @@ Caijitie::Application.routes.draw do
   match "/search" => "search#index", :as => :search
   match "/category/:name" => "category#show", :constraints => {:name => /.*/}, :as => :category
   match "/author/:name" => "author#show" , :constraints => {:name => /.*/}, :as => :author
+
+  #get "/download/tianya"
   match "/download/:id" => "download#show" , :constraints => {:name => /\d+/}, :as => :download
+
 
   #page-list 's page'
   resources :tb do

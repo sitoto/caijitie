@@ -66,7 +66,7 @@
 <script type="text/javascript">
   //破防盗链js
 function ImgRebuild() {
-	$(".content p img").each(function(i){
+	$(".content img").each(function(i){
 		url = this.src;
 		width = this.width;
 		height = this.height;
@@ -84,7 +84,7 @@ ImgRebuild();
 <script type="text/javascript">
   //天涯 -
 function ImgRebuild() {
-	$(".content p img").each(function(i){
+	$(".content img").each(function(i){
         if ($(this).attr("original") != "")
         {
             this.src = $(this).attr("original");
