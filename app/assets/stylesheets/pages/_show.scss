@@ -4,6 +4,15 @@ div.cai-post-list {
     color: #222;
     padding: 1em;
 
+.column1 {
+width: 700px;
+float: left;
+}
+.column2 {
+float: right;
+width: 250px;
+overflow: hidden;
+}
     table {
       border-collapse:separate;
       border-spacing:0;

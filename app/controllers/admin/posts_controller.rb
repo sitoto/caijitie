@@ -10,7 +10,7 @@ class Admin::PostsController < AdminController
   end
 
   def create
-    expire_page(:controller => '/posts', :action => 'index')
+    expire_page(:controller => '/blog', :action => 'index')
 
     @post = Post.new(params[:post])
     if @post.save

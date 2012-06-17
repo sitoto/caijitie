@@ -60,6 +60,4 @@ class PuController < ApplicationController
     #@fun = Fun.
 
   end
-
-
 end

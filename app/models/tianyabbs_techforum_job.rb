@@ -40,9 +40,11 @@ class TianyabbsTechforumJob
         content =  item.at_css("div.post").inner_html
         content = content.gsub(/\<span.+/, '')
         content = content.gsub(/\<div.+/, '')
+		content = content.gsub(/\<input.*/, '')
         content = content.gsub(/\<center.+/, '')
         content = content.gsub(/\<h.+/, '')
         content = content.gsub(/\<p.+/, '')
+        content = content.gsub(/\<iframe.+/, '')
       else
          content = ''
       end

@@ -23,6 +23,8 @@
       <td>
         <% if t[3].size >= 3 && t[3].size <= 5 %>
             <%=	 link_to '脱水',  {:controller => "/search", :action => "index", :q => t[5]},  :method => 'get', :target => "_blank" %>
+			||
+			<%=	 link_to '全采',  {:controller => "/search", :action => "index", :s => 1, :q => t[5]},  :method => 'get', :target => "_blank" %>
         <%	 end %>
       </td>
 

@@ -51,6 +51,7 @@ class TianyabbsTuoshuiJob
         content = content.gsub(/\<center.+/, '')
         content = content.gsub(/\<h.+/, '')
         content = content.gsub(/\<table.+/, '')
+        content = content.gsub(/\<iframe.+/, '')
         content_list[i] = content
       else
          content_list[i] = ''

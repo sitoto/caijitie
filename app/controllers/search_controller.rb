@@ -6,6 +6,11 @@ class SearchController < ApplicationController
   def index
     per_page = 20
     @search_text = params[:q]
+	if params[:s].blank?
+		@status = 0
+	else
+		@status = params[:s]
+	end
     @search_text ||= ""
     puts "@search_text:===========" <<  @search_text
     s_id = is_url?(@search_text)
@@ -17,11 +22,11 @@ class SearchController < ApplicationController
       breadcrumb :search, @search_text
       meta :title => "搜索：#{@search_text}", :description => "搜索：#{@search_text}的结果" , :keywords => @search_text
       return
-    elsif t = PageUrl.find_by_sql(["select * from page_urls where url = ? ", @url]).first
-        redirect_to p_path(t.topic_id)
-        return
-      elsif t = Topic.find_by_sql(["select * from topics where fromurl = ? ", @url]).first
+    elsif t = Topic.find_by_sql(["select * from topics where fromurl = ? ", @url]).first
         redirect_to p_path(t)
+        return
+      elsif t = PageUrl.find_by_sql(["select * from page_urls where url = ? ", @url]).first
+        redirect_to p_path(t.topic_id)
         return
         #存在url
       else
@@ -34,7 +39,7 @@ class SearchController < ApplicationController
            t, page_urls = @topic.get_tianya_topic(@url)
             update_tianyabbs_topic(t, page_urls)
           when 3
-           t =  @topic.get_douban_topic(@url)
+           t =  @topic.get_douban_topic(@url, @status)
             update_doubanhuati_topic(t)
           when 4 #techforum from tianyabbs 鬼话
            t, page_urls = @topic.get_tianya_techforum_topic(@url)

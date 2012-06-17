@@ -2,7 +2,7 @@
 require 'nokogiri'
 require 'open-uri'
 class DoubanhuatiTuoshuiJob
-  def self.cai_doubanhuati_topic(url)
+  def self.cai_doubanhuati_topic(url, s)
     #判断是否可以访问该网址
     begin
       html_stream  = open(url)
@@ -12,7 +12,7 @@ class DoubanhuatiTuoshuiJob
     end
     doc = Nokogiri::HTML(html_stream)
     is_pagnation(doc)? i = 0 : i = 1 #有多页
-    get_doubanhuati_topic(doc, i)
+    get_doubanhuati_topic(doc, i, s)
 
   end
   def self.update_topic topic
@@ -69,7 +69,7 @@ class DoubanhuatiTuoshuiJob
     end
   end
 
-  def self.get_doubanhuati_topic(doc, i = 0) # 0表示多页
+  def self.get_doubanhuati_topic(doc, i = 0, s = 0) # 0表示多页
     title = doc.at_css("title").text
 
     if doc.at_css("div.topic-doc > table.infobox .tablecc")
@@ -92,7 +92,7 @@ class DoubanhuatiTuoshuiJob
     t = {:title => title, :classname => category, :author => lz,
                   :firsttime => created_at,  :myupdatetime => Time.now,
                   :mypagenum => all_page_num, :mypostnum => all_post_num,
-                  :tags => title ,  :section_id => 3,  :rule => 3}
+                  :tags => title ,  :section_id => 3,  :rule => 3, :status => s}
 
   end
 end
