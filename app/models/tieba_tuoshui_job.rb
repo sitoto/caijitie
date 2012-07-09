@@ -72,7 +72,7 @@ class TiebaTuoshuiJob
     if doc.at_css(".p_thread .l_thread_info .l_posts_num li span").blank?   #不是贴子页面
       return
     end
-    all_post_num = doc.at_css(".p_thread .l_thread_info .l_posts_num li span.d_red_num").text
+    all_post_num = doc.at_css(".p_thread .l_thread_info .l_posts_num li span.red").text
     title = doc.at_css("h1").text
     if doc.at_css("a#pb_nav_main").blank?
       category = doc.at_css("cb").text
