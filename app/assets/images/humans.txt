@@ -1,5 +1,5 @@
 ﻿
 /* TEAM */
-  lehazi.com: 乐哈子
-  Site: www.lehazi.com 
+  369hi.com: 369hi
+  Site: www.369hi.com 
   Location: china
