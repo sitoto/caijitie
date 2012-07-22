@@ -63,7 +63,7 @@ class Admin::TopicsController < AdminController
     @topic.destroy
 
     respond_to do |format|
-      format.html { redirect_to topics_url }
+      format.html { redirect_to admin_topics_url }
       format.json { head :ok }
     end
   end
