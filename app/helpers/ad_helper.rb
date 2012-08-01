@@ -1,3 +1,4 @@
+#encoding: UTF-8
 module AdHelper
   def ad_baidu_sides
     '<script type="text/javascript">/*2-4_sides_120_270*/ var cpro_id = "u890141";</script>
@@ -42,6 +43,6 @@ module AdHelper
 
   end
   def ad_baidu_7day_right
-    '<iframe id="baiduSpFrame" border="0" vspace="0" hspace="0" marginWidth="0" marginHeight="0" frameSpacing="0" frameBorder="0" scrolling="no" width="250" height="250" src="http://spcode.baidu.com/spcode/spstyle/style2319.jsp?tn=64064098_sp&ctn=0&styleid=2319"></iframe>'
+	image_tag 'myad.jpg', :alt=>"ad"
   end
 end
