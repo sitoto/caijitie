@@ -2,7 +2,7 @@
 require 'nokogiri'
 require 'open-uri'
 class DoubanhuatiTuoshuiJob
-  def self.cai_doubanhuati_topic(url, s)
+  def self.cai_doubanhuati_topic(url, s = 0)
     #判断是否可以访问该网址
     begin
       html_stream  = open(url)
