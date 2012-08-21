@@ -35,7 +35,7 @@ class DoubanhuatiTuoshuiJob
     unless doc.at_css("div.topic-doc > h3 > span.color-green").blank?
       created_at = doc.at_css("div.topic-doc > h3 > span.color-green").text
       #firstcontent = doc.at_css("div.topic-doc > div.topic-content > p").inner_html
-      firstcontent = doc.at_css("div.topic-doc > div.topic-content").inner_html
+      firstcontent = doc.at_css("div.topic-doc  div.topic-content").inner_html
       j = j+1
       DoubanPost.create!(:page_url_id => url_id, :content => firstcontent, :post_at => created_at,
                     :level  => 0, :my_level => j ,:author => lz)
