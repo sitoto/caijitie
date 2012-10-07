@@ -43,6 +43,6 @@ module AdHelper
 
   end
   def ad_baidu_7day_right
-	image_tag 'myad.jpg', :alt=>"ad"
+	#image_tag 'myad.jpg', :alt=>"ad"
   end
 end

@@ -27,6 +27,6 @@
   <%= @topic.status %>
 </p>
 
-
+<%= link_to 'Destroy', [:admin,@topic], confirm: 'Are you sure?', method: :delete %>
 <%= link_to 'Edit', edit_admin_topic_path(@topic) %> |
 <%= link_to 'Back', admin_topics_path %>

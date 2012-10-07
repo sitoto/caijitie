@@ -58,15 +58,15 @@ class EasyCaiController < ApplicationController
     doc = Nokogiri::HTML(html_stream)
     @bankuai_title = doc.css("title").text
     @bankuai = []
-
+    puts url
     if(doc.at_css("ul#thread_list"))
       doc.css("ul#thread_list > li").each do |item|
-        @bankuai << [item.at_css("div.th_w2 > div.th_lz").text.strip,
-                      item.at_css("div.th_w2 > span.th_author").text,
+        @bankuai << [item.at_css("div.threadlist_li_right > div.threadlist_lz > div.threadlist_text").text.strip,
+                      item.at_css("div.threadlist_li_right > div.threadlist_lz > div.threadlist_author").text,
                       0,
-                      item.at_css("div.th_w1 > div").text.strip,
-                      item.at_css("div.th_w2 > span.th_reply_data").text,
-                      "http://tieba.baidu.com" << item.at_css("div.th_w2 > div.th_lz > a").attr("href")
+                      item.at_css("div.threadlist_li_left > div").text.strip,
+                      0,
+                      "http://tieba.baidu.com" << item.at_css("div.threadlist_li_right > div.threadlist_lz >div.threadlist_text > a").attr("href")
                       ]
       end
 
