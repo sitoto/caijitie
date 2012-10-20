@@ -32,12 +32,12 @@ class TiebaTuoshuiJob
     i = 0
     j = 0
     doc.css(".p_postlist .l_post").each do |item|
-      post_json_str = item.css(".p_post").attr("data-field")
+      post_json_str = item.attr("data-field")
       json_post = JSON.parse(post_json_str)
       created_at = json_post["content"]["date"]
       author = json_post["author"]["name"]
       level = json_post["content"]["floor"]
-      content =  item.css(".d_post_content").inner_html
+      content =  item.at_css(".d_post_content").inner_html
 
       if  s == 0
          if author == lz
@@ -79,7 +79,7 @@ class TiebaTuoshuiJob
     else
       category = doc.at_css("a#pb_nav_main").text
     end
-      post_json_str= doc.at_css(".l_post .p_post").attr("data-field")
+      post_json_str= doc.at_css(".l_post").attr("data-field")
 		  json_post = JSON.parse(post_json_str)
     created_at = json_post["content"]["date"]
     lz = json_post["author"]["name"]
