@@ -77,7 +77,7 @@ class DoubanhuatiTuoshuiJob
     end
 
     category = doc.at_css("div.aside > p > a").text.from(1)
-    lz = doc.at_css("div.topic-doc > h3 > span.pl20 > a").text
+    lz = doc.at_css("div.topic-doc > h3 > span > a").text
     created_at = doc.at_css("div.topic-doc > h3 > span.color-green").text
     #fromurl = url    #存入首页地址
     all_page_num =  1
