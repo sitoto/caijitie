@@ -20,12 +20,48 @@ class EasyCaiController < ApplicationController
     elsif (@easy_cai && @easy_cai.section_id == 1)
       tieba_url(@easy_cai.url_address)
     elsif (@easy_cai && @easy_cai.section_id == 3)
-      douban_url(@easy_cai.url_address)
+      douban_url(@easy_cai.url_address)    
+	elsif (@easy_cai && @easy_cai.section_id == 5)
+      bbs_tianya_url(@easy_cai.url_address)
     end
 
   end
 
   private
+  def bbs_tianya_url(url)
+	html_stream  = open(url)
+	doc = Nokogiri::HTML(html_stream)
+	@bankuai_title = doc.css("title").text
+	@bankuai = []
+	if(doc.at_css("div#main > div.mt5 > table"))
+		doc.css("div#main > div.mt5 > table > tbody > tr").each_with_index do |item, i|
+			next if i == 0
+			@bankuai << [item.css("td")[0].text,  item.css("td")[1].text, item.css("td")[2].text, 
+						item.css("td")[3].text, item.css("td")[4].text,  "http://bbs.tianya.cn" + item.at_css("a").attr("href")]
+			
+		end
+	elsif(doc.at_css("div#mainDiv > div#forumContentDiv > table"))
+		doc.css("div#mainDiv > div#forumContentDiv > table").each do |item|
+		  if item.attr("name") == "adsp_list_post_info_a" || item.attr("name") == "adsp_list_post_info_b"
+			@bankuai << [item.css("td")[1].text, item.css("td")[2].text, item.css("td")[3].text,
+						item.css("td")[4].text, item.css("td")[5].text, item.at_css("a").attr("href")]
+		  end
+		end
+    elsif (doc.css("div#postlistwrapper > table.listtable"))
+      doc.css("div#postlistwrapper > table.listtable").each do |item|
+         if item.attr("name") == "adsp_list_post_info_a" || item.attr("name") == "adsp_list_post_info_b"
+            @bankuai <<  [item.css("td")[0].text, item.css("td")[1].text, item.css("td")[2].text, item.css("td")[3].text,
+                        item.css("td")[4].text,  item.at_css("a").attr("href")]
+         end
+
+      end
+
+    end
+    rescue
+      return ''
+	
+  end
+  
   def tianya_url(url)
    html_stream  = open(url)
     regEx_tianya_1 = /tianya\.cn\/\w*\/\w*\/\w*\/[0-9]+\/[0-9]+\.shtml/
