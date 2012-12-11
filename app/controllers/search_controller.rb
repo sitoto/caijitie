@@ -44,6 +44,9 @@ class SearchController < ApplicationController
           when 4 #techforum from tianyabbs 鬼话
            t, page_urls = @topic.get_tianya_techforum_topic(@url)
             update_tianyabbs_techfroum_topic(t)
+          when 5 #bbs  from tianyabbs 新版
+           t, page_urls = @topic.get_tianya_bbs_topic(@url)
+            update_tianyabbs_bbs_topic(t)
         end
         expire_cache_for(t)
       end
@@ -138,6 +141,7 @@ class SearchController < ApplicationController
      regEx_tieba_2_1 = /[0-9]+/
      regEx_tianya_1 = /tianya\.cn\/publicforum\/\w*\/\w*\/[0-9]+\/[0-9]+\.shtml/
      regEx_tianya_2 = /tianya\.cn\/techforum\/\w*\/\w*\/[0-9]+\/[0-9]+\.shtml/
+     regEx_tianya_3 = /bbs\.tianya\.cn\/\w*\.shtml/
      regEx_douban_1 = /douban\.com\/group\/topic\/[0-9]*/
        sid = 0
       if regEx_tieba_1  =~ url
@@ -152,6 +156,9 @@ class SearchController < ApplicationController
       elsif regEx_tianya_2 =~ url
         sid = 4
         @url ="http://www." << regEx_tianya_2.match(url).to_s
+      elsif regEx_tianya_3 =~ url
+        sid = 5
+        @url ="http://" << regEx_tianya_2.match(url).to_s
       elsif regEx_douban_1 =~ url
         sid = 3
         @url = ("http://www." << regEx_douban_1.match(url).to_s << "/")

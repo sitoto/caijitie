@@ -21,9 +21,14 @@ class Topic < ActiveRecord::Base
   def get_tianya_techforum_topic(url)
     t, page_urls = TianyabbsTechforumJob.cai_tianyabbs_topic(url)
   end
+  def get_tianya_bbs_topic(url)
+    t, page_urls = TianyabbsBbsJob.cai_tianyabbs_topic(url)
+  end
+  
+  
 
   def get_douban_topic(url, s)
     t = DoubanhuatiTuoshuiJob.cai_doubanhuati_topic(url, s)
   end
-
+  
 end
