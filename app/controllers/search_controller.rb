@@ -134,14 +134,33 @@ class SearchController < ApplicationController
         return
      end
   end
-
+  
+  def update_tianyabbs_bbs_topic(t)
+    unless t.blank?
+      t[:my_title] = t[:title]
+      t[:fromurl] = @url
+        @topic.update_attributes(t)
+        if @topic.save
+           max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
+           max = 1 if max == 0
+           max.upto(@topic.mypagenum)  do |a|
+            @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_bbs_page_url(@topic.fromurl, a),
+                               :status => 0, :count => 1)
+            Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
+          end
+        end
+        redirect_to p_path(@topic)
+        return
+     end
+  end
+  
   def is_url?(url)
      regEx_tieba_1 = /baidu\.com\/p\/[0-9]*/
      regEx_tieba_2 = /baidu\.com\/f\?kz=[0-9]*/
      regEx_tieba_2_1 = /[0-9]+/
      regEx_tianya_1 = /tianya\.cn\/publicforum\/\w*\/\w*\/[0-9]+\/[0-9]+\.shtml/
      regEx_tianya_2 = /tianya\.cn\/techforum\/\w*\/\w*\/[0-9]+\/[0-9]+\.shtml/
-     regEx_tianya_3 = /bbs\.tianya\.cn\/\w*\.shtml/
+     regEx_tianya_3 = /bbs\.tianya\.cn\/\w*\-\w*\-\w*\-[0-9]+\.shtml/
      regEx_douban_1 = /douban\.com\/group\/topic\/[0-9]*/
        sid = 0
       if regEx_tieba_1  =~ url
@@ -158,7 +177,7 @@ class SearchController < ApplicationController
         @url ="http://www." << regEx_tianya_2.match(url).to_s
       elsif regEx_tianya_3 =~ url
         sid = 5
-        @url ="http://" << regEx_tianya_2.match(url).to_s
+        @url ="http://" << regEx_tianya_3.match(url).to_s
       elsif regEx_douban_1 =~ url
         sid = 3
         @url = ("http://www." << regEx_douban_1.match(url).to_s << "/")

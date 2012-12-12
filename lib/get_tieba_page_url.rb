@@ -37,4 +37,16 @@ module GetTiebaPageUrl
     end
     myurl
   end
+  #http://bbs.tianya.cn/post-16-825252-2.shtml
+  
+  def get_tianya_bbs_page_url(url, p)
+  regEx_tianya_1 = /bbs\.tianya\.cn\/\w*\-\w*\-\w*\-/
+  
+  filename = ".shtml"
+
+    if regEx_tianya_1  =~ url
+      myurl = ("http://" << regEx_tianya_1.match(url).to_s) << "#{p}" << filename
+    end
+    myurl
+  end
 end

@@ -5,6 +5,8 @@ class TianyabbsBbsJob
   def self.cai_tianyabbs_topic(url)
     #判断是否可以访问该网址
     begin
+
+	  url = URI.parse(URI.encode(url))
       html_stream  = open(url)
     rescue OpenURI::HTTPError => ex
       puts " can't get url: #{url}"
@@ -44,12 +46,12 @@ class TianyabbsBbsJob
 				created_at = doc.css("div#post_head > div > div.atl-info > span")[1].text.to_s.strip.last(19)
 				created_at = chk_datetime created_at
 			end
+		else
+			author = item.at_css("div.atl-head > div.atl-info > span > a").text
+			level =  item.at_css("div.atl-head > div.atl-head-reply >  a").attr("floor")
+			created_at = doc.css("div#post_head > div > div.atl-info > span")[1].text.to_s.strip.last(19)
+			created_at = chk_datetime created_at
 		end
-		author = item.at_css("div.atl-head > div.atl-info > span > a").text
-		level =  item.at_css("div.atl-head > div.atl-head-reply >  a").attr("floor")
-		created_at = doc.css("div#post_head > div > div.atl-info > span")[1].text.to_s.strip.last(19)
-		created_at = chk_datetime created_at
-		
       if item.at_css("div.atl-content")
         content =  item.at_css("div.bbs-content").inner_html
       else
