@@ -76,7 +76,7 @@ class DoubanhuatiTuoshuiJob
       title =  doc.at_css("div.topic-doc > table.infobox .tablecc").text.from(3)
     end
 
-    category = doc.at_css("div.aside > p > a").text.from(1)
+    category = "豆瓣小组" #doc.at_css("div.info > div.title > a").text
     lz = doc.at_css("div.topic-doc > h3 > span > a").text
     created_at = doc.at_css("div.topic-doc > h3 > span.color-green").text
     #fromurl = url    #存入首页地址
