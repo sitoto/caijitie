@@ -74,10 +74,10 @@ class TiebaTuoshuiJob
     end
     all_post_num = doc.at_css(".p_thread .l_thread_info .l_posts_num li span.red").text
     title = doc.at_css("h1").text
-    if doc.at_css("li.first > a").blank?
+    if doc.at_css("li.first > p  > a").blank?
       category = doc.at_css("cb").text
     else
-      category = doc.at_css("li.first > a").text
+      category = doc.at_css("li.first > p > a").text
     end
       post_json_str= doc.at_css(".l_post").attr("data-field")
 		  json_post = JSON.parse(post_json_str)
