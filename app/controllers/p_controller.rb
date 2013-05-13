@@ -163,11 +163,11 @@ class PController < ApplicationController
   end
  def update_tianyabbs_bbs_topic(t)
     unless t.blank?
-      t[:my_title] = t[:title]
-      t[:fromurl] = @url
         @topic.update_attributes(t)
         if @topic.save
-           max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
+           max_page_url = @topic.most_recent_page_url
+           max = max_page_url.num || 0
+           max_page_url.destroy
            max = 1 if max == 0
            max.upto(@topic.mypagenum)  do |a|
             @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_bbs_page_url(@topic.fromurl, a),

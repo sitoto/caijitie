@@ -63,7 +63,7 @@ class SearchController < ApplicationController
            max = 1 if max == 0
            max.upto(@topic.mypagenum)  do |a|
             @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tieba_page_url(@topic.fromurl,a),
-                               :status => 0, :count => 1)
+                               :status => 0, :count => 0)
             Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
             #TiebaTuoshuiJob.get_tieba_post(@topic, @page_url)
           end
@@ -82,7 +82,7 @@ class SearchController < ApplicationController
            max = 1 if max == 0
            max.upto(@topic.mypagenum)  do |a|
             @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_doubanhuati_page_url(@topic.fromurl,(a-1) * 100),
-                               :status => 0, :count => 1)
+                               :status => 0, :count => 0)
             Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
           end
         end
@@ -99,14 +99,14 @@ class SearchController < ApplicationController
            if page_urls.length == 1
              if max == 0
                @page_url = PageUrl.create!(:topic_id => @topic.id, :num => 1, :url => page_urls[0],
-                               :status => 0, :count => 1)
+                               :status => 0, :count => 0)
                Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
              end
            elsif page_urls.length > 1
              page_urls.to_a.each_with_index  do |p, i|
               if i >= max
                 @page_url =  PageUrl.create!(:topic_id => @topic.id, :num => i+1, :url => get_tianya_page_url(@topic.fromurl, p),
-                                 :status => 0, :count => 1)
+                                 :status => 0, :count => 0)
                 Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
               end
              end
@@ -126,7 +126,7 @@ class SearchController < ApplicationController
            max = 1 if max == 0
            max.upto(@topic.mypagenum)  do |a|
             @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_techfroum_page_url(@topic.fromurl, a),
-                               :status => 0, :count => 1)
+                               :status => 0, :count => 0)
             Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
           end
         end
@@ -145,7 +145,7 @@ class SearchController < ApplicationController
            max = 1 if max == 0
            max.upto(@topic.mypagenum)  do |a|
             @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_bbs_page_url(@topic.fromurl, a),
-                               :status => 0, :count => 1)
+                               :status => 0, :count => 0)
             Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
           end
         end

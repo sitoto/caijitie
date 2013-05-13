@@ -24,7 +24,7 @@ class PuController < ApplicationController
         t = TianyabbsBbsJob.get_tianyabbs_post(@topic, @page_url) if @topic.rule == 5
 
         @page_url.update_attributes!(:status => 1,:count => t ) if t >=  0 #读取正确 状态为 1
-        @page_url.update_attributes!(:status => 9) if t == -1 #读取出错 状态 改为 9
+        @page_url.update_attributes!(:status => 9,:count => 0) if t == -1 #读取出错 状态 改为 9
       end
 
       @posts = @page_url.tieba_posts if @topic.section_id.eql?(1)
