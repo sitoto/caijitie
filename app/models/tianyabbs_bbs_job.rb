@@ -6,8 +6,10 @@ class TianyabbsBbsJob
     #判断是否可以访问该网址
     begin
 
-	  url = URI.parse(URI.encode(url))
-      html_stream  = open(url)
+	  #web_url = URI.parse(URI.encode(url))
+	  #web_url = URI.parse(url)
+	  web_url = URI.encode(url)
+      html_stream  = open(web_url)
     rescue OpenURI::HTTPError => ex
       puts " can't get url: #{url}"
       return  ""
