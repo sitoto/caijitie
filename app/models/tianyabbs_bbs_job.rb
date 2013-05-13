@@ -24,7 +24,7 @@ class TianyabbsBbsJob
       html_stream  = open(page_url.url)
     rescue #OpenURI::HTTPError => ex
       puts " can't get url: #{page_url.url}"
-      return ''
+      return -1
     end
     doc = Nokogiri::HTML(html_stream)
     t =  filter_tianyabbs_post(doc, topic.author,page_url.id, topic.status)
@@ -43,13 +43,13 @@ class TianyabbsBbsJob
 			else
 				author = item.at_css("div.atl-head > div.atl-info > span > a").text
 				level =  item.at_css("div.atl-head > div.atl-head-reply >  a").attr("floor")
-				created_at = doc.css("div#post_head > div > div.atl-info > span")[1].text.to_s.strip.last(19)
+				created_at = item.css("div.atl-info > span")[1].text.to_s.strip.last(19)
 				created_at = chk_datetime created_at
 			end
 		else
 			author = item.at_css("div.atl-head > div.atl-info > span > a").text
 			level =  item.at_css("div.atl-head > div.atl-head-reply >  a").attr("floor")
-			created_at = doc.css("div#post_head > div > div.atl-info > span")[1].text.to_s.strip.last(19)
+			created_at = item.css("div > div.atl-info > span")[1].text.to_s.strip.last(19)
 			created_at = chk_datetime created_at
 		end
       if item.at_css("div.atl-content")
@@ -72,8 +72,8 @@ class TianyabbsBbsJob
     end # end -do each
     return  i
 
-   # rescue
-   #   return -1
+    rescue
+      return -1
 
   end
 

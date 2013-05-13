@@ -66,6 +66,9 @@ class PController < ApplicationController
     elsif (@topic.rule.eql?(4))
       t, page_urls = TianyabbsTechforumJob.update_topic(@topic)
       update_tianyabbs_techfroum_topic(t)
+	elsif (@topic.rule.eql?(5))
+      t, page_urls = TianyabbsBbsJob.update_topic(@topic)
+      update_tianyabbs_bbs_topic(t)
     elsif (@topic.rule.eql?(3))
       #douban
       t = DoubanhuatiTuoshuiJob.update_topic(@topic)
@@ -158,7 +161,24 @@ class PController < ApplicationController
         end
      end
   end
-
+ def update_tianyabbs_bbs_topic(t)
+    unless t.blank?
+      t[:my_title] = t[:title]
+      t[:fromurl] = @url
+        @topic.update_attributes(t)
+        if @topic.save
+           max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
+           max = 1 if max == 0
+           max.upto(@topic.mypagenum)  do |a|
+            @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_bbs_page_url(@topic.fromurl, a),
+                               :status => 0, :count => 1)
+            Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
+          end
+        end
+        #redirect_to p_path(@topic)
+        #return
+     end
+  end
   private
     def expire2_cache
     # Expire the index page now that we added a new topic
