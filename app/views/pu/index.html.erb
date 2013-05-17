@@ -1,8 +1,7 @@
 <% title "#{@topic.my_title} by #{@topic.author}.第#{params[:page]}页" %>
 
 <h1 class="round2 back"><%=	 @topic.my_title%></h1>
-<div class="ggw960">
-    <%= raw ad_baidu_all_head %>
+<div id="myad960" class="ggw960" style="height:98px">
 </div>
 <p>
 <span class="border">[<%= link_to '回目录', p_path(@topic), :target => '_blank', :class => 'red' %>]  </span>
@@ -11,7 +10,7 @@
 <span class="border">共计<%=  @topic.mypostnum  %>回复/<%=  @topic.mypagenum  %>页</span>
 <span class="border">内容不完整？：<%= link_to '现在更新', renew_p_path(@topic.id), method: :put, :target => '_blank', rel: "nofollow", :class => 'red' %></span>
 <span class="border">查看原贴：<%= link_to '打开原贴', @topic.fromurl,  :target => '_blank' %></span>
-<span class="border"><%= link_to "赞", top_p_path(@topic.id), remote: true, "data-type" => :json, rel: "nofollow",  :id => "ajax_top"  %></span>
+<span class="border"><%= link_to "赞" , top_p_path(@topic.id),  title: "#{@topic.top}", remote: true, "data-type" => :json, rel: "nofollow",  :id => "ajax_top"  %></span>
 <span class="border" id="num" style="display: none"></span>
 
 
@@ -34,8 +33,7 @@
         <div class="content round" style="word-break:break-all;overflow:hidden;">
           <%= raw p.content  %>
            <% if p.my_level == 1 %>
-            <div class="ggw728">
-            <%= raw ad_baidu_center_for_content %>
+            <div id="myad728" class="ggw728" style="height:98px">
             </div>
           <% end %>
         </div>
@@ -59,8 +57,54 @@
     </ul>
   <% end %>
 </div>
+<div  id='hide_ad_960'>
+<%= raw ad_baidu_all_head %>
+</div>
+<div id='hide_ad_728'>
+<%= raw ad_baidu_center_for_content %>
+</div>
+<script type="text/javascript">
+document.getElementById("myad960").innerHTML = document.getElementById("hide_ad_960").innerHTML ;
+document.getElementById("hide_ad_960").innerHTML = "";
 
+document.getElementById("myad728").innerHTML = document.getElementById("hide_ad_728").innerHTML ;
+document.getElementById("hide_ad_728").innerHTML = "";
 
+</script>
+<script type="text/javascript">
+(function($) {
+    $(document).keydown(handleKey);
+    function handleKey(e) {
+        var left_arrow = 37;
+        var right_arrow = 39;
+        if (e.target.nodeName == 'BODY' || e.target.nodeName == 'HTML') {
+                if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey) {
+                    var code = e.which;
+                    if (code == left_arrow) {
+                        prevPage();
+                    }
+                    else if (code == right_arrow) {
+                        nextPage();
+                    }
+                }
+            }
+    }
+
+    function prevPage() {
+        var href = $('.pagination .prev a').attr('href');
+        if (href && href != document.location && href != "#") {
+            document.location = href;
+        }
+    }
+
+    function nextPage() {
+        var href = $('.pagination .next a').attr('href');
+        if (href && href != document.location && href != "#") {
+            document.location = href;
+        }
+    }
+})(jQuery);
+</script>
 <% if @topic.section_id == 1 %>
 <script type="text/javascript">
   //破防盗链js
