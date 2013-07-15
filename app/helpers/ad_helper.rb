@@ -39,6 +39,10 @@ module AdHelper
 </script><script src="http://cpro.baidu.com/cpro/ui/c.js" type="text/javascript"></script>'
   end
 
+  def ad_fun_blog_left_down
+	'<script type="text/javascript">/*Fun-Blog-580*90 */var cpro_id = "u1320808";
+</script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>'
+  end
   def ad_baidu_7day
 
   end
