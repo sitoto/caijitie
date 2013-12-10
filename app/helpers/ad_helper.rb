@@ -14,6 +14,10 @@ module AdHelper
     '<script type="text/javascript">/*2-4_AllHead_960_60*/ var cpro_id = "u891671";</script>
 <script src="http://cpro.baidu.com/cpro/ui/c.js" type="text/javascript"></script>'
   end
+  def ad_baidu_all_footer
+  '<script type="text/javascript">/*all_footer_±Í«©‘∆2013_12_10*/var cpro_id = "u1430288";</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>'
+  end
 
   def ad_baidu_left_for_download
     '<script type="text/javascript">/*5_Left_580_90*/ var cpro_id = "u891695";</script>
