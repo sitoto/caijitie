@@ -74,7 +74,9 @@ class TiebaTuoshuiJob
     end
     all_post_num = doc.at_css(".p_thread .l_thread_info .l_posts_num li span.red").text
     title = doc.at_css("h1").text
-    if doc.at_css("li.first > p  > a").blank?
+    if doc.at_css("a#tab_home")
+      category = doc.at_css("a#tab_home").text
+    elsif doc.at_css("li.first > p  > a").blank?
       category = doc.at_css("cb").text
     else
       category = doc.at_css("li.first > p > a").text
