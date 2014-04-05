@@ -76,10 +76,14 @@ class TiebaTuoshuiJob
     title = doc.at_css("h1").text
     if doc.at_css("a#tab_home")
       category = doc.at_css("a#tab_home").text
-    elsif doc.at_css("li.first > p  > a").blank?
+    elsif doc.at_css("li.first > p  > a")
+      category = doc.at_css("li.first > p > a").text
+    elsif doc.at_css("a.star_title_h3")
+      category = doc.at_css("a.star_title_h3").text
+    elsif doc.at_css("cb")
       category = doc.at_css("cb").text
     else
-      category = doc.at_css("li.first > p > a").text
+      category = "贴吧"
     end
       post_json_str= doc.at_css(".l_post").attr("data-field")
 		  json_post = JSON.parse(post_json_str)
