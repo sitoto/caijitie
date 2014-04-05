@@ -182,6 +182,13 @@ ul{
         list-style: none;
     }
 }
+ul.cl {
+
+  li{
+    float: left;
+    margin: 10px;
+  }
+}
 cite {
 display: none;
 text-indent: -999px;

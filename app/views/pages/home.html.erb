@@ -1,14 +1,14 @@
 <%- title "只看楼主" -%>
 <div id="head" class="head">
-    <div id="t">
-      <div id="topall">
+  <div id="t">
+    <div id="topall">
       <span class="top_left">当前位置：369脱水吧</span>
       <span class="top_right">收藏</span>
-      </div>
     </div>
+  </div>
   <div id="a1" class="logo">
     <div id="top">
-    <a class="logo" href="/"><cite>369脱水吧<br>阅读热贴的好工具 只看楼主</cite></a><br>
+      <a class="logo" href="/"><cite>369脱水吧<br>阅读热贴的好工具 只看楼主</cite></a><br>
 
     </div>
     <div id="top-center">
@@ -16,10 +16,10 @@
     </div>
     <div id="search" >
       <form action="<%= search_path %>"  method = "get"   target = "_blank">
-      <%= submit_tag("搜索", :class => "su") %>
-      <%= text_field_tag(:q , '', :class => "q")  %>
+        <%= submit_tag("搜索", :class => "su") %>
+        <%= text_field_tag(:q , '', :class => "q")  %>
       </form>
-    <span>输入天涯社区、豆瓣小组、百度贴吧网址，点击搜索，阅读脱水文章。</span>
+      <span>输入天涯社区、豆瓣小组、百度贴吧网址，点击搜索，阅读脱水文章。</span>
     </div>
   </div>
 </div>
@@ -40,124 +40,96 @@
   </div>
 </div>
 <div class="home clearfix">
-    <!-- left start -->
-    <div id="left">
-      <div id="solehazi">
-        <span>已陆续帮网友采集<%= @count %>篇帖子，欢迎反馈意见，谢谢！</span>
-      </div>
+  <!-- left start -->
+  <div id="left">
 
-      <div id="ty_list" class="show_list">
-        <h3>天涯易读  <a href="/tysq">进入....</a></h3>
-        <%- if @ty_topics -%>
-          <ul>
-            <% @ty_topics.each do |t| %>
+    <div id="ty_list" class="show_list">
+      <h3>天涯易读  <a href="/tysq">进入....</a></h3>
+      <%- if @ty_topics -%>
+        <ul>
+          <% @ty_topics.each do |t| %>
             <li><span>·<%=	 link_to t.my_title, p_pu_path(t, 1), title: t.my_title, target: '_blank' %></span>
             </li>
-            <%  end %>
-          </ul>
-        <%- end -%>
-      </div>
-
-      <table cellpadding="0" cellspacing="0" class="modul" style="margin-top:10px;">
-        <thead>
-            <tr>
-              <td class="left_M"><strong>贴吧  </strong><a href="/tb">更多....</a></td>
-              <td class="right_M"><strong>豆瓣  </strong><a href="/dbht">更多....</a></td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <%- if @tb_topics -%>
-                    <ul>
-                    <% @tb_topics.each do |t| %>
-                    <li><span>·<%=	 link_to t.my_title.strip.truncate(24, :omission => '.'), p_pu_path(t, 1), title: t.my_title,  target: '_blank' -%></span>
-                    </li>
-                    <%  end %>
-                    </ul>
-                    <%- end -%>
-
-                </td>
-                <td>
-                   <%- if @db_topics -%>
-                    <ul>
-                    <% @db_topics.each do |t| %>
-                    <li><span>·<%=	 link_to t.my_title.strip.truncate(26, :omission => '.'), p_pu_path(t, 1), title: t.my_title,  target: '_blank' -%></span>
-                    </li>
-                    <%  end %>
-                    </ul>
-                    <%- end -%>
-                </td>
-            </tr>
-        </tbody>
-      </table>
-
-      <div id="forum_nav" class="forum_list">
-        <h3>分类目录</h3>
-        <ul>
-        <% @classes.each do |c| %>
-           <li>
-            <%=  link_to  truncate(c.classname, :length => 12, :omission => '..') , category_path(c.classname), title: c.count ,:target => '_blank' %>
-             <span class="gray"><%= c.count %></span>
-          </li>
-        <% end %>
-          <li><a href="/class" target="_blank"><strong> 更多分类</strong></a>&gt;&gt;</li>
+          <%  end %>
         </ul>
-
-      </div>
-
-
+      <%- end -%>
     </div>
-    <div id="right" class="g_right">
-      <div class="whatis">
-        <div class="tit"><strong>乐哈网微博</strong></div>
-        <div class="txtcontent">已开通了腾讯微博和新浪微博，求关注。</div>
-        <a href="http://t.qq.com/lehazi" target="_blank" class="button">lehazi</a>
-        <a href="http://weibo.com/u/2183382954" target="_blank" class="button2">lehazi</a>
-      </div>
-      <a href="/blog" target="_blank" class="blog_link"></a>
-      <div style="margin:10px auto 0; text-align: center; border: 1px solid #3999cc;" >
-        <%=	 raw ad_baidu_7day_right  %>
-      </div>
-      <div style="margin-top:10px;">
-
-       <table cellspacing="0" cellpadding="0" class="recommend">
-	    <tbody>
-        <tr><td>
-        <div class="tit"><strong>文章推荐</strong></div>
-        <div class="more" style="line-height:20px;"><a href="/hot" target="_blank">更多</a>&gt;&gt;</div>
-        </td></tr>
-    <tr><td>
-      <%- if @topics -%>
-          <ul class="list">
-            <% @topics.each do |t| %>
-            <li>
-              <span>·</span><%=	 link_to t.my_title.strip.truncate(18, :omission => '.') , p_pu_path(t, 1), title: t.title.strip, target: '_blank' %>
+    <div id="ty_list" class="show_list">
+      <h3>贴吧  <a href="/tb">更多....</a></h3>
+      <%- if @tb_topics -%>
+        <ul>
+          <% @tb_topics.each do |t| %>
+            <li><span>·<%=	 link_to t.my_title.strip, p_pu_path(t, 1), title: t.my_title,  target: '_blank' -%></span>
             </li>
-            <%  end %>
-          </ul>
-          <%- end -%>
+          <%  end %>
+        </ul>
+      <%- end -%>
 
-	</td></tr>
-	<tr><td><div class="button"><a href="/hot" target="_blank">查看所有文章</a></div></td></tr>
-    </tbody></table>
+
+    </div>
+    <div id="ty_list" class="show_list">
+      <h3>豆瓣  <a href="/dbht">更多....</a></h3>
+      <%- if @db_topics -%>
+        <ul>
+          <% @db_topics.each do |t| %>
+            <li><span>·<%=	 link_to t.my_title.strip, p_pu_path(t, 1), title: t.my_title,  target: '_blank' -%></span>
+            </li>
+          <%  end %>
+        </ul>
+      <%- end -%>
 
     </div>
 
+    <div id="forum_nav" class="show_list">
+      <h3>分类目录  <a href="/class" target="_blank" >更多分类....&gt;&gt;</a></h3>
     </div>
+
+
+  </div>
+  <div id="right" class="g_right">
+    <a href="/blog" target="_blank" class="blog_link"></a>
+    <div style="margin:10px auto 0; text-align: center; border: 1px solid #3999cc;" >
+      <%=	 raw ad_baidu_home_right_mobile_test %>
+    </div>
+    <div style="margin-top:10px;">
+
+      <table cellspacing="0" cellpadding="0" class="recommend">
+        <tbody>
+          <tr><td>
+              <div class="tit"><strong>文章推荐</strong></div>
+              <div class="more" style="line-height:20px;"><a href="/hot" target="_blank">更多</a>&gt;&gt;</div>
+          </td></tr>
+          <tr><td>
+              <%- if @topics -%>
+                <ul class="list">
+                  <% @topics.each do |t| %>
+                    <li>
+                    <span>·</span><%=	 link_to t.my_title.strip.truncate(18, :omission => '.') , p_pu_path(t, 1), title: t.title.strip, target: '_blank' %>
+                    </li>
+                  <%  end %>
+                </ul>
+              <%- end -%>
+
+          </td></tr>
+          <tr><td><div class="button"><a href="/hot" target="_blank">查看所有文章</a></div></td></tr>
+      </tbody></table>
+
+    </div>
+
+  </div>
 </div>
 <div class="blank10"></div>
 <div class="ggw960">
-    <%= raw ad_baidu_home %>
+  <%= raw ad_baidu_home %>
 </div>
 <div class="flink">
   <h3>友情链接</h3>
   <div class="fldiv">
-   <ul>
-    <%	 @links.each do |f| %>
-      <li><%= link_to f.name, f.url, :target => '_blank' %></li>
-    <%	 end %>
-  </ul>
+    <ul>
+      <%	 @links.each do |f| %>
+        <li><%= link_to f.name, f.url, :target => '_blank' %></li>
+      <%	 end %>
+    </ul>
   </div>
   <div class="blank10"></div>
 </div>

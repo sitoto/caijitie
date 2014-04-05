@@ -53,4 +53,8 @@ module AdHelper
   def ad_baidu_7day_right
 	#image_tag 'myad.jpg', :alt=>"ad"
   end
+  def ad_baidu_home_right_mobile_test
+'<script type="text/javascript">/*home_test_6:5_1445*/  var cpro_id = "u1513558";</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>'
+  end
 end
