@@ -19,45 +19,49 @@ class TiebaTuoshuiJob
     cai_tieba(topic.fromurl)
   end
   def self.get_tieba_post(topic, page_url)
-     begin
-      html_stream  = open(page_url.url)
+    begin
+      html_stream  = open(page_url.url).read
+      html_stream = html_stream.gsub("<!-- ", "")
+
+      doc = Nokogiri::HTML(html_stream)
+      t =  filter_tieba_post(doc, topic.author, page_url.id, topic.status)
     rescue #OpenURI::HTTPError => ex
       puts " can't get url: #{page_url.url}"
       return ''
     end
-    doc = Nokogiri::HTML(html_stream)
-    t =  filter_tieba_post(doc, topic.author,page_url.id, topic.status)
   end
   def self.filter_tieba_post(doc, lz, url_id, s = 0)
     i = 0
     j = 0
+    puts     doc.css(".p_postlist .l_post").length
+
     doc.css(".p_postlist .l_post").each do |item|
       post_json_str = item.attr("data-field")
       json_post = JSON.parse(post_json_str)
       created_at = json_post["content"]["date"]
       author = json_post["author"]["name"]
+#      author_u = json_post["author"]["name_u"]
+
       level = json_post["content"]["floor"]
       content =  item.at_css(".d_post_content").inner_html
 
       if  s == 0
-         if author == lz
+         if (author == lz)
            i += 1
            TiebaPost.create!(:page_url_id => url_id, :content => content, :post_at => created_at,
                         :level  => level, :my_level => i ,:author => lz)
-
          end
       elsif s == 1
         j += 1
         TiebaPost.create!(:page_url_id => url_id, :content => content, :post_at => created_at,
                         :level  => level, :my_level => j ,:author => lz)
-
       end
     end # end -do each
     return  i if s.eql?(0)
     return  j if s.eql?(1)
 
-
     rescue
+      puts $!
       return -1
   end
   def self.is_pagnation(doc)
