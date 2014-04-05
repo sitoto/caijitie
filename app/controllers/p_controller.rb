@@ -9,22 +9,23 @@ class PController < ApplicationController
     @topic = Topic.find_by_id(current_topic)
     if @topic.blank?
       flash[:notice] = "对不起，打开出错，可能文章不存在或已经被删除！"
+      redirect_to root_path
     else
       @page_urls =PageUrl.where("topic_id = ? and (status = 0 or count > 0)", @topic.id).page(params[:page]).per(500) #@topic.page_urls
 
-#      @posts = TiebaPost.find_by_sql(["select  a.* from  tieba_posts a
-#                        LEFT JOIN page_urls b on a.page_url_id = b.id
-#                        WHERE b.num = 1 and b.topic_id = ? LIMIT 2;", current_topic]) if @topic.section_id == 1
-#
-#      @posts = TianyaPost.find_by_sql(["select  a.* from  tianya_posts a
-#                        LEFT JOIN page_urls b on a.page_url_id = b.id
-#                        WHERE b.num = 1 and b.topic_id = ? LIMIT 2;", current_topic]) if @topic.section_id == 2
-    end
-    breadcrumb :tb_detail, @topic  if @topic.section_id == 1
-    breadcrumb :tysq_detail, @topic  if @topic.section_id == 2
-    breadcrumb :dbht_detail, @topic  if @topic.section_id == 3
+      #      @posts = TiebaPost.find_by_sql(["select  a.* from  tieba_posts a
+      #                        LEFT JOIN page_urls b on a.page_url_id = b.id
+      #                        WHERE b.num = 1 and b.topic_id = ? LIMIT 2;", current_topic]) if @topic.section_id == 1
+      #
+      #      @posts = TianyaPost.find_by_sql(["select  a.* from  tianya_posts a
+      #                        LEFT JOIN page_urls b on a.page_url_id = b.id
+      #                        WHERE b.num = 1 and b.topic_id = ? LIMIT 2;", current_topic]) if @topic.section_id == 2
+      breadcrumb :tb_detail, @topic  if @topic.section_id == 1
+      breadcrumb :tysq_detail, @topic  if @topic.section_id == 2
+      breadcrumb :dbht_detail, @topic  if @topic.section_id == 3
 
-    meta :title => @topic.my_title, :description => "热贴列表" , :keywords => "贴子,脱水"
+      meta :title => @topic.my_title, :description => "热贴列表" , :keywords => "贴子,脱水"
+    end
 
   end
 
@@ -66,7 +67,7 @@ class PController < ApplicationController
     elsif (@topic.rule.eql?(4))
       t, page_urls = TianyabbsTechforumJob.update_topic(@topic)
       update_tianyabbs_techfroum_topic(t)
-	elsif (@topic.rule.eql?(5))
+    elsif (@topic.rule.eql?(5))
       t, page_urls = TianyabbsBbsJob.update_topic(@topic)
       update_tianyabbs_bbs_topic(t)
     elsif (@topic.rule.eql?(3))
@@ -78,109 +79,109 @@ class PController < ApplicationController
 
     redirect_to p_path(@topic), :notice => "已提交更新。"
 
-  #rescue
-  #  redirect_to root_path :notice => "error"
+    #rescue
+    #  redirect_to root_path :notice => "error"
   end
 
 
-    protected
+  protected
   def update_topic(t)
-     unless t.blank?
-        @topic.update_attributes(t)
-        if @topic.save
-          max_page_url = @topic.most_recent_page_url
-          max = max_page_url.num || 1
-          max_page_url.destroy
-          max.upto(@topic.mypagenum)  do |a|
-            @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tieba_page_url(@topic.fromurl,a),
-                               :status => 0, :count => 0)
-            Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
-          end
+    unless t.blank?
+      @topic.update_attributes(t)
+      if @topic.save
+        max_page_url = @topic.most_recent_page_url
+        max = max_page_url.num || 1
+        max_page_url.destroy
+        max.upto(@topic.mypagenum)  do |a|
+          @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tieba_page_url(@topic.fromurl,a),
+                                      :status => 0, :count => 0)
+          Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
         end
-     end
+      end
+    end
   end
   def update_douban_topic(t)
-     unless t.blank?
-        @topic.update_attributes(t)
-        if @topic.save
-          max_page_url = @topic.most_recent_page_url
-          max = max_page_url.num || 1
-          max = 1 if max_page_url.num == 0
-          max_page_url.destroy
+    unless t.blank?
+      @topic.update_attributes(t)
+      if @topic.save
+        max_page_url = @topic.most_recent_page_url
+        max = max_page_url.num || 1
+        max = 1 if max_page_url.num == 0
+        max_page_url.destroy
 
-           max.upto(@topic.mypagenum)  do |a|
-             @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_doubanhuati_page_url(@topic.fromurl,(a-1) * 100),
-                               :status => 0, :count => 0)
-             Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
-          end
+        max.upto(@topic.mypagenum)  do |a|
+          @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_doubanhuati_page_url(@topic.fromurl,(a-1) * 100),
+                                      :status => 0, :count => 0)
+          Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
         end
-     end
+      end
+    end
   end
   def update_tianyabbs_topic(t, page_urls)
     #puts page_urls.to_a.length
     #puts "end"
 
-     unless t.blank?
-        @topic.update_attributes(t)
-        if @topic.save
-           max_page_url = @topic.most_recent_page_url
-           max = max_page_url.num || 0
-           max_page_url.destroy
-           if page_urls.to_a.length == 1
-             if max == 0
-               @page_url = PageUrl.create!(:topic_id => @topic.id, :num => 1, :url => page_urls.to_a[0],
-                               :status => 0, :count => 0)
-               Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
-             end
-           elsif page_urls.to_a.length > 1
-             page_urls.to_a.each_with_index  do |p, i|
-              if (i + 1) >= max
-                @page_url = PageUrl.create!(:topic_id => @topic.id, :num => (i + 1), :url => get_tianya_page_url(@topic.fromurl, p),
-                                 :status => 0, :count => 0)
-                Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
-              end
-             end
+    unless t.blank?
+      @topic.update_attributes(t)
+      if @topic.save
+        max_page_url = @topic.most_recent_page_url
+        max = max_page_url.num || 0
+        max_page_url.destroy
+        if page_urls.to_a.length == 1
+          if max == 0
+            @page_url = PageUrl.create!(:topic_id => @topic.id, :num => 1, :url => page_urls.to_a[0],
+                                        :status => 0, :count => 0)
+            Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
+          end
+        elsif page_urls.to_a.length > 1
+          page_urls.to_a.each_with_index  do |p, i|
+            if (i + 1) >= max
+              @page_url = PageUrl.create!(:topic_id => @topic.id, :num => (i + 1), :url => get_tianya_page_url(@topic.fromurl, p),
+                                          :status => 0, :count => 0)
+              Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
+            end
           end
         end
-     end
+      end
+    end
   end
   def update_tianyabbs_techfroum_topic(t)
     unless t.blank?
-        @topic.update_attributes(t)
-        if @topic.save
-          #max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
-          max_page_url = @topic.most_recent_page_url
-          max = max_page_url.num || 0
-          max_page_url.destroy
-          max = 1 if max == 0
-          max.upto(@topic.mypagenum)  do |a|
-             @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_techfroum_page_url(@topic.fromurl, a),
-                               :status => 0, :count => 0)
-             Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
-          end
+      @topic.update_attributes(t)
+      if @topic.save
+        #max = PageUrl.count_by_sql(["select max(num) from page_urls where topic_id = ?  ",@topic.id]) || 0
+        max_page_url = @topic.most_recent_page_url
+        max = max_page_url.num || 0
+        max_page_url.destroy
+        max = 1 if max == 0
+        max.upto(@topic.mypagenum)  do |a|
+          @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_techfroum_page_url(@topic.fromurl, a),
+                                      :status => 0, :count => 0)
+          Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
         end
-     end
+      end
+    end
   end
- def update_tianyabbs_bbs_topic(t)
+  def update_tianyabbs_bbs_topic(t)
     unless t.blank?
-        @topic.update_attributes(t)
-        if @topic.save
-           max_page_url = @topic.most_recent_page_url
-           max = max_page_url.num || 0
-           max_page_url.destroy
-           max = 1 if max == 0
-           max.upto(@topic.mypagenum)  do |a|
-            @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_bbs_page_url(@topic.fromurl, a),
-                               :status => 0, :count => 0)
-            Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
-          end
+      @topic.update_attributes(t)
+      if @topic.save
+        max_page_url = @topic.most_recent_page_url
+        max = max_page_url.num || 0
+        max_page_url.destroy
+        max = 1 if max == 0
+        max.upto(@topic.mypagenum)  do |a|
+          @page_url = PageUrl.create!(:topic_id => @topic.id, :num => a, :url => get_tianya_bbs_page_url(@topic.fromurl, a),
+                                      :status => 0, :count => 0)
+          Delayed::Job.enqueue TuoingJob.new(@topic, @page_url)
         end
-        #redirect_to p_path(@topic)
-        #return
-     end
+      end
+      #redirect_to p_path(@topic)
+      #return
+    end
   end
   private
-    def expire2_cache
+  def expire2_cache
     # Expire the index page now that we added a new topic
     expire_page(:controller => 'pages', :action => 'home')
     expire_page(:controller => 'hot', :action => 'index')
