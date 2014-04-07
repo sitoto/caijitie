@@ -1,7 +1,11 @@
 <%- if @fun -%>
 <%- title @fun.title -%>
-<% breadcrumb :fun_list, @fun %>
-<% meta :description =>  fun_description(@fun), :keywords =>  fun_tags_keyword(@fun) , :title => @fun.title %>
+<%
+      breadcrumb :fun_detail, @fun
+      meta :title =>  @fun.title ,
+         :description => ActionController::Base.helpers.strip_tags(@fun.body).truncate(80),
+         :keywords => @fun.title
+%>
 
 <div id="container" class="index_bg">
 <div id="content">

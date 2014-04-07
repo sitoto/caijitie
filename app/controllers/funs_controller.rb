@@ -6,11 +6,6 @@ class FunsController < ApplicationController
   def index
     @funs = Fun.order('id DESC').page(params[:page])
 
-    #for seo
-    breadcrumb :fun_list, '笑话'
-    meta :title => '短文笑话' ,
-         :description => "站内笑话，短文，名言，古文，乐哈子" ,
-         :keywords => '笑话，短文，名言，古文，乐哈子'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,10 +28,6 @@ class FunsController < ApplicationController
       arr = get_random_numbers(Fun.count,18)
       # @relation_funs = Fun.find_by_sql("select id, title from funs where id in (#{arr})");
       @relation_funs = Fun.find(arr, :select => "id, title")
-      breadcrumb :fun_detail, @fun
-      meta :title =>  @fun.title ,
-         :description => ActionController::Base.helpers.strip_tags(@fun.body).truncate(80),
-         :keywords => @fun.title
     #end
 
   end

@@ -19,8 +19,6 @@ class SearchController < ApplicationController
     if s_id == 0
       @search = Topic.where("title like ?", "%" << @search_text << "%").order('updated_at DESC').page(params[:page]).per(per_page)
       #for seo
-      breadcrumb :search, @search_text
-      meta :title => "搜索：#{@search_text}", :description => "搜索：#{@search_text}的结果" , :keywords => @search_text
       return
     elsif t = Topic.find_by_sql(["select * from topics where fromurl = ? ", @url]).first
         redirect_to p_path(t)

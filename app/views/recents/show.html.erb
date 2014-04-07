@@ -1,9 +1,9 @@
-<%- title "作者：#{params[:name]}_文章列表." -%>
+<%- title "最近加入帖子列表." -%>
 
 <%
     #for seo
-    breadcrumb :list,  '作者：'<< params[:name]
-    meta :title => "作者：#{params[:name]} 发布的文章列表", :description => "作者：'#{params[:name]}'发布的文章列表" , :keywords => "#{params[:name]}"
+    breadcrumb :list, '最近加入文章'
+    meta :title => "最近加入文章", :description => "按照最近加入文章排序列表" , :keywords => "最近加入,文章,脱水"
 
 %>
 <section class="post-list">

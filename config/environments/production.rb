@@ -3,6 +3,7 @@ Caijitie::Application.configure do
 
   # Code is not reloaded between requests
   config.cache_classes = true
+  config.eager_load = true
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
@@ -14,7 +15,7 @@ Caijitie::Application.configure do
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
-  config.assets.precompile += ['admin.js', 'music.js', 'jquery.js', 'iphone.css', 'talks.css', 'admin.css']
+  #config.assets.precompile += ['admin.css']
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 

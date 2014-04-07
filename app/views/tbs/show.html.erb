@@ -1,11 +1,11 @@
-<%- title "作者：#{params[:name]}_文章列表." -%>
-
+<%- title "百度贴吧脱水帖子列表." -%>
 <%
     #for seo
-    breadcrumb :list,  '作者：'<< params[:name]
-    meta :title => "作者：#{params[:name]} 发布的文章列表", :description => "作者：'#{params[:name]}'发布的文章列表" , :keywords => "#{params[:name]}"
+    breadcrumb :tb_list, @topics
+    meta :title => "热贴列表", :description => "百度贴吧热贴列表" , :keywords => "贴吧,脱水"
 
 %>
+
 <section class="post-list">
   <%- if @topics && @topics.length > 0 -%>
     <%= render(:partial => "share/list", :object => @topics) %>

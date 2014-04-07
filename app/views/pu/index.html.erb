@@ -1,5 +1,16 @@
 <% title "#{@topic.my_title} by #{@topic.author}.第#{params[:page]}页" %>
 
+<%
+    breadcrumb :tb_detail, @topic if @topic.section_id == 1
+    breadcrumb :tysq_detail, @topic if @topic.section_id == 2
+    breadcrumb :dbht_detail, @topic if @topic.section_id == 3
+    meta :title => @topic.my_title ,
+         :description => "#{ @topic.my_title}_脱水版本,作者:#{ @topic.author},第#{params[:page]}页" ,
+         :keywords => @topic.author
+
+
+
+%>
 <h1 class="round2 back"><%=	 @topic.my_title%></h1>
 <div id="myad960" class="ggw960" style="height:98px">
 </div>

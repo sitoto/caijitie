@@ -1,4 +1,9 @@
 <%- title "查找:#{@search_text}" -%>
+<%
+      breadcrumb :search, @search_text
+      meta :title => "搜索：#{@search_text}", :description => "搜索：#{@search_text}的结果" , :keywords => @search_text
+
+%>
 
 <section class="post-list">
   <%- if @search && @search.length > 0 -%>

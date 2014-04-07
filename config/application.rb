@@ -4,8 +4,10 @@ require File.expand_path('../boot', __FILE__)
 require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
-require "active_resource/railtie"
-require "sprockets/railtie"
+
+# upto rails 4
+# require "active_resource/railtie"
+ require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 if defined?(Bundler)
@@ -33,6 +35,8 @@ module Caijitie
     config.assets.version = '1.0.1'
 
     config.generators.stylesheet_engine = :sass
+#    config.generators.javascript_engine = :coffee
+
 
   end
 end

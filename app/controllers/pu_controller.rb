@@ -51,13 +51,6 @@ class PuController < ApplicationController
     end
 
     #for seo
-    breadcrumb :tb_detail, @topic if @topic.section_id == 1
-    breadcrumb :tysq_detail, @topic if @topic.section_id == 2
-    breadcrumb :dbht_detail, @topic if @topic.section_id == 3
-    meta :title => @topic.my_title ,
-         :description => "#{ @topic.my_title}_脱水版本,作者:#{ @topic.author},第#{params[:page]}页" ,
-         :keywords => @topic.author
-
     #@fun = Fun.
 
   end

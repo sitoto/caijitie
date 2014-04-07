@@ -1,9 +1,12 @@
-DynamicSitemaps::Sitemap.draw do
+#DynamicSitemaps::Sitemap.draw do
   
   # default per_page is 50.000 which is the specified maximum.
   # per_page 10
 
-  url root_url, :last_mod => DateTime.now, :change_freq => 'daily', :priority => 1
+#  url root_url, :last_mod => DateTime.now, :change_freq => 'daily', :priority => 1
+
+
+
   #autogenerate :posts, :last_mod => :published_at, :change_freq => 'weekly', :priority => 0.8
   #autogenerate :funs, :last_mod => :updated_at, :change_freq => 'weekly', :priority => 0.8
   #new_page!
@@ -26,4 +29,4 @@ DynamicSitemaps::Sitemap.draw do
   #               :change_freq => lambda { |user| user.very_active? ? 'weekly' : 'monthly' },
   #               :priority => 0.5
   
-end
+#end

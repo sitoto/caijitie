@@ -1,8 +1,7 @@
-<%- title "#{params[:name]}_目录_文章列表." -%>
+<%- title "最近更新的帖子列表." -%>
 <%
-    #for seo
-    breadcrumb :list, '分类：'<< params[:name]
-    meta :title => "#{params[:name]} 列表", :description => "目录：'#{params[:name]}'下的文章列表" , :keywords => "#{params[:name]}"
+    breadcrumb :download, '最近更新的文章'
+    meta :title => "最近更新的文章", :description => "按照最近更新文章排序列表" , :keywords => "最近更新,文章,脱水"
 
 %>
 

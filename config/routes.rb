@@ -1,57 +1,56 @@
 require 'not_preferred_host'
 Caijitie::Application.routes.draw do
 
-
-
   get "pv/index"
 
   # Rewrite non-preferred hosts in production
   constraints(NotPreferredHost) do
-    match '/:path' => redirect { |params| "http://#{NotPreferredHost::PREFERRED_HOST}/#{params[:path]}" }
+    get '/:path' => redirect { |params| "http://#{NotPreferredHost::PREFERRED_HOST}/#{params[:path]}" }
   end
 
   # Root
   root :to => 'pages#home'
 
   # Blog
-  match '/posts.:format' => 'posts#index'
+  get '/posts.:format' => 'posts#index'
+  get '/blog' => 'posts#index', :as => 'blog'
 
 
   resources :posts, :only => [:show]
   resources :tags, :only => [:index, :show]
 
-  match '/hot' => 'hot#index', :as => 'hot'
-  match '/class' => 'class#index', :as => 'class'
+  get '/hot' => 'hot#index', :as => 'hot'
+  get '/class' => 'class#index', :as => 'class'
 
   # Static pages
-  match '/about' => 'pages#about', :as => 'about'
-  match '/contact' => 'pages#contact', :as => 'contact'
+  get '/about' => 'pages#about', :as => 'about'
+  get '/contact' => 'pages#contact', :as => 'contact'
 
 
   #search
-  match "/search" => "search#index", :as => :search
-  match "/category/:name" => "category#show", :constraints => {:name => /.*/}, :as => :category
-  match "/author/:name" => "author#show" , :constraints => {:name => /.*/}, :as => :author
+  get "/search" => "search#index", :as => :search
+  get "/category/:name" => "category#show", :constraints => {:name => /.*/}, :as => :category
+  get "/author/:name" => "author#show" , :constraints => {:name => /.*/}, :as => :author
 
   #get "/download/tianya"
-  match "/download/:id" => "download#show" , :constraints => {:name => /\d+/}, :as => :download
+  get "/download/:id" => "download#show" , :constraints => {:name => /\d+/}, :as => :download
 
 
   #page-list 's page'
-  resources :tb do
-    get 'page/:page', :action => :index, :on => :collection
+  resource :tb  do
+    get 'page/:page', :action => :show#, :on => :collection
   end
-  resources :tysq do
-    get 'page/:page', :action => :index, :on => :collection
+  resource :tysq do
+    get 'page/:page', :action => :show
   end
-  resources :dbht do
-    get 'page/:page', :action => :index, :on => :collection
+  resource :dbht do
+    get 'page/:page', :action => :show
   end
-  resources :recent do
-    get 'page/:page', :action => :index, :on => :collection
+  resource :recent do
+    get 'page/:page', :action => :show#, :on => :collection
   end
-  resources :active do
-    get 'page/:page', :action => :index, :on => :collection
+  resource :active do
+    get 'page/:page', :action => :show
   end
   resources :funs do
     get 'page/:page', :action => :index, :on => :collection
@@ -60,8 +59,7 @@ Caijitie::Application.routes.draw do
     get 'page/:page', :action => :index, :on => :collection
   end
 
-  match '/blog' => 'posts#index', :as => 'blog'
-
+  
 
   #topic =》 post-page(page_url)
   resources :p do
@@ -74,19 +72,6 @@ Caijitie::Application.routes.draw do
     get ':page', :action => :show, :on => :member
   end
 
-  #show one topic
-  match '/p' => 'p#index' , :as => 'all'
-  match '/p/:id' => 'p#show', :as => 'p'
-  match '/funs' => 'funs#index', :as => 'funs'
-  match '/funs/:id' => 'funs#show'
-
-  #caiji list
-  match '/tb' => 'tb#index', :as => 'tb'
-  match '/tysq' => 'tysq#index', :as => 'tysq'
-  match '/dbht' => 'dbht#index', :as => 'dbht'
-  match '/recent' => 'recent#index', :as => 'recent'
-  match '/active' => 'active#index', :as => 'active'
-  match '/easy' => 'easy_cai#index', :as => 'easy'
 
   #easy_cai
     put "easy_cai/index"
@@ -107,7 +92,7 @@ Caijitie::Application.routes.draw do
     get "topic_list/douban"
   end
 
-  match 'sitemap.xml' => 'sitemaps#sitemap'
+  get 'sitemap.xml' => 'sitemaps#sitemap'
 
  # See how all your routes lay out with "rake routes"
 

@@ -1,9 +1,9 @@
-<%- title "作者：#{params[:name]}_文章列表." -%>
+<%- title "天涯易读 列表" -%>
 
 <%
     #for seo
-    breadcrumb :list,  '作者：'<< params[:name]
-    meta :title => "作者：#{params[:name]} 发布的文章列表", :description => "作者：'#{params[:name]}'发布的文章列表" , :keywords => "#{params[:name]}"
+    breadcrumb :tysq_list, @topics
+    meta :title => "热贴列表", :description => "天涯社区热贴列表" , :keywords => "天涯易读"
 
 %>
 <section class="post-list">

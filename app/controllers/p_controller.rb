@@ -20,11 +20,7 @@ class PController < ApplicationController
       #      @posts = TianyaPost.find_by_sql(["select  a.* from  tianya_posts a
       #                        LEFT JOIN page_urls b on a.page_url_id = b.id
       #                        WHERE b.num = 1 and b.topic_id = ? LIMIT 2;", current_topic]) if @topic.section_id == 2
-      breadcrumb :tb_detail, @topic  if @topic.section_id == 1
-      breadcrumb :tysq_detail, @topic  if @topic.section_id == 2
-      breadcrumb :dbht_detail, @topic  if @topic.section_id == 3
 
-      meta :title => @topic.my_title, :description => "热贴列表" , :keywords => "贴子,脱水"
     end
 
   end

@@ -1,4 +1,13 @@
 <% title "#{@topic.my_title} 目录, by #{@topic.author}." %>
+<%
+      breadcrumb :tb_detail, @topic  if @topic.section_id == 1
+      breadcrumb :tysq_detail, @topic  if @topic.section_id == 2
+      breadcrumb :dbht_detail, @topic  if @topic.section_id == 3
+
+      meta :title => @topic.my_title, :description => "热贴列表" , :keywords => "贴子,脱水"
+
+
+%>
 
 <section class="page-list">
 <h1 class="round2 back"><%=	 link_to  @topic.my_title, p_pu_path(@topic.id, 1)%></h1>
