@@ -18,6 +18,7 @@ gem 'RedCloth', '4.2.9'
 
 #分页
 gem 'kaminari', '0.15.1'
+gem 'bootstrap-sass', '~> 3.1.1'
 
 #gem 'i18n_routing'
 

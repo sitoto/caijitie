@@ -1,28 +1,27 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title><%= (yield(:title) && !yield(:title).empty? ? yield(:title) : "") + " - 369脱水吧" %></title>
-  <%= metamagic :title => "帖子在线脱水小工具",
-                :description => "第一在线采集工具，这是一个可以在线看百度贴吧、天涯社区、豆瓣话题、豆瓣直播的脱水版的帖子工具。",
-                :keywords => %w(369脱水吧 小说 脱水吧 脱水版 百度贴吧 只看楼主 天涯易读 豆瓣小组 豆瓣脱水 无水 no-water 豆瓣直播 豆贴 ) %>
-  <%= render "layouts/stylesheets" %>
-  <%= yield(:head) -%>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <title><%= (yield(:title) && !yield(:title).empty? ? yield(:title) : "") + " - 369脱水吧" %></title>
+    <%= metamagic :title => "帖子在线脱水小工具",
+      :description => "第一在线采集工具，这是一个可以在线看百度贴吧、天涯社区、豆瓣话题、豆瓣直播的脱水版的帖子工具。",
+      :keywords => %w(369脱水吧 小说 脱水吧 脱水版 百度贴吧 只看楼主 天涯易读 豆瓣小组 豆瓣脱水 无水 no-water 豆瓣直播 豆贴 ) %>
+      <%= render "layouts/stylesheets" %>
+      <%= yield(:head) -%>
+  </head>
+  <body>
 
-  <%= yield :pre_content %>
-  <%= yield :layout%>
-  <%= yield :after_content %>
-  <%= debug(params) if Rails.env.development? %>
+      <%= yield :pre_content %>
+      <%= yield :layout%>
+      <%= yield :after_content %>
+      <%= debug(params) if Rails.env.development? %>
 
- <% if Rails.env.production? %>
+      <% if Rails.env.production? %>
 
-<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F88cd742fb6d70f20c8d16ee207019f82' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<%	end %>
-</body>
+        <script type="text/javascript">
+          var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+          document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F88cd742fb6d70f20c8d16ee207019f82' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+      <%	end %>
+  </body>
 </html>

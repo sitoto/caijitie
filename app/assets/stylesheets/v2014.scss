@@ -1,0 +1,22 @@
+@import "bootstrap";
+
+body{
+  padding-top: 0px;
+  color: #222;
+  background: #F5F9FA;
+}
+
+.container-fluid{
+  padding: 0;
+}
+
+.navbar-fixed-top {
+  position: static;
+  right: 0;
+  left: 0;
+  margin-bottom: 20px;
+}
+
+small {
+  color: #999;
+}
