@@ -1,44 +1,4 @@
 <%- title "只看楼主" -%>
-<div id="head" class="head">
-  <div id="t">
-    <div id="topall">
-      <span class="top_left">当前位置：369脱水吧</span>
-      <span class="top_right">收藏</span>
-    </div>
-  </div>
-  <div id="a1" class="logo">
-    <div id="top">
-      <a class="logo" href="/"><cite>369脱水吧<br>阅读热贴的好工具 只看楼主</cite></a><br>
-
-    </div>
-    <div id="top-center">
-
-    </div>
-    <div id="search" >
-      <form action="<%= search_path %>"  method = "get"   target = "_blank">
-        <%= submit_tag("搜索", :class => "su") %>
-        <%= text_field_tag(:q , '', :class => "q")  %>
-      </form>
-      <span>输入天涯社区、豆瓣小组、百度贴吧网址，点击搜索，阅读脱水文章。</span>
-    </div>
-  </div>
-</div>
-
-<div id="nav" class="nav">
-  <div class="lable">
-    <ul>
-      <li class="current-menu-item"><a title="369脱水吧" href="">首页</a></li>
-      <li><a title="369脱水吧" href="/recent">最新</a></li>
-      <li><a title="热门列表" href="/hot">热门</a></li>
-      <li><a title="最新更新" href="/active">新更</a></li>
-      <li><a title="天涯" href="/tysq">天涯</a></li>
-      <li><a title="贴吧" href="/tb">贴吧</a></li>
-      <li><a title="豆瓣" href="/dbht">豆瓣</a></li>
-
-
-    </ul>
-  </div>
-</div>
 <div class="home clearfix">
   <!-- left start -->
   <div id="left">
@@ -116,9 +76,6 @@
   </div>
 </div>
 <div class="blank10"></div>
-<div class="ggw960">
-  <%= raw ad_baidu_home %>
-</div>
 <div class="flink">
   <h3>友情链接</h3>
   <div class="fldiv">
@@ -129,9 +86,4 @@
     </ul>
   </div>
   <div class="blank10"></div>
-</div>
-<div id ="footer" class="footer">
-  <p>Copyright &copy; 2014 <%= link_to '369脱水吧', root_url, :rel => 'home' %>
-  | <%= link_to '联系我们', contact_url, target: '_blank' %>
-  </p>
 </div>

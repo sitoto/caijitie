@@ -11,15 +11,15 @@ module MenuHelper
     }
      pages = {
         "pages" => { :name => '首页', :link => root_path},
-        "recent" => { :name => '最新', :link => recent_path },
+        "recents" => { :name => '最新', :link => recent_path },
         "hot" => { :name => '推荐', :link => hot_path },
-        "active" => { :name => '新更', :link => active_path },
-        "tysq" => { :name => '天涯', :link => tysq_path },
-        "tb" => { :name => '贴吧', :link => tb_path },
-        "dbht" => { :name => '豆瓣', :link => dbht_path }}
+        "actives" => { :name => '新更', :link => active_path },
+        "tysqs" => { :name => '天涯', :link => tysq_path },
+        "tbs" => { :name => '贴吧', :link => tb_path },
+        "dbhts" => { :name => '豆瓣', :link => dbht_path }}
       @current_menu_item = :pages
     pages.map do |key, value|
-      classnames = ' class=current-menu-item' if controller.controller_name == key
+      classnames = ' class=active' if controller.controller_name == key
       "<li#{classnames}>#{link_to(value[:name], value[:link])}</li>"
     end
   end

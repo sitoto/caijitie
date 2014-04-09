@@ -34,7 +34,7 @@ module Caijitie
 
     config.assets.version = '1.0.1'
 
-    config.generators.stylesheet_engine = :sass
+#    config.generators.stylesheet_engine = :sass
 #    config.generators.javascript_engine = :coffee
 
 

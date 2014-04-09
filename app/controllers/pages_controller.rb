@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     #@classes = Topic.find_by_sql("SELECT count(*) as count , classname  FROM `topics` GROUP BY classname  ORDER BY count DESC limit 18")
     #@funs = Fun.find(:all, :order => "id DESC", :limit => 10)
     @links = Link.where(:status => 1).order("paixu")
-    render 'home', :layout => 'abstract'
+#    render 'home' , :layout => 'abstract'
   end
 
   def contact

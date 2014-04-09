@@ -59,7 +59,6 @@ Caijitie::Application.routes.draw do
     get 'page/:page', :action => :index, :on => :collection
   end
 
-  
 
   #topic =》 post-page(page_url)
   resources :p do
