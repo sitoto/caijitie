@@ -1,31 +1,31 @@
-<div class="ggw960">
-  <%=	 raw ad_baidu_relation_link  %>
-</div>
-<table>
+<%=	 raw ad_mobile_baidu_line  %>
+<table class="table table-condensed">
   <thead>
-  <tr>
-    <th width="40" nowrap=""  style="text-align: center;">序号</th>
-    <th>分类</th>
-    <th>标题</th>
-    <th nowrap="">帖数</th>
-    <th width="150">作者</th>
-  </tr>
+    <tr>
+      <th>序号</th>
+      <th>分类</th>
+      <th>标题</th>
+      <th>帖数</th>
+      <th>作者</th>
+      <th>更新</th>
+    </tr>
   </thead>
-    <tbody>
+  <tbody>
     <% list.each_with_index do |topic, i| %>
-      <tr>
-        <td style="text-align: center;"><%=	 (i+1).to_s %></td>
+      <tr class=<%= "info" if i % 2 == 0 %>>
+        <td><%=	 (i+1).to_s %></td>
         <td><%= link_to (topic.classname).to_s.truncate(8), "/category/#{topic.classname}",:title => topic.classname, :target => '_blank'  %></td>
         <td><%= link_to (topic.my_title).to_s.truncate(35), "/p/#{topic.id}/pu/1", :target => '_blank' %></td>
         <td><%= topic.mypostnum %> </td>
-        <td><%= topic.author %><br>
-        <small><%= topic.myupdatetime.to_s(:db) %></small></td>
+        <td><%= topic.author %></td>
+        <td><small><%= topic.myupdatetime.to_s(:db) %></small></td>
       </tr>
     <% end %>
-    </tbody>
+  </tbody>
 </table>
-<div class="ggw960">
-<%= raw ad_baidu_all_head %>
+
+<div>
+  <%= raw ad_mobile_baidu_image_line %>
 </div>
 <%= raw	 ad_baidu_right_down %>
 

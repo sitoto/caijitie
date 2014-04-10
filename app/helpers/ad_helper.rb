@@ -1,5 +1,14 @@
 #encoding: UTF-8
 module AdHelper
+  def ad_mobile_baidu_line
+    '<script type="text/javascript">/*head*/var cpro_id = "u1455590";</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>'
+  end
+  def ad_mobile_baidu_image_line
+'<script type="text/javascript">/*mobile_head_image_20:3，创建于2014-4-10*/var cpro_id = "u1518435";</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>'
+  end
+
   def ad_baidu_sides
     '<script type="text/javascript">/*2-4_sides_120_270*/ var cpro_id = "u890141";</script>
 <script src="http://cpro.baidu.com/cpro/ui/f.js" type="text/javascript"></script> '
@@ -15,7 +24,7 @@ module AdHelper
 <script src="http://cpro.baidu.com/cpro/ui/c.js" type="text/javascript"></script>'
   end
   def ad_baidu_all_footer
-  '<script type="text/javascript">/*all_footer_2013_12_10*/var cpro_id = "u1430288";</script>
+    '<script type="text/javascript">/*all_footer_2013_12_10*/var cpro_id = "u1430288";</script>
 <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>'
   end
 
@@ -44,17 +53,17 @@ module AdHelper
   end
 
   def ad_fun_blog_left_down
-	'<script type="text/javascript">/*Fun-Blog-580*90 */var cpro_id = "u1320808";
+    '<script type="text/javascript">/*Fun-Blog-580*90 */var cpro_id = "u1320808";
 </script><script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>'
   end
   def ad_baidu_7day
 
   end
   def ad_baidu_7day_right
-	#image_tag 'myad.jpg', :alt=>"ad"
+    #image_tag 'myad.jpg', :alt=>"ad"
   end
   def ad_baidu_home_right_mobile_test
-'<script type="text/javascript">/*home_test_6:5_1445*/  var cpro_id = "u1513558";</script>
+    '<script type="text/javascript">/*home_test_6:5_1445*/  var cpro_id = "u1513558";</script>
 <script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>'
   end
 end

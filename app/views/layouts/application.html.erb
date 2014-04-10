@@ -1,68 +1,58 @@
 <%- content_for :pre_content do -%>
   <div class="container">
-
-    <div id="head" class="head">
-      <div id="t">
-        <div id="topall">
-          <span class="top_left">
-            <%= breadcrumbs :pretext => "当前位置：",
-              :separator => ">"%>
-            </span>
-            <span class="top_right addcollect">收藏</span>
-          </div>
-        </div>
-        <div id="a1" class="logo">
-          <div id="top">
-            <a class="logo" href="/"><cite>369脱水吧<br>阅读热贴的好工具 只看楼主</cite></a><br>
-            <span style="display:none"></span>
-          </div>
-          <div id="top-center">
-
-          </div>
-          <div id="search" >
-            <form action="<%= search_path %>"  method = "get"   target = "_blank">
-              <%= submit_tag("搜索", :class => "su") %>
-              <%= text_field_tag(:q , '', :class => "q")  %>
-            </form>
-            <span>输入天涯社区、豆瓣小组、百度贴吧网址，点击搜索，阅读脱水文章。</span>
-          </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <span class="top_left">
+          <%= breadcrumbs :pretext => "当前位置：",
+            :separator => ">"%>
+          </span>
+          <a class="logo" href="/"><cite>369脱水吧<br>阅读热贴的好工具 只看楼主</cite></a>
         </div>
       </div>
     </div>
   </div>
-  <div class="navbar navbar-static-top  bs-upgrader-nav">
-    <div class="container">
-      <nav class="navbar navbar-default" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">369Hi</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <%= raw topmenu.join %>
-          </ul>
 
-        </div>
+
+  <div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">369Hi</a>
       </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <%= raw topmenu.join %>
+        </ul>
 
-      </nav>
+      </div>
     </div>
-  </div>
-<div class="container">
 
-  <div id="main" class="main">
-
-
-  <%- end -%>
-  <%- content_for :after_content do -%>
+    </nav>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+    <form  action="<%= search_path %>"  method = "get"   target = "_blank" role="form">
+      <div class="col-xs-12 col-md-6">
+        <div class="input-group">
+          <%= text_field_tag(:q , '', :class => "form-control", :placeholder => '输入天涯社区、豆瓣小组、百度贴吧网址', :id => 'searchinput2')  %>
+          <span class="input-group-btn">
+            <%= submit_tag("搜索", :class => "btn btn-default") %>
+          </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-md-6 -->
+    </form>
+  </div>
+</div><!-- /.container -->
+  <%- end -%>
+
+  <%- content_for :after_content do -%>
 <div class="container">
   <div id ="footer" class="footer">
     <p>Copyright &copy; 2014 <%= link_to '369脱水吧', root_url, :rel => 'home' %>
