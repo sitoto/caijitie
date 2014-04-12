@@ -1,9 +1,38 @@
 @import "bootstrap";
+.navbg{
+  background: #007AC4;
+  margin-bottom: 0;
+}
+.ntop {
+  margin-top: 10px;
+}
+.navbar-default{
+  border-color: #EEE;
+  border: none;
+  margin-bottom: 0px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #FFF;
+}
+.navbar-default .navbar-brand {
+  color: #FFF;
+}
+.navbar-nav  li  a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.navbar-brand {
+  padding: 5px;
+  height: 30px;
+
+}
 cite {
   display: none;
   text-indent: -999px;
 }
 .navbar {
+  min-height: 20px;
   margin-bottom: 10px;
 }
 .content {

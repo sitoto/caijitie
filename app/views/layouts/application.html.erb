@@ -12,53 +12,53 @@
     </div>
   </div>
 
+  <div class="container-fluid  navbg">
 
-  <div class="container">
-    <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">369hi</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <%= raw topmenu.join %>
-        </ul>
+    <div class="container navbg">
+      <nav class="navbar navbar-default navbg" role="navigation" style="margin-bottom: 0;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">369hi</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <%= raw topmenu.join %>
+          </ul>
 
+        </div>
       </div>
+
+      </nav>
     </div>
+  </div>
 
-    </nav>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <form  action="<%= search_path %>"  method = "get"   target = "_blank" role="form">
-      <div class="col-xs-12 col-md-6">
-        <div class="input-group">
-          <%= text_field_tag(:q , '', :class => "form-control", :placeholder => '输入天涯社区、豆瓣小组、百度贴吧网址', :id => 'searchinput2')  %>
-          <span class="input-group-btn">
-            <%= submit_tag("搜索", :class => "btn btn-default") %>
-          </span>
-        </div><!-- /input-group -->
-      </div><!-- /.col-md-6 -->
-    </form>
-  </div>
-</div><!-- /.container -->
-  <%- end -%>
+  <div class="container ntop">
+    <div class="row">
+      <form  action="<%= search_path %>"  method = "get"   target = "_blank" role="form">
+        <div class="col-xs-12 col-md-6">
+          <div class="input-group">
+            <%= text_field_tag(:q , '', :class => "form-control", :placeholder => '输入天涯社区、豆瓣小组、百度贴吧网址', :id => 'searchinput2')  %>
+            <span class="input-group-btn">
+              <%= submit_tag("搜索", :class => "btn btn-default") %>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-md-6 -->
+      </form>
+    </div>
+  </div><!-- /.container -->
+<%- end -%>
 
-  <%- content_for :after_content do -%>
-<div class="container">
-  <div id ="footer" class="footer text-center">
-    <p>Copyright &copy; 2014 <%= link_to '369脱水吧', root_url, :rel => 'home' %>
-    | <%= link_to '联系我们', contact_url, target: '_blank' %>
-    </p>
+<%- content_for :after_content do -%>
+  <div class="container">
+    <div id ="footer" class="footer text-center">
+      <p>Copyright &copy; 2014 <%= link_to '369脱水吧', root_url, :rel => 'home' %>
+      | <%= link_to '联系我们', contact_url, target: '_blank' %>
+      </p>
+    </div>
   </div>
-</div>
 <%- end -%>
 <%= render :file => "layouts/abstract" -%>
