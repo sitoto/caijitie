@@ -14,9 +14,9 @@ pid "#{Rails.root}/tmp/pids/unicorn.pid"
 stderr_path "#{Rails.root}/log/unicorn.log"
 stdout_path "#{Rails.root}/log/unicorn.log"
 
-listen 5000, :tcp_nopush => false
+listen 6000, :tcp_nopush => false
 
-listen "/tmp/unicorn.lehazi.sock"
+listen "/tmp/unicorn.caijitie.sock"
 worker_processes 2
 timeout 120
 

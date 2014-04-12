@@ -11,3 +11,4 @@
 /.idea
 # Igonre the deploy file
 /config/deploy.*
+/config/deploy*.*
