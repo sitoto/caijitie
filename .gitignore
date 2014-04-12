@@ -11,4 +11,3 @@
 /.idea
 # Igonre the deploy file
 /config/deploy.*
-/Gemfile.lock
