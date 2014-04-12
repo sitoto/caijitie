@@ -1,167 +1,163 @@
 <% title "#{@topic.my_title} by #{@topic.author}.第#{params[:page]}页" %>
 
 <%
-    breadcrumb :tb_detail, @topic if @topic.section_id == 1
-    breadcrumb :tysq_detail, @topic if @topic.section_id == 2
-    breadcrumb :dbht_detail, @topic if @topic.section_id == 3
-    meta :title => @topic.my_title ,
-         :description => "#{ @topic.my_title}_脱水版本,作者:#{ @topic.author},第#{params[:page]}页" ,
-         :keywords => @topic.author
-
-
+  breadcrumb :tb_detail, @topic if @topic.section_id == 1
+  breadcrumb :tysq_detail, @topic if @topic.section_id == 2
+  breadcrumb :dbht_detail, @topic if @topic.section_id == 3
+  meta :title => @topic.my_title ,
+    :description => "#{ @topic.my_title}_脱水版本,作者:#{ @topic.author},第#{params[:page]}页" ,
+  :keywords => @topic.author
 
 %>
-<h1 class="round2 back"><%=	 @topic.my_title%></h1>
-<div id="myad960" class="ggw960" style="height:98px">
-</div>
-<p>
-<span class="border">[<%= link_to '回目录', p_path(@topic), :target => '_blank', :class => 'red' %>]  </span>
-<span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
-<span class="border">文章类别：<%= link_to @topic.classname, category_path(@topic.classname),  :target => '_blank' %></span>
-<span class="border">共计<%=  @topic.mypostnum  %>回复/<%=  @topic.mypagenum  %>页</span>
-<span class="border">内容不完整？：<%= link_to '现在更新', renew_p_path(@topic.id), method: :put, :target => '_blank', rel: "nofollow", :class => 'red' %></span>
-<span class="border">查看原贴：<%= link_to '打开原贴', @topic.fromurl,  :target => '_blank' %></span>
-<span class="border"><%= link_to "赞" , top_p_path(@topic.id),  title: "#{@topic.top}", remote: true, "data-type" => :json, rel: "nofollow",  :id => "ajax_top"  %></span>
-<span class="border" id="num" style="display: none"></span>
+<div class="container">
+
+  <h1 class="round2 back"><%=	 @topic.my_title%></h1>
+  <div id="myad960" class="ggw960">
+  </div>
+  <p>
+  <span class="border">[<%= link_to '回目录', p_path(@topic), :target => '_blank', :class => 'red' %>]  </span>
+  <span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
+  <span class="border">文章类别：<%= link_to @topic.classname, category_path(@topic.classname),  :target => '_blank' %></span>
+  <span class="border">共计<%=  @topic.mypostnum  %>回复/<%=  @topic.mypagenum  %>页</span>
+  <span class="border">内容不完整？：<%= link_to '现在更新', renew_p_path(@topic.id), method: :put, :target => '_blank', rel: "nofollow", :class => 'red' %></span>
+  <span class="border">查看原贴：<%= link_to '打开原贴', @topic.fromurl,  :target => '_blank' %></span>
+  <span class="border"><%= link_to "赞" , top_p_path(@topic.id),  title: "#{@topic.top}", remote: true, "data-type" => :json, rel: "nofollow",  :id => "ajax_top"  %></span>
+  <span class="border" id="num" style="display: none"></span>
 
 
-</p>
+  </p>
+  <div class="row">
 
-<div class="cai-post-list round">
- <%#=	 render 'page_list' %>
-<%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
-   <% if !@posts.blank? %>
-      <% @posts.each do |p| %>
-        <table>
-        <tbody>
-        <tr>
-        <td class="right small">
-        <span class="border"><%= p.post_at.strftime("%Y-%m-%d %H:%M:%S") if p.post_at %></span>
-        <span class="border"><%= p.my_level %>楼(<%= p.level %>)</span>
-        </tr>
-        </tbody>
-        </table>
-        <div class="content round" style="word-break:break-all;overflow:hidden;">
-          <%= raw p.content  %>
-           <% if p.my_level == 1 %>
-            <div id="myad728" class="ggw728" style="height:98px">
-            </div>
+    <div class="col-xs-12">
+
+      <%#=	 render 'page_list' %>
+      <%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
+      <% if !@posts.blank? %>
+        <% @posts.each do |p| %>
+
+          <div class="text-right small">
+            <span><%= p.post_at.strftime("%Y-%m-%d %H:%M:%S") if p.post_at %></span>
+            <span><%= p.my_level %>楼(<%= p.level %>)</span>
+          </div>
+          <div class="content round" style="word-break:break-all;overflow:hidden;">
+            <%= raw p.content  %>
+            <% if p.my_level == 1 %>
+              <div id="myad728" class="ggw728">
+                <%= raw ad_mobile_baidu_image_line %>
+              </div>
+            <% end %>
+          </div>
+
+        <% end %>
+      <% else %>
+        <div style="color: red; margin-top:25px;" ><%= raw message %></div>
+      <% end %>
+      <%#=	 render 'page_list' %>
+      <%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
+    </div>
+
+    <div>
+      <h4>相关阅读</h4>
+      <%=	 raw ad_mobile_baidu_relation %>
+      <% if @temp_topics && @temp_topics.length > 0 %>
+        <ul>
+          <% @temp_topics.each do |t| %>
+            <li><%= link_to t.my_title, "/p/#{t.id}/pu/1", :target => '_blank', :class => "blue" %></li>
           <% end %>
-        </div>
-
-    <% end %>
-  <% else %>
-    <div style="color: red; margin-top:25px;" ><%= raw message %></div>
-  <% end %>
- <%#=	 render 'page_list' %>
-<%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
-</div>
-
-<div>
-  <h4>相关阅读</h4>
-  <% if @temp_topics && @temp_topics.length > 0 %>
-    <ul>
-      <li><%=	 raw ad_baidu_relation_link  %></li>
-    <% @temp_topics.each do |t| %>
-        <li><%= link_to t.my_title, "/p/#{t.id}/pu/1", :target => '_blank', :class => "blue" %></li>
-    <% end %>
-    </ul>
-  <% end %>
-</div>
-<div  id='hide_ad_960'>
-<%= raw ad_baidu_all_head %>
-</div>
-<div id='hide_ad_728'>
-<%= raw ad_baidu_center_for_content %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+  <div  id='hide_ad_960'>
+    <%= raw ad_mobile_baidu_line %>
+  </div>
 </div>
 <script type="text/javascript">
-document.getElementById("myad960").innerHTML = document.getElementById("hide_ad_960").innerHTML ;
-document.getElementById("hide_ad_960").innerHTML = "";
+  document.getElementById("myad960").innerHTML = document.getElementById("hide_ad_960").innerHTML ;
+  document.getElementById("hide_ad_960").innerHTML = "";
 
-document.getElementById("myad728").innerHTML = document.getElementById("hide_ad_728").innerHTML ;
-document.getElementById("hide_ad_728").innerHTML = "";
+  </script>
+  <script type="text/javascript">
+    (function($) {
+     $(document).keydown(handleKey);
+     function handleKey(e) {
+     var left_arrow = 37;
+     var right_arrow = 39;
+     if (e.target.nodeName == 'BODY' || e.target.nodeName == 'HTML') {
+     if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey) {
+     var code = e.which;
+     if (code == left_arrow) {
+     prevPage();
+     }
+     else if (code == right_arrow) {
+     nextPage();
+     }
+     }
+     }
+     }
 
-</script>
-<script type="text/javascript">
-(function($) {
-    $(document).keydown(handleKey);
-    function handleKey(e) {
-        var left_arrow = 37;
-        var right_arrow = 39;
-        if (e.target.nodeName == 'BODY' || e.target.nodeName == 'HTML') {
-                if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey) {
-                    var code = e.which;
-                    if (code == left_arrow) {
-                        prevPage();
-                    }
-                    else if (code == right_arrow) {
-                        nextPage();
-                    }
-                }
-            }
+     function prevPage() {
+     var href = $('.pagination .prev a').attr('href');
+     if (href && href != document.location && href != "#") {
+       document.location = href;
+     }
+     }
+
+     function nextPage() {
+       var href = $('.pagination .next a').attr('href');
+       if (href && href != document.location && href != "#") {
+         document.location = href;
+       }
+     }
+    })(jQuery);
+  </script>
+  <% if @topic.section_id == 1 %>
+    <script type="text/javascript">
+      //破防盗链js
+    function ImgRebuild() {
+      $(".content img").each(function(i){
+          url = this.src;
+          width = this.width;
+          height = this.height;
+          var imgid = Math.random(),
+          frameid = 'frameimg' + imgid;
+          window['img'+imgid] = '<img id="img" src=\''+url+'?kilobug\' /><script>window.onload = function() { parent.document.getElementById(\''+frameid+'\').height = document.getElementById(\'img\').height+\'px\'; }<'+'/script>';
+          img_r = '<iframe id="'+frameid+'" src="javascript:parent[\'img'+imgid+'\'];" frameBorder="0" height="' +height+ '" scrolling="no" width="100%"></iframe>';
+          $(this).replaceWith(img_r);
+          });
+      return '';
     }
-
-    function prevPage() {
-        var href = $('.pagination .prev a').attr('href');
-        if (href && href != document.location && href != "#") {
-            document.location = href;
-        }
-    }
-
-    function nextPage() {
-        var href = $('.pagination .next a').attr('href');
-        if (href && href != document.location && href != "#") {
-            document.location = href;
-        }
-    }
-})(jQuery);
-</script>
-<% if @topic.section_id == 1 %>
-<script type="text/javascript">
-  //破防盗链js
-function ImgRebuild() {
-	$(".content img").each(function(i){
-		url = this.src;
-		width = this.width;
-		height = this.height;
-		var imgid = Math.random(),
-		frameid = 'frameimg' + imgid;
-		window['img'+imgid] = '<img id="img" src=\''+url+'?kilobug\' /><script>window.onload = function() { parent.document.getElementById(\''+frameid+'\').height = document.getElementById(\'img\').height+\'px\'; }<'+'/script>';
-		img_r = '<iframe id="'+frameid+'" src="javascript:parent[\'img'+imgid+'\'];" frameBorder="0" height="' +height+ '" scrolling="no" width="100%"></iframe>';
-		$(this).replaceWith(img_r);
-	});
-	return '';
-}
 ImgRebuild();
 </script>
 <% elsif  @topic.section_id == 2 %>
-<script type="text/javascript">
-  //天涯 -
-function ImgRebuild() {
-	$(".content img").each(function(i){
+  <script type="text/javascript">
+    //天涯 -
+  function ImgRebuild() {
+    $(".content img").each(function(i){
         if ($(this).attr("original") != "")
         {
-            this.src = $(this).attr("original");
-            $(this).removeAttr("height");
+        this.src = $(this).attr("original");
+        $(this).removeAttr("height");
         }
 
-	});
-	return '';
-}
+        });
+    return '';
+  }
 ImgRebuild();
 </script>
 <%	end %>
 <script type="text/javascript" charset="utf-8">
-    $(document).ready(function() {
-     $('#ajax_top').bind("ajax:success", function(event, data) {
-            var top = $('#ajax_top');
-            var num = $('#num');
-         //alert(data.top);
-         top.html( data.top );
-         num.text(data.top);
-         top.hide();
-         num.show();
+  $(document).ready(function() {
+      $('#ajax_top').bind("ajax:success", function(event, data) {
+        var top = $('#ajax_top');
+        var num = $('#num');
+        //alert(data.top);
+        top.html( data.top );
+        num.text(data.top);
+        top.hide();
+        num.show();
         });
-    });
-</script>
-<%= raw	 ad_baidu_sides %>
+      });
+    </script>
+    <%= raw	 ad_baidu_sides %>
+    <%= raw	 ad_mobile_baidu_xuanfu  %>

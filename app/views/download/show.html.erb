@@ -1,29 +1,31 @@
 <% title "#{@topic.my_title} by #{@topic.author}. 下载" %>
 
-<h1 class="round2 back"><%=h	 @topic.my_title %>_<%= h @topic.author %>_下载</h1>
-<div class="ggw960">
-    <%= raw ad_baidu_all_head %>
-</div>
-<p>
-<span class="border">[<%= link_to '回目录', p_path(@topic), :target => '_blank', :class => 'red' %>]  </span>
-<span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
-<span class="border">文章类别：<%= link_to @topic.classname, category_path(@topic.classname),  :target => '_blank' %></span>
-<span class="border">查看原贴：<%= link_to '打开原贴', @topic.fromurl,  :target => '_blank' %></span>
-<span class="border"><%= link_to '阅读文章', p_pu_path(@topic.id, 1) , :class => 'border' %></span>
+<div class="container">
+  <h1 class="round2 back"><%=h	 @topic.my_title %>_<%= h @topic.author %>_下载</h1>
+  <div class="ggw960">
+    <%= raw ad_mobile_baidu_line %>
+  </div>
+  <p>
+  <span class="border">[<%= link_to '回目录', p_path(@topic), :target => '_blank', :class => 'red' %>]  </span>
+  <span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
+  <span class="border">文章类别：<%= link_to @topic.classname, category_path(@topic.classname),  :target => '_blank' %></span>
+  <span class="border">查看原贴：<%= link_to '打开原贴', @topic.fromurl,  :target => '_blank' %></span>
+  <span class="border"><%= link_to '阅读文章', p_pu_path(@topic.id, 1) , :class => 'border' %></span>
 
-<p>文章名：<%= @topic.my_title %>
-作者：<%= @topic.author %>
- <br />分类：<%= @topic.classname %>
- <br />站内最新脱水时间：<%= @topic.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>
- <br />共计：<%=  @topic.mypostnum  %>回复/<%=  @topic.mypagenum  %>页</p>
+  <p>文章名：<%= @topic.my_title %>
+  作者：<%= @topic.author %>
+  <br />分类：<%= @topic.classname %>
+  <br />站内最新脱水时间：<%= @topic.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>
+  <br />共计：<%=  @topic.mypostnum  %>回复/<%=  @topic.mypagenum  %>页</p>
 
-<p>
+  <p>
   下载说明
-<br />因服务器带宽有限，暂未提供下载，后续将改善！谢谢您的支持。
-<br />如果您对程序编写或本贴内容有任何疑问或建议，请邮件到lehazi@163.com 。</p>
+  <br />因服务器带宽有限，暂未提供下载，后续将改善！谢谢您的支持。
+  </p>
 
 
-<%=	 link_to '下载全文', '#', title: '暂时关闭下载，请谅解，近期将开放并完善下载功能。',style: 'text-decoration:line-through;' %>
-<br />
+  <%=	 link_to '下载全文', '#', title: '暂时关闭下载，请谅解，近期将开放并完善下载功能。',style: 'text-decoration:line-through;' %>
+  <br />
 
-<%=	 raw ad_baidu_right_down %>
+</div>
+<%=	 raw ad_mobile_baidu_xuanfu %>

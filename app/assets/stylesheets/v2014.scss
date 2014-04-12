@@ -1,8 +1,44 @@
 @import "bootstrap";
 cite {
-display: none;
-text-indent: -999px;
+  display: none;
+  text-indent: -999px;
 }
 .navbar {
-margin-bottom: 10px;
+  margin-bottom: 10px;
 }
+.content {
+  display: block;
+  padding: 0.5em 1em;
+  line-height: 1.8em;
+  background: #E5ECF9;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+.pagebg {
+  text-align: center;
+  margin: 0;
+  border-bottom: 1px solid #DEDEDE;
+}
+.pagination {
+  margin: 0;
+}
+ul.tlist{
+  padding: 5px;
+  li.caied{
+    border: 5px solid #FFFFFF;
+    height: 50px;
+    overflow: auto;
+    float: left;
+    background: #C3D9FF;
+    text-align: center;
+  }
+  li.nocai {
+    border: 5px solid #FFFFFF;
+    height: 50px;
+    overflow: auto;
+    float: left;
+    background: #DDDDDD;
+    text-align: center;
+  }
+}
+

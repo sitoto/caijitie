@@ -6,11 +6,12 @@
     meta :title => "作者：#{params[:name]} 发布的文章列表", :description => "作者：'#{params[:name]}'发布的文章列表" , :keywords => "#{params[:name]}"
 
 %>
-<section class="post-list">
+<div class="container">
+
   <%- if @topics && @topics.length > 0 -%>
     <%= render(:partial => "share/list", :object => @topics) %>
     <%= paginate @topics, :outer_window => 4, :inner_window => 4 -%>
   <%- else -%>
   <p>没有内容。.</p>
   <%- end -%>
-</section>
+</div>

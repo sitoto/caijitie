@@ -1,52 +1,54 @@
 <%# The container tag
-  - available local variables
-    current_page:  a page object for the currently displayed page
-    num_pages:     total number of pages
-    per_page:      number of items to fetch per page
-    remote:        data-remote
-    paginator:     the paginator that renders the pagination tags inside
+- available local variables
+current_page:  a page object for the currently displayed page
+num_pages:     total number of pages
+per_page:      number of items to fetch per page
+remote:        data-remote
+paginator:     the paginator that renders the pagination tags inside
 -%>
 <%= paginator.render do -%>
-<nav class="pagination round">
-	
-    <%= prev_page_tag unless current_page.first? %>
-    <% each_page do |page| -%>
-      <% if page.left_outer? || page.right_outer? || page.inside_window? -%>
-        <%= page_tag page %>
-      <% elsif !page.was_truncated? -%>
-        <%= gap_tag %>
+  <div class="text-center pagebg">
+    <ul class="pagination" >
+
+      <%= prev_page_tag unless current_page.first? %>
+      <% each_page do |page| -%>
+        <% if page.left_outer? || page.right_outer? || page.inside_window? -%>
+          <%= page_tag page %>
+        <% elsif !page.was_truncated? -%>
+          <%= gap_tag %>
+        <% end -%>
       <% end -%>
-    <% end -%>
-    <%= next_page_tag unless current_page.last? %>
-    
+      <%= next_page_tag unless current_page.last? %>
+      <% $id += 1
+      $id = 1 if $id > 100%>
 
-  <% $id += 1
-  $id = 1 if $id > 100%>
+      <li class="page">直接到<input type="text" maxlength="5" size="3" id="<%= "page#{$id}" %>" />页
+      <input type="submit" onclick="<%= "page#{$id}()" %>" value="Go"/>
+      </li>
+    </ul>   
 
-  直接到<input type="text" maxlength="5" size="3" id="<%= "page#{$id}" %>" />页
-  <input type="submit" onclick="<%= "page#{$id}()" %>" value="Go"/>
-  <script type="text/javascript">
-    function <%= "page#{$id}()" %>
+    <script type="text/javascript">
+      function <%= "page#{$id}()" %>
+{
+  page = document.all('<%= "page#{$id}" %>').value ;
+  total = <%= num_pages %>  ;
+  if(isNaN(page))
+  {
+    alert('请输入一个数值!');
+    return;
+  }
+  else
+  {
+    page =parseInt(page);
+    if(page < 1 || page > total)
     {
-      page = document.all('<%= "page#{$id}" %>').value ;
-      total = <%= num_pages %>  ;
-        if(isNaN(page))
-        {
-            alert('请输入一个数值!');
-            return;
-        }
-        else
-        {
-            page =parseInt(page);
-            if(page < 1 || page > total)
-            {
-              alert('请输入一个在 1 和 ' + total + '之间的值!');
-              return;
-            }
-        }
-      var new_link = page;
-      window.location.assign(new_link)
+      alert('请输入一个在 1 和 ' + total + '之间的值!');
+      return;
     }
-  </script>
-</nav>
+  }
+  var new_link = page;
+  window.location.assign(new_link)
+}
+</script>
+</div>
 <%- end -%>

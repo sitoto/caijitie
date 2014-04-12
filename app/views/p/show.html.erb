@@ -8,11 +8,10 @@
 
 
 %>
-
-<section class="page-list">
+<div class="container">
 <h1 class="round2 back"><%=	 link_to  @topic.my_title, p_pu_path(@topic.id, 1)%></h1>
-<div id="myad960" class="ggw960" style="height:98px">
-  <%= raw ad_baidu_all_head %>
+<div>
+  <%= raw ad_mobile_baidu_line %>
 </div>
 
 <div>
@@ -29,7 +28,7 @@
 <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
 </hgroup>
 <div class="clearfix pages">
-  <ul>
+  <ul class="tlist">
     <%	 @page_urls.each_with_index do |p, i| %>
       <%	 if params[:page] &&  params[:page].to_i > 0 %>
         <%	  i = i + 500 * (params[:page].to_i-1)  %>
@@ -52,4 +51,4 @@
 <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
 <div class="clearfix"></div>
 <%=	 raw ad_baidu_right_down %>
-</section>
+</div>

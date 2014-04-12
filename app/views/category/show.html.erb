@@ -5,12 +5,12 @@
     meta :title => "#{params[:name]} 列表", :description => "目录：'#{params[:name]}'下的文章列表" , :keywords => "#{params[:name]}"
 
 %>
+<div class="container">
 
-<section class="post-list">
   <%- if @topics && @topics.length > 0 -%>
     <%= render(:partial => "share/list", :object => @topics) %>
     <%= paginate @topics, :outer_window => 4, :inner_window => 4 -%>
   <%- else -%>
   <p>没有内容。.</p>
   <%- end -%>
-</section>
+</div>

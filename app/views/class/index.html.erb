@@ -1,30 +1,30 @@
 <%- title "分类" -%>
 
 <%
-    breadcrumb :list, '分类'
-    meta :title => "分类", :description => "文章分类，作者分类" , :keywords => "文章,分类"
+  breadcrumb :list, '分类'
+  meta :title => "分类", :description => "文章分类，作者分类" , :keywords => "文章,分类"
 %>
-<section class="class-list">
-<div class="class-c clearfix">
-  <div class="neirong round2">站内板块 (<%= @classes.length %>)</div>
-  <ul class="cl">
-    <% @classes.each do |c| %>
-      <li>
-      <%=  link_to  c.classname , category_path(c.classname), :target => '_blank' %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+<div class="container">
+  <div class="class-c clearfix">
+    <div class="neirong round2">站内板块 (<%= @classes.length %>)</div>
+    <ul class="cl">
+      <% @classes.each do |c| %>
+        <li>
+        <%=  link_to  c.classname , category_path(c.classname), :target => '_blank' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
-<div class="clearfix">
-  <div class="neirong round2">作者(<%= @authores.length %>)</div>
-  <ul class="cl">
-    <% @authores.each do |c| %>
-      <li>
-      <%=  link_to c.author , author_path(c.author), :target => '_blank' %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+  <div class="clearfix">
+    <div class="neirong round2">作者(<%= @authores.length %>)</div>
+    <ul class="cl">
+      <% @authores.each do |c| %>
+        <li>
+        <%=  link_to c.author , author_path(c.author), :target => '_blank' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
-</section>
+</div>

@@ -8,6 +8,14 @@ module AdHelper
 '<script type="text/javascript">/*mobile_head_image_20:3，创建于2014-4-10*/var cpro_id = "u1518435";</script>
 <script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>'
   end
+  def  ad_mobile_baidu_xuanfu
+'<script type="text/javascript">/*mobile_20:3，创建于2014-4-12*/  var cpro_id = "u1520137";</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>'
+  end
+  def ad_mobile_baidu_relation
+'<script type="text/javascript">/*mobile_20:3，创建于2014-4-12*/var cpro_id = "u1520142";</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>'
+  end
 
   def ad_baidu_sides
     '<script type="text/javascript">/*2-4_sides_120_270*/ var cpro_id = "u890141";</script>

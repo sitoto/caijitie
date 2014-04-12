@@ -1,0 +1,12 @@
+.pagination {
+  li { display:none; }
+  li.active,
+  li.prev,
+  li.next { display:inline; }
+  li.active { border:none;
+    a {
+      background:#F0F0F0;
+      color:#666;
+    }
+  }
+}

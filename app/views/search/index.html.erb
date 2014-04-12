@@ -4,12 +4,12 @@
       meta :title => "搜索：#{@search_text}", :description => "搜索：#{@search_text}的结果" , :keywords => @search_text
 
 %>
+<div class="container">
 
-<section class="post-list">
   <%- if @search && @search.length > 0 -%>
     <%= render(:partial => "share/list", :object => @search) %>
     <%= paginate @search, :outer_window => 4, :inner_window => 4 -%>
   <%- else -%>
   <p>没有内容。.</p>
   <%- end -%>
-</section>
+</div>
