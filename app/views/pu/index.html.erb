@@ -13,6 +13,7 @@
 
   <h1 class="round2 back"><%=	 @topic.my_title%></h1>
   <div id="myad960" class="ggw960">
+     <script src="/js/bad_head.js"></script>
   </div>
   <p>
   <span class="border">[<%= link_to '回目录', p_path(@topic), :target => '_blank', :class => 'red' %>]  </span>
@@ -43,7 +44,7 @@
             <%= raw p.content  %>
             <% if p.my_level == 1 %>
               <div id="myad728" class="ggw728">
-                <%= raw ad_mobile_baidu_image_line %>
+                <script src="/js/bad_1lou.js"></script>
               </div>
             <% end %>
           </div>
@@ -58,7 +59,7 @@
 
     <div>
       <h4>相关阅读</h4>
-      <%=	 raw ad_mobile_baidu_relation %>
+      <script src="/js/bad_relation.js"></script>
       <% if @temp_topics && @temp_topics.length > 0 %>
         <ul>
           <% @temp_topics.each do |t| %>
@@ -68,95 +69,11 @@
       <% end %>
     </div>
   </div>
-  <div  id='hide_ad_960'>
-    <%= raw ad_mobile_baidu_line %>
-  </div>
 </div>
-<script type="text/javascript">
-  document.getElementById("myad960").innerHTML = document.getElementById("hide_ad_960").innerHTML ;
-  document.getElementById("hide_ad_960").innerHTML = "";
-
-  </script>
-  <script type="text/javascript">
-    (function($) {
-     $(document).keydown(handleKey);
-     function handleKey(e) {
-     var left_arrow = 37;
-     var right_arrow = 39;
-     if (e.target.nodeName == 'BODY' || e.target.nodeName == 'HTML') {
-     if (!e.ctrlKey && !e.altKey && !e.shiftKey && !e.metaKey) {
-     var code = e.which;
-     if (code == left_arrow) {
-     prevPage();
-     }
-     else if (code == right_arrow) {
-     nextPage();
-     }
-     }
-     }
-     }
-
-     function prevPage() {
-     var href = $('.pagination .prev a').attr('href');
-     if (href && href != document.location && href != "#") {
-       document.location = href;
-     }
-     }
-
-     function nextPage() {
-       var href = $('.pagination .next a').attr('href');
-       if (href && href != document.location && href != "#") {
-         document.location = href;
-       }
-     }
-    })(jQuery);
-  </script>
-  <% if @topic.section_id == 1 %>
-    <script type="text/javascript">
-      //破防盗链js
-    function ImgRebuild() {
-      $(".content img").each(function(i){
-          url = this.src;
-          width = this.width;
-          height = this.height;
-          var imgid = Math.random(),
-          frameid = 'frameimg' + imgid;
-          window['img'+imgid] = '<img id="img" src=\''+url+'?kilobug\' /><script>window.onload = function() { parent.document.getElementById(\''+frameid+'\').height = document.getElementById(\'img\').height+\'px\'; }<'+'/script>';
-          img_r = '<iframe id="'+frameid+'" src="javascript:parent[\'img'+imgid+'\'];" frameBorder="0" height="' +height+ '" scrolling="no" width="100%"></iframe>';
-          $(this).replaceWith(img_r);
-          });
-      return '';
-    }
-ImgRebuild();
-</script>
+<script src="/js/some_cad.js"></script>
+ <% if @topic.section_id == 1 %>
+  <script src="/js/bd_1_img.js"></script>
 <% elsif  @topic.section_id == 2 %>
-  <script type="text/javascript">
-    //天涯 -
-  function ImgRebuild() {
-    $(".content img").each(function(i){
-        if ($(this).attr("original") != "")
-        {
-        this.src = $(this).attr("original");
-        $(this).removeAttr("height");
-        }
-
-        });
-    return '';
-  }
-ImgRebuild();
-</script>
+  <script src="/js/ty_2_img.js"></script>
 <%	end %>
-<script type="text/javascript" charset="utf-8">
-  $(document).ready(function() {
-      $('#ajax_top').bind("ajax:success", function(event, data) {
-        var top = $('#ajax_top');
-        var num = $('#num');
-        //alert(data.top);
-        top.html( data.top );
-        num.text(data.top);
-        top.hide();
-        num.show();
-        });
-      });
-    </script>
-    <%= raw	 ad_mobile_baidu_xuanfu  %>
+<script src="/js/bad_xuanfu.js"></script>
