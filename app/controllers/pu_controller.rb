@@ -43,7 +43,8 @@ class PuController < ApplicationController
         #redirect_to p_pu_path(@topic.id, 1) and return
       #end
 
-      @temp_topics = Topic.where("section_id = ?", @topic.section_id).order("id DESC").limit(10)
+      @temp_topics = Topic.where("section_id = ? and id < ?", @topic.section_id, @topic.id).order("id DESC").limit(10)
+
 #获取当前页前后有文章的页
 #@temp_pages = PageUrl.where("topic_id = ? and (status = 0 or count > 0)", @topic.id).limit(11)
 #@temp_pages = PageUrl.where("topic_id = ? and (status = 0 or count > 0) and num > ?",  @topic.id, (page_id.to_i - 5)).limit(11)
