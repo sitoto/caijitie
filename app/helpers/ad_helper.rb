@@ -10,7 +10,7 @@ module AdHelper
   end
   def  ad_mobile_baidu_xuanfu
     '<script type="text/javascript">
-    if  (window. innerWidth  >= 800) {
+    if  (window.innerWidth  >= 800) {
 /*mobile_20:3，创建于2014-4-12*/  var cpro_id = "u1520137";   }  
     else {
 /*2-4_sides_120_270*/ var cpro_id = "u890141";}
@@ -29,7 +29,7 @@ module AdHelper
   end
 
   def ad_baidu_right_down
-    '<script type="text/javascript">if  (window. innerWidth  >= 800) {
+    '<script type="text/javascript">if  (window.innerWidth  >= 800) {
 /*mobile_20:3，创建于2014-4-12*/  var cpro_id = "u1520137";}  else {
 /*3-5_RightDown_300_250*/ var cpro_id = "u890150";    }</script> 
 
