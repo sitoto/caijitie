@@ -1,54 +1,56 @@
 <% title "#{@topic.my_title} 目录, by #{@topic.author}." %>
 <%
-      breadcrumb :tb_detail, @topic  if @topic.section_id == 1
-      breadcrumb :tysq_detail, @topic  if @topic.section_id == 2
-      breadcrumb :dbht_detail, @topic  if @topic.section_id == 3
+  breadcrumb :tb_detail, @topic  if @topic.section_id == 1
+  breadcrumb :tysq_detail, @topic  if @topic.section_id == 2
+  breadcrumb :dbht_detail, @topic  if @topic.section_id == 3
 
-      meta :title => @topic.my_title, :description => "热贴列表" , :keywords => "贴子,脱水"
+  meta :title => @topic.my_title, :description => "热贴列表" , :keywords => "贴子,脱水"
 
 
 %>
 <div class="container">
-<h1 class="round2 back"><%=	 link_to  @topic.my_title, p_pu_path(@topic.id, 1)%></h1>
-<div>
-  <%= raw ad_mobile_baidu_line %>
-</div>
+  <h1 class="round2 back"><%=	 link_to  @topic.my_title, p_pu_path(@topic.id, 1)%></h1>
+  <div>
+    <script src="/js/bad_head.js"></script>
+  </div>
 
-<div>
-<span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
-<span class="border">文章类别：<%= link_to @topic.classname, category_path(@topic.classname),  :target => '_blank' %></span>
-<span class="border">共计<%=  @topic.mypostnum  %>回复/<%=  @topic.mypagenum  %>页</span>
-<span class="border">内容不完整？：<%= link_to '现在更新', renew_p_path(@topic.id),rel: "nofollow", method: :put, :target => '_blank', :class => 'red' %></span>
-<span class="border">查看原贴：<%= link_to '打开原贴', @topic.fromurl,  :target => '_blank' %></span>
-<span class="border"><%= link_to  "下载文件", download_path(@topic.id) ,  :target => '_blank'%></span>
-<%= link_to '阅读文章', p_pu_path(@topic.id, 1) , :class => 'border' %>
-</div>
+  <div>
+    <span class="border">作者：<%= link_to @topic.author, author_path(@topic.author), :target => '_blank' %>  </span>
+    <span class="border">文章类别：<%= link_to @topic.classname, category_path(@topic.classname),  :target => '_blank' %></span>
+    <span class="border">共计<%=  @topic.mypostnum  %>回复/<%=  @topic.mypagenum  %>页</span>
+    <span class="border">内容不完整？：<%= link_to '现在更新', renew_p_path(@topic.id),rel: "nofollow", method: :put, :target => '_blank', :class => 'red' %></span>
+    <span class="border">查看原贴：<%= link_to '打开原贴', @topic.fromurl,  :target => '_blank' %></span>
+    <span class="border"><%= link_to  "下载文件", download_path(@topic.id) ,  :target => '_blank'%></span>
+    <%= link_to '阅读文章', p_pu_path(@topic.id, 1) , :class => 'border' %>
+  </div>
 
-<hgroup>
-<%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
-</hgroup>
-<div class="clearfix pages">
-  <ul class="tlist">
-    <%	 @page_urls.each_with_index do |p, i| %>
-      <%	 if params[:page] &&  params[:page].to_i > 0 %>
-        <%	  i = i + 500 * (params[:page].to_i-1)  %>
-      <% end %>
-      <%  if p.status == 1  %>
-        <li class="caied">
-        <%= link_to "第#{p.num}页"  , p_pu_path(p.topic_id, i+1), :target => '_blank' %> <br/>
-        <%= link_to "#{p.count}"  , p_pu_path(p.topic_id, i+1), :target => '_blank', :class => 'red' %>
-        </li>
-      <% elsif p.status == 0 %>
-        <li class="nocai">
-        <%= link_to "第#{p.num}页", p_pu_path(p.topic_id, i+1), :target => '_blank' %>  <br/>
-        <%= link_to "新", p_pu_path(p.topic_id, i+1), :target => '_blank', title: '新加入页面，正在脱水，请刷新或点击。', :class => 'blue' %>
-        </li>
+  <hgroup>
+  <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
+  </hgroup>
+  <div class="clearfix pages">
+    <ul class="tlist">
+      <%	 @page_urls.each_with_index do |p, i| %>
+        <%	 if params[:page] &&  params[:page].to_i > 0 %>
+          <%	  i = i + 500 * (params[:page].to_i-1)  %>
+        <% end %>
+        <%  if p.status == 1  %>
+          <li class="caied">
+          <%= link_to "第#{p.num}页"  , p_pu_path(p.topic_id, i+1), :target => '_blank' %> <br/>
+          <%= link_to "#{p.count}"  , p_pu_path(p.topic_id, i+1), :target => '_blank', :class => 'red' %>
+          </li>
+        <% elsif p.status == 0 %>
+          <li class="nocai">
+          <%= link_to "第#{p.num}页", p_pu_path(p.topic_id, i+1), :target => '_blank' %>  <br/>
+          <%= link_to "新", p_pu_path(p.topic_id, i+1), :target => '_blank', title: '新加入页面，正在脱水，请刷新或点击。', :class => 'blue' %>
+          </li>
+        <%  end %>
       <%  end %>
-    <%  end %>
-  </ul>
+    </ul>
+  </div>
+  <hr/>
+  <%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
+  <div class="clearfix"></div>
+  <script src="/js/bad_windows.js"></script>
 </div>
-<hr/>
-<%= paginate @page_urls, :outer_window => 4, :inner_window => 4 -%>
-<div class="clearfix"></div>
-<%=	 raw ad_baidu_right_down %>
-</div>
+
+

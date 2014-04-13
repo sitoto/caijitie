@@ -36,6 +36,18 @@ module AdHelper
 <script src="http://cpro.baidu.com/cpro/ui/f.js" type="text/javascript"></script> 
     '
   end
+  def  ad_mobile_baidu_windows
+    '<script type="text/javascript">
+    if  (window.innerWidth  >= 800) {
+/*2-4_sides_120_270*/ var cpro_id = "u890150";}
+    else {
+/*mobile_20:3，创建于2014-4-12*/  var cpro_id = "u1520137";   }  
+    </script>
+<script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script>
+<script src="http://cpro.baidu.com/cpro/ui/f.js" type="text/javascript"></script> 
+    '
+  end
+
   def ad_mobile_baidu_relation
     '<script type="text/javascript">
     if  (window.innerWidth  >= 800) {
