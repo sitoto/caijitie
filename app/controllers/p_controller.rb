@@ -181,7 +181,7 @@ class PController < ApplicationController
     # Expire the index page now that we added a new topic
     expire_page(:controller => 'pages', :action => 'home')
     expire_page(:controller => 'hot', :action => 'index')
-    expire_page(:controller => 'active', :action => 'index')
+    expire_page(:controller => 'actives', :action => 'show')
 
     # Expire a fragment
     expire_fragment('all_available_topics')
