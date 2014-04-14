@@ -1,7 +1,7 @@
 #encoding: utf-8
 class PuController < ApplicationController
-  #caches_page :index
-  caches_action :index
+  caches_page :index
+  #caches_action :index
   
   def index
 
