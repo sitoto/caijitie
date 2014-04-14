@@ -21,14 +21,14 @@ class TopicSweeper < ActionController::Caching::Sweeper
     # Expire the index page now that we added a new topic
     #
     #
-    expire_action(:controller => 'pages', :action => 'home')
-    expire_action(:controller => 'hot', :action => 'index')
-    expire_action(:controller => 'class', :action => 'index')
-    expire_action(:controller => 'tbs', :action => 'show')
-    expire_action(:controller => 'tysqs', :action => 'show')
-    expire_action(:controller => 'dbhts', :action => 'show')
-    expire_action(:controller => 'recents', :action => 'show')
-    expire_action(:controller => 'actives', :action => 'show')
+    expire_page(:controller => 'pages', :action => 'home')
+    expire_page(:controller => 'hot', :action => 'index')
+    expire_page(:controller => 'class', :action => 'index')
+    expire_page(:controller => 'tbs', :action => 'show')
+    expire_page(:controller => 'tysqs', :action => 'show')
+    expire_page(:controller => 'dbhts', :action => 'show')
+    expire_page(:controller => 'recents', :action => 'show')
+    expire_page(:controller => 'actives', :action => 'show')
 
     # Expire a fragment
     expire_fragment('all_available_topics')
