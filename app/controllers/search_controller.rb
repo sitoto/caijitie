@@ -190,11 +190,11 @@ private
     expire_page(:controller => 'pages', :action => 'home')
     expire_page(:controller => 'hot', :action => 'index')
     expire_page(:controller => 'class', :action => 'index')
-    expire_page(:controller => 'tb', :action => 'index')
-    expire_page(:controller => 'tysq', :action => 'index')
-    expire_page(:controller => 'dbht', :action => 'index')
-    expire_page(:controller => 'recent', :action => 'index')
-    expire_page(:controller => 'active', :action => 'index')
+    expire_page(:controller => 'tbs', :action => 'show')
+    expire_page(:controller => 'tysqs', :action => 'show')
+    expire_page(:controller => 'dbhts', :action => 'show')
+    expire_page(:controller => 'recents', :action => 'show')
+    expire_page(:controller => 'actives', :action => 'show')
 
     # Expire a fragment
     expire_fragment('all_available_topics')

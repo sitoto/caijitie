@@ -48,6 +48,8 @@ class PController < ApplicationController
     end
     #last_page_num = PageUrl.count(:conditions => ["topic_id = ? and status = 1 and count > 0 ", @topic.id])
     all_page_num = PageUrl.count(:conditions => ["topic_id = ? ", @topic.id])
+
+    expire_page( :controller => "pu", :action => 'index' , :p_id => @topic.id)
     1.upto(all_page_num) do |page|
       expire_page( :controller => "pu", :action => 'index' , :p_id => @topic.id, :page => page )
     end
