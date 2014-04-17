@@ -1,7 +1,9 @@
+<%- title "#{params[:name]}_目录_文章列表." -%>
+
 <%
     #for seo
     breadcrumb :list, '分类：'<< params[:name]
-    meta :title => "#{params[:name]}_目录_文章列表.", :description => "目录：'#{params[:name]}'下的文章列表" , :keywords => "#{params[:name]}"
+    meta  :description => "目录：'#{params[:name]}'下的文章列表" , :keywords => "#{params[:name]}"
 
 %>
 <div class="container">

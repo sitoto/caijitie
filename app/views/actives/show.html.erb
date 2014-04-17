@@ -1,6 +1,8 @@
+<%- title "最近更新的帖子列表." -%>
+
 <%
     breadcrumb :download, '最近更新的文章'
-    meta :title => "最近更新的帖子列表.", :description => "按照最近更新文章排序列表" , :keywords => "最近更新,文章,脱水"
+    meta  :description => "按照最近更新文章排序列表" , :keywords => "最近更新,文章,脱水"
 %>
 <div class="container">
   <%- if @topics && @topics.length > 0 -%>

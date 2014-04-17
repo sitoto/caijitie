@@ -1,6 +1,7 @@
 <%- if @post -%>
 <% breadcrumb :post, @post %>
-<% meta :description =>  post_description(@post), :keywords =>  post_tags_keyword(@post) , :title => @post.title %>
+<%- title @post.title  -%>
+<% meta :description =>  post_description(@post), :keywords =>  post_tags_keyword(@post) %>
 
 <div id="container" class="index_bg">
 <div id="content">
