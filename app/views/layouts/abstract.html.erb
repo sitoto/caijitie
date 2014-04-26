@@ -9,18 +9,15 @@
       <%= yield(:head) -%>
   </head>
   <body>
-
-      <%= yield :pre_content %>
-      <%= yield :layout%>
-      <%= yield :after_content %>
-      <%= debug(params) if Rails.env.development? %>
-
-      <% if Rails.env.production? %>
-
-        <script type="text/javascript">
-          var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-          document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F88cd742fb6d70f20c8d16ee207019f82' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-      <%	end %>
+    <%= yield :pre_content %>
+    <%= yield :layout%>
+    <%= yield :after_content %>
+    <%= debug(params) if Rails.env.development? %>
+    <% if Rails.env.production? %>
+      <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F88cd742fb6d70f20c8d16ee207019f82' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+    <% end %>
   </body>
 </html>
