@@ -39,10 +39,10 @@ class TiebaTuoshuiJob
       post_json_str = item.attr("data-field")
       json_post = JSON.parse(post_json_str)
       created_at = json_post["content"]["date"]
-      author = json_post["author"]["name"]
+      author = json_post["author"]["user_name"]
       #      author_u = json_post["author"]["name_u"]
 
-      level = json_post["content"]["floor"]
+      level = json_post["content"]["post_no"]
       content =  item.at_css(".d_post_content").inner_html
 
       if  s == 0
@@ -96,7 +96,7 @@ class TiebaTuoshuiJob
     post_json_str= doc.at_css(".l_post").attr("data-field")
     json_post = JSON.parse(post_json_str)
     created_at = json_post["content"]["date"]
-    lz = json_post["author"]["name"]
+    lz = json_post["author"]["user_name"]
     all_page_num = 1
     if (i == 0) #get pagelist
       doc.css(".p_thread .l_thread_info .l_posts_num .l_pager a").each do |link|

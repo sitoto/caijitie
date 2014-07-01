@@ -44,13 +44,14 @@ class TianyabbsBbsJob
 				created_at = chk_datetime created_at
 			else
 				author = item.at_css("div.atl-head > div.atl-info > span > a").text
-				level =  item.at_css("div.atl-head > div.atl-head-reply >  a").attr("floor")
+#				level =  item.at_css("div.atl-head > div.atl-head-reply >  a").attr("floor")
+  			level =  item.at_css("div.atl-content > div.atl-con-bd > div.atl-reply > span").text
 				created_at = item.css("div.atl-info > span")[1].text.to_s.strip.last(19)
 				created_at = chk_datetime created_at
 			end
 		else
 			author = item.at_css("div.atl-head > div.atl-info > span > a").text
-			level =  item.at_css("div.atl-head > div.atl-head-reply >  a").attr("floor")
+			level =  item.at_css("div.atl-content > div.atl-con-bd > div.atl-reply > span").text
 			created_at = item.css("div > div.atl-info > span")[1].text.to_s.strip.last(19)
 			created_at = chk_datetime created_at
 		end
