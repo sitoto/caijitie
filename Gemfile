@@ -60,7 +60,8 @@ gem 'therubyracer'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano', '2.15.5'
+gem 'capistrano', '~>2.15.5'
+gem 'net-ssh', '~>2.7.0'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
