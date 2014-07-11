@@ -64,6 +64,6 @@ class Admin::EasyCaisController <  AdminController
   end
 
   def easy_cai_params  
-    params.require(:easy_cai).permit(:section_id , :rule_id, :url_address, :paixu ,:status)  
+    params.require(:easy_cai).permit(:section_id ,:name,  :rule_id, :url_address, :paixu ,:status)  
   end  
 end
