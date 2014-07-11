@@ -41,7 +41,7 @@ class Admin::EasyCaisController <  AdminController
     @easy_cai = EasyCai.find(params[:id])
 
     respond_to do |format|
-      if @easy_cai.update_attributes(params[:easy_cai])
+      if @easy_cai.update_attributes(easy_cai_params)
         format.html { redirect_to [:admin, @easy_cai], notice: 'EasyCai was successfully updated.' }
         format.json { head :ok }
       else
