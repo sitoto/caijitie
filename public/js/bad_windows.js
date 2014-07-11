@@ -10,4 +10,8 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|UCWEB|MQQBrow
   document.writeln("</script>");
   document.writeln("<script src=\"http://cpro.baidustatic.com/cpro/ui/f.js\" type=\"text/javascript\"></script>");
 
+  document.writeln("<script type=\"text/javascript\">");
+  document.writeln("var cpro_id = \"u1616354\";");
+  document.writeln("</script>");
+  document.writeln("<script src=\"http://cpro.baidustatic.com/cpro/ui/i.js\" type=\"text/javascript\"></script>");
 }

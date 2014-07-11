@@ -24,7 +24,7 @@ class Admin::EasyCaisController <  AdminController
   # POST /easy_cais
   # POST /easy_cais.json
   def create
-    @easy_cai = EasyCai.new(params[:easy_cai])
+    @easy_cai = EasyCai.new(easy_cai_params)
 
     respond_to do |format|
       if @easy_cai.save
@@ -62,4 +62,8 @@ class Admin::EasyCaisController <  AdminController
       format.json { head :ok }
     end
   end
+
+  def easy_cai_params  
+    params.require(:easy_cai).permit(:section_id , :rule_id, :url_address, :paixu ,:status)  
+  end  
 end
