@@ -1,8 +1,10 @@
 #encoding: UTF-8
 require 'nokogiri'
 require 'open-uri'
+require "common"
 class TiebaTuoshuiJob
   def self.cai_tieba(url)
+    include Common
     #判断是否可以访问该网址
     begin
       html_stream  = open(url)
@@ -43,7 +45,8 @@ class TiebaTuoshuiJob
       #      author_u = json_post["author"]["name_u"]
 
       level = json_post["content"]["post_no"]
-      content =  item.at_css(".d_post_content").inner_html
+#      content =  item.at_css(".d_post_content").inner_html
+      content =  item.at_css(".d_post_content").inner_html.to_s.strip.strip_href_tag
 
       if  s == 0
         if (author == lz)
