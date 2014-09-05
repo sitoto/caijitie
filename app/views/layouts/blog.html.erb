@@ -6,7 +6,7 @@
   <%= metamagic :title => "Sitoto的日志",
                 :description => "主要内容是IT相关，包括网站建设，软件开发，系统安全，网络硬件，搜索引擎，推广？和其他工作上的内容。",
                 :keywords => %w(程序员 开发人员 网站建设 网站优化 持续开发 持续集成 乐哈子) %>
-  <%= render "layouts/stylesheets" %>
+  <%= render "layouts/cmsstylesheets" %>
   <%= yield(:head) -%>
 </head>
 <body>
@@ -34,7 +34,7 @@
 </div>
   <%= yield :after_content %>
 <div id ="footer" class="footer">
-  <p>Copyright &copy; 2011-2012 <%= link_to '乐哈网 脱水吧', root_url, :rel => 'home' %>
+  <p>Copyright &copy; 2011-2014 <%= link_to '乐哈网 脱水吧', root_url, :rel => 'home' %>
   | <%= link_to '联系我们', contact_url, target: '_blank' %>
   </p>
 </div>
