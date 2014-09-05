@@ -16,7 +16,7 @@ Caijitie::Application.routes.draw do
   get '/blog' => 'posts#index', :as => 'blog'
 
 
-  resources :posts, :only => [:show]
+#  resources :posts, :only => [:show]
   resources :tags, :only => [:index, :show]
 
   get '/hot' => 'hot#index', :as => 'hot'

@@ -12,7 +12,7 @@ class Admin::PostsController < AdminController
   def create
     expire_page(:controller => '/posts', :action => 'index')
 
-    @post = Post.new(params[:post])
+    @post = Post.new(post_params)
     if @post.save
       flash[:notice] = 'Successfully created post.'
       redirect_to [:admin, @post]
@@ -22,7 +22,7 @@ class Admin::PostsController < AdminController
   end
 
   def update
-    if @post.update_attributes(params[:post])
+    if @post.update_attributes(post_params)
     expire_page(:controller => '/posts', :action => 'show', :id => @post.permalink)
 
       flash[:notice] = 'Successfully updated post.'
@@ -39,6 +39,10 @@ class Admin::PostsController < AdminController
     flash[:notice] = 'Successfully destroyed post.'
     redirect_to admin_posts_url
   end
+
+  def post_params  
+    params.require(:post).permit(:title ,:permalink,  :content, :tag_names, :tweet_text,:published_at, :homepageable)  
+  end  
 
   protected
 
