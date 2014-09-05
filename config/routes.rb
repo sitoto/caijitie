@@ -12,7 +12,6 @@ Caijitie::Application.routes.draw do
   root :to => 'pages#home'
 
   # Blog
-  get '/posts.:format' => 'posts#index'
   get '/blog' => 'posts#index', :as => 'blog'
 
 
