@@ -13,7 +13,7 @@ gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 
 #内容处理
-gem 'RedCloth', '4.2.9'
+#gem 'RedCloth', '4.2.9'
 
 #分页
 gem 'kaminari', '0.15.1'
