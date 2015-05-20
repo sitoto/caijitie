@@ -1,4 +1,4 @@
-source 'http://ruby.taobao.org'
+source 'https://ruby.taobao.org'
 #gem 'rails', '~>3.1.4'
 gem 'rails', '4.0.3'
 gem 'sass-rails', '4.0.0'
