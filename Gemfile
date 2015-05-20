@@ -1,4 +1,4 @@
-source 'https://ruby.taobao.org'
+source 'http://ruby.taobao.org'
 #gem 'rails', '~>3.1.4'
 gem 'rails', '4.0.3'
 gem 'sass-rails', '4.0.0'
@@ -13,7 +13,7 @@ gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 
 #内容处理
-#gem 'RedCloth', '4.2.9'
+gem 'RedCloth', '4.2.9'
 
 #分页
 gem 'kaminari', '0.15.1'
@@ -49,8 +49,7 @@ gem 'daemons'
 gem 'jquery-rails'
 
 #for ubuntu javascript runtime
-gem 'execjs'
-gem 'therubyracer'
+gem 'therubyracer', platforms: :ruby
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

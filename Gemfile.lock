@@ -149,7 +149,6 @@ DEPENDENCIES
   daemons
   delayed_job_active_record
   dynamic_sitemaps
-  execjs
   gretel (= 3.0.6)
   jquery-rails
   kaminari (= 0.15.1)
