@@ -1,5 +1,4 @@
-#source 'http://rubygems.org'
-source 'http://ruby.taobao.org/'
+source 'https://ruby.taobao.org'
 #gem 'rails', '~>3.1.4'
 gem 'rails', '4.0.3'
 gem 'sass-rails', '4.0.0'
@@ -50,21 +49,22 @@ gem 'daemons'
 gem 'jquery-rails'
 
 #for ubuntu javascript runtime
-gem 'execjs'
-gem 'therubyracer'
+gem 'therubyracer', platforms: :ruby
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano', '~>2.15.5'
+#gem 'capistrano', '~>2.15.5'
 gem 'net-ssh', '~>2.7.0'
+gem 'mina', group: :development
+gem 'mina-sidekiq', :require => false
+gem 'mina-unicorn', :require => false
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem 'unicorn'
 gem 'rails-observers'
