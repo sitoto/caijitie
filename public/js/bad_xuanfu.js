@@ -1,4 +1,5 @@
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|UCWEB|MQQBrowser/i.test(navigator.userAgent) ) {
+  document.writeln("<script src=\"http://m.qiyou.com/view.php?uid=27971&op=1\"></script>");
 } else {
-  document.writeln("<script charset=\"gbk\" src=\"http://p.tanx.com/ex?i=mm_29973065_7928681_26878439\"></script>");
+  document.writeln("<script src=\"http://r.qiyou.com/view.php?uid=27971\"></script>");
 }

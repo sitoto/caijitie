@@ -4,9 +4,9 @@ Caijitie::Application.routes.draw do
   get "pv/index"
 
   # Rewrite non-preferred hosts in production
-  constraints(NotPreferredHost) do
-    get '/:path' => redirect { |params| "http://#{NotPreferredHost::PREFERRED_HOST}/#{params[:path]}" }
-  end
+#  constraints(NotPreferredHost) do
+#    get '/:path' => redirect { |params| "http://#{NotPreferredHost::PREFERRED_HOST}/#{params[:path]}" }
+#  end
 
   # Root
   root :to => 'pages#home'
