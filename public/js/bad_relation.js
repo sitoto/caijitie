@@ -1,17 +1,14 @@
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|UCWEB|MQQBrowser/i.test(navigator.userAgent) ) {
   document.writeln("<script type=\"text/javascript\">");
-  document.writeln("var sogou_ad_id=376781;");
-  document.writeln("var sogou_ad_height=60;");
-  document.writeln("var sogou_ad_width=234;");
+  document.writeln("var cpro_id = 'u1744979';");
   document.writeln("</script>");
-  document.writeln("<script src=\"http://images.sohu.com/cs/jsfile/js/c.js\" type=\"text/javascript\"></script>");
+  document.writeln("<script src=\"http://cpro.baidustatic.com/cpro/ui/cm.js\" type=\"text/javascript\"></script>");
+
 } else {
   document.writeln("<script type=\"text/javascript\">");
-  document.writeln("var sogou_ad_id=376778;");
-  document.writeln("var sogou_ad_height=90;");
-  document.writeln("var sogou_ad_width=960;");
+  document.writeln("var cpro_id = \"u891707\";");
   document.writeln("</script>");
-  document.writeln("<script src=\"http://images.sohu.com/cs/jsfile/js/c.js\" type=\"text/javascript\"></script>");
+  document.writeln("<script src=\"http://cpro.baidustatic.com/cpro/ui/c.js\" type=\"text/javascript\"></script>");
 
 }
 
