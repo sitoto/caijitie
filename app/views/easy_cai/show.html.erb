@@ -3,41 +3,42 @@
 <h1><%=	 @bankuai_title %>  第一页</h1>
 <table class="tianyapage">
   <tbody >
-    <tr>
-      <th>序号</th>
-      <th>标题</th>
-      <th>作者</th>
-      <th>点击</th>
-      <th>回复</th>
-      <th>时间</th>
-    </tr>
+  <tr>
+    <th>序号</th>
+    <th>标题</th>
+    <th>作者</th>
+    <th>点击</th>
+    <th>回复</th>
+    <th>时间</th>
+    <th>--</th>
+  </tr>
 
-<%- if @bankuai && @bankuai.length > 0 -%>
-<%	 @bankuai.each_with_index do |t, i|  %>
+  <%- if @bankuai && @bankuai.length > 0 -%>
+    <%	 @bankuai.each_with_index do |t, i|  %>
     <tr>
-      <td rowspan="2"><%= i %></td>
-      <td class="alt"><%= t[0] %></td>
-      <td><%= t[1] %></td>
-      <td><%= t[2] %></td>
-      <td class="alt"><%= t[3] %></td>
-      <td>
-        <% if t[3].size >= 3 && t[3].size <= 5 %>
-            <%=	 link_to '369脱水',  {:controller => "/search", :action => "index", :q => t[5]},  :method => 'get', :target => "_blank" %>
-			||
-			<%=	 link_to '全采',  {:controller => "/search", :action => "index", :s => 1, :q => t[5]},  :method => 'get', :target => "_blank" %>
-			||
+    <td rowspan="2"><%= i %></td>
+    <td class="alt"><%= t[0] %></td>
+    <td><%= t[2] %></td>
+    <td class="alt"><%= t[3] %></td>
+    <td>
+      <%= link_to   '查看原贴',t[5], title: t[5], target: '_blank' %>
+    </td>
+    <td><%= t[4] %></td>
+    <td><%= t[1] %></td>
+  </tr>
+  <tr>
+    <td colspan="5">
+      <% if t[3].size >= 3 && t[3].size <= 5 %>
+        <%=	 link_to '369脱水',  {:controller => "/search", :action => "index", :q => t[5]},  :method => 'get', :target => "_blank" %>
+      ||
+      <%=	 link_to '全采',  {:controller => "/search", :action => "index", :s => 1, :q => t[5]},  :method => 'get', :target => "_blank" %>
+      ||
       <%=	 link_to 'Tuoshuiba', "http://www.tuoshuiba.com/search/launch?q=#{t[5]}" , :target => "_blank" %>
+    <% end %>
 
-        <%	 end %>
-      </td>
+    </td>
 
-    </tr>
-    <tr>
-      <td colspan="4">
-        <%= link_to  t[5], t[5], title: '查看原贴', target: '_blank' %>
-      </td>
-      <td><%= t[4] %></td>
-    </tr>
+  </tr>
 <%	 end %>
 <% end %>
   </tbody>
