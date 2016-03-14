@@ -178,7 +178,7 @@ class SearchController < ApplicationController
         @url ="http://" << regEx_tianya_3.match(url).to_s
       elsif regEx_douban_1 =~ url
         sid = 3
-        @url = ("http://www." << regEx_douban_1.match(url).to_s << "/")
+        @url = ("https://www." << regEx_douban_1.match(url).to_s << "/")
       end
 
     sid
