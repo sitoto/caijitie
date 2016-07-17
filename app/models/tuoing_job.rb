@@ -12,6 +12,7 @@ class TuoingJob < Struct.new(:topic_id, :page_url_id)
         t = TianyabbsTechforumJob.get_tianyabbs_post(@topic, @page_url) if @topic.rule == 4
         t = TianyabbsBbsJob.get_tianyabbs_post(@topic, @page_url) if @topic.rule == 5
 
+        puts "#{@topic.title} return the post count is:  #{t}"
         @page_url.update_attributes!(:status => 1,:count => t ) if t >=  0 #读取正确 状态为 1
         @page_url.update_attributes!(:status => 9) if t == -1 #读取出错 状态 改为 9
       end

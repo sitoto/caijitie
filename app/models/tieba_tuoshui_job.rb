@@ -29,7 +29,7 @@ class TiebaTuoshuiJob
       t =  filter_tieba_post(doc, topic.author, page_url.id, topic.status)
     rescue #OpenURI::HTTPError => ex
       puts " can't get url: #{page_url.url}"
-      return ''
+      return -1
     end
   end
   def self.filter_tieba_post(doc, lz, url_id, s = 0)
@@ -39,6 +39,8 @@ class TiebaTuoshuiJob
 
     doc.css(".p_postlist .l_post").each do |item|
       post_json_str = item.attr("data-field")
+      next if post_json_str.blank?
+      # blank is mean this post is ad!
       json_post = JSON.parse(post_json_str)
       created_at = json_post["content"]["date"]
       author = json_post["author"]["user_name"]
