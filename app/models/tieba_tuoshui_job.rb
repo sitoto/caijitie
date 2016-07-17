@@ -81,7 +81,7 @@ class TiebaTuoshuiJob
     end
     all_post_num = doc.at_css(".p_thread .l_thread_info .l_posts_num li span.red").text
     if doc.at_css("h1")                                                                                                 
-      title = doc.at_css("h1").text.strip
+      title = doc.at_css("h1").text.strip                                   
     else
       title = doc.at_css("h3").text.strip
     end

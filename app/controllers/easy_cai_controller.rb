@@ -121,16 +121,17 @@ class EasyCaiController < ApplicationController
   def douban_url(url)
     html_stream  = open(url)
     doc = Nokogiri::HTML(html_stream)
-    @bankuai_title = doc.css("title").text
+    puts @bankuai_title = doc.css("title").text
     @bankuai = []
-    doc.css("div#content  div.article > table  > tr").each_with_index do |item, i|
-      if i > 0
-         @bankuai <<  [ item.css("td")[0].text,
-                        item.css("td")[1].text,
-                        0,
-                        item.css("td")[2].text,
-                        item.css("td")[3].text,
-                        item.at_css("td > a").attr("href")]
+    doc.css("table.olt  > tr").each_with_index do |item, i|
+      if i > 0 && item.css("td").length > 3
+        puts a = item.css("td")[0].text.strip
+        puts b = item.css("td")[1].text.strip
+        puts c = 0
+        puts d = item.css("td")[2].text.strip
+        puts e = item.css("td")[3].text.strip
+        puts f = item.at_css("td > a").attr("href")
+        @bankuai <<  [a,b,c,d,e,f]
       end
 
     end
