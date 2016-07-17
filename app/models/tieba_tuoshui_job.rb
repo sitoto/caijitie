@@ -49,6 +49,12 @@ class TiebaTuoshuiJob
       level = json_post["content"]["post_no"]
 #      content =  item.at_css(".d_post_content").inner_html
       content =  item.at_css(".d_post_content").inner_html.to_s.strip.strip_href_tag
+      if created_at.blank? && item.at_css(".j_reply_data")
+        created_at = item.css(".j_reply_data")[1].text
+      elsif created_at.blank? && item.at_css(".tail-info")
+        created_at = item.css(".tail-info")[-1].text
+      end
+
 
       if  s == 0
         if (author == lz)
