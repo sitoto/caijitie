@@ -23,7 +23,9 @@ class TiebaTuoshuiJob
   def self.get_tieba_post(topic, page_url)
     begin
       html_stream  = open(page_url.url).read
+      html_stream.encode!('utf-8', :invalid => :replace)
       html_stream = html_stream.gsub("<!-- ", "")
+
 
       doc = Nokogiri::HTML(html_stream)
       t =  filter_tieba_post(doc, topic.author, page_url.id, topic.status)
