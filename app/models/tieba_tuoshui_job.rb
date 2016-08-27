@@ -43,6 +43,8 @@ class TiebaTuoshuiJob
       post_json_str = item.attr("data-field")
       next if post_json_str.blank?
       # blank is mean this post is ad!
+      next if post_json_str.include?('blockNum')#
+
       json_post = JSON.parse(post_json_str)
       created_at = json_post["content"]["date"]
       author = json_post["author"]["user_name"]
@@ -111,7 +113,7 @@ class TiebaTuoshuiJob
     else
       category = "贴吧"
     end
-    post_json_str= doc.at_css(".l_post").attr("data-field")
+    post_json_str= doc.at_css("div.p_postlist .l_post").attr("data-field")
     json_post = JSON.parse(post_json_str)
     created_at = json_post["content"]["date"]
     lz = json_post["author"]["user_name"]
