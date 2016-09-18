@@ -12,3 +12,4 @@
 # Igonre the deploy file
 /config/deploy.*
 /config/deploy*.*
+/config/unicorn.rb
