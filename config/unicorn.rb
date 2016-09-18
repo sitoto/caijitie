@@ -24,7 +24,9 @@ pid "#{shared_dir}/pids/unicorn.pid"
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
   old_pid = "#{server.config[:pid]}.oldbin"
+  ENV['ADMIN_USERNAME'] = 'lehazi'
   ENV['HTTP_BASIC_AUTHENTICATE_NAME'] = 'lehazi'
+  ENV['ADMIN_PASSWORD'] = 'hw3385225'
   ENV['HTTP_BASIC_AUTHENTICATE_PASSWORD'] = 'hw3385225'
   if File.exists?(old_pid) && server.pid != old_pid
     begin
