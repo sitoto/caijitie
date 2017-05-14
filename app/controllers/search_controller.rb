@@ -164,9 +164,11 @@ class SearchController < ApplicationController
       if regEx_tieba_1  =~ url
         sid = 1
         @url = ("http://tieba." << regEx_tieba_1.match(url).to_s)
+        @url = ("https://tieba." << regEx_tieba_1.match(url).to_s) if url.include?('https')
       elsif regEx_tieba_2  =~ url
         sid = 1
-         @url = ("http://tieba.baidu.com/p/" << regEx_tieba_2_1.match(url).to_s)
+        @url = ("http://tieba.baidu.com/p/" << regEx_tieba_2_1.match(url).to_s)
+        @url = ("https://tieba.baidu.com/p/" << regEx_tieba_2_1.match(url).to_s) if url.include?('https')
       elsif regEx_tianya_1 =~ url
         sid = 2
         @url ="http://www." << regEx_tianya_1.match(url).to_s

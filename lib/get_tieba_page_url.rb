@@ -5,8 +5,10 @@ module GetTiebaPageUrl
     if regEx_tieba_1  =~ url
         if p.eql?(1)
           myurl = ("http://tieba." << regEx_tieba_1.match(url).to_s)
+          myurl = ("https://tieba." << regEx_tieba_1.match(url).to_s) if url.include?('https')
         else
-           myurl = ("http://tieba." << regEx_tieba_1.match(url).to_s) << "?pn=#{p}"
+          myurl = ("http://tieba." << regEx_tieba_1.match(url).to_s) << "?pn=#{p}"
+          myurl = ("https://tieba." << regEx_tieba_1.match(url).to_s) << "?pn=#{p}" if url.include?('https')
         end
     end
     myurl
