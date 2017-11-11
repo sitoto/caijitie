@@ -7,7 +7,7 @@
 <div class="container">
   <div class="class-c clearfix">
     <div class="neirong round2">站内板块 (<%= @classes.length %>)</div>
-    <ul class="cl">
+    <ul class="list-inline">
       <% @classes.each do |c| %>
         <li>
         <%=  link_to  c.classname , category_path(c.classname), :target => '_blank' %>
@@ -18,7 +18,7 @@
 
   <div class="clearfix">
     <div class="neirong round2">作者(<%= @authores.length %>)</div>
-    <ul class="cl">
+    <ul class="list-inline">
       <% @authores.each do |c| %>
         <li>
         <%=  link_to c.author , author_path(c.author), :target => '_blank' %>

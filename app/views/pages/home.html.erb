@@ -37,7 +37,7 @@
       </div>
 
       <div id="forum_nav" class="show_list">
-        <h3>分类目录<small><a href="/class" target="_blank" >更多分类....</a></small></h3>
+        <h4><a href="/class" target="_blank" class="text-warning" >更多分类....</a></h4>
       </div>
 
     </div>
@@ -68,9 +68,9 @@
   </div>
   <div class="blank10"></div>
   <div class="flink">
-    <h3>友情链接</h3>
+    <h4>友情链接</h4>
     <div class="fldiv">
-      <ul>
+      <ul class="list-inline">
         <%	 @links.each do |f| %>
           <li><%= link_to f.name, f.url, :target => '_blank' %></li>
         <%	 end %>
