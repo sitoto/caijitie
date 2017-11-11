@@ -54,11 +54,15 @@
 
 <%- content_for :after_content do -%>
   <div class="container">
-    <div id ="footer" class="footer text-center">
-      <p>Copyright &copy; 2014 <%= link_to '369脱水吧', 'http://www.369hi.com/', :rel => 'home' %>
-      | <%= link_to '联系我们', 'http://www.369hi.com/contact', target: '_blank' %>
-      </p>
+  <div id ="footer" class="footer text-center">
+    <p>Copyright &copy; 2018 <%= link_to '369脱水吧', 'http://www.369hi.com/', :rel => 'home' %>
+  | <%= link_to '联系我们', 'http://www.369hi.com/contact', target: '_blank' %>
+  </p>
+    <div style="width:300px;margin:0 auto; padding:20px 0;">
+      <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102000815" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/assets/beian.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">鄂公网安备 42011102000815号</p></a>
     </div>
+
   </div>
+</div>
 <%- end -%>
 <%= render :file => "layouts/abstract" -%>
