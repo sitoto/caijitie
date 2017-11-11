@@ -16,17 +16,4 @@
       <% end %>
     </ul>
   </div>
-
-  <div class="clearfix">
-    <div class="neirong round2">作者(<%= @authores.length %>)</div>
-    <ul class="list-inline">
-      <% @authores.each do |c| %>
-        <% next if c.author.blank? || c.author.strip.blank? %>
-        <li>
-        <%=  link_to c.author , author_path(c.author), :target => '_blank' %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
 </div>
