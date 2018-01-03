@@ -21,6 +21,7 @@ class PuController < ApplicationController
 
       if (@page_url.status != 1 && @page_url.status != 2)
         @page_url.update_attributes!(:status => 2)
+        puts "caiji online ********************"
 
         t = TiebaTuoshuiJob.get_tieba_post(@topic, @page_url) if @topic.rule == 1
         t = TianyabbsTuoshuiJob.get_tianyabbs_post(@topic, @page_url) if @topic.rule == 2

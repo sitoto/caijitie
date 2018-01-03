@@ -4,6 +4,28 @@ require 'open-uri'
 require 'common'
 class DoubanhuatiTuoshuiJob
   include Common
+  def self.strip_emoji(text)
+    text = text.force_encoding('utf-8').encode
+    clean = ""
+
+    # symbols & pics
+    regex = /[\u{1f300}-\u{1f5ff}]/
+    clean = text.gsub regex, ""
+
+    # enclosed chars 
+    regex = /[\u{2500}-\u{2BEF}]/ # I changed this to exclude chinese char
+    clean = clean.gsub regex, ""
+
+    # emoticons
+    regex = /[\u{1f600}-\u{1f64f}]/
+    clean = clean.gsub regex, ""
+
+    #dingbats
+    regex = /[\u{2702}-\u{27b0}]/
+    clean = clean.gsub regex, ""
+  end
+
+
   def self.cai_doubanhuati_topic(url, s = 0)
     #判断是否可以访问该网址
     begin
@@ -38,7 +60,7 @@ class DoubanhuatiTuoshuiJob
       created_at = doc.at_css("div.topic-doc > h3 > span.color-green").text
       #firstcontent = doc.at_css("div.topic-doc > div.topic-content > p").inner_html
       firstcontent = doc.at_css("div.topic-doc  div.topic-content").inner_html
-      firstcontent = strip_emoji(firstcontent)
+      puts firstcontent = strip_emoji(firstcontent)
       j = j+1
       DoubanPost.create!(:page_url_id => url_id, :content => firstcontent, :post_at => created_at,
                          :level  => 0, :my_level => j ,:author => lz)
@@ -76,6 +98,7 @@ class DoubanhuatiTuoshuiJob
     end
     return  j
   rescue
+    puts "error XXXXXXXXXXXXXXXXXXXXXXXXXXXX douban tuoshui"
     return -1
   end
 
