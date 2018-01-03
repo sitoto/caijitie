@@ -46,7 +46,7 @@ class Admin::TopicsController < AdminController
     @topic = Topic.find(params[:id])
 
     respond_to do |format|
-      if @topic.update_attributes(params[:topic])
+      if @topic.update_attributes(topic_params)
         format.html { redirect_to [:admin, @topic], notice: 'Topic was successfully updated.' }
         format.json { head :ok }
       else
@@ -67,4 +67,9 @@ class Admin::TopicsController < AdminController
       format.json { head :ok }
     end
   end
+  def topic_params  
+    params.require(:topic).permit(:title ,:my_title,  :classname, :author, :top, :status, :tags)  
+  end  
+
+
 end

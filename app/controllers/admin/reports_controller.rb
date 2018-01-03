@@ -6,6 +6,8 @@ class Admin::ReportsController < AdminController
   # GET /reports.json
   def index
     @reports = Report.all
+    @topic_count = Topic.count
+    @topic_count_9 = Topic.where(status: 9).count
     @page_status = PageUrl.find_by_sql("SELECT `status`, count(`status`) as count FROM `page_urls` GROUP BY `status` ")
 
     #@nottopic = PageUrl.find_by_sql("SELECT  count(id) as pagenum, topic_id FROM `page_urls`  WHERE `status` != 1  GROUP BY topic_id limit 50")

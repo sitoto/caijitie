@@ -2,14 +2,15 @@
     采集页情况
 </h2>
 <p>
-
+主题数量:<%= @topic_count %><br/>
+关闭主题:<%= @topic_count_9 %>
 </p>
 
 <p>
 <table>
   <tbody>
     <tr>
-      <th>状态</th>
+      <th>Page状态|</th>
       <th>数量</th>
     </tr>
   <% if @page_status && @page_status.length > 0 %>
