@@ -85,7 +85,7 @@ GEM
     mini_portile (0.5.3)
     minitest (4.7.5)
     multi_json (1.9.2)
-    mysql2 (0.3.11)
+    mysql2 (0.3.21)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -172,7 +172,7 @@ DEPENDENCIES
   mina
   mina-sidekiq
   mina-unicorn
-  mysql2 (= 0.3.11)
+  mysql2 (= 0.3.21)
   net-ssh (~> 2.7.0)
   nokogiri
   pygmentize
@@ -184,3 +184,6 @@ DEPENDENCIES
   therubyracer
   uglifier
   unicorn
+
+BUNDLED WITH
+   1.16.1

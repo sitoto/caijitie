@@ -7,7 +7,7 @@ gem 'uglifier'
 
 gem 'sprockets', '<= 2.11.0'
 
-gem 'mysql2', '0.3.11'
+gem 'mysql2', '0.3.21'
 
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
