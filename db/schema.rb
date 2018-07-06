@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(version: 20120425073756) do
     t.string   "classname"
     t.string   "author"
     t.datetime "myfirsttime"
-    t.datetime "myupdatetime", default: '2018-02-26 17:48:07', null: false
+    t.datetime "myupdatetime", default: '2018-02-27 23:57:17', null: false
     t.integer  "mypagenum",    default: 1
     t.integer  "mypostnum",    default: 1
     t.integer  "myshowtimes",  default: 1
