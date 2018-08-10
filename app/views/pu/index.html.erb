@@ -4,15 +4,14 @@
   breadcrumb :tb_detail, @topic if @topic.section_id == 1
   breadcrumb :tysq_detail, @topic if @topic.section_id == 2
   breadcrumb :dbht_detail, @topic if @topic.section_id == 3
-
-  meta  :description => "#{ @topic.my_title}_脱水版本,作者:#{ @topic.author},第#{params[:page]}页" ,
-  :keywords => @topic.author
-
+  meta  :description => "#{ @topic.my_title}_脱水版本,作者:#{ @topic.author},第#{params[:page]}页", :keywords => @topic.author
 %>
 <div class="container">
   <h1 class="round2 back"><%=	 @topic.my_title%></h1>
-  <div id="myad960" class="ggw960">
-    <script src="/js/bad_head.js"></script>
+  <div class="row">
+    <div class="col-xs-12">
+      <script src="/js/bad_head.js"></script>
+    </div>
   </div>
   <p>
   <span class="border">[<%= link_to '回目录', p_path(@topic), :target => '_blank', :class => 'red' %>]  </span>
@@ -50,8 +49,10 @@
       <%#=	 render 'page_list' %>
       <%= paginate @page_urls, :outer_window => 1, :inner_window => 1 -%>
     </div>
+  </div>
 
-    <div>
+  <div class="row">
+    <div class="col-xs-12">
       <h4>相关阅读</h4>
       <script src="/js/bad_relation.js"></script>
       <% if @temp_topics && @temp_topics.length > 0 %>
