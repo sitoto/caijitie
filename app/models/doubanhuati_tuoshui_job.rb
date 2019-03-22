@@ -12,7 +12,7 @@ class DoubanhuatiTuoshuiJob
     regex = /[\u{1f300}-\u{1f5ff}]/
     clean = text.gsub regex, ""
 
-    # enclosed chars 
+    # enclosed chars
     regex = /[\u{2500}-\u{2BEF}]/ # I changed this to exclude chinese char
     clean = clean.gsub regex, ""
 
@@ -71,12 +71,12 @@ class DoubanhuatiTuoshuiJob
       content= item.at_css("p").inner_html
 
 
-      if item.at_css("div.reply-quote").blank?                                                                                                                                                          
+      if item.at_css("div.reply-quote").blank?
         content =  item.at_css("p").inner_html.to_s.strip_href_tag
 
       else
-        replay_content = item.at_css("div.reply-quote > span.all").inner_html.to_s.strip_href_tag
-        replay_author = item.at_css("div.reply-quote > span.pubdate").inner_html.to_s.strip_href_tag
+        replay_content = item.at_css("div.reply-quote  span.all").inner_html.to_s.strip_href_tag
+        replay_author = item.at_css("div.reply-quote  span.pubdate").inner_html.to_s.strip_href_tag
         content = "<pre>#{replay_content} (#{replay_author})</pre> #{ item.at_css("p").inner_html.to_s.strip_href_tag}"
 
       end
