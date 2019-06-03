@@ -7,7 +7,8 @@ class PController < ApplicationController
   def show
     current_topic = params[:id].to_i
     @topic = Topic.find_by_id(current_topic)
-    if @topic.blank? || @topic.status.eql?(9)
+    if @topic.blank? || @topic.status.eql?(9) || @topic.status.eql?(8) #8 is warning
+
       flash[:notice] = "对不起，打开出错，可能文章不存在或已经被删除！"
       redirect_to root_path
     else

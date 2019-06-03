@@ -2,14 +2,14 @@
 class PuController < ApplicationController
   caches_page :index
   #caches_action :index
-  
+
   def index
 
     if params[:p_id]
       p_id = params[:p_id]
       page_id = params[:page]
       @topic = Topic.find(p_id)
-      if @topic.blank? || @topic.status.eql?(9)
+      if @topic.blank? || @topic.status.eql?(9) || @topic.status.eql?(8)
         flash[:notice] = "对不起，打开出错，可能文章不存在或已经被删除！"
         redirect_to root_path
       end
