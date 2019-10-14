@@ -5,7 +5,7 @@ gem 'sass-rails', '4.0.0'
 gem 'coffee-rails'
 gem 'uglifier'
 
-gem 'sprockets', '<= 2.11.0'
+gem 'sprockets', '<= 2.13.0'
 
 gem 'mysql2', '0.3.21'
 
